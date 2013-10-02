@@ -1,0 +1,487 @@
+@font-face {
+    font-family: 'WebEgyptianHinted-Regular';
+    src: url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.eot');
+    src: url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.eot?#iefix') format('embedded-opentype'),
+         url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.woff') format('woff'),
+         url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.ttf') format('truetype'),
+         url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.svg#Guardian Text Egyptian Web') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+.assetsLoading {
+	font-family: 'WebEgyptianHinted-Regular';
+	font-weight:normal;
+	font-size:22px;
+	color:#4a251c;
+	
+    margin-right: auto; 
+	margin-left: auto; 
+	margin-top: 20px;
+	width: 200px;
+	
+	background: #fff url(../assets/images/loading.gif) no-repeat left;
+	
+}
+
+.loadingTitle {
+	margin-left:55px;
+	margin-bottom:5px;
+}
+
+.loadingTitle  h2 {
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	color:#666;
+}
+
+.mainHolder {
+	width:100%;
+	margin-right: auto; 
+	margin-left: auto; 
+	position:relative;
+}
+
+.mainHolderBg {
+	width:100%;
+	background: #fff url(../assets/images/mainBg.jpg);
+	background-size: 100% 100%;
+	position:fixed;
+	top:0px;
+	left:0px;
+}
+
+.leftSideHolder {
+	width:27%;
+	margin-left:1%;
+	margin-bottom:1%;
+	margin-top:50px;
+	float:left;
+	position:relative;
+}
+
+.leftSideHolderSmall {
+	width:98%;
+	margin-left:1%;
+	margin-bottom:1%;
+	margin-top:50px;
+	float:left;
+	position:relative;
+}
+
+.leftSideHeaderImage {
+	width:100%;
+	height:auto;
+}
+
+.filterPanelLeftSide {
+	width:100%;
+	background: transparent ;
+	background: rgba(62,31,24,0.75) ;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#773E1F18', EndColorStr='#773E1F18');
+	min-height:300px;
+}
+
+.filterPanelLeftSide  h1 {
+	font-family: 'WebEgyptianHinted-Regular';
+	font-weight:normal;
+	font-size:22px;
+	color:#fff;
+	margin:3%;
+}
+
+.filterPanelLeftSide  h2 {
+	font-family: 'WebEgyptianHinted-Regular';
+	font-weight:normal;
+	font-size:18px;
+	color:#fff;
+	margin:3%;
+}
+
+.filterPanelLeftSide  p  {
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	line-height:140%;
+	color:#fff;
+	width:94%;
+	margin: 3% 0 0 3%;
+	float:left;
+}
+
+.filterPanelCategoryHolder {
+	width:100%;
+	float:left;
+}
+
+.filterPanelCategoryHolder  h2 {
+	width:94%;
+	margin-left:3%;
+	line-height: 130%;
+	float:left;
+}
+
+.filterPanelLeftSide ul {
+	margin:0;
+	width:100%;
+	padding:0;
+}
+
+.filterPanelLeftSide li {
+	margin:0;
+	padding:0;
+	display: inline-block;
+	width: 44%;
+	height:26px;
+	margin-left:4%;
+	margin-bottom:2%;
+}
+
+.filterPanalFilterBox {
+	width:100%;
+	height:100%;
+	background-color:#e7d7c0;
+	display: table;
+	float:left;
+	cursor:pointer;
+}
+
+.filterPanalFilterBox h1 {
+	display: table-cell; 
+	vertical-align: middle;
+	font-family: 'Arial';
+	font-weight:normal;
+	color:#4a251c;
+	font-size:12px;
+	padding-left:10px;
+}
+
+.moreFiltersBox {
+	width:100%;
+	height:26px;
+	background-color:#e7d7c0;
+	display: table;
+	float:left;
+}
+
+.moreFiltersBox h1 {
+	display: table-cell; 
+	vertical-align: middle;
+	font-family: 'Arial';
+	font-weight:normal;
+	color:#4a251c;
+	font-size:12px;
+	padding-left:10px;
+}
+
+.refreshIcon {
+	float:right;
+	margin:3% 3% 0 0;
+	cursor: pointer;
+}
+
+.filterPanelSeperator {
+	width:100%;
+	height:2px;
+	background-color:#7d4430;
+	margin: 6% 0 3% 0;
+	float:left;
+}
+
+.rightSideHolder {
+	width:69%;
+	margin-left:2%;
+	float:left;
+	position:relative;
+}
+
+.rightSideHolderSmall {
+	width:98%;
+	margin-left:1%;
+	float:left;
+	position:relative;
+}
+
+.wishListPanelTop {
+	width:100%;
+	background-color:#fff;
+	min-height:150px;
+}
+
+.wishListPanelTop  h1 {
+	font-family: 'WebEgyptianHinted-Regular';
+	font-weight:normal;
+	font-size:22px;
+	color:#4a251c;
+}
+
+.wishListPanelTop  h2 {
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	color:#4a251c;
+}
+
+.carouselHolder {
+	margin:10px 0 0 15px;
+}
+
+.copyURLHolder {
+	float:left;
+	margin-left:10px;
+	margin-top:5px;
+}
+
+.shareListHolder {
+	float:right;
+	margin-right:10px;
+	margin-top:5px;
+	cursor: pointer;
+}
+
+.shareIcon {
+	float:left;
+	margin-left:5px;
+	width:24px;
+	height:24px;
+	cursor: pointer;
+}
+
+.copyURLTextArea {
+	float:left;
+	margin-left:10px;
+	width: 245px;
+	height: 18px;
+	border: 1px solid #dfdfdf;
+	padding: 2px;
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	color:#4a251c;
+	resize:none;
+	background-color: #fff;
+}
+
+.copyURLP {
+	float:left;
+	margin-left:10px;
+	width: 245px;
+	border: 1px solid #dfdfdf;
+	padding: 2px;
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	color:#4a251c;
+	min-height: 18px;
+	overflow: hidden;
+}
+
+.productsPanel {
+	width:100%;
+	margin-top:1%;
+	background-color:#fff;
+	position:relative;
+	min-height: 85px;
+	overflow:hidden;
+}
+
+.productsGridHolder {
+	width:100%;
+	position:absolute;
+	transition: left 0.5s;
+	-moz-transition: left 0.5s; /* Firefox 4 */
+	-webkit-transition: left 0.5s; /* Safari and Chrome */
+	-o-transition: left 0.5s; /* Opera */
+}
+
+.productsGridHolder h1 {
+	font-family: 'WebEgyptianHinted-Regular';
+	font-weight:normal;
+	font-size:22px;
+	color:#4b251a;
+	margin:3%;
+}
+
+.productsGridHolder p {
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	color:#4a251c;
+}
+
+.productsGridHolder span {
+	color:#fb9107;
+	margin: 0 3px 0 3px;
+}
+
+.productsGridHolder a {
+	text-decoration:none;
+	color:#4a251c;
+	margin: 0 3px 0 3px;
+}
+
+.productsGridHolder a:hover {
+	text-decoration:none;
+	color:#fb9107;
+	margin: 0 3px 0 3px;
+}
+.productsGridHolder ul  {
+    margin:0;
+	width:100%;
+	padding:0;
+}
+
+.productsGridHolder  li {
+	margin:0 !important; 
+	padding:0 !important;
+	display: inline-block;
+	width: 25%;
+	cursor:pointer;
+}
+
+.productsGridHolder  #productThumb {
+	width:100%;
+	height:auto;
+}
+
+.productGridItem {
+	width:100%;
+	height:113%;
+	background-color:#fff;
+	border: 1px solid #dfdfdf;
+	overflow:hidden;
+}
+
+.productGridItem p {
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	color:#333;
+	margin: 0 10px 0 10px;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+	overflow:hidden;
+}
+
+.productGridItem textarea {
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	color:#333;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	outline: none;
+	border:none;
+	resize: none;
+	width:100%;
+	text-align:center;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: none;
+	user-select: none;
+	cursor:pointer;
+}
+
+.paginationHolderTop {
+	margin: -5px auto 20px auto;
+	text-align: center;
+	display: none;
+}
+
+.paginationHolderTop a {
+	cursor: pointer;
+}
+
+#filteredGiftsNum {
+	color:#fb9107;
+}
+
+#wishListNum {
+	color:#fb9107;
+}
+
+.singularProductHolder {
+	width:100%;
+	background-color:#fff;
+	position:absolute;
+	left:100%;
+	transition: left 0.5s;
+	-moz-transition: left 0.5s; /* Firefox 4 */
+	-webkit-transition: left 0.5s; /* Safari and Chrome */
+	-o-transition: left 0.5s; /* Opera */
+}
+
+.singularProductHolder  h1 {
+	font-family: 'WebEgyptianHinted-Regular';
+	font-weight:normal;
+	font-size:22px;
+	color:#4a251c;
+}
+
+.singularProductHolder p {
+	font-family: 'Arial';
+	font-weight:normal;
+	line-height:130%;
+	font-size:12px;
+	color:#4a251c;
+}
+
+.singularProductHolder a {
+	text-decoration: none;
+	color:#fb9107;
+}
+
+.singularProductHolder a:hover {
+	text-decoration: none;
+	color:#4a251c;
+}
+
+.singularProductLeftTop {
+	float: :left;
+	margin: 20px 0 20px 0;
+	cursor: pointer;
+	background-color: #ff0000;
+}
+
+.singularProductRightTop {
+	float: :right;
+	margin: 20px 0 20px 0;
+	background-color: #0000ff;
+	cursor: pointer;
+}
+
+.loadingLargeImageMsg {
+	background-color: #fff;
+	width: 100%;
+	height: 400px;
+	margin-top:50px;
+	display: none;
+}
+
+#filteringWait {
+	background: transparent ;
+	background: rgba(0,0,0,0.4) ;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#50000000', EndColorStr='#50000000');
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 3;
+	display: none;
+}
+
+#arialBody {
+	font-family: 'Arial';
+	font-weight:normal;
+	font-size:12px;
+	color:#666;
+}
+
+.clearBoth {
+	clear:both;
+}
