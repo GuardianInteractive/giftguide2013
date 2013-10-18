@@ -8,6 +8,7 @@ var layer = 1;
 
 (function()
 {
+	
     gui.xmas.Model = function()
     {
 		//set init vars
@@ -212,6 +213,20 @@ var layer = 1;
 
 		isFilterActive: function(filterName) {
 			return gui.xmas.model.filterLookup[filterName];
+		},
+		
+		removeSelectiveFilters: function(listIndex) {
+			
+			var categoriesAndFilters = gui.xmas.model.getCategoryGroupsAndTitles();
+    		
+    		var b, filtersToRemove = categoriesAndFilters[listIndex].filters;
+    		
+    		for (b = 0; b < filtersToRemove.length; b++) {
+    				
+				gui.xmas.model.removeFilter(filtersToRemove[b]);
+			}
+			
+		
 		},
 
 		getActiveProductsList: function() {

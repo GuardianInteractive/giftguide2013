@@ -63,12 +63,17 @@ var filterLookup = {};
 			leftsideFilterPanel.appendChild(seperator);
 			
 			var categoriesAndFilters = gui.xmas.model.getCategoryGroupsAndTitles();
-			var a;
-			for (a = 0; a < categoriesAndFilters.length; a++) {
-				
+			
 				var categoryHolder = document.createElement('div');
 				categoryHolder.className = 'filterPanelCategoryHolder';
 				leftsideFilterPanel.appendChild(categoryHolder);
+				
+				categoryHolder.style.cssFloat = 'left';
+				
+			var a;
+			for (a = 0; a < categoriesAndFilters.length; a++) {
+				
+			
 				
 				var categoryTitle = document.createElement('h2');
 				categoryTitle.innerHTML = categoriesAndFilters[a].title;
@@ -77,7 +82,7 @@ var filterLookup = {};
 				var categoryClear = document.createElement('div');
 				categoryClear.className = 'clearBoth';
 				leftsideFilterPanel.appendChild(categoryClear);
-				
+				/*
 				var filterList = document.createElement('ul');
 				leftsideFilterPanel.appendChild(filterList);
 				
@@ -131,6 +136,96 @@ var filterLookup = {};
 					filterBox.appendChild(title);
 					
 				}
+				*/
+				
+				var filterList = document.createElement('select');
+				categoryHolder.appendChild(filterList);
+				filterList.id = "filterList_" + a;
+				
+				var b, filtersLength = categoriesAndFilters[a].filters.length;
+				for (b = 0; b < filtersLength; b++) {
+					
+					//var gridLi = document.createElement('li');
+					//filterList.appendChild(gridLi);
+					
+					var filterBox = document.createElement('option');
+					filterBox.className = 'filterPanalFilterBox';
+					filterBox.id = categoriesAndFilters[a].filters[b];
+					filterList.appendChild(filterBox);
+					gui.xmas.view.filterPanel.filterDivsArr[gui.xmas.view.filterPanel.filterDivsArr.length] = filterBox;
+					
+					if (gui.xmas.model.screenVersion === 'iFrame') {
+						$(filterBox).mouseover(function() {
+							if (!gui.xmas.model.isFilterActive(this.id)) {
+								//TweenLite.killTweensOf($(this));
+								//$(this).css('backgroundColor', '#7d4430');
+								//TweenLite.to($(this), 1, {css:{backgroundColor:"#fb9107"}, ease:Power2.easeOut});
+							}
+						});
+
+						$(filterBox).mouseout(function() {
+							if (!gui.xmas.model.isFilterActive(this.id)) {
+								//TweenLite.killTweensOf($(this));
+								//TweenLite.to($(this), 1, {css:{backgroundColor:"#e7d7c0"}, ease:Power2.easeOut});
+							}
+						});
+					}
+					
+					$(filterBox).click(function() {
+						
+						//gui.xmas.model.removeSelectiveFilters(this.id);
+						
+						var listArr = $(this).parent().attr("id").split("_");
+						var listIndex = Number(listArr[1]);
+						
+						var filterWaiting = $('#filteringWait');
+						filterWaiting.css('display', 'block');
+						
+						gui.xmas.model.removeSelectiveFilters(listIndex);
+						
+						if (this.id != "Show me all") {
+							
+							
+						
+						if (!gui.xmas.model.isFilterActive(this.id)) {
+							
+							gui.xmas.model.addFilter(this.id);
+							//$(this).css('backgroundColor', '#fb9107');
+						}
+						
+						} else {
+							
+							//for (var i = 1; i < categoriesAndFilters[listIndex].filters.length; i++) {
+								
+								//if (!gui.xmas.model.isFilterActive(categoriesAndFilters[listIndex].filters[i])) {
+							//gui.xmas.model.addFilter(categoriesAndFilters[listIndex].filters[i]);
+							//$(this).css('backgroundColor', '#fb9107');
+								//}
+								
+							//}
+							
+							
+						}
+						
+						console.log(gui.xmas.model.activeFiltersArr);
+						//else {
+							//$(this).css('backgroundColor', '#e7d7c0');
+							//gui.xmas.model.removeFilter(this.id);
+						//}
+						gui.xmas.view.productsGridView.scrollUpUpdate();
+						filterWaiting.css('display', 'none');
+					});
+					
+					var title = document.createElement('h1');
+					title.innerHTML = categoriesAndFilters[a].filters[b];
+					filterBox.appendChild(title);
+					
+				}
+				
+				
+				
+				
+				
 				
 			}
 			/*

@@ -7008,40 +7008,9 @@
   ],
   "filterContainers": [
     {
-      "title": "What type of gift are you looking for?",
-      "filters": [
-        "Fashion",
-        "Luxury gifts",
-        "Accessories",
-        "Toys",
-        "Homes/ decor",
-        "Decorations",
-        "Beauty",
-        "Stocking fillers",
-        "Stationery",
-        "Kids clothes",
-        "Craft",
-        "Gardens",
-        "Food gifts",
-        "Gadgets",
-        "Jewellery"
-      ]
-    },
-    {
-      "title": "Who is the gift for?",
-      "filters": [
-        "Woman",
-        "Man",
-        "Child",
-        "Baby or toddler",
-        "Teenager",
-        "Pet",
-        "A couple"
-      ]
-    },
-    {
       "title": "What kind of person are they?",
       "filters": [
+      	"Show me all",
         "Traditionalist",
         "Ethical shopper",
         "Outdoorsy type",
@@ -7052,6 +7021,7 @@
     {
       "title": "Price range",
       "filters": [
+      	"Show me all",
         "£50-100",
         "+ £100",
         "£10-25",
@@ -7092,6 +7062,8 @@
     "28": "+ £100",
     "29": "£10-25",
     "30": "£25-50",
-    "31": "Under £10"
+    "31": "Under £10",
+    "99": "Any person",
+    "100": "Any price"
   }
 }

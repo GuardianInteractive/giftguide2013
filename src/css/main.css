@@ -98,6 +98,14 @@
 	font-size:18px;
 	color:#fff;
 	margin:3%;
+	display: inline;
+	float: left;
+}
+
+.filterPanelLeftSide  select {
+	float: left;
+	display: inline;
+	margin-left: 10px;
 }
 
 .filterPanelLeftSide  p  {
@@ -117,39 +125,19 @@
 }
 
 .filterPanelCategoryHolder  h2 {
-	width:94%;
 	margin-left:3%;
 	line-height: 130%;
 	float:left;
-}
-
-.filterPanelLeftSide ul {
-	margin:0;
-	width:100%;
-	padding:0;
-}
-
-.filterPanelLeftSide li {
-	margin:0;
-	padding:0;
-	display: inline-block;
-	width: 44%;
-	height:26px;
-	margin-left:4%;
-	margin-bottom:2%;
+	display: inline;
 }
 
 .filterPanalFilterBox {
-	width:100%;
-	height:100%;
 	background-color:#e7d7c0;
-	display: table;
-	float:left;
 	cursor:pointer;
 }
 
 .filterPanalFilterBox h1 {
-	display: table-cell; 
+	
 	vertical-align: middle;
 	font-family: 'Arial';
 	font-weight:normal;
