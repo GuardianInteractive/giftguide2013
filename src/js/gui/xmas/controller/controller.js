@@ -21,6 +21,11 @@ gui.xmas = gui.xmas || {};
 		}
     };
 	gui.xmas.Controller.prototype = {
+
+		handleResponse: function(data) {
+			loaderState.finishedLoadingJSON();
+			gui.xmas.model.parseJSONData(data);
+		},
 	
 		loadJSONlistener: function(event) {
 			switch(event)
@@ -29,10 +34,12 @@ gui.xmas = gui.xmas || {};
 					
 					gui.xmas.view.initView.changeLoadingText("-loading json data");
 					
-					jQ.getJSON(gui.xmas.model.masterRootPath + 'data/gifts.json', function(data) {
-						loaderState.finishedLoadingJSON();
-						gui.xmas.model.parseJSONData(data);
-					});
+					jQ.ajax({
+						dataType: 'jsonp',
+						jsonpCallback: 'gui.xmas.controller.handleResponse',
+						url: gui.xmas.model.masterRootPath + 'data/gifts.jsonp'
+
+					})
 					
 				break;
 				case gui.xmas.stateStrings.LOADER_REMOVED:
