@@ -12,19 +12,21 @@ gui.xmas.view = gui.xmas.view || {};
 		init: function(){
 			
 			var smallOrNot = '';
-			if (width < 940) {
+			if (width < 9400) {
 				smallOrNot = 'Small';
 			}
+			
+			var el = gui.xmas.el;
 
 			gui.xmas.view.MainView.holder = document.createElement('div');
 			var holderDiv = gui.xmas.view.MainView.holder;
 			holderDiv.className = 'mainHolder';
-			document.body.appendChild(holderDiv);
+			el.appendChild(holderDiv);
 			
 			var bg = document.createElement('div');
 			bg.className = 'mainHolderBg';
 			height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-			$(bg).css('height', height);
+			jQ(bg).css('height', height);
 			holderDiv.appendChild(bg);
 			//TweenLite.fromTo(bg, 2, {css:{autoAlpha:0}}, {css:{autoAlpha:1}});
 			
@@ -33,7 +35,7 @@ gui.xmas.view = gui.xmas.view || {};
 			holderDiv.appendChild(leftSideHolder);
 			
 			var leftSideHeaderImg = document.createElement("img");
-			leftSideHeaderImg.src = "assets/images/headerImage.png";
+			leftSideHeaderImg.src = gui.xmas.model.masterRootPath + "assets/images/headerImage.png";
 			leftSideHeaderImg.className = 'leftSideHeaderImage';
 			leftSideHolder.appendChild(leftSideHeaderImg);
 			
@@ -56,9 +58,9 @@ gui.xmas.view = gui.xmas.view || {};
 			clearDiv.className = 'clearBoth';
 			holderDiv.appendChild(clearDiv);
 
-			var rightSideWidth = $('.rightSideHolder').width();
-			if (width < 940) {
-				rightSideWidth = $('.rightSideHolderSmall').width();
+			var rightSideWidth = jQ('.rightSideHolder').width();
+			if (width < 9400) {
+				rightSideWidth = jQ('.rightSideHolderSmall').width();
 			}
 
 			var filteringMsg = document.createElement('div');
@@ -66,17 +68,17 @@ gui.xmas.view = gui.xmas.view || {};
 			document.body.appendChild(filteringMsg);
 			
 			//resizing shenanigans
-			gui.xmas.view.wishListBox.carouselHolder.style.width = (rightSideWidth - 40 - $(gui.xmas.view.wishListBox.carouselHolder).height()) + 'px';
+			gui.xmas.view.wishListBox.carouselHolder.style.width = (rightSideWidth - 40 - jQ(gui.xmas.view.wishListBox.carouselHolder).height()) + 'px';
 
-			if (width >= 940) {
-				var rightSideMarginTop = $('.filterPanelLeftSide').offset().top - ($('.wishListPanelTop').height() + (width * 0.01));
+			if (width >= 9400) {
+				var rightSideMarginTop = jQ('.filterPanelLeftSide').offset().top - (jQ('.wishListPanelTop').height() + (width * 0.01));
 				if (rightSideMarginTop < 30) {
 					rightSideMarginTop = 30;
 				}
-				$('.rightSideHolder').css('margin-top', rightSideMarginTop + 'px');
+				jQ('.rightSideHolder').css('margin-top', rightSideMarginTop + 'px');
 			}
 			else {
-				$('.rightSideHolder').css('margin-top', '0px');
+				jQ('.rightSideHolder').css('margin-top', '0px');
 			}
 			//gui.xmas.view.productsGridView.scrollUpUpdate();
 			gui.xmas.view.mainView.budgeRightSideDown();
@@ -85,46 +87,46 @@ gui.xmas.view = gui.xmas.view || {};
 
 		budgeRightSideDown: function() {
 			//position the right hand side so that it lines up with the product grid
-			if (width >= 940) {
-				if ($('.filterPanelLeftSide').offset()) {
-					var rightSideMarginTop = $('.filterPanelLeftSide').offset().top - ($('.wishListPanelTop').height() + (width * 0.01));
+			if (width >= 9400) {
+				if (jQ('.filterPanelLeftSide').offset()) {
+					var rightSideMarginTop = jQ('.filterPanelLeftSide').offset().top - (jQ('.wishListPanelTop').height() + (width * 0.01));
 					if (rightSideMarginTop < 30) {
 						rightSideMarginTop = 30;
 					}
-					$('.rightSideHolder').css('margin-top', rightSideMarginTop + 'px');
+					jQ('.rightSideHolder').css('margin-top', rightSideMarginTop + 'px');
 				}
 			}
 			else {
-				$('.rightSideHolder').css('margin-top', '0px');
+				jQ('.rightSideHolder').css('margin-top', '0px');
 			}
 		},
 
 		goToSingularView: function() {
 			if (gui.xmas.model.isIe) {
-				var target = $('.singularProductHolder');
+				var target = jQ('.singularProductHolder');
 				TweenLite.to(target, .5, {css:{left:'0%'}});
-				target = $('.productsGridHolder');
+				target = jQ('.productsGridHolder');
 				TweenLite.to(target, .5, {css:{left:'-100%'}});	
 			}
 			else {
-				var target = $('.singularProductHolder');
+				var target = jQ('.singularProductHolder');
 				target.css('left', '0%');
-				target = $('.productsGridHolder');
+				target = jQ('.productsGridHolder');
 				target.css('left', '-100%');
 			}
 		},
 
 		goBackToListView:function() {
 			if (gui.xmas.model.isIe) {
-				var target = $('.singularProductHolder');
+				var target = jQ('.singularProductHolder');
 				TweenLite.to(target, .5, {css:{left:'100%'}});
-				target = $('.productsGridHolder');
+				target = jQ('.productsGridHolder');
 				TweenLite.to(target, .5, {css:{left:'0%'}});
 			}
 			else {
-				var target = $('.singularProductHolder');
+				var target = jQ('.singularProductHolder');
 				target.css('left', '100%');
-				target = $('.productsGridHolder');
+				target = jQ('.productsGridHolder');
 				target.css('left', '0%');
 			}
 		},

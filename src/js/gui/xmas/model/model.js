@@ -14,7 +14,7 @@ var layer = 1;
 		//set init vars
 		width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 		this.ppi = window.devicePixelRatio || 1;
-		this.smallView = false;
+		this.smallView = true;
 		if (width < (940 * this.ppi)) {
 			this.smallView = true;
 		}
@@ -35,6 +35,7 @@ var layer = 1;
 		this.pricefilterLookup = {};
 		this.displaySplash = false;
 		this.screenVersion = 'iFrame';
+		this.masterRootPath = '';
 		this.imageRootPath = 'http://interactive.guim.co.uk/christmas-gift-guide/';
 		this.shareRootPath = 'http://www.guardian.co.uk/p/3c3nx';
 		this.isIe = (function(){

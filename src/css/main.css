@@ -10,89 +10,101 @@
     font-stretch: normal;
 }
 
-.assetsLoading {
+.gu-interactive {
+	overflow: hidden;
+}
+
+.gu-interactive .assetsLoading {
 	font-family: 'WebEgyptianHinted-Regular';
 	font-weight:normal;
 	font-size:22px;
 	color:#4a251c;
-	
+	border: none !important;
     margin-right: auto; 
 	margin-left: auto; 
 	margin-top: 20px;
 	width: 200px;
 	
-	background: #fff url(../assets/images/loading.gif) no-repeat left;
+	background: #fff url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide/assets/images/loading.gif") no-repeat left;
 	
 }
 
-.loadingTitle {
+.gu-interactive .loadingTitle {
 	margin-left:55px;
 	margin-bottom:5px;
+	border: none !important;
 }
 
-.loadingTitle  h2 {
+.gu-interactive .loadingTitle  h2 {
 	font-family: 'Arial';
 	font-weight:normal;
 	font-size:12px;
 	color:#666;
+	border: none !important;
 }
 
-.mainHolder {
+.gu-interactive .mainHolder {
 	width:100%;
 	margin-right: auto; 
 	margin-left: auto; 
 	position:relative;
 }
 
-.mainHolderBg {
+.gu-interactive .mainHolderBg {
 	width:100%;
-	background: #fff url(../assets/images/mainBg.jpg);
-	background-size: 100% 100%;
-	position:fixed;
+	background-color: #eee;
+	position:relative;
 	top:0px;
 	left:0px;
+	display: none;
 }
 
-.leftSideHolder {
+.gu-interactive .leftSideHolder {
 	width:27%;
-	margin-left:1%;
+	margin-left:0%;
 	margin-bottom:1%;
 	margin-top:50px;
 	float:left;
 	position:relative;
+	background: #fff;
 }
 
-.leftSideHolderSmall {
-	width:98%;
-	margin-left:1%;
+.gu-interactive .leftSideHolderSmall {
+	width:100%;
+	margin-left:0%;
 	margin-bottom:1%;
-	margin-top:50px;
+	margin-top:30px;
 	float:left;
 	position:relative;
+			-webkit-box-shadow: 0px 3px 5px rgba(50, 50, 50, 0.5);
+-moz-box-shadow:    0px 3px 5px rgba(50, 50, 50, 0.5);
+box-shadow:         0px 3px 5px rgba(50, 50, 50, 0.5);
+background: #fff;
 }
 
-.leftSideHeaderImage {
+.gu-interactive .leftSideHeaderImage {
 	width:100%;
 	height:auto;
 }
 
-.filterPanelLeftSide {
+.gu-interactive .filterPanelLeftSide {
 	width:100%;
-	background: transparent ;
-	background: rgba(62,31,24,0.75) ;
-	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#773E1F18', EndColorStr='#773E1F18');
-	min-height:300px;
+	background: #fff;
+	min-height:20px;
+	border-bottom: 1px solid #ddd;
 }
 
-.filterPanelLeftSide  h1 {
+.gu-interactive .filterPanelLeftSide  h1 {
 	font-family: 'WebEgyptianHinted-Regular';
 	font-weight:normal;
-	font-size:22px;
-	color:#fff;
+	font-size:20px;
+	color:#62594f;
 	margin:3%;
+	width: 94%;
+	text-align: center;
 }
 
-.filterPanelLeftSide  h2 {
+.gu-interactive .filterPanelLeftSide  h2 {
 	font-family: 'WebEgyptianHinted-Regular';
 	font-weight:normal;
 	font-size:18px;
@@ -102,51 +114,107 @@
 	float: left;
 }
 
-.filterPanelLeftSide  select {
-	float: left;
+.gu-interactive .filterPanelLeftSide .styled-select select {
+   background: transparent;
+   width: 200px;
+   padding: 7px 5px 3px 5px;
+   font-size: 14px;
+   border: none;
+   height: 34px;
+    color: #fff;
+    -webkit-appearance: none;
+    font-family: Arial;
+    font-weight: bold;
+} 
+
+
+.gu-interactive .styled-select {
+	margin: 0 10px 10px 10px;
 	display: inline;
-	margin-left: 10px;
+float: right;
+  overflow: hidden;
+  width: 170px;
+   height: 34px;
+    -webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+   background: url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide/assets/images/filter-arrow.png") no-repeat 96% #62594f;
+   text-align: left;
 }
 
-.filterPanelLeftSide  p  {
+.gu-interactive .show-wishlist {
+	display: inline;
+	float: left;
+	width: 110px;
+    padding: 10px 10px 0px 10px;
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 14px;
+   border: none;
+   height: 24px;
+    color: #fff;
+    -webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+	background: #a64557;
+	cursor: pointer;
+	margin: 0 10px 10px 10px;
+	vertical-align: middle;
+}
+
+.gu-interactive .show-wishlist #wishlist-button-counter {
+	display: inline;
+	float: right;
+	font-weight: normal;
+}
+
+.gu-interactive .filterPanelLeftSide  p  {
 	font-family: 'Arial';
 	font-weight:normal;
 	font-size:12px;
 	line-height:140%;
+	border: none !important;
 	color:#fff;
 	width:94%;
 	margin: 3% 0 0 3%;
 	float:left;
 }
 
-.filterPanelCategoryHolder {
+.gu-interactive .filterPanelCategoryHolder {
 	width:100%;
 	float:left;
+	top:0px;
+	left: 0px;
+	position: relative;
 }
 
-.filterPanelCategoryHolder  h2 {
+.gu-interactive .filterPanelCategoryHolder  h2 {
 	margin-left:3%;
 	line-height: 130%;
+	border: none !important;
 	float:left;
 	display: inline;
 }
 
-.filterPanalFilterBox {
-	background-color:#e7d7c0;
+.gu-interactive .filterPanalFilterBox {
+	background-color:#62594f;
+	color: #fff;
 	cursor:pointer;
+	padding: 0px;
+	margin: 0px;
 }
 
-.filterPanalFilterBox h1 {
-	
+.gu-interactive .filterPanalFilterBox h1 {
 	vertical-align: middle;
+	text-align: left;
 	font-family: 'Arial';
 	font-weight:normal;
-	color:#4a251c;
+	color:#fff;
 	font-size:12px;
 	padding-left:10px;
 }
 
-.moreFiltersBox {
+.gu-interactive .moreFiltersBox {
 	width:100%;
 	height:26px;
 	background-color:#e7d7c0;
@@ -154,7 +222,7 @@
 	float:left;
 }
 
-.moreFiltersBox h1 {
+.gu-interactive .moreFiltersBox h1 {
 	display: table-cell; 
 	vertical-align: middle;
 	font-family: 'Arial';
@@ -164,72 +232,90 @@
 	padding-left:10px;
 }
 
-.refreshIcon {
+.gu-interactive .refreshIcon {
 	float:right;
 	margin:3% 3% 0 0;
 	cursor: pointer;
 }
 
-.filterPanelSeperator {
+.gu-interactive .filterPanelSeperator {
 	width:100%;
 	height:2px;
 	background-color:#7d4430;
 	margin: 6% 0 3% 0;
 	float:left;
+	display: none;
 }
 
-.rightSideHolder {
+.gu-interactive .rightSideHolder {
 	width:69%;
 	margin-left:2%;
 	float:left;
 	position:relative;
 }
 
-.rightSideHolderSmall {
+.gu-interactive .rightSideHolderSmall {
 	width:98%;
 	margin-left:1%;
 	float:left;
 	position:relative;
 }
 
-.wishListPanelTop {
+.gu-interactive .wishListPanelTop {
 	width:100%;
 	background-color:#fff;
-	min-height:150px;
+	max-height: 0px;
+	overflow: hidden;
+	-webkit-transition: max-height 0.5s;
+	-moz-transition: max-height 0.5s;
+	transition: max-height 0.5s;
 }
 
-.wishListPanelTop  h1 {
+.gu-interactive .wishListPanelTop  h1 {
 	font-family: 'WebEgyptianHinted-Regular';
 	font-weight:normal;
 	font-size:22px;
 	color:#4a251c;
 }
 
-.wishListPanelTop  h2 {
+.gu-interactive .wishListPanelTop  h2 {
 	font-family: 'Arial';
 	font-weight:normal;
 	font-size:12px;
 	color:#4a251c;
+	border: none !important;
 }
 
-.carouselHolder {
+.gu-interactive .carouselHolder {
 	margin:10px 0 0 15px;
 }
 
-.copyURLHolder {
+.gu-interactive .copyURLHolder {
 	float:left;
 	margin-left:10px;
 	margin-top:5px;
+	font-weight: normal !important;
 }
 
-.shareListHolder {
+.gu-interactive .copyURLHolder h2 {
+	font-weight: normal !important;
+}
+
+.gu-interactive .shareListHolder {
 	float:right;
 	margin-right:10px;
 	margin-top:5px;
 	cursor: pointer;
+	color: #4A251C;
+}
+.gu-interactive .shareListHolder h2 {
+font-family: Arial !important;
+	font-weight: normal !important;
+	font-size: 12px;
+	border: none !important;
 }
 
-.shareIcon {
+.gu-interactive .shareIcon {
 	float:left;
 	margin-left:5px;
 	width:24px;
@@ -237,7 +323,7 @@
 	cursor: pointer;
 }
 
-.copyURLTextArea {
+.gu-interactive .copyURLTextArea {
 	float:left;
 	margin-left:10px;
 	width: 245px;
@@ -252,7 +338,7 @@
 	background-color: #fff;
 }
 
-.copyURLP {
+.gu-interactive .copyURLP {
 	float:left;
 	margin-left:10px;
 	width: 245px;
@@ -266,16 +352,14 @@
 	overflow: hidden;
 }
 
-.productsPanel {
+.gu-interactive .productsPanel {
 	width:100%;
 	margin-top:1%;
-	background-color:#fff;
 	position:relative;
 	min-height: 85px;
-	overflow:hidden;
 }
 
-.productsGridHolder {
+.gu-interactive .productsGridHolder {
 	width:100%;
 	position:absolute;
 	transition: left 0.5s;
@@ -284,7 +368,7 @@
 	-o-transition: left 0.5s; /* Opera */
 }
 
-.productsGridHolder h1 {
+.gu-interactive .productsGridHolder h1 {
 	font-family: 'WebEgyptianHinted-Regular';
 	font-weight:normal;
 	font-size:22px;
@@ -292,72 +376,72 @@
 	margin:3%;
 }
 
-.productsGridHolder p {
+.gu-interactive .productsGridHolder p {
 	font-family: 'Arial';
 	font-weight:normal;
 	font-size:12px;
 	color:#4a251c;
 }
 
-.productsGridHolder span {
-	color:#fb9107;
+.gu-interactive .productsGridHolder span {
+	color:#609984;
 	margin: 0 3px 0 3px;
 }
 
-.productsGridHolder a {
+.gu-interactive .productsGridHolder a {
 	text-decoration:none;
 	color:#4a251c;
 	margin: 0 3px 0 3px;
 }
 
-.productsGridHolder a:hover {
+.gu-interactive .productsGridHolder a:hover {
 	text-decoration:none;
-	color:#fb9107;
+	color:#609984;
 	margin: 0 3px 0 3px;
 }
-.productsGridHolder ul  {
+.gu-interactive .productsGridHolder ul  {
     margin:0;
 	width:100%;
 	padding:0;
 }
 
-.productsGridHolder  li {
-	margin:0 !important; 
+.gu-interactive .productsGridHolder  li {
+	margin: 0 !important; 
 	padding:0 !important;
 	display: inline-block;
 	width: 25%;
 	cursor:pointer;
+	overflow: hidden;
 }
 
-.productsGridHolder  #productThumb {
+.gu-interactive .productsGridHolder  #productThumb {
 	width:100%;
 	height:auto;
 }
 
-.productGridItem {
+.gu-interactive .productGridItem {
 	width:100%;
 	height:113%;
 	background-color:#fff;
-	border: 1px solid #dfdfdf;
 	overflow:hidden;
 }
 
-.productGridItem p {
+.gu-interactive .productGridItem p {
 	font-family: 'Arial';
 	font-weight:normal;
 	font-size:12px;
-	color:#333;
+	color:#609984;
 	margin: 0 10px 0 10px;
 	text-overflow: ellipsis;
 	white-space:nowrap;
 	overflow:hidden;
 }
 
-.productGridItem textarea {
+.gu-interactive .productGridItem textarea {
 	font-family: 'Arial';
 	font-weight:normal;
 	font-size:12px;
-	color:#333;
+	color:#609984;
 	text-overflow: ellipsis;
 	overflow:hidden;
 	outline: none;
@@ -374,25 +458,25 @@
 	cursor:pointer;
 }
 
-.paginationHolderTop {
+.gu-interactive .paginationHolderTop {
 	margin: -5px auto 20px auto;
 	text-align: center;
 	display: none;
 }
 
-.paginationHolderTop a {
+.gu-interactive .paginationHolderTop a {
 	cursor: pointer;
 }
 
-#filteredGiftsNum {
-	color:#fb9107;
+.gu-interactive #filteredGiftsNum {
+	color:#609984;
 }
 
-#wishListNum {
-	color:#fb9107;
+.gu-interactive #wishListNum {
+	color:#609984;
 }
 
-.singularProductHolder {
+.gu-interactive .singularProductHolder {
 	width:100%;
 	background-color:#fff;
 	position:absolute;
@@ -403,46 +487,46 @@
 	-o-transition: left 0.5s; /* Opera */
 }
 
-.singularProductHolder  h1 {
+.gu-interactive .singularProductHolder  h1 {
 	font-family: 'WebEgyptianHinted-Regular';
 	font-weight:normal;
 	font-size:22px;
 	color:#4a251c;
 }
 
-.singularProductHolder p {
-	font-family: 'Arial';
-	font-weight:normal;
+.gu-interactive .singularProductHolder p {
+	font-family: 'Arial' !important;
+	font-weight: normal !important;
 	line-height:130%;
 	font-size:12px;
 	color:#4a251c;
 }
 
-.singularProductHolder a {
+.gu-interactive .singularProductHolder a {
 	text-decoration: none;
-	color:#fb9107;
+	color:#609984;
 }
 
-.singularProductHolder a:hover {
+.gu-interactive .singularProductHolder a:hover {
 	text-decoration: none;
 	color:#4a251c;
 }
 
-.singularProductLeftTop {
+.gu-interactive .singularProductLeftTop {
 	float: :left;
 	margin: 20px 0 20px 0;
 	cursor: pointer;
 	background-color: #ff0000;
 }
 
-.singularProductRightTop {
+.gu-interactive .singularProductRightTop {
 	float: :right;
 	margin: 20px 0 20px 0;
 	background-color: #0000ff;
 	cursor: pointer;
 }
 
-.loadingLargeImageMsg {
+.gu-interactive .loadingLargeImageMsg {
 	background-color: #fff;
 	width: 100%;
 	height: 400px;
@@ -450,7 +534,7 @@
 	display: none;
 }
 
-#filteringWait {
+.gu-interactive #filteringWait {
 	background: transparent ;
 	background: rgba(0,0,0,0.4) ;
 	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#50000000', EndColorStr='#50000000');
@@ -463,13 +547,13 @@
 	display: none;
 }
 
-#arialBody {
+.gu-interactive #arialBody {
 	font-family: 'Arial';
 	font-weight:normal;
 	font-size:12px;
 	color:#666;
 }
 
-.clearBoth {
+.gu-interactive .clearBoth {
 	clear:both;
 }

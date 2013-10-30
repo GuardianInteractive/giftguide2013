@@ -12,11 +12,12 @@ gui.xmas.view = gui.xmas.view || {};
 		init: function(){			
 			
 			var smallOrNot = '';
-			if (width < 940) {
+			if (width < 9400) {
 				smallOrNot = 'Small';
 			}
 
-			var rightSideHolder = $('.rightSideHolder' + smallOrNot);
+			//var rightSideHolder = jQ('.rightSideHolder' + smallOrNot);
+			var rightSideHolder = jQ('.leftSideHolder' + smallOrNot);
 			
 			var wishListBox = document.createElement('div');
 			wishListBox.className = 'wishListPanelTop';
@@ -33,7 +34,7 @@ gui.xmas.view = gui.xmas.view || {};
 			gui.xmas.view.wishListBox.containsText = title;
 			titleHolder.appendChild(title);
 			
-			var titleWidth = $(titleHolder).width();
+			var titleWidth = jQ(titleHolder).width();
 			gui.xmas.model.wishListInitWidth = rightSideHolder.width();
 			gui.xmas.model.carouselInitWidth = (gui.xmas.model.wishListInitWidth - (titleWidth + 120))
 
@@ -52,7 +53,7 @@ gui.xmas.view = gui.xmas.view || {};
 			testDiv.id = 'wishlistCarousel';
 			carouselHolder.appendChild(testDiv);
 			
-			$(testDiv).jcarousel({
+			jQ(testDiv).jcarousel({
 				size: 1,
 				itemLoadCallback: {onBeforeAnimation: gui.xmas.view.wishListBox.handleCarouselItemLoadComplete},
 				itemFallbackDimension: width
@@ -87,7 +88,7 @@ gui.xmas.view = gui.xmas.view || {};
 			copyURLHolder.appendChild(copyURLArea);
 			gui.xmas.view.wishListBox.copyURLArea = copyURLArea;
 
-			$(copyURLArea).click(function(event) {
+			jQ(copyURLArea).click(function(event) {
 				var para = document.getElementById('copyURLP'), range;
 				if (window.getSelection && document.createRange) {
 					range = document.createRange();
@@ -118,20 +119,20 @@ gui.xmas.view = gui.xmas.view || {};
 			shareListHolder.appendChild(shareListTitle);
 			
 			var fbIcon = document.createElement('img');
-			fbIcon.src = "assets/images/FB.gif";
+			fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/FB.gif";
 			fbIcon.className = 'shareIcon';
 			shareListHolder.appendChild(fbIcon);
-			$(fbIcon).click(function(event) {
+			jQ(fbIcon).click(function(event) {
 				var urlStr = gui.xmas.model.getWishListIdString();
 				window.open('https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath, '_blank');
 			});
 			
 			var twitterIcon = document.createElement('img');
-			twitterIcon.src = "assets/images/twitter.gif";
+			twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/twitter.gif";
 			twitterIcon.className = 'shareIcon';
 			shareListHolder.appendChild(twitterIcon);
-			$(twitterIcon).click(function(event) {
-			//$(shareListHolder).click(function(event) {
+			jQ(twitterIcon).click(function(event) {
+			//jQ(shareListHolder).click(function(event) {
 				//to get included somewhere
 				var shareOnTwitter = {		
 					twitterUrl: 'https://twitter.com/intent/tweet',
@@ -172,6 +173,8 @@ gui.xmas.view = gui.xmas.view || {};
 			var listLength = gui.xmas.model.getWishListLength();
 			var s = (listLength == 1) ? '' : 's';
 			gui.xmas.view.wishListBox.containsText.innerHTML = 'My wishlist: <span id="wishListNum">' + listLength + '</span> item' + s;
+			
+			jQ("#wishlist-button-counter").html(listLength);
 
 			gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[id].thumbnailPicUrl
 
@@ -184,7 +187,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var newItem = gui.xmas.view.wishListBox.carousel.get(listLength);
 			newItem.attr('id', 'wishlistItem' + id);
 			newItem.css('cursor', 'pointer');
-			$(newItem).click(function(event) {
+			jQ(newItem).click(function(event) {
 				var productId = this.id.split('wishlistItem').join('');
 				gui.xmas.model.removeItemFromWishList(productId);
 				gui.xmas.view.wishListBox.removeItemFromList(productId);
@@ -200,6 +203,8 @@ gui.xmas.view = gui.xmas.view || {};
 			var s = (listLength == 1) ? '' : 's';
 			gui.xmas.view.wishListBox.containsText.innerHTML = 'My wishlist: <span id="wishListNum">' + listLength + '</span> item' + s;
 			
+			jQ("#wishlist-button-counter").html(listLength);
+			
 			gui.xmas.view.wishListBox.carousel.reset();
 			var a;
 			for (a = 0; a < listLength; a++) {
@@ -209,7 +214,7 @@ gui.xmas.view = gui.xmas.view || {};
 				var newItem = gui.xmas.view.wishListBox.carousel.get(a + 1);
 				newItem.attr('id', 'wishlistItem' + gui.xmas.model.wishListItemsArr[a]);
 				newItem.css('cursor', 'pointer');
-				$(newItem).click(function(event) {
+				jQ(newItem).click(function(event) {
 					var productId = this.id.split('wishlistItem').join('');
 					gui.xmas.model.removeItemFromWishList(productId);
 					gui.xmas.view.wishListBox.removeItemFromList(productId);

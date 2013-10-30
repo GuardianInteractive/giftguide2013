@@ -11,7 +11,7 @@ gui.xmas.view = gui.xmas.view || {};
 	gui.xmas.view.ProductsGridView.prototype = {
 		init: function(){		
 			
-			var productsHolder = $('.productsPanel');
+			var productsHolder = jQ('.productsPanel');
 			
 			var productsGridHolder = document.createElement('div');
 			productsGridHolder.className = 'productsGridHolder';
@@ -49,7 +49,7 @@ gui.xmas.view = gui.xmas.view || {};
 				
 				var itemImg = new Image();
 				itemImg.id = 'productThumb';
-				itemImg.src = "assets/images/productWaiting.gif";
+				itemImg.src = gui.xmas.model.masterRootPath + "assets/images/productWaiting.gif";
 				itemDiv.appendChild(itemImg);
 				gui.xmas.model.imgTagLookup[giftsArr[a].name] = {'img':itemImg, 'thumbPath':gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl, 'isLoaded':false};
 				//gui.xmas.model.registerProductImageForLoading({'img':itemImg, 'imgSrc':giftsArr[a].thumbnailPicUrl});
@@ -85,8 +85,8 @@ gui.xmas.view = gui.xmas.view || {};
 							gridLi.style.display = 'inline-block';
 							gui.xmas.model.addItemToWishList(giftsArr[a].name);
 							gui.xmas.view.wishListBox.addItemToList(giftsArr[a].name);
-							$(gridLi).find('#addToWishList').attr("src","assets/images/wishMinus.gif");
-							TweenLite.to($(gridLi).find('#addToWishList'), 0, {css:{autoAlpha:1}});
+							jQ(gridLi).find('#addToWishList').attr("src",gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
+							TweenLite.to(jQ(gridLi).find('#addToWishList'), 0, {css:{autoAlpha:1}});
 							break;
 						}
 					}
@@ -94,39 +94,39 @@ gui.xmas.view = gui.xmas.view || {};
 				}
 				
 				if (gui.xmas.model.screenVersion === 'iFrame') {
-					$(gridLi).mouseover(function() {
-						TweenLite.to($(this).find('#addToWishList'), .5, {css:{autoAlpha:1}});
+					jQ(gridLi).mouseover(function() {
+						TweenLite.to(jQ(this).find('#addToWishList'), .5, {css:{autoAlpha:1}});
 					});
 					
-					$(gridLi).mouseout(function() {
-						var productId = $(this).find('textarea').val();
+					jQ(gridLi).mouseout(function() {
+						var productId = jQ(this).find('textarea').val();
 						if (!gui.xmas.model.wishListItemsLookup[productId]) {
-							TweenLite.to($(this).find('#addToWishList'), .5, {css:{autoAlpha:0}});
+							TweenLite.to(jQ(this).find('#addToWishList'), .5, {css:{autoAlpha:0}});
 						}
 					});
 				}
 				
-				$(gridLi).click(function(event) {
-					var width = $(this).width(), offset = $(this).offset(), xPos = (event.clientX - offset.left), yPos = (event.clientY - offset.top);
-					var productId = $(this).find('textarea').val();
+				jQ(gridLi).click(function(event) {
+					var width = jQ(this).width(), offset = jQ(this).offset(), xPos = (event.clientX - offset.left), yPos = (event.clientY - offset.top);
+					var productId = jQ(this).find('textarea').val();
 					if (xPos >= (width - 20) && yPos <= 20) {
 						//you've clicked on the add to wishlist button
 						if (!gui.xmas.model.wishListItemsLookup[productId]) {
 							gui.xmas.model.addItemToWishList(productId);
 							gui.xmas.view.wishListBox.addItemToList(productId);
-							$(this).find('#addToWishList').attr("src","assets/images/wishMinus.gif");
+							jQ(this).find('#addToWishList').attr("src", gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
 						}
 						else {
 							gui.xmas.model.removeItemFromWishList(productId);
 							gui.xmas.view.wishListBox.removeItemFromList(productId);
-							$(this).find('#addToWishList').attr("src","assets/images/wishPlus.gif");
+							jQ(this).find('#addToWishList').attr("src", gui.xmas.model.masterRootPath + "assets/images/wishPlus.gif");
 						}
 					}
 					else {
 						gui.xmas.model.registerProductClicked(productId);
 						displayState.productClicked();
 						if (gui.xmas.model.smallView) {
-							$('.productsPanel').ScrollTo({
+							jQ('.productsPanel').ScrollTo({
 								duration: 0
 							});
 						}
@@ -144,12 +144,12 @@ gui.xmas.view = gui.xmas.view || {};
 			
 			loaderState.startLoadingThumbs();
 			
-			var productsHolder = $('.productsPanel'), rightSideWidth = productsHolder.parent().width();
+			var productsHolder = jQ('.productsPanel'), rightSideWidth = productsHolder.parent().width();
 			var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, percentWidth = (100 / numAcross);
-			$('.productsGridHolder  li').css('width', percentWidth + '%');
+			jQ('.productsGridHolder  li').css('width', percentWidth + '%');
 
 			var timer;
-			$(window).bind('scroll',function () {
+			jQ(window).bind('scroll',function () {
 				clearTimeout(timer);
 				timer = setTimeout(gui.xmas.view.productsGridView.scrollUpUpdate, 400);
 			});
@@ -160,12 +160,12 @@ gui.xmas.view = gui.xmas.view || {};
 			else {
 				//resize the right hand side to the amount of items in uyour wish list!
 				///////////////////////////////////////////////////////
-				var rightSideWidth = $('.rightSideHolder').width();
-				if (width < 940) {
-					rightSideWidth = $('.rightSideHolderSmall').width();
+				var rightSideWidth = jQ('.rightSideHolder').width();
+				if (width < 9400) {
+					rightSideWidth = jQ('.rightSideHolderSmall').width();
 				}
 				var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, liSize = rightSideWidth / numAcross, urlVarListLength = gui.xmas.model.urlVarsArr.length;
-				gui.xmas.view.productsGridView.maxNumOnPage = Math.floor(($('.filterPanelLeftSide').height() - $('#productsList').position().top) / liSize) * numAcross;
+				gui.xmas.view.productsGridView.maxNumOnPage = Math.floor((jQ('.filterPanelLeftSide').height() - jQ('#productsList').position().top) / liSize) * numAcross;
 				var numOnPage = gui.xmas.view.productsGridView.maxNumOnPage;
 				if (urlVarListLength < numOnPage) {
 					numOnPage = urlVarListLength;
@@ -173,7 +173,7 @@ gui.xmas.view = gui.xmas.view || {};
 						numOnPage = numAcross;
 					}
 				}
-				var gridHeight = $('#productsList').position().top + (Math.ceil(numOnPage / numAcross) * (liSize + 4.7));
+				var gridHeight = jQ('#productsList').position().top + (Math.ceil(numOnPage / numAcross) * (liSize + 4.7));
 				gui.xmas.view.productsGridView.setRightSideHeight(gridHeight);
 				///////////////////////////////////////////////////////
 			}
@@ -183,11 +183,11 @@ gui.xmas.view = gui.xmas.view || {};
 
 		scrollUpUpdate: function() {
 
-			//var ulTopPos = $('#productsList').offset().top, scrollPos = (document.all ? document.scrollTop : window.pageYOffset), windowHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-			var ulTopPos = $('#productsList').offset().top, scrollPos = gui.xmas.view.productsGridView.getScroll()[1], windowHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-			var rightSideWidth = $('.rightSideHolder').width();
-			if (width < 940) {
-				rightSideWidth = $('.rightSideHolderSmall').width();
+			//var ulTopPos = jQ('#productsList').offset().top, scrollPos = (document.all ? document.scrollTop : window.pageYOffset), windowHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+			var ulTopPos = jQ('#productsList').offset().top, scrollPos = gui.xmas.view.productsGridView.getScroll()[1], windowHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+			var rightSideWidth = jQ('.rightSideHolder').width();
+			if (width < 9400) {
+				rightSideWidth = jQ('.rightSideHolderSmall').width();
 			}
 			var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, gridHeight = rightSideWidth / numAcross, howManyRowsDown = (scrollPos - ulTopPos) / gridHeight, howManyVisibleInTheWindow = (windowHeight / gridHeight);
 			if (howManyRowsDown < 0) {
@@ -205,18 +205,18 @@ gui.xmas.view = gui.xmas.view || {};
 			var numInActiveList = 0;
 			/*
 			for (a = 0; a < giftsLength; a++) {
-				var liItem = $('#productsList li:eq(' + a + ')');
+				var liItem = jQ('#productsList li:eq(' + a + ')');
 				if (liItem.css('display') == 'inline-block') {
 					filteredLis[filteredLis.length] = liItem;
 				}
 			}
 			*/
-			var itemsLength = $('#productsList li').filter(function(index) {
-				if ($(this).css("display") === "none") {
+			var itemsLength = jQ('#productsList li').filter(function(index) {
+				if (jQ(this).css("display") === "none") {
 					return 0;
 				}
 				else {
-					filteredLis[filteredLis.length] = $(this);
+					filteredLis[filteredLis.length] = jQ(this);
 					return 1;
 				}
 			});
@@ -249,18 +249,18 @@ gui.xmas.view = gui.xmas.view || {};
 
 		setRightSideHeight: function(passedHeight) {
 			if (passedHeight) {
-				$('.productsPanel').css('height', passedHeight);
-				$('.productsGridHolder').css('height', passedHeight);
+				jQ('.productsPanel').css('height', passedHeight);
+				jQ('.productsGridHolder').css('height', passedHeight);
 			}
 			else {
-				var rightSideWidth = $('.rightSideHolder').width();
-				if (width < 940) {
-					rightSideWidth = $('.rightSideHolderSmall').width();
+				var rightSideWidth = jQ('.rightSideHolder').width();
+				if (width < 9400) {
+					rightSideWidth = jQ('.rightSideHolderSmall').width();
 				}
 
 				var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, liSize = rightSideWidth / numAcross, ul = document.getElementById('productsList');
-				var itemsLength = $('#productsList li').filter(function(index) {
-					if ($(this).css("display") === "none") {
+				var itemsLength = jQ('#productsList li').filter(function(index) {
+					if (jQ(this).css("display") === "none") {
 						return 0;
 					}
 					else {
@@ -274,9 +274,9 @@ gui.xmas.view = gui.xmas.view || {};
 						numOnPage = numAcross;
 					}
 				}
-				var gridHeight = $('#productsList').position().top + (Math.ceil(numOnPage / numAcross) * (liSize + 4.7));
-				$('.productsPanel').css('height', gridHeight);
-				$('.productsGridHolder').css('height', gridHeight);
+				var gridHeight = jQ('#productsList').position().top + (Math.ceil(numOnPage / numAcross) * (liSize + 4.7));
+				jQ('.productsPanel').css('height', gridHeight);
+				jQ('.productsGridHolder').css('height', gridHeight);
 			}
 		},
 		
@@ -285,13 +285,13 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 		
 		filterList: function() {
-			var rightSideWidth = $('.rightSideHolder').width();
-			if (width < 940) {
-				rightSideWidth = $('.rightSideHolderSmall').width();
+			var rightSideWidth = jQ('.rightSideHolder').width();
+			if (width < 9400) {
+				rightSideWidth = jQ('.rightSideHolderSmall').width();
 			}
 			//gui.xmas.model.screenVersion === 'iFrame'
 			var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, liSize = rightSideWidth / numAcross;
-			gui.xmas.view.productsGridView.maxNumOnPage = Math.floor(($('.filterPanelLeftSide').height() - $('#productsList').position().top) / liSize) * numAcross;
+			gui.xmas.view.productsGridView.maxNumOnPage = Math.floor(((jQ('.filterPanelLeftSide').height() * 10) - jQ('#productsList').position().top) / liSize) * numAcross;
 			gui.xmas.view.productsGridView.filteredGiftsTotal = 0;
 			var span = document.getElementById('filteredGiftsNum'), ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li'), itemsLength = items.length, a;
 			gui.xmas.view.productsGridView.paginationArr = [];
@@ -367,8 +367,8 @@ gui.xmas.view = gui.xmas.view || {};
 			var a, ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li');
 			for (a = 0; a < items.length; a++) {
 				if (items[a].id == giftName) {
-					$(items[a]).find('#addToWishList').attr("src","assets/images/wishMinus.gif");
-					TweenLite.to($(items[a]).find('#addToWishList'), .5, {css:{autoAlpha:1}});
+					jQ(items[a]).find('#addToWishList').attr("src", gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
+					TweenLite.to(jQ(items[a]).find('#addToWishList'), .5, {css:{autoAlpha:1}});
 					break;
 				}
 			}
@@ -378,8 +378,8 @@ gui.xmas.view = gui.xmas.view || {};
 			var a, ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li');
 			for (a = 0; a < items.length; a++) {
 				if (items[a].id == giftName) {
-					$(items[a]).find('#addToWishList').attr("src","assets/images/wishPlus.gif");
-					TweenLite.to($(items[a]).find('#addToWishList'), .5, {css:{autoAlpha:0}});
+					jQ(items[a]).find('#addToWishList').attr("src", gui.xmas.model.masterRootPath + "assets/images/wishPlus.gif");
+					TweenLite.to(jQ(items[a]).find('#addToWishList'), .5, {css:{autoAlpha:0}});
 					break;
 				}
 			}

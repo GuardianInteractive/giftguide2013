@@ -6,7 +6,7 @@ Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 
-html, body, div, span, object, iframe,
+.gu-interactive div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
 del, dfn, em, img, ins, kbd, q, samp,
@@ -24,33 +24,32 @@ time, mark, audio, video {
     outline:0;
     font-size:100%;
     vertical-align:baseline;
-    background:transparent;
 }
 
-body {
+.gu-interactive {
     line-height:1;
 }
 
-article,aside,details,figcaption,figure,
+.gu-interactive article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section { 
     display:block;
 }
 
-nav ul {
+.gu-interactive nav ul {
     list-style:none;
 }
 
-blockquote, q {
+.gu-interactive blockquote, q {
     quotes:none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+.gu-interactive blockquote:before, blockquote:after,
+.gu-interactive q:before, q:after {
     content:'';
     content:none;
 }
 
-a {
+.gu-interactive a {
     margin:0;
     padding:0;
     font-size:100%;
@@ -59,36 +58,36 @@ a {
 }
 
 /* change colours to suit your needs */
-ins {
+.gu-interactive ins {
     background-color:#ff9;
     color:#000;
     text-decoration:none;
 }
 
 /* change colours to suit your needs */
-mark {
+.gu-interactive mark {
     background-color:#ff9;
     color:#000; 
     font-style:italic;
     font-weight:bold;
 }
 
-del {
+.gu-interactive del {
     text-decoration: line-through;
 }
 
-abbr[title], dfn[title] {
+.gu-interactive abbr[title], dfn[title] {
     border-bottom:1px dotted;
     cursor:help;
 }
 
-table {
+.gu-interactive table {
     border-collapse:collapse;
     border-spacing:0;
 }
 
 /* change border colour to suit your needs */
-hr {
+.gu-interactive hr {
     display:block;
     height:1px;
     border:0;   
@@ -97,7 +96,7 @@ hr {
     padding:0;
 }
 
-input, select {
+.gu-interactive input, select {
     vertical-align:middle;
 }
 

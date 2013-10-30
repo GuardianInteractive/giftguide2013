@@ -14,37 +14,37 @@ var filterLookup = {};
 		init: function(){			
 			
 			var smallOrNot = '';
-			if (width < 940) {
+			if (width < 9400) {
 				smallOrNot = 'Small';
 			}
-			var leftSideHolder = $('.leftSideHolder' + smallOrNot);
+			var leftSideHolder = jQ('.leftSideHolder' + smallOrNot);
 			
 			var leftsideFilterPanel = document.createElement('div');
 			leftsideFilterPanel.className = 'filterPanelLeftSide';
 			leftSideHolder.append(leftsideFilterPanel);
 			
 			var title = document.createElement('h1');
-			title.innerHTML = 'Filter your search';
+			title.innerHTML = 'Christmas Gift Guide';
 			title.style.cssFloat = 'left';
 			leftsideFilterPanel.appendChild(title);
 			
-			var refreshIcon = document.createElement("img");
-			refreshIcon.src = "assets/images/refreshIcon.png";
-			refreshIcon.className = 'refreshIcon';
-			leftsideFilterPanel.appendChild(refreshIcon);
-
+			//var refreshIcon = document.createElement("img");
+			//refreshIcon.src = "assets/images/refreshIcon.png";
+			//refreshIcon.className = 'refreshIcon';
+			//leftsideFilterPanel.appendChild(refreshIcon);
+			/*
 			if (gui.xmas.model.screenVersion === 'iFrame') {
-				$(refreshIcon).mouseover(function() {
+				jQ(refreshIcon).mouseover(function() {
 					this.src = "assets/images/refreshYellowIcon.png";
 					TweenLite.killTweensOf(this);
 					TweenLite.fromTo(this, .5, {css:{autoAlpha:.5}}, {css:{autoAlpha:1}});
 				});
-				$(refreshIcon).mouseout(function() {
+				jQ(refreshIcon).mouseout(function() {
 					this.src = "assets/images/refreshIcon.png";
 				});
 			}
 
-			$(refreshIcon).click(function() {
+			jQ(refreshIcon).click(function() {
 				var a, filterDivsArrLength = gui.xmas.view.filterPanel.filterDivsArr.length;
 				for (a = 0; a < filterDivsArrLength; a++) {
 					gui.xmas.view.filterPanel.filterDivsArr[a].style.backgroundColor = '#e7d7c0';
@@ -54,9 +54,8 @@ var filterLookup = {};
 				gui.xmas.view.productsGridView.scrollUpUpdate();
 			});
 			
-			var bodyText = document.createElement('p');
-			bodyText.innerHTML = 'Select categories using the filters below to find your perfect gifts.<br/><br/>Create a wishlist by clicking the top right of an image. You can share your list with a friend, or bookmark and return later.';
-			leftsideFilterPanel.appendChild(bodyText);
+			*/
+			
 			
 			var seperator = document.createElement('div');
 			seperator.className = 'filterPanelSeperator';
@@ -70,18 +69,66 @@ var filterLookup = {};
 				
 				categoryHolder.style.cssFloat = 'left';
 				
+			var showWishlist = document.createElement('div');
+				categoryHolder.appendChild(showWishlist);
+				showWishlist.className = 'show-wishlist wishlist-hide';
+				jQ(showWishlist).html("My wishlist<span id='wishlist-button-counter'>0</span>");
+				
+				jQ(showWishlist).click(function() {
+					
+					if (jQ('.wishListPanelTop').height() < 1) {
+						
+						jQ('.wishListPanelTop').css("max-height", "300px");
+						
+						//jQ(".wishListPanelTop").slideUp();
+					}
+					else
+					{
+						jQ('.wishListPanelTop').css("max-height", "0px");
+					}
+					
+					//jQ(".wishListPanelTop").slideUp();
+					
+				});
+				
+			/*
+				
+			jQ(window).scroll(function(e) {
+        var newScroll = jQ(document).scrollTop();
+        
+        checkForFixed(newScroll);
+        //console.log(newScroll);
+    });
+    
+    function checkForFixed(scrollTop) {
+		
+		var offset = jQ(".filterPanelCategoryHolder").offset();
+		
+		if (scrollTop > offset.top) {
+			
+			jQ(".filterPanelCategoryHolder").css("position", "fixed");
+		}
+		else
+		{
+			jQ(".filterPanelCategoryHolder").css("position", "static");
+		}
+		
+	}
+	*/
+
+				
 			var a;
 			for (a = 0; a < categoriesAndFilters.length; a++) {
 				
 			
 				
-				var categoryTitle = document.createElement('h2');
-				categoryTitle.innerHTML = categoriesAndFilters[a].title;
-				categoryHolder.appendChild(categoryTitle);
+				//var categoryTitle = document.createElement('h2');
+				//categoryTitle.innerHTML = categoriesAndFilters[a].title;
+				//categoryHolder.appendChild(categoryTitle);
 				
-				var categoryClear = document.createElement('div');
-				categoryClear.className = 'clearBoth';
-				leftsideFilterPanel.appendChild(categoryClear);
+				//var categoryClear = document.createElement('div');
+				//categoryClear.className = 'clearBoth';
+				//leftsideFilterPanel.appendChild(categoryClear);
 				/*
 				var filterList = document.createElement('ul');
 				leftsideFilterPanel.appendChild(filterList);
@@ -99,32 +146,32 @@ var filterLookup = {};
 					gui.xmas.view.filterPanel.filterDivsArr[gui.xmas.view.filterPanel.filterDivsArr.length] = filterBox;
 					
 					if (gui.xmas.model.screenVersion === 'iFrame') {
-						$(filterBox).mouseover(function() {
+						jQ(filterBox).mouseover(function() {
 							if (!gui.xmas.model.isFilterActive(this.id)) {
-								TweenLite.killTweensOf($(this));
-								$(this).css('backgroundColor', '#7d4430');
-								TweenLite.to($(this), 1, {css:{backgroundColor:"#fb9107"}, ease:Power2.easeOut});
+								TweenLite.killTweensOf(jQ(this));
+								jQ(this).css('backgroundColor', '#7d4430');
+								TweenLite.to(jQ(this), 1, {css:{backgroundColor:"#fb9107"}, ease:Power2.easeOut});
 							}
 						});
 
-						$(filterBox).mouseout(function() {
+						jQ(filterBox).mouseout(function() {
 							if (!gui.xmas.model.isFilterActive(this.id)) {
-								TweenLite.killTweensOf($(this));
-								TweenLite.to($(this), 1, {css:{backgroundColor:"#e7d7c0"}, ease:Power2.easeOut});
+								TweenLite.killTweensOf(jQ(this));
+								TweenLite.to(jQ(this), 1, {css:{backgroundColor:"#e7d7c0"}, ease:Power2.easeOut});
 							}
 						});
 					}
 					
-					$(filterBox).click(function() {
-						var filterWaiting = $('#filteringWait');
+					jQ(filterBox).click(function() {
+						var filterWaiting = jQ('#filteringWait');
 						filterWaiting.css('display', 'block');
 						if (!gui.xmas.model.isFilterActive(this.id)) {
 							gui.xmas.model.addFilter(this.id);
 
-							$(this).css('backgroundColor', '#fb9107');
+							jQ(this).css('backgroundColor', '#fb9107');
 						}
 						else {
-							$(this).css('backgroundColor', '#e7d7c0');
+							jQ(this).css('backgroundColor', '#e7d7c0');
 							gui.xmas.model.removeFilter(this.id);
 						}
 						gui.xmas.view.productsGridView.scrollUpUpdate();
@@ -138,8 +185,12 @@ var filterLookup = {};
 				}
 				*/
 				
+				var filterListContainer = document.createElement('div');
+				categoryHolder.appendChild(filterListContainer);
+				filterListContainer.className = 'styled-select';
+				
 				var filterList = document.createElement('select');
-				categoryHolder.appendChild(filterList);
+				filterListContainer.appendChild(filterList);
 				filterList.id = "filterList_" + a;
 				
 				var b, filtersLength = categoriesAndFilters[a].filters.length;
@@ -151,46 +202,59 @@ var filterLookup = {};
 					var filterBox = document.createElement('option');
 					filterBox.className = 'filterPanalFilterBox';
 					filterBox.id = categoriesAndFilters[a].filters[b];
+					filterBox.value = categoriesAndFilters[a].filters[b];
 					filterList.appendChild(filterBox);
 					gui.xmas.view.filterPanel.filterDivsArr[gui.xmas.view.filterPanel.filterDivsArr.length] = filterBox;
 					
 					if (gui.xmas.model.screenVersion === 'iFrame') {
-						$(filterBox).mouseover(function() {
-							if (!gui.xmas.model.isFilterActive(this.id)) {
-								//TweenLite.killTweensOf($(this));
-								//$(this).css('backgroundColor', '#7d4430');
-								//TweenLite.to($(this), 1, {css:{backgroundColor:"#fb9107"}, ease:Power2.easeOut});
+						jQ(filterBox).mouseover(function() {
+							if (!gui.xmas.model.isFilterActive(this.value)) {
+								//TweenLite.killTweensOf(jQ(this));
+								//jQ(this).css('backgroundColor', '#7d4430');
+								//TweenLite.to(jQ(this), 1, {css:{backgroundColor:"#fb9107"}, ease:Power2.easeOut});
 							}
 						});
 
-						$(filterBox).mouseout(function() {
-							if (!gui.xmas.model.isFilterActive(this.id)) {
-								//TweenLite.killTweensOf($(this));
-								//TweenLite.to($(this), 1, {css:{backgroundColor:"#e7d7c0"}, ease:Power2.easeOut});
+						jQ(filterBox).mouseout(function() {
+							if (!gui.xmas.model.isFilterActive(this.value)) {
+								//TweenLite.killTweensOf(jQ(this));
+								//TweenLite.to(jQ(this), 1, {css:{backgroundColor:"#e7d7c0"}, ease:Power2.easeOut});
 							}
 						});
 					}
 					
-					$(filterBox).click(function() {
+					
+					
+					var title = document.createElement('h1');
+					title.innerHTML = categoriesAndFilters[a].filters[b];
+					filterBox.appendChild(title);
+					
+				}
+				
+				
+				jQ(filterList).change(function() {
+						
+						var value = jQ(this).val();
+						
 						
 						//gui.xmas.model.removeSelectiveFilters(this.id);
 						
-						var listArr = $(this).parent().attr("id").split("_");
+						var listArr = jQ(this).attr("id").split("_");
 						var listIndex = Number(listArr[1]);
-						
-						var filterWaiting = $('#filteringWait');
+						var filterWaiting = jQ('#filteringWait');
 						filterWaiting.css('display', 'block');
 						
 						gui.xmas.model.removeSelectiveFilters(listIndex);
 						
-						if (this.id != "Show me all") {
+						
+						if (value.substring(0, 3) != "Any") {
 							
 							
 						
-						if (!gui.xmas.model.isFilterActive(this.id)) {
+						if (!gui.xmas.model.isFilterActive(value)) {
 							
-							gui.xmas.model.addFilter(this.id);
-							//$(this).css('backgroundColor', '#fb9107');
+							gui.xmas.model.addFilter(value);
+							//jQ(this).css('backgroundColor', '#fb9107');
 						}
 						
 						} else {
@@ -199,7 +263,7 @@ var filterLookup = {};
 								
 								//if (!gui.xmas.model.isFilterActive(categoriesAndFilters[listIndex].filters[i])) {
 							//gui.xmas.model.addFilter(categoriesAndFilters[listIndex].filters[i]);
-							//$(this).css('backgroundColor', '#fb9107');
+							//jQ(this).css('backgroundColor', '#fb9107');
 								//}
 								
 							//}
@@ -207,20 +271,14 @@ var filterLookup = {};
 							
 						}
 						
-						console.log(gui.xmas.model.activeFiltersArr);
+						//console.log(gui.xmas.model.activeFiltersArr);
 						//else {
-							//$(this).css('backgroundColor', '#e7d7c0');
+							//jQ(this).css('backgroundColor', '#e7d7c0');
 							//gui.xmas.model.removeFilter(this.id);
 						//}
 						gui.xmas.view.productsGridView.scrollUpUpdate();
 						filterWaiting.css('display', 'none');
 					});
-					
-					var title = document.createElement('h1');
-					title.innerHTML = categoriesAndFilters[a].filters[b];
-					filterBox.appendChild(title);
-					
-				}
 				
 				
 				

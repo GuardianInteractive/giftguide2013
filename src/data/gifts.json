@@ -7010,7 +7010,7 @@
     {
       "title": "What kind of person are they?",
       "filters": [
-      	"Show me all",
+      	"Any character type",
         "Traditionalist",
         "Ethical shopper",
         "Outdoorsy type",
@@ -7021,7 +7021,7 @@
     {
       "title": "Price range",
       "filters": [
-      	"Show me all",
+      	"Any price range",
         "£50-100",
         "+ £100",
         "£10-25",

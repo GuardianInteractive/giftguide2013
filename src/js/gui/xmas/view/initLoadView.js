@@ -42,17 +42,20 @@ gui.xmas.view = gui.xmas.view || {};
 			loadingDescrip.id = 'loadingDescrip';
 			loadClip.appendChild(loadingDescrip);
 			
-			document.body.appendChild(loadClip);
+			var el = gui.xmas.el;
+			
+			el.appendChild(loadClip);
 		},
 		
 		changeLoadingText: function (textStr) {
-			$("#loadingDescrip").html('<h2>' + textStr + '</h2>');
+			jQ("#loadingDescrip").html('<h2>' + textStr + '</h2>');
 		},
 		
 		removeLoader: function () {
 			TweenLite.to(gui.xmas.view.InitLoadView.displayChild, .5, {css:{autoAlpha:0, marginTop:'50px'}, ease:Back.easeIn, onComplete:handleLoaderRemoved});
 			function handleLoaderRemoved() {
-				document.body.removeChild(gui.xmas.view.InitLoadView.displayChild);
+				var el = gui.xmas.el;
+				el.removeChild(gui.xmas.view.InitLoadView.displayChild);
 				loaderState.loaderRemoved();
 			}
 		}

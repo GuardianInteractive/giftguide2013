@@ -29,7 +29,7 @@ gui.xmas = gui.xmas || {};
 					
 					gui.xmas.view.initView.changeLoadingText("-loading json data");
 					
-					$.getJSON('data/gifts.json', function(data) {
+					jQ.getJSON(gui.xmas.model.masterRootPath + 'data/gifts.json', function(data) {
 						loaderState.finishedLoadingJSON();
 						gui.xmas.model.parseJSONData(data);
 					});
