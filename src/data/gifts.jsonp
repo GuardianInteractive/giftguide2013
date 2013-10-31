@@ -1,4 +1,4 @@
-gui.xmas.Controller.handleResponse({
+gui.xmas.controller.handleResponse({
   "gifts": [
     {
       "id": 0,
