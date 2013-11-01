@@ -23,14 +23,16 @@ gui.xmas.view = gui.xmas.view || {};
 			title.innerHTML = 'Showing <span id="filteredGiftsNum">' + giftsLength + '</span> gift ideas';
 			productsGridHolder.appendChild(title);
 
-			var paginationHolderTop = document.createElement('div');
-			paginationHolderTop.className = 'paginationHolderTop';
-			productsGridHolder.appendChild(paginationHolderTop);
-			gui.xmas.view.productsGridView.paginationHolderTop = paginationHolderTop;
+			
 
 			var gridList = document.createElement('ul');
 			gridList.id = 'productsList';
 			productsGridHolder.appendChild(gridList);
+
+			var paginationHolderTop = document.createElement('div');
+			paginationHolderTop.className = 'paginationHolderTop';
+			productsGridHolder.appendChild(paginationHolderTop);
+			gui.xmas.view.productsGridView.paginationHolderTop = paginationHolderTop;
 
 			var a;
 			for (a = 0; a < giftsLength; a++) {
@@ -68,12 +70,12 @@ gui.xmas.view = gui.xmas.view || {};
 				descrip.innerHTML = giftsArr[a].name;
 				descripHolder.appendChild(descrip);
 				
-				var addToWishListIcon = document.createElement('img');
-				addToWishListIcon.src = 'assets/images/wishPlus.gif';
+				var addToWishListIcon = document.createElement('div');
 				addToWishListIcon.id = 'addToWishList';
 				addToWishListIcon.style.position = 'absolute';
 				addToWishListIcon.style.top = '0px';
 				addToWishListIcon.style.right = '0px';
+				addToWishListIcon.innerHTML = "+";
 				addToWishListIcon.style.visibility = 'hidden';
 				itemDiv.appendChild(addToWishListIcon);
 
