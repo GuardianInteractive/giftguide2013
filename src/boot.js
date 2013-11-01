@@ -1,4 +1,4 @@
-define([], function() {'use strict';
+	define([], function() {'use strict';
 
 	return {
 		/**
@@ -14,7 +14,7 @@ define([], function() {'use strict';
 			
 			var cfg = {
 				context : 'interactive',
-				baseUrl : '', //http://interactive.guim.co.uk/next-gen/artanddesign/ng-interactive/2013/oct/shipyard-clydebank-photograph
+				baseUrl : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide',//'', //http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide
 				paths : {
 					// the left side is the module ID,
 					// the right side is the path to
@@ -24,24 +24,10 @@ define([], function() {'use strict';
 					// is using jQuery 1.9.0 located at
 					// js/lib/jquery-1.9.0.js, relative to
 					// the HTML page.
-					json2 : 'js/libs/json2',
-					googleSpreadsheet : 'js/libs/jquery.google.spreadsheet',
-					activityIndicator : "js/libs/jquery.activity-indicator-1.0.0",
-					modernizr : 'js/libs/modernizr',
-					underscore : 'js/libs/underscore',
-					backbone : 'js/libs/backbone',
-					miso : 'js/libs/miso.ds.deps.min.0.2.2',
+					//json2 : 'js/libs/json2',
+					jquery: 'js/libs/jquery-1.8.1',
 					jcarousel : 'js/libs/jquery.jcarousel.min',
-					TweenLite : 'js/libs/TweenLite.min',
-					EasePack : 'js/libs/easing/EasePack.min',
-					CSSPlugin : 'js/libs/plugins/CSSPlugin.min',
-					core : 'js/gui/core',
-					anim : 'js/gui/anim.js',
-					analytics : 'js/gui/analytics',
-					data : 'js/gui/data',
-					error : 'js/gui/error',
-					social : 'js/gui/social',
-					touch : 'js/gui/touch',
+					TweenMax : 'js/libs/TweenMax.min',
 					boot : 'js/gui/boot',
 					model : 'js/gui/xmas/model/model',
 					observer : 'js/gui/xmas/observer/observer',
@@ -52,6 +38,7 @@ define([], function() {'use strict';
 					wishListBox : 'js/gui/xmas/view/wishListBox',
 					productsGridView : 'js/gui/xmas/view/productsGridView',
 					singularProductView : 'js/gui/xmas/view/singularProductView'
+					
 				}
 			};
 
@@ -59,12 +46,23 @@ define([], function() {'use strict';
 				var req2 = require.config(cfg);
 				req2(['boot'], function(App) {
 					App.setup(el, context, false);
-					
 				});
 			} else {
 				// curl, i.e. next-gen
-				require(cfg, ['boot']).then(function(App) {
-					App.setup(el, context, true);
+				cfg.preloads = ['jquery'];
+				require(cfg, []).then(function() {
+				
+					var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide/codeobject.html';
+					var fullUrl = baseUrl + location.search;
+					
+					var iframeEl = document.createElement('iframe');
+					iframeEl.setAttribute('src', fullUrl);
+					iframeEl.setAttribute('scrolling', 'no');
+					iframeEl.setAttribute('seemless', 'seemless');
+					iframeEl.setAttribute('frameborder', '0');
+					iframeEl.setAttribute('style', 'height: 2000px; width: 100%; overflow-y: hidden; border: none;');
+					el.appendChild(iframeEl);
+					
 				});
 			}
 		}
