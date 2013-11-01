@@ -1,4 +1,5 @@
-/*
+define('json2', [], function() {
+	/*
  http://www.JSON.org/json2.js
  2011-10-19
 
@@ -485,3 +486,7 @@ if (!JSON) {
 		};
 	}
 }());
+
+return json2;
+
+});

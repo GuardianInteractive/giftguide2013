@@ -5,10 +5,11 @@ var width, height;
 
 
 
-define(['json2', 'jcarousel', 'TweenLite', 'EasePack', 'CSSPlugin', 'googleSpreadsheet', 'model', 'controller', 'observer', 'initLoadView', 'mainView', 'filterPanel', 'wishListBox', 'productsGridView', 'singularProductView'], function() {'use strict';
+define(['jquery', 'TweenMax', 'model', 'controller', 'observer', 'initLoadView', 'mainView', 'filterPanel', 'wishListBox', 'productsGridView', 'singularProductView'],
+function(jQ) {
+	'use strict';
 
 	// globals
-	
 
 
 function loadcss(url) {
