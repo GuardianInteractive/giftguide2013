@@ -50,11 +50,16 @@ gui.xmas.view = gui.xmas.view || {};
 			singularProductHolder.appendChild(topRightDiv);
 			gui.xmas.view.singularProductView.topRightDiv = topRightDiv;
 
-			var addToWishListIcon = document.createElement('img');
-			addToWishListIcon.src = gui.xmas.model.masterRootPath + 'assets/images/wishListPlus.gif';
-			addToWishListIcon.style.cssFloat = 'right';
-			addToWishListIcon.style.margin = '-6px 10px 0 10px'
-			topRightDiv.appendChild(addToWishListIcon);
+			var addToWishListIcon = document.createElement('div');
+				addToWishListIcon.id = 'addToWishList';
+				addToWishListIcon.style.position = 'absolute';
+				addToWishListIcon.style.top = '0px';
+				addToWishListIcon.style.right = '0px';
+				addToWishListIcon.innerHTML = "+ <strong>Add</strong>";
+				topRightDiv.appendChild(addToWishListIcon);
+
+
+				//itemDiv.appendChild(addToWishListIcon);
 
 			var addToWishListTitle = document.createElement('p');
 			addToWishListTitle.innerHTML = 'Add item to wish list';
@@ -74,15 +79,16 @@ gui.xmas.view = gui.xmas.view || {};
 			topSeperator.style.margin = '10px 0 10px 0';
 			singularProductHolder.appendChild(topSeperator);
 
-			var mainImgHolder = document.createElement('div');
-			mainImgHolder.style.cssFloat = 'left';
-			mainImgHolder.style.width = '100%';
-			mainImgHolder.style.position = 'relative';
-			singularProductHolder.appendChild(mainImgHolder);
+			var productDetailHolder = document.createElement('div');
+			productDetailHolder.id = 'productDetailHolder';
+			productDetailHolder.style.cssFloat = 'left';
+			productDetailHolder.style.width = '100%';
+			productDetailHolder.style.position = 'relative';
+			singularProductHolder.appendChild(productDetailHolder);
 
 			var loadingImageMsg = document.createElement('div');
 			loadingImageMsg.className = 'loadingLargeImageMsg';
-			mainImgHolder.appendChild(loadingImageMsg);
+			productDetailHolder.appendChild(loadingImageMsg);
 			gui.xmas.view.singularProductView.loadingImageMsg = loadingImageMsg;
 
 			var loadingTitle = document.createElement('h1');
@@ -93,7 +99,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var mainImg = document.createElement('img');
 			mainImg.style.width = '100%';
 			mainImg.style.height = 'auto';
-			mainImgHolder.appendChild(mainImg);
+			productDetailHolder.appendChild(mainImg);
 			gui.xmas.view.singularProductView.mainImg = mainImg;
 
 			var bottomSeperator = document.createElement('div');

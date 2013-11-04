@@ -1,17 +1,18 @@
 @font-face {
-    font-family: 'WebEgyptianHinted-Regular';
-    src: url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.eot');
-    src: url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.eot?#iefix') format('embedded-opentype'),
-         url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.woff') format('woff'),
-         url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.ttf') format('truetype'),
-         url('http://pasteup.guim.co.uk/fonts/WebEgyptianHinted-Regular.svg#Guardian Text Egyptian Web') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
+  font-family: 'TextWebEgyptian-Regular';
+  src: url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.eot');
+  src: url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.eot?#iefix') format('embedded-opentype'),
+  url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.woff') format('woff'),
+  url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.ttf') format('truetype'),
+  url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.svg#Guardian Egyptian Web') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
 }
 
 .gu-interactive {
 	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
 }
 
 .gu-interactive .assetsLoading {
@@ -77,8 +78,8 @@
 	float:left;
 	position:relative;
 	-webkit-box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.5);
-	-moz-box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.5);
-	box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.5);
+	-moz-box-shadow:    0px 1px 3px rgba(50, 50, 50, 0.5);
+	box-shadow:         0px 1px 3px rgba(50, 50, 50, 0.5);
 	background: #fff;
 }
 
@@ -115,26 +116,23 @@
 
 .gu-interactive .filterPanelLeftSide .styled-select select {
    background: transparent;
-   padding: 3px 5px 3px 10px;
-   font-size: 14px;
+   padding: 5px 5px 3px 10px;
+   font-size: 12px;
    border: none;
    height: 34px;
     color: #fff;
     -webkit-appearance: none;
     font-family: Arial;
     font-weight: bold;
-   font-size: 12px;
-   padding-right:25px
 } 
 
 
 .gu-interactive .styled-select {
 	margin: 0 10px 10px 0;
 	display: inline;
-float: right;
+	float: right;
   overflow: hidden;
-
-
+  	padding-right:20px;
    height: 34px;
     -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
@@ -146,14 +144,12 @@ border-radius: 2px;
 .gu-interactive .show-wishlist {
 	display: inline;
 	float: left;
-	width: 110px;
-    padding: 10px 10px 0px 10px;
+    padding: 11px 10px 0px;
    font-family: Arial;
    font-weight: bold;
-   
 	font-size: 12px;
    border: none;
-   height: 24px;
+   height: 23px;
     color: #fff;
     -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
@@ -168,6 +164,7 @@ border-radius: 2px;
 	display: inline;
 	float: right;
 	font-weight: normal;
+	margin-left:10px;
 }
 
 .gu-interactive .filterPanelLeftSide  p  {
@@ -376,7 +373,7 @@ font-family: Arial !important;
 	font-size:22px;
 	color:#4b251a;
 	margin:3%;
-	text-align: center;
+	text-align:center;
 }
 
 .gu-interactive .productsGridHolder p {
@@ -412,15 +409,16 @@ font-family: Arial !important;
 	margin: 0 !important; 
 	padding:0 !important;
 	display: inline-block;
-	width: 25%;
+	width: 23%;
 	cursor:pointer;
 	overflow: hidden;
+/*	border-top:1px solid black;
+	border-bottom*/
 }
 
 .gu-interactive .productsGridHolder  #productThumb {
 	width:100%;
-	height: auto;
-	/* padding-bottom: 100%; */
+	height:auto;
 }
 
 .gu-interactive .productGridItem {
@@ -441,10 +439,19 @@ font-family: Arial !important;
 	overflow:hidden;
 }
 
-.gu-interactive .productGridItem textarea {
+.gu-interactive #addToWishList {
 	font-family: 'Arial';
-	font-weight:normal;
+	background: #a64557;
+	padding: 8px 10px 7px;
 	font-size:12px;
+	color: #fff;
+	border-radius:2px;
+}
+
+.gu-interactive .productGridItem textarea {
+	font-family: 'TextWebEgyptian-Regular', Arial;
+	font-weight:normal;
+	font-size:14px;
 	color:#609984;
 	text-overflow: ellipsis;
 	overflow:hidden;
@@ -452,7 +459,7 @@ font-family: Arial !important;
 	border:none;
 	resize: none;
 	width:100%;
-	text-align:center;
+	text-align:left;
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
@@ -483,8 +490,8 @@ font-family: Arial !important;
 .gu-interactive .singularProductHolder {
 	width:100%;
 	background-color:#fff;
-	position:absolute;
 	top:0;
+	position:absolute;
 	left:100%;
 	transition: left 0.5s;
 	-moz-transition: left 0.5s; /* Firefox 4 */

@@ -57,12 +57,12 @@ gui.xmas.view = gui.xmas.view || {};
 				//gui.xmas.model.registerProductImageForLoading({'img':itemImg, 'imgSrc':giftsArr[a].thumbnailPicUrl});
 				
 				var descripHolder = document.createElement('div');
+				descripHolder.id = 'productTitle';
 				descripHolder.style.width = '90%';
 				descripHolder.style.height = '20%';
 				descripHolder.style.overflow = 'hidden';
 				descripHolder.style.position = 'absolute';
 				descripHolder.style.zIndex = '2';
-				descripHolder.style.bottom = '10px';
 				itemDiv.appendChild(descripHolder);
 				
 				var descrip = document.createElement('textarea');
@@ -75,7 +75,7 @@ gui.xmas.view = gui.xmas.view || {};
 				addToWishListIcon.style.position = 'absolute';
 				addToWishListIcon.style.top = '0px';
 				addToWishListIcon.style.right = '0px';
-				addToWishListIcon.innerHTML = "+";
+				addToWishListIcon.innerHTML = "+ <strong>Add</strong>";
 				addToWishListIcon.style.visibility = 'hidden';
 				itemDiv.appendChild(addToWishListIcon);
 
@@ -107,25 +107,24 @@ gui.xmas.view = gui.xmas.view || {};
 						}
 					});
 				}
-				
-				jQ(gridLi).click(function(event) {
-					var width = jQ(this).width(), offset = jQ(this).offset(), xPos = (event.clientX - offset.left), yPos = (event.clientY - offset.top);
-					var productId = jQ(this).find('textarea').val();
-					if (xPos >= (width - 20) && yPos <= 20) {
-						//you've clicked on the add to wishlist button
-						if (!gui.xmas.model.wishListItemsLookup[productId]) {
-							gui.xmas.model.addItemToWishList(productId);
-							gui.xmas.view.wishListBox.addItemToList(productId);
-							jQ(this).find('#addToWishList').attr("src", gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
-						}
-						else {
-							gui.xmas.model.removeItemFromWishList(productId);
-							gui.xmas.view.wishListBox.removeItemFromList(productId);
-							jQ(this).find('#addToWishList').attr("src", gui.xmas.model.masterRootPath + "assets/images/wishPlus.gif");
-						}
+
+				jQ(addToWishListIcon).click(function(){
+					var productId = jQ(this).parent().find('textarea').val();
+					if (!gui.xmas.model.wishListItemsLookup[productId]) {
+						gui.xmas.model.addItemToWishList(productId);
+						gui.xmas.view.wishListBox.addItemToList(productId);
+						jQ(this).html("<strong>Added</strong>")
 					}
 					else {
-						gui.xmas.model.registerProductClicked(productId);
+						gui.xmas.model.removeItemFromWishList(productId);
+						gui.xmas.view.wishListBox.removeItemFromList(productId);
+						jQ(this).html("+ <strong>Add</strong>")
+					}
+				});
+
+				jQ(itemImg).click(function(){
+					var productId = jQ(this).parent().find('textarea').val();
+					gui.xmas.model.registerProductClicked(productId);
 						displayState.productClicked();
 						if (gui.xmas.model.smallView) {
 							jQ('.productsPanel').ScrollTo({
@@ -135,9 +134,9 @@ gui.xmas.view = gui.xmas.view || {};
 						else {
 							window.scrollTo(0, 0);
 						}
-					}
-
 				});
+				
+				
 			}
 
 			if (gui.xmas.model.urlVarsExist) {
@@ -249,38 +248,38 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 		},
 
-		setRightSideHeight: function(passedHeight) {
-			if (passedHeight) {
-				jQ('.productsPanel').css('height', passedHeight);
-				jQ('.productsGridHolder').css('height', passedHeight);
-			}
-			else {
-				var rightSideWidth = jQ('.rightSideHolder').width();
-				if (width < 9400) {
-					rightSideWidth = jQ('.rightSideHolderSmall').width();
-				}
+		// setRightSideHeight: function(passedHeight) {
+		// 	if (passedHeight) {
+		// 		jQ('.productsPanel').css('height', passedHeight);
+		// 		jQ('.productsGridHolder').css('height', passedHeight);
+		// 	}
+		// 	else {
+		// 		var rightSideWidth = jQ('.rightSideHolder').width();
+		// 		if (width < 9400) {
+		// 			rightSideWidth = jQ('.rightSideHolderSmall').width();
+		// 		}
 
-				var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, liSize = rightSideWidth / numAcross, ul = document.getElementById('productsList');
-				var itemsLength = jQ('#productsList li').filter(function(index) {
-					if (jQ(this).css("display") === "none") {
-						return 0;
-					}
-					else {
-						return 1;
-					}
-				}).length;
-				var numOnPage = (gui.xmas.model.screenVersion === 'iFrame') ? gui.xmas.view.productsGridView.maxNumOnPage : itemsLength;
-				if (gui.xmas.model.screenVersion !== 'iFrame' || itemsLength < numOnPage) {
-					numOnPage = itemsLength;
-					if (numOnPage < numAcross) {
-						numOnPage = numAcross;
-					}
-				}
-				var gridHeight = jQ('#productsList').position().top + (Math.ceil(numOnPage / numAcross) * (liSize + 4.7));
-				jQ('.productsPanel').css('height', gridHeight);
-				jQ('.productsGridHolder').css('height', gridHeight);
-			}
-		},
+		// 		var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, liSize = rightSideWidth / numAcross, ul = document.getElementById('productsList');
+		// 		var itemsLength = jQ('#productsList li').filter(function(index) {
+		// 			if (jQ(this).css("display") === "none") {
+		// 				return 0;
+		// 			}
+		// 			else {
+		// 				return 1;
+		// 			}
+		// 		}).length;
+		// 		var numOnPage = (gui.xmas.model.screenVersion === 'iFrame') ? gui.xmas.view.productsGridView.maxNumOnPage : itemsLength;
+		// 		if (gui.xmas.model.screenVersion !== 'iFrame' || itemsLength < numOnPage) {
+		// 			numOnPage = itemsLength;
+		// 			if (numOnPage < numAcross) {
+		// 				numOnPage = numAcross;
+		// 			}
+		// 		}
+		// 		var gridHeight = jQ('#productsList').position().top + (Math.ceil(numOnPage / numAcross) * (liSize + 4.7));
+		// 		jQ('.productsPanel').css('height', gridHeight);
+		// 		jQ('.productsGridHolder').css('height', gridHeight);
+		// 	}
+		// },
 		
 		thumbailLoaded: function(img) {
 			TweenLite.fromTo(img, .5, {css:{autoAlpha:0}}, {css:{autoAlpha:1}});
@@ -336,7 +335,7 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 			span.innerHTML = gui.xmas.view.productsGridView.filteredGiftsTotal;
 			
-			gui.xmas.view.productsGridView.setRightSideHeight();
+			//gui.xmas.view.productsGridView.setRightSideHeight();
 		},
 
 		handlePaginationClick: function(pageNum) {
@@ -390,7 +389,7 @@ gui.xmas.view = gui.xmas.view || {};
 		somethingsHappened: function(what){
 			switch(what) {
 				case gui.xmas.stateStrings.BACK_TO_LIST_CLICKED:
-					gui.xmas.view.productsGridView.setRightSideHeight();
+					//gui.xmas.view.productsGridView.setRightSideHeight();
 				break;
 			}
 		},
