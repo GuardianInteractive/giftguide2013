@@ -38,8 +38,6 @@ gui.xmas.view = gui.xmas.view || {};
 			for (a = 0; a < giftsLength; a++) {
 				var gridLi = document.createElement('li');
 				gridLi.id = giftsArr[a].name;
-				gridLi.style.margin = 0;
-				gridLi.style.padding = 0;
 				gridList.appendChild(gridLi);
 				
 				var itemDiv = document.createElement('div');
@@ -58,23 +56,32 @@ gui.xmas.view = gui.xmas.view || {};
 				
 				var descripHolder = document.createElement('div');
 				descripHolder.id = 'productTitle';
-				descripHolder.style.width = '90%';
-				descripHolder.style.height = '20%';
-				descripHolder.style.overflow = 'hidden';
-				descripHolder.style.position = 'absolute';
 				descripHolder.style.zIndex = '2';
 				itemDiv.appendChild(descripHolder);
 				
-				var descrip = document.createElement('textarea');
-				descrip.unselectable = 'on';
+				var descrip = document.createElement('p');
+				descrip.id = 'productName';
 				descrip.innerHTML = giftsArr[a].name;
 				descripHolder.appendChild(descrip);
+
+				var descripPrice = document.createElement('p');
+				descripPrice.id = 'productDescripPrice';
+				var giftPrice = giftsArr[a].cost;
+				var from = giftPrice.indexOf('From');
+				if (from > -1) {
+					giftPrice = (giftPrice.slice(0,(from + 5))) + '&pound;' + giftPrice.slice(from + 5);
+				}else{
+					giftPrice = '&pound;' + giftsArr[a].cost;
+				}
+				descripPrice.innerHTML = giftPrice;
+				descripHolder.appendChild(descripPrice);
+
+				var clearDescrip = document.createElement('div');
+				clearDescrip.className = 'clearBoth';
+				descripHolder.appendChild(clearDescrip);
 				
 				var addToWishListIcon = document.createElement('div');
 				addToWishListIcon.id = 'addToWishList';
-				addToWishListIcon.style.position = 'absolute';
-				addToWishListIcon.style.top = '0px';
-				addToWishListIcon.style.right = '0px';
 				addToWishListIcon.innerHTML = "+ <strong>Add</strong>";
 				addToWishListIcon.style.visibility = 'hidden';
 				itemDiv.appendChild(addToWishListIcon);
@@ -101,7 +108,7 @@ gui.xmas.view = gui.xmas.view || {};
 					});
 					
 					jQ(gridLi).mouseout(function() {
-						var productId = jQ(this).find('textarea').val();
+						var productId = jQ(this).find('p').val();
 						if (!gui.xmas.model.wishListItemsLookup[productId]) {
 							TweenLite.to(jQ(this).find('#addToWishList'), .5, {css:{autoAlpha:0}});
 						}
@@ -109,7 +116,7 @@ gui.xmas.view = gui.xmas.view || {};
 				}
 
 				jQ(addToWishListIcon).click(function(){
-					var productId = jQ(this).parent().find('textarea').val();
+					var productId = jQ(this).parent().find('p').val();
 					if (!gui.xmas.model.wishListItemsLookup[productId]) {
 						gui.xmas.model.addItemToWishList(productId);
 						gui.xmas.view.wishListBox.addItemToList(productId);
@@ -123,7 +130,9 @@ gui.xmas.view = gui.xmas.view || {};
 				});
 
 				jQ(itemImg).click(function(){
-					var productId = jQ(this).parent().find('textarea').val();
+					console.log(jQ(this).parent().find('p').html());
+					var productId = jQ(this).parent().find('p').html();
+					console.log(productId);
 					gui.xmas.model.registerProductClicked(productId);
 						displayState.productClicked();
 						if (gui.xmas.model.smallView) {
@@ -146,8 +155,8 @@ gui.xmas.view = gui.xmas.view || {};
 			loaderState.startLoadingThumbs();
 			
 			var productsHolder = jQ('.productsPanel'), rightSideWidth = productsHolder.parent().width();
-			var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, percentWidth = (100 / numAcross);
-			jQ('.productsGridHolder  li').css('width', percentWidth + '%');
+			// var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, percentWidth = (100 / numAcross);
+			// jQ('.productsGridHolder  li').css('width', percentWidth + '%');
 
 			var timer;
 			jQ(window).bind('scroll',function () {

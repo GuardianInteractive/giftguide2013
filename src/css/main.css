@@ -9,6 +9,9 @@
   font-style: normal;
   font-stretch: normal;
 }
+body{
+	margin:0;
+}
 
 .gu-interactive {
 	overflow: hidden;
@@ -74,23 +77,25 @@
 	width:100%;
 	margin-left:0%;
 	margin-bottom:1%;
-	margin-top:30px;
 	float:left;
 	position:relative;
+	background: #1f1d43;
 	-webkit-box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.5);
 	-moz-box-shadow:    0px 1px 3px rgba(50, 50, 50, 0.5);
 	box-shadow:         0px 1px 3px rgba(50, 50, 50, 0.5);
-	background: #fff;
 }
 
 .gu-interactive .leftSideHeaderImage {
 	width:100%;
 	height:auto;
+	max-width: 940px;
+	margin: 0 auto;
+	display:block;
 }
 
 .gu-interactive .filterPanelLeftSide {
 	width:100%;
-	background: #fff;
+	background: #1f1d43;
 	min-height:20px;
 }
 
@@ -254,8 +259,8 @@ border-radius: 2px;
 }
 
 .gu-interactive .rightSideHolderSmall {
-	width:98%;
-	margin-left:1%;
+	width:100%;
+
 	float:left;
 	position:relative;
 }
@@ -359,7 +364,9 @@ font-family: Arial !important;
 }
 
 .gu-interactive .productsGridHolder {
-	width:100%;
+	width:96%;
+	margin-left:2%;
+	margin-right: 2%;
 	position:relative;
 	transition: left 0.5s;
 	-moz-transition: left 0.5s; /* Firefox 4 */
@@ -405,20 +412,26 @@ font-family: Arial !important;
 	padding:0;
 }
 
-.gu-interactive .productsGridHolder  li {
-	margin: 0 !important; 
-	padding:0 !important;
+.gu-interactive .productsGridHolder li {
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	border:4px solid rgb(243, 225, 194);
 	display: inline-block;
-	width: 23%;
+	width: 49%%;
 	cursor:pointer;
 	overflow: hidden;
-/*	border-top:1px solid black;
-	border-bottom*/
+	margin-bottom:20px;
+	margin-right:2%;
+}
+
+.gu-interactive .productsGridHolder li:nth-child(2n + 2) {
+	margin-right:0;
 }
 
 .gu-interactive .productsGridHolder  #productThumb {
-	width:100%;
+	width:80%;
 	height:auto;
+	margin: 0 auto;
+	display:block;
 }
 
 .gu-interactive .productGridItem {
@@ -427,17 +440,18 @@ font-family: Arial !important;
 	background-color:#fff;
 	overflow:hidden;
 }
-
-.gu-interactive .productGridItem p {
-	font-family: 'Arial';
-	font-weight:normal;
-	font-size:12px;
-	color:#609984;
-	margin: 0 10px 0 10px;
-	text-overflow: ellipsis;
-	white-space:nowrap;
-	overflow:hidden;
+.gu-interactive .productsGridHolder  #productTitle {
+	margin-left: 10px;
+	margin-right: 10px;
+	height:28px;
+	border-top: 1px solid rgb(243, 225, 194);
+	padding-top:10px;
+	padding-bottom:10px;
 }
+
+
+
+
 
 .gu-interactive #addToWishList {
 	font-family: 'Arial';
@@ -446,28 +460,28 @@ font-family: Arial !important;
 	font-size:12px;
 	color: #fff;
 	border-radius:2px;
+	position:absolute;
+	top:10px;
+	right:10px;
 }
 
-.gu-interactive .productGridItem textarea {
+.gu-interactive .productGridItem p {
 	font-family: 'TextWebEgyptian-Regular', Arial;
 	font-weight:normal;
 	font-size:14px;
 	color:#609984;
-	text-overflow: ellipsis;
-	overflow:hidden;
-	outline: none;
-	border:none;
-	resize: none;
-	width:100%;
 	text-align:left;
-	-webkit-user-select: none; /* Chrome/Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+ */
-	/* Rules below not implemented in browsers yet */
-	-o-user-select: none;
-	user-select: none;
-	cursor:pointer;
+	-webkit-font-smoothing: antialiased;
 }
+.gu-interactive .productGridItem p#productDescripPrice {
+	max-width: 50px;
+	float:right;
+	margin
+	}
+.gu-interactive .productGridItem p#productName {
+	max-width:125px;
+	float:left;
+	}
 
 .gu-interactive .paginationHolderTop {
 	margin: 5px auto 20px auto;
@@ -569,3 +583,43 @@ font-family: Arial !important;
 .gu-interactive .clearBoth {
 	clear:both;
 }
+
+@media (min-width: 641px) {
+	.gu-interactive .productsGridHolder li {
+		width:32%;
+		margin-right:2%;
+	}
+	.gu-interactive .productsGridHolder li:nth-child(2n + 2) {
+		margin-right:2%;
+	}
+	.gu-interactive .productsGridHolder li:nth-child(3n + 3) {
+		margin-right:0;
+	}
+
+@media (min-width: 900px) {
+
+	.gu-interactive .productsGridHolder li {
+		width:23.5%;
+		margin-right:2%;
+	}
+	.gu-interactive .productsGridHolder li:nth-child(4n + 4) {
+		margin-right:0;
+	}
+	.gu-interactive .productsGridHolder li:nth-child(3n + 3) {
+		margin-right:2%;
+	}
+
+@media (min-width: 1120px) {
+	.gu-interactive .productsGridHolder li {
+		width:18.4%;
+		margin-right:2%;
+	}
+
+	.gu-interactive .productsGridHolder li:nth-child(5n + 5) {
+		margin-right:0;
+	}
+	.gu-interactive .productsGridHolder li:nth-child(4n + 4) {
+		margin-right:2%;
+	}
+}
+

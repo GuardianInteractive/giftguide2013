@@ -23,10 +23,10 @@ var filterLookup = {};
 			leftsideFilterPanel.className = 'filterPanelLeftSide';
 			leftSideHolder.append(leftsideFilterPanel);
 			
-			var title = document.createElement('h1');
-			title.innerHTML = 'Christmas Gift Guide';
-			title.style.cssFloat = 'left';
-			leftsideFilterPanel.appendChild(title);
+			// var title = document.createElement('h1');
+			// title.innerHTML = 'Christmas Gift Guide';
+			// title.style.cssFloat = 'left';
+			// leftsideFilterPanel.appendChild(title);
 			
 			//var refreshIcon = document.createElement("img");
 			//refreshIcon.src = "assets/images/refreshIcon.png";

@@ -195,6 +195,7 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		updateProductInfo: function(giftObj) {
+
 			gui.xmas.view.singularProductView.currentGiftName = giftObj.name;
 
 			gui.xmas.view.singularProductView.productTitle.innerHTML = giftObj.name;
@@ -267,9 +268,7 @@ gui.xmas.view = gui.xmas.view || {};
 			
 		},
 
-		setRightSideHeight: function() {
-			jQ('.productsPanel').css('height', jQ('.singularProductHolder').height() + 'px');
-		},
+		
 		
 		setWishListText: function(giftName) {
 			if (gui.xmas.view.singularProductView.addToWishListTitle) {
