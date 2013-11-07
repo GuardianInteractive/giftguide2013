@@ -95,6 +95,7 @@ gui.xmas.view = gui.xmas.view || {};
 							gui.xmas.model.addItemToWishList(giftsArr[a].name);
 							gui.xmas.view.wishListBox.addItemToList(giftsArr[a].name);
 							jQ(gridLi).find('#addToWishList').attr("src",gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
+							
 							TweenLite.to(jQ(gridLi).find('#addToWishList'), 0, {css:{autoAlpha:1}});
 							break;
 						}
@@ -108,7 +109,8 @@ gui.xmas.view = gui.xmas.view || {};
 					});
 					
 					jQ(gridLi).mouseout(function() {
-						var productId = jQ(this).find('p').val();
+						var productId = jQ(this).find('p#productName').html();
+						console.log(productId);
 						if (!gui.xmas.model.wishListItemsLookup[productId]) {
 							TweenLite.to(jQ(this).find('#addToWishList'), .5, {css:{autoAlpha:0}});
 						}
@@ -116,7 +118,8 @@ gui.xmas.view = gui.xmas.view || {};
 				}
 
 				jQ(addToWishListIcon).click(function(){
-					var productId = jQ(this).parent().find('p').val();
+					var productId = jQ(this).parent().find('p#productName').html();
+					console.log(productId);
 					if (!gui.xmas.model.wishListItemsLookup[productId]) {
 						gui.xmas.model.addItemToWishList(productId);
 						gui.xmas.view.wishListBox.addItemToList(productId);
@@ -130,9 +133,25 @@ gui.xmas.view = gui.xmas.view || {};
 				});
 
 				jQ(itemImg).click(function(){
-					console.log(jQ(this).parent().find('p').html());
-					var productId = jQ(this).parent().find('p').html();
-					console.log(productId);
+					
+					var productId = jQ(this).parent().find('p#productName').html();
+					
+					gui.xmas.model.registerProductClicked(productId);
+						displayState.productClicked();
+						if (gui.xmas.model.smallView) {
+							jQ('.productsPanel').ScrollTo({
+								duration: 0
+							});
+						}
+						else {
+							window.scrollTo(0, 0);
+						}
+				});
+
+				jQ(descripHolder).click(function(){
+					
+					var productId = jQ(this).parent().find('p#productName').html();
+					
 					gui.xmas.model.registerProductClicked(productId);
 						displayState.productClicked();
 						if (gui.xmas.model.smallView) {
@@ -301,7 +320,8 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 			//gui.xmas.model.screenVersion === 'iFrame'
 			var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, liSize = rightSideWidth / numAcross;
-			gui.xmas.view.productsGridView.maxNumOnPage = Math.floor(((jQ('.filterPanelLeftSide').height() * 10) - jQ('#productsList').position().top) / liSize) * numAcross;
+			//gui.xmas.view.productsGridView.maxNumOnPage = Math.floor(((jQ('.filterPanelLeftSide').height() * 10) - jQ('#productsList').position().top) / liSize) * numAcross;
+			gui.xmas.view.productsGridView.maxNumOnPage = 40;
 			gui.xmas.view.productsGridView.filteredGiftsTotal = 0;
 			var span = document.getElementById('filteredGiftsNum'), ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li'), itemsLength = items.length, a;
 			gui.xmas.view.productsGridView.paginationArr = [];
@@ -377,7 +397,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var a, ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li');
 			for (a = 0; a < items.length; a++) {
 				if (items[a].id == giftName) {
-					jQ(items[a]).find('#addToWishList').attr("src", gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
+					jQ(items[a]).find('#addToWishList').html("<strong>Added</strong>");
 					TweenLite.to(jQ(items[a]).find('#addToWishList'), .5, {css:{autoAlpha:1}});
 					break;
 				}
@@ -388,7 +408,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var a, ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li');
 			for (a = 0; a < items.length; a++) {
 				if (items[a].id == giftName) {
-					jQ(items[a]).find('#addToWishList').attr("src", gui.xmas.model.masterRootPath + "assets/images/wishPlus.gif");
+					jQ(items[a]).find('#addToWishList').html("+ <strong>Add</strong>")
 					TweenLite.to(jQ(items[a]).find('#addToWishList'), .5, {css:{autoAlpha:0}});
 					break;
 				}

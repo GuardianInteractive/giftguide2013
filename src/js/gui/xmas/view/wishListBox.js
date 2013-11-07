@@ -176,7 +176,9 @@ gui.xmas.view = gui.xmas.view || {};
 			
 			jQ("#wishlist-button-counter").html(listLength);
 
+
 			gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[id].thumbnailPicUrl
+
 
 			gui.xmas.view.wishListBox.wishListIndexLookup[id] = listLength;
 

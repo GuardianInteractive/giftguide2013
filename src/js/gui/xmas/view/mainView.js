@@ -104,30 +104,34 @@ gui.xmas.view = gui.xmas.view || {};
 		goToSingularView: function() {
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
-				TweenLite.to(target, .5, {css:{left:'0%'}});
-				target = jQ('.productsGridHolder');
-				TweenLite.to(target, .5, {css:{left:'-100%'}});	
+				jQ(target).css('display', 'block');
+				//TweenLite.to(target, .5, {css:{left:'0%'}});
+				//target = jQ('.productsGridHolder');
+				//TweenLite.to(target, .5, {css:{left:'-100%'}});	
 			}
 			else {
 				var target = jQ('.singularProductHolder');
-				target.css('left', '0%');
-				target = jQ('.productsGridHolder');
-				target.css('left', '-100%');
+				jQ(target).css('display', 'block');
+				// target.css('left', '0%');
+				// target = jQ('.productsGridHolder');
+				//target.css('left', '-100%');
 			}
 		},
 
 		goBackToListView:function() {
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
-				TweenLite.to(target, .5, {css:{left:'100%'}});
-				target = jQ('.productsGridHolder');
-				TweenLite.to(target, .5, {css:{left:'0%'}});
+				jQ(target).css('display', 'none');
+				// TweenLite.to(target, .5, {css:{left:'100%'}});
+				// target = jQ('.productsGridHolder');
+				// TweenLite.to(target, .5, {css:{left:'0%'}});
 			}
 			else {
 				var target = jQ('.singularProductHolder');
-				target.css('left', '100%');
-				target = jQ('.productsGridHolder');
-				target.css('left', '0%');
+				target.css('display', 'none');
+				// target.css('left', '100%');
+				// target = jQ('.productsGridHolder');
+				// target.css('left', '0%');
 			}
 		},
 
