@@ -129,7 +129,6 @@ var layer = 1;
 		}, 
 		
 		addItemToWishList: function(productId) {
-			console.log(productId);
 			gui.xmas.model.wishListItemsLookup[productId] = true;
 			gui.xmas.model.wishListItemsArr[gui.xmas.model.wishListItemsArr.length] = productId;
 			

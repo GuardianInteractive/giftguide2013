@@ -24,6 +24,10 @@ gui.xmas.view = gui.xmas.view || {};
 			singularProductHolder.className = 'singularProductHolder';
 			productsHolder.append(singularProductHolder);
 
+			var singularBackground = document.createElement('div');
+			singularBackground.className = 'singularBackground';
+			singularProductHolder.appendChild(singularBackground);
+
 			var singularContent = document.createElement('div');
 			singularContent.className = 'singularContent';
 			singularProductHolder.appendChild(singularContent);
@@ -33,25 +37,26 @@ gui.xmas.view = gui.xmas.view || {};
 			singularContent.appendChild(topLeftDiv);
 
 			//click listener on the back to list div
-			jQ(topLeftDiv).click(function() {
-				jQ(gui.xmas.view.singularProductView.topRightDiv).off();
-				displayState.backToListClicked();
-			});
+			
 
 			var backToGridIcon = document.createElement('img');
 			backToGridIcon.id = "backToGridBtn";
 			backToGridIcon.style.position = "absolute";
 			backToGridIcon.src = gui.xmas.model.masterRootPath + 'assets/images/closeSingularViewBtn.png';
 
-			backToGridIcon.style.margin = '0 10px 0 10px';
+			
 			topLeftDiv.appendChild(backToGridIcon);
 
 			
 
-			var topRightDiv = document.createElement('div');
-			topRightDiv.className = 'singularProductRightTop';
-			singularContent.appendChild(topRightDiv);
-			gui.xmas.view.singularProductView.topRightDiv = topRightDiv;
+			jQ(backToGridIcon).click(function() {
+				jQ(gui.xmas.view.singularProductView.addToWishListIcon).off();
+				displayState.backToListClicked();
+			});
+			jQ(singularBackground).click(function() {
+				jQ(gui.xmas.view.singularProductView.addToWishListIcon).off();
+				displayState.backToListClicked();
+			});
 
 
 
@@ -59,16 +64,11 @@ gui.xmas.view = gui.xmas.view || {};
 				//itemDiv.appendChild(addToWishListIcon);
 
 			
-			
-			var clearTopHalfDiv = document.createElement('div');
-			clearTopHalfDiv.className = 'clearBoth';
-			singularContent.appendChild(clearTopHalfDiv);
+
 
 
 			var productDetailHolder = document.createElement('div');
 			productDetailHolder.id = 'productDetailHolder';
-			productDetailHolder.style.cssFloat = 'left';
-			productDetailHolder.style.position = 'relative';
 			singularContent.appendChild(productDetailHolder);
 
 			var loadingImageMsg = document.createElement('div');
@@ -96,11 +96,15 @@ gui.xmas.view = gui.xmas.view || {};
 
 			var productTitle = document.createElement('h1');
 			productTitle.style.cssFloat = 'left';
+			productTitle.style.marginRight = '10px';
 			productTitleHolder.appendChild(productTitle);
 			gui.xmas.view.singularProductView.productTitle = productTitle;
 
 			var productPrice = document.createElement('h1');
-			productPrice.style.cssFloat = 'right';
+			productPrice.style.cssFloat = 'left';
+			productPrice.style.fontSize = '16px';
+			productPrice.style.marginTop = '4px';
+
 			productTitleHolder.appendChild(productPrice);
 			gui.xmas.view.singularProductView.productPrice = productPrice;
 
@@ -109,7 +113,7 @@ gui.xmas.view = gui.xmas.view || {};
 			productTitleHolder.appendChild(clearProductTitleHolder);
 
 			var productDescription = document.createElement('p');
-			productDescription.style.marginBottom = "40px";
+			productDescription.style.marginBottom = "25px";
 			productTitleHolder.appendChild(productDescription);
 			gui.xmas.view.singularProductView.productDescription = productDescription;
 
@@ -123,6 +127,10 @@ gui.xmas.view = gui.xmas.view || {};
 			var shareListHolder = document.createElement('div');
 			shareListHolder.className = 'shareListHolder';
 			productTitleHolder.appendChild(shareListHolder);
+
+			var clearShareList = document.createElement('div');
+			clearShareList.className = 'clearBoth';
+			productTitleHolder.appendChild(clearShareList);
 			
 			var shareListTitle = document.createElement('h2');
 			shareListTitle.innerHTML = 'Share my list';
@@ -135,7 +143,7 @@ gui.xmas.view = gui.xmas.view || {};
 
 			
 			var fbIcon = document.createElement('img');
-			fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/FB.gif";
+			fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/fbIcon.png";
 			fbIcon.className = 'shareIcon';
 			shareListHolder.appendChild(fbIcon);
 			jQ(fbIcon).click(function(event) {
@@ -144,7 +152,7 @@ gui.xmas.view = gui.xmas.view || {};
 			});
 			
 			var twitterIcon = document.createElement('img');
-			twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/twitter.gif";
+			twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/tweetIcon.png";
 			twitterIcon.className = 'shareIcon';
 			shareListHolder.appendChild(twitterIcon);
 			jQ(twitterIcon).click(function(event) {
@@ -172,8 +180,9 @@ gui.xmas.view = gui.xmas.view || {};
 			});
 			
 			var pinIcon = document.createElement('img');
-			pinIcon.src = gui.xmas.model.masterRootPath + "assets/images/pinterest.gif";
+			pinIcon.src = gui.xmas.model.masterRootPath + "assets/images/pinItIcon.png";
 			pinIcon.className = 'shareIcon';
+			pinIcon.style.width = '40px';
 			shareListHolder.appendChild(pinIcon);
 			jQ(pinIcon).click(function(event) {
 				event.preventDefault();
@@ -240,9 +249,9 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 			
 			jQ(gui.xmas.view.singularProductView.addToWishListIcon).click(function(event) {
-				if (!gui.xmas.model.wishListItemsLookup[giftObj.name]) {
+				console.log(giftObj.name, gui.xmas.model.wishListItemsLookup[giftObj.name]);
+				if (!gui.xmas.model.wishListItemsLookup[giftObj.name]) {	
 					gui.xmas.model.addItemToWishList(giftObj.name);
-
 					gui.xmas.view.wishListBox.addItemToList(giftObj.name);
 					gui.xmas.view.productsGridView.giftAddedToWishList(giftObj.name);
 					gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '<strong>Added to wishlist</strong>';

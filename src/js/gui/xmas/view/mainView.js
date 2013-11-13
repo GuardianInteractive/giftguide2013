@@ -33,11 +33,16 @@ gui.xmas.view = gui.xmas.view || {};
 			var leftSideHolder = document.createElement('div');
 			leftSideHolder.className = 'leftSideHolder' + smallOrNot;
 			holderDiv.appendChild(leftSideHolder);
+
+			var headerImageContainer = document.createElement('div');
+			headerImageContainer.className = 'headerImageContainer';
+			leftSideHolder.appendChild(headerImageContainer);
+
 			
 			var leftSideHeaderImg = document.createElement("img");
 			leftSideHeaderImg.src = gui.xmas.model.masterRootPath + "assets/images/headerImage.png";
 			leftSideHeaderImg.className = 'leftSideHeaderImage';
-			leftSideHolder.appendChild(leftSideHeaderImg);
+			headerImageContainer.appendChild(leftSideHeaderImg);
 			
 			gui.xmas.view.filterPanel.init();
 			
@@ -68,7 +73,7 @@ gui.xmas.view = gui.xmas.view || {};
 			document.body.appendChild(filteringMsg);
 			
 			//resizing shenanigans
-			gui.xmas.view.wishListBox.carouselHolder.style.width = (rightSideWidth - 40 - jQ(gui.xmas.view.wishListBox.carouselHolder).height()) + 'px';
+			//gui.xmas.view.wishListBox.carouselHolder.style.width = (rightSideWidth - 40 - jQ(gui.xmas.view.wishListBox.carouselHolder).height()) + 'px';
 
 			if (width >= 9400) {
 				var rightSideMarginTop = jQ('.filterPanelLeftSide').offset().top - (jQ('.wishListPanelTop').height() + (width * 0.01));
@@ -102,36 +107,38 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		goToSingularView: function() {
+
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
 				jQ(target).css('display', 'block');
-				//TweenLite.to(target, .5, {css:{left:'0%'}});
-				//target = jQ('.productsGridHolder');
-				//TweenLite.to(target, .5, {css:{left:'-100%'}});	
-			}
-			else {
+			} else {
 				var target = jQ('.singularProductHolder');
 				jQ(target).css('display', 'block');
-				// target.css('left', '0%');
-				// target = jQ('.productsGridHolder');
-				//target.css('left', '-100%');
+			}
+			if(window.width < 640){
+				jQ('.productsGridHolder').css("display", "none")
+				jQ(window).scrollTop(200);
+				console.log(jQ(window).scrollTop());
 			}
 		},
 
 		goBackToListView:function() {
+			var currentProductID = jQ('.singularProductHolder .singularContent').find('h1')[1].innerHTML;
+			var currentProductInGrid = jQ(".productsGridHolder").find("[id='" + currentProductID + "']");
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
 				jQ(target).css('display', 'none');
-				// TweenLite.to(target, .5, {css:{left:'100%'}});
-				// target = jQ('.productsGridHolder');
-				// TweenLite.to(target, .5, {css:{left:'0%'}});
 			}
 			else {
 				var target = jQ('.singularProductHolder');
 				target.css('display', 'none');
-				// target.css('left', '100%');
-				// target = jQ('.productsGridHolder');
-				// target.css('left', '0%');
+			}
+
+			if(window.width < 640){
+				console.log('doe mobiele dingen');
+				jQ('.productsGridHolder').css("display", "block");
+				console.log(currentProductInGrid.offset().top);
+				jQ(window).scrollTop(currentProductInGrid.offset().top);
 			}
 		},
 

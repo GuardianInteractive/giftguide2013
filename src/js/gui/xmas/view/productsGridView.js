@@ -37,6 +37,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var a;
 			for (a = 0; a < giftsLength; a++) {
 				var gridLi = document.createElement('li');
+				//gridLi.className = "visible";
 				gridLi.id = giftsArr[a].name;
 				gridList.appendChild(gridLi);
 				
@@ -58,27 +59,33 @@ gui.xmas.view = gui.xmas.view || {};
 				descripHolder.id = 'productTitle';
 				descripHolder.style.zIndex = '2';
 				itemDiv.appendChild(descripHolder);
+
+				var descripAndTitleContainer = document.createElement('div');
+				descripAndTitleContainer.id = 'descripAndTitleContainer';
+				descripHolder.appendChild(descripAndTitleContainer);
 				
 				var descrip = document.createElement('p');
 				descrip.id = 'productName';
 				descrip.innerHTML = giftsArr[a].name;
-				descripHolder.appendChild(descrip);
+				descripAndTitleContainer.appendChild(descrip);
 
 				var descripPrice = document.createElement('p');
 				descripPrice.id = 'productDescripPrice';
 				var giftPrice = giftsArr[a].cost;
 				var from = giftPrice.indexOf('From');
 				if (from > -1) {
-					giftPrice = (giftPrice.slice(0,(from + 5))) + '&pound;' + giftPrice.slice(from + 5);
+					giftPrice =  '&pound;' + giftPrice.slice(from + 5) + "+";
+
+					//(giftPrice.slice(0,(from + 5)))
 				}else{
 					giftPrice = '&pound;' + giftsArr[a].cost;
 				}
 				descripPrice.innerHTML = giftPrice;
-				descripHolder.appendChild(descripPrice);
+				descripAndTitleContainer.appendChild(descripPrice);
 
 				var clearDescrip = document.createElement('div');
 				clearDescrip.className = 'clearBoth';
-				descripHolder.appendChild(clearDescrip);
+				descripAndTitleContainer.appendChild(clearDescrip);
 				
 				var addToWishListIcon = document.createElement('div');
 				addToWishListIcon.id = 'addToWishList';
@@ -86,8 +93,11 @@ gui.xmas.view = gui.xmas.view || {};
 				addToWishListIcon.style.visibility = 'hidden';
 				itemDiv.appendChild(addToWishListIcon);
 
+
 				if (gui.xmas.model.urlVarsExist) {
+
 					gridLi.style.display = 'none';
+
 					var b, urlVarListLength = gui.xmas.model.urlVarsArr.length;
 					for (b = 0; b < urlVarListLength; b++) {
 						if (giftsArr[a].id == gui.xmas.model.urlVarsArr[b]) {
@@ -110,7 +120,7 @@ gui.xmas.view = gui.xmas.view || {};
 					
 					jQ(gridLi).mouseout(function() {
 						var productId = jQ(this).find('p#productName').html();
-						console.log(productId);
+					
 						if (!gui.xmas.model.wishListItemsLookup[productId]) {
 							TweenLite.to(jQ(this).find('#addToWishList'), .5, {css:{autoAlpha:0}});
 						}
@@ -119,7 +129,7 @@ gui.xmas.view = gui.xmas.view || {};
 
 				jQ(addToWishListIcon).click(function(){
 					var productId = jQ(this).parent().find('p#productName').html();
-					console.log(productId);
+			
 					if (!gui.xmas.model.wishListItemsLookup[productId]) {
 						gui.xmas.model.addItemToWishList(productId);
 						gui.xmas.view.wishListBox.addItemToList(productId);
@@ -133,35 +143,15 @@ gui.xmas.view = gui.xmas.view || {};
 				});
 
 				jQ(itemImg).click(function(){
-					
 					var productId = jQ(this).parent().find('p#productName').html();
-					
 					gui.xmas.model.registerProductClicked(productId);
-						displayState.productClicked();
-						if (gui.xmas.model.smallView) {
-							jQ('.productsPanel').ScrollTo({
-								duration: 0
-							});
-						}
-						else {
-							window.scrollTo(0, 0);
-						}
+					displayState.productClicked();
 				});
 
 				jQ(descripHolder).click(function(){
-					
-					var productId = jQ(this).parent().find('p#productName').html();
-					
+					var productId = jQ(this).find('p#productName').html();
 					gui.xmas.model.registerProductClicked(productId);
-						displayState.productClicked();
-						if (gui.xmas.model.smallView) {
-							jQ('.productsPanel').ScrollTo({
-								duration: 0
-							});
-						}
-						else {
-							window.scrollTo(0, 0);
-						}
+					displayState.productClicked();
 				});
 				
 				
@@ -249,7 +239,8 @@ gui.xmas.view = gui.xmas.view || {};
 					return 1;
 				}
 			});
-			for (a = startLiNum; a < endNum; a++) {
+			for (a = 0; a < gui.xmas.view.productsGridView.maxNumOnPage; a++) {  //for (a = startLiNum; a < endNum; a++) {
+
 				var liItem = filteredLis[a];
 				//if (liItem.attr('id')) {
 				if (liItem) {
@@ -326,26 +317,31 @@ gui.xmas.view = gui.xmas.view || {};
 			var span = document.getElementById('filteredGiftsNum'), ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li'), itemsLength = items.length, a;
 			gui.xmas.view.productsGridView.paginationArr = [];
 			var numAddedToPage = 0;
+			var currentCounter = 0;
 			for (a = 0; a < itemsLength; a++) {
+				items[a].className = '';
 				if (!gui.xmas.model.checkGiftIsInActiveFilters(items[a].id)) {
 					items[a].style.display = 'none';
+
 				}
 				else {
 					numAddedToPage ++;
 					items[a].style.display = 'inline-block';
-					if (gui.xmas.model.screenVersion === 'iFrame') {
+
+					
 						if (numAddedToPage <= gui.xmas.view.productsGridView.maxNumOnPage) {
-							items[a].style.display = 'inline-block';
+							items[a].style.display = 'inline-block';	
 						}
 						else {
 							items[a].style.display = 'none';
+
 						}
 						gui.xmas.view.productsGridView.paginationArr[gui.xmas.view.productsGridView.paginationArr.length] = items[a];
-					}
+					
 					gui.xmas.view.productsGridView.filteredGiftsTotal ++;
 				}
 			}
-			if (gui.xmas.view.productsGridView.filteredGiftsTotal > gui.xmas.view.productsGridView.maxNumOnPage && gui.xmas.model.screenVersion === 'iFrame') {
+			if (gui.xmas.view.productsGridView.filteredGiftsTotal > gui.xmas.view.productsGridView.maxNumOnPage) {
 				gui.xmas.view.productsGridView.paginationHolderTop.style.display = 'block';
 				var numOfPages = Math.ceil(gui.xmas.view.productsGridView.filteredGiftsTotal / gui.xmas.view.productsGridView.maxNumOnPage), paginationHTML = '<p>Page:';
 				for (a = 0; a < numOfPages; a ++) {
@@ -382,7 +378,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var paginationarrLength = gui.xmas.view.productsGridView.paginationArr.length, startNum = (pageNum - 1) * gui.xmas.view.productsGridView.maxNumOnPage;
 			var endNum = startNum + gui.xmas.view.productsGridView.maxNumOnPage;
 			for (a = 0; a < paginationarrLength; a++) {
-				if (a >= startNum && a <= endNum) {
+				if (a >= startNum && a < endNum) {
 					gui.xmas.view.productsGridView.paginationArr[a].style.display = 'inline-block';
 				}
 				else {
@@ -390,7 +386,9 @@ gui.xmas.view = gui.xmas.view || {};
 				}
 			}
 			gui.xmas.view.productsGridView.scrollUpUpdate();
-
+			var topOflist = jQ('.productsPanel').offset().top;
+			console.log(topOflist);
+			jQ(window).scrollTop(topOflist);
 		},
 
 		giftAddedToWishList: function(giftName) {

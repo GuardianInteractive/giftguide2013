@@ -22,39 +22,7 @@ var filterLookup = {};
 			var leftsideFilterPanel = document.createElement('div');
 			leftsideFilterPanel.className = 'filterPanelLeftSide';
 			leftSideHolder.append(leftsideFilterPanel);
-			
-			// var title = document.createElement('h1');
-			// title.innerHTML = 'Christmas Gift Guide';
-			// title.style.cssFloat = 'left';
-			// leftsideFilterPanel.appendChild(title);
-			
-			//var refreshIcon = document.createElement("img");
-			//refreshIcon.src = "assets/images/refreshIcon.png";
-			//refreshIcon.className = 'refreshIcon';
-			//leftsideFilterPanel.appendChild(refreshIcon);
-			/*
-			if (gui.xmas.model.screenVersion === 'iFrame') {
-				jQ(refreshIcon).mouseover(function() {
-					this.src = "assets/images/refreshYellowIcon.png";
-					TweenLite.killTweensOf(this);
-					TweenLite.fromTo(this, .5, {css:{autoAlpha:.5}}, {css:{autoAlpha:1}});
-				});
-				jQ(refreshIcon).mouseout(function() {
-					this.src = "assets/images/refreshIcon.png";
-				});
-			}
 
-			jQ(refreshIcon).click(function() {
-				var a, filterDivsArrLength = gui.xmas.view.filterPanel.filterDivsArr.length;
-				for (a = 0; a < filterDivsArrLength; a++) {
-					gui.xmas.view.filterPanel.filterDivsArr[a].style.backgroundColor = '#e7d7c0';
-				}
-
-				gui.xmas.model.clearAllFilters();
-				gui.xmas.view.productsGridView.scrollUpUpdate();
-			});
-			
-			*/
 			
 			
 			var seperator = document.createElement('div');
@@ -90,6 +58,12 @@ var filterLookup = {};
 					//jQ(".wishListPanelTop").slideUp();
 					
 				});
+
+			var filterHolder = document.createElement('div');
+				filterHolder.className = 'filterHolder';
+				categoryHolder.appendChild(filterHolder);
+				
+				
 				
 			/*
 				
@@ -186,7 +160,7 @@ var filterLookup = {};
 				*/
 				
 				var filterListContainer = document.createElement('div');
-				categoryHolder.appendChild(filterListContainer);
+				filterHolder.appendChild(filterListContainer);
 				filterListContainer.className = 'styled-select';
 				
 				var filterList = document.createElement('select');
@@ -232,6 +206,7 @@ var filterLookup = {};
 				}
 				
 				
+
 				jQ(filterList).change(function() {
 						
 						var value = jQ(this).val();
@@ -286,6 +261,9 @@ var filterLookup = {};
 				
 				
 			}
+			var clearFilters = document.createElement('div');
+				filterHolder.appendChild(clearFilters);
+				clearFilters.className = 'clearBoth';
 			/*
 			var moreFilters = document.createElement('div');
 			moreFilters.className = 'moreFiltersBox';

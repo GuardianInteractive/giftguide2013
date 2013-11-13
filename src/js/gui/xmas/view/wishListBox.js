@@ -25,7 +25,7 @@ gui.xmas.view = gui.xmas.view || {};
 
 			var titleHolder = document.createElement('div');
 			titleHolder.style.cssFloat = 'left';
-			titleHolder.style.margin = '10px 0 0 3%';
+			titleHolder.style.margin = '10px 0 0 0';
 			wishListBox.appendChild(titleHolder);
 			
 			var title = document.createElement('h1');
@@ -45,7 +45,6 @@ gui.xmas.view = gui.xmas.view || {};
 			gui.xmas.view.wishListBox.carouselHolder = document.createElement('div');
 			var carouselHolder = gui.xmas.view.wishListBox.carouselHolder;
 			carouselHolder.className = 'carouselHolder';
-			carouselHolder.style.width = gui.xmas.model.carouselInitWidth + 'px';
 			wishListBox.appendChild(carouselHolder);
 			
 			var testDiv = document.createElement('ul');
@@ -63,13 +62,6 @@ gui.xmas.view = gui.xmas.view || {};
 			clearDiv.className = 'clearBoth';
 			wishListBox.appendChild(clearDiv);
 			
-			var seperator = document.createElement('div');
-			seperator.style.width = '100%';
-			seperator.style.height = '1px';
-			seperator.style.backgroundColor = '#dfdfdf';
-			seperator.style.cssFloat = 'left';
-			seperator.style.margin = '5px 0 5px 0';
-			wishListBox.appendChild(seperator);
 			
 			var copyURLHolder = document.createElement('div');
 			copyURLHolder.className = 'copyURLHolder';
@@ -82,25 +74,26 @@ gui.xmas.view = gui.xmas.view || {};
 			copyURLTitle.style.marginBottom = '12px';
 			copyURLHolder.appendChild(copyURLTitle);
 			
-			var copyURLArea = document.createElement('p');
+			var copyURLArea = document.createElement('input');
 			copyURLArea.className = 'copyURLP';
 			copyURLArea.id = 'copyURLP';
 			copyURLHolder.appendChild(copyURLArea);
 			gui.xmas.view.wishListBox.copyURLArea = copyURLArea;
 
 			jQ(copyURLArea).click(function(event) {
-				var para = document.getElementById('copyURLP'), range;
-				if (window.getSelection && document.createRange) {
-					range = document.createRange();
-					var sel = window.getSelection();
-					range.selectNodeContents(para);
-					sel.removeAllRanges();
-					sel.addRange(range);
-				} else if (document.body && document.body.createTextRange) {
-					range = document.body.createTextRange();
-					range.moveToElementText(para);
-					range.select();
-				}
+				this.select();
+				// var para = document.getElementById('copyURLP'), range;
+				// if (window.getSelection && document.createRange) {
+				// 	range = document.createRange();
+				// 	var sel = window.getSelection();
+				// 	range.selectNodeContents(para);
+				// 	sel.removeAllRanges();
+				// 	sel.addRange(range);
+				// } else if (document.body && document.body.createTextRange) {
+				// 	range = document.body.createTextRange();
+				// 	range.moveToElementText(para);
+				// 	range.select();
+				// }
 			});
 			
 			var clearCopyURLDiv = document.createElement('div');
@@ -109,17 +102,16 @@ gui.xmas.view = gui.xmas.view || {};
 			
 			var shareListHolder = document.createElement('div');
 			shareListHolder.className = 'shareListHolder';
-			shareListHolder.style.marginBottom = '15px';
 			wishListBox.appendChild(shareListHolder);
 			
 			var shareListTitle = document.createElement('h2');
 			shareListTitle.innerHTML = 'Share my list';
 			shareListTitle.style.cssFloat = 'left';
-			shareListTitle.style.marginTop = '6px';
+			shareListTitle.style.marginTop = '6px !important';
 			shareListHolder.appendChild(shareListTitle);
 			
 			var fbIcon = document.createElement('img');
-			fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/FB.gif";
+			fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/fbIcon.png";
 			fbIcon.className = 'shareIcon';
 			shareListHolder.appendChild(fbIcon);
 			jQ(fbIcon).click(function(event) {
@@ -128,7 +120,7 @@ gui.xmas.view = gui.xmas.view || {};
 			});
 			
 			var twitterIcon = document.createElement('img');
-			twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/twitter.gif";
+			twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/tweetIcon.png";
 			twitterIcon.className = 'shareIcon';
 			shareListHolder.appendChild(twitterIcon);
 			jQ(twitterIcon).click(function(event) {
@@ -166,7 +158,7 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 		
 		constructCarouselImage: function(item) {
-			return '<div style=\'border-left: 1px solid #dfdfdf; position: relative\'>' + '<img src="' + item.url + '" width="65" height="65" alt="' + item.url + '" style=\'position: absolute\' />' + '<img src=\'assets/images/wishMinusGrey.gif\' style=\'position: absolute; top: 0px; right:0px;\' />' + '</div>';
+			return '<div style=\'border-left: 1px solid #dfdfdf; position: relative\'>' + '<img src="' + item.url + '" width="65" height="65" alt="' + item.url + '" style=\'position: absolute\' />' + '<div class=\'removeFromListBtn\'>-</div>' + '</div>';
 		},
 		
 		addItemToList: function(id) {
@@ -236,7 +228,7 @@ gui.xmas.view = gui.xmas.view || {};
 				urlStr = gui.xmas.model.shareRootPath + urlStr;
 			}
 			//gui.xmas.view.wishListBox.copyURLArea.value = urlStr;
-			gui.xmas.view.wishListBox.copyURLArea.innerHTML = urlStr;
+			gui.xmas.view.wishListBox.copyURLArea.value = urlStr;
 		}
 		
 	}

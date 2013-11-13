@@ -79,10 +79,19 @@ body{
 	margin-bottom:1%;
 	float:left;
 	position:relative;
-	background: #1f1d43;
-	-webkit-box-shadow: 0px 1px 3px rgba(50, 50, 50, 0.5);
-	-moz-box-shadow:    0px 1px 3px rgba(50, 50, 50, 0.5);
-	box-shadow:         0px 1px 3px rgba(50, 50, 50, 0.5);
+	background: #ffc202;
+	-webkit-box-shadow: 0px 2px 0px rgba(211, 153, 51, 1);
+	-moz-box-shadow:    0px 2px 0px rgba(211, 153, 51, 1);
+	box-shadow:         0px 2px 0px rgba(211, 153, 51, 1);
+}
+
+.headerImageContainer{
+	background-image: none;
+	height:auto;
+}
+
+.headerImageContainer img{
+	display:block;
 }
 
 .gu-interactive .leftSideHeaderImage {
@@ -94,9 +103,11 @@ body{
 }
 
 .gu-interactive .filterPanelLeftSide {
-	width:100%;
-	background: #1f1d43;
+	margin-left:1%;
+	width:98%;
+	background: #ffc202;
 	min-height:20px;
+	margin-top:20px;
 }
 
 .gu-interactive .filterPanelLeftSide  h1 {
@@ -121,23 +132,27 @@ body{
 
 .gu-interactive .filterPanelLeftSide .styled-select select {
    background: transparent;
-   padding: 5px 5px 3px 10px;
    font-size: 12px;
    border: none;
-   height: 34px;
+   /*margin:9px 5px 3px 10px;*/
+   padding:9px 10px;
     color: #fff;
     -webkit-appearance: none;
+    width:135%;
+    appearance: none;
     font-family: Arial;
     font-weight: bold;
 } 
 
 
 .gu-interactive .styled-select {
-	margin: 0 10px 10px 0;
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	margin: 0 2% 13px;
 	display: inline;
 	float: right;
   overflow: hidden;
   	padding-right:20px;
+  	width:46%;
    height: 34px;
     -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
@@ -147,8 +162,6 @@ border-radius: 2px;
 }
 
 .gu-interactive .show-wishlist {
-	display: inline;
-	float: left;
     padding: 11px 10px 0px;
    font-family: Arial;
    font-weight: bold;
@@ -161,7 +174,7 @@ border-radius: 2px;
 border-radius: 2px;
 	background: #a64557;
 	cursor: pointer;
-	margin: 0 10px 10px 10px;
+	margin: 0 2% 10px;
 	vertical-align: middle;
 }
 
@@ -266,20 +279,22 @@ border-radius: 2px;
 }
 
 .gu-interactive .wishListPanelTop {
-	width:100%;
+	width:auto;
 	background-color:#fff;
 	max-height: 0px;
 	overflow: hidden;
 	-webkit-transition: max-height 0.5s;
 	-moz-transition: max-height 0.5s;
 	transition: max-height 0.5s;
+	padding-left:3%;
 }
 
 .gu-interactive .wishListPanelTop  h1 {
-	font-family: 'TextWebEgyptian-Regular';
-	font-weight:normal;
-	font-size:22px;
+	font-family: 'Arial';
+	font-size:16px;
 	color:#4a251c;
+	font-weight:bold;
+	margin-top:10px;
 }
 
 .gu-interactive .wishListPanelTop  h2 {
@@ -291,13 +306,26 @@ border-radius: 2px;
 }
 
 .gu-interactive .carouselHolder {
-	margin:10px 0 0 15px;
+	width:94%;
+	margin:10px 3% 20px 0;
+}
+.gu-interactive .removeFromListBtn{
+	background: #a64557;
+	color: #fff;
+	font-weight: bold;
+	font-family: Arial;
+	padding:1px 5px 2px;
+	position: absolute;
+	right: 5px;
 }
 
 .gu-interactive .copyURLHolder {
 	float:left;
-	margin-left:10px;
+	width:275px;
+	overflow: hidden;
+	margin-bottom:20px;
 	margin-top:5px;
+	margin-right:10px;
 	font-weight: normal !important;
 }
 
@@ -307,24 +335,30 @@ border-radius: 2px;
 
 .gu-interactive .shareListHolder {
 	float:left;
-
+	margin-top:1px;
 	cursor: pointer;
 	color: #4A251C;
+}
+
+.gu-interactive .wishListPanelTop .shareListHolder {
+	margin-top:7px;
+
 }
 .gu-interactive .shareListHolder h2 {
 font-family: Arial !important;
 	font-weight: normal !important;
 	font-size: 12px;
-	margin:0;
+	margin:0 10px 3px 0 !important;
 	padding:0;
 	border: none !important;
+	line-height:12px !important;
 }
 
 .gu-interactive .shareIcon {
 	float:left;
-	margin-right:5px;
-	width:24px;
-	height:24px;
+	margin-right:2px;
+	width:55px;
+	height:20px;
 	cursor: pointer;
 }
 
@@ -346,15 +380,15 @@ font-family: Arial !important;
 .gu-interactive .copyURLP {
 	float:left;
 	margin-left:10px;
-	width: 245px;
+	width: 200px;
 	border: 1px solid #dfdfdf;
 	padding: 2px;
 	font-family: 'Arial';
 	font-weight:normal;
 	font-size:12px;
 	color:#4a251c;
+	overflow:hidden;
 	min-height: 18px;
-	overflow: hidden;
 }
 
 .gu-interactive .productsPanel {
@@ -368,6 +402,7 @@ font-family: Arial !important;
 	width:96%;
 	margin-left:2%;
 	margin-right: 2%;
+	margin-top:20px;
 	position:relative;
 	transition: left 0.5s;
 	-moz-transition: left 0.5s; /* Firefox 4 */
@@ -411,22 +446,22 @@ font-family: Arial !important;
     margin:0;
 	width:100%;
 	padding:0;
+	text-align: center;
+
 }
 
 .gu-interactive .productsGridHolder li {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	border:4px solid rgb(243, 225, 194);
+	border:6px solid rgb(241, 224, 179);
 	display: inline-block;
-	width: 49%%;
+	width: 48%;
 	cursor:pointer;
 	overflow: hidden;
-	margin-bottom:20px;
-	margin-right:2%;
+	margin-bottom:10px;
+	margin-left:1%;
+	margin-right:1%;
 }
 
-.gu-interactive .productsGridHolder li:nth-child(2n + 2) {
-	margin-right:0;
-}
 
 .gu-interactive .productsGridHolder  #productThumb {
 	width:80%;
@@ -461,7 +496,9 @@ font-family: Arial !important;
  	left:0;
  	padding:12px 14px 11px;
  	float:left;
- 	margin-right:10px;
+ 	margin-right:5px;
+ 	margin-bottom:10px;
+ 	margin-top:0;
  }
 
 
@@ -478,6 +515,7 @@ font-family: Arial !important;
 	top:10px;
 	right:10px;
 	cursor: pointer;
+
 }
 
 .gu-interactive .productGridItem p {
@@ -489,17 +527,19 @@ font-family: Arial !important;
 	-webkit-font-smoothing: antialiased;
 }
 .gu-interactive .productGridItem p#productDescripPrice {
-
-	float:left;
+	display: inline
 	}
 .gu-interactive .productGridItem p#productName {
-
-	float:left;
 	margin-right:5px;
+	text-overflow: ellipsis; /* will make [...] at the end */
+    width: 100%; /* change to your preferences */
+    text-align:center;
+    white-space: nowrap; /* paragraph to one line */
+    overflow:hidden; /* older browsers */
 	}
 
 .gu-interactive .paginationHolderTop {
-	margin: 5px auto 20px auto;
+	margin: 20px auto 40px auto;
 	text-align: center;
 	display: none;
 
@@ -533,14 +573,30 @@ font-family: Arial !important;
 .gu-interactive .singularProductHolder {
 	width:100%;
 	height: 100%;
-	background-color:rgba(255,255,255, 0.7);
+	background-color:rgba(160, 95, 25, 0.37);
 	top:0;
-	position:fixed;
+	position:relative;
 	display:none;
 	transition: left 0.5s;
 	-moz-transition: left 0.5s; /* Firefox 4 */
 	-webkit-transition: left 0.5s; /* Safari and Chrome */
 	-o-transition: left 0.5s; /* Opera */
+}
+
+.gu-interactive .singularContent{
+	width:90%;
+	padding: 15% 5% 10%;
+	background: #fff;
+}
+
+.gu-interactive .singularContent p{
+	font-size:14px;
+	margin-top:10px;
+	}
+
+.gu-interactive #detailDescrip{
+	float:left;
+	margin-top:40px;
 }
 
 .gu-interactive .singularProductHolder  h1 {
@@ -553,9 +609,9 @@ font-family: Arial !important;
 .gu-interactive .singularProductHolder p {
 	font-family: 'Arial' !important;
 	font-weight: normal !important;
-	line-height:130%;
-	font-size:12px;
+	line-height:21px;
 	color:#4a251c;
+	margin-bottom:20px;
 }
 
 .gu-interactive .singularProductHolder a {
@@ -569,9 +625,14 @@ font-family: Arial !important;
 }
 
 .gu-interactive .singularProductLeftTop {
-	float: right;
-	margin: 20px 0 20px 0;
 	cursor: pointer;
+}
+
+.gu-interactive #backToGridBtn{
+	width:21px;
+	height:21px;
+	right:20px;
+	top:20px;
 }
 
 .gu-interactive .singularProductRightTop {
@@ -612,39 +673,85 @@ font-family: Arial !important;
 }
 
 @media (min-width: 641px) {
+	.gu-interactive .productsGridHolder{
+		margin-top:0;
+
+	}
+	.gu-interactive .show-wishlist {
+	display: inline;
+	float: left;
+}
+	.gu-interactive .filterHolder{
+		float:right;
+		margin-right:2%;
+		width:50%;
+	}
+	.gu-interactive .styled-select {
+		margin: 0 0 13px 4%;
+		width:auto;
+		float:right;
+	}
 	.gu-interactive .productsGridHolder li {
-		width:32%;
+		width:31%;
+		margin-right:1%;
+		margin-left:1%;
+	}
+	/*.gu-interactive .productsGridHolder .second {
 		margin-right:2%;
 	}
-	.gu-interactive .productsGridHolder li:nth-child(2n + 2) {
-		margin-right:2%;
-	}
-	.gu-interactive .productsGridHolder li:nth-child(3n + 3) {
+	.gu-interactive .productsGridHolder .third {
 		margin-right:0;
-	}
+	}*/
 
 	.gu-interactive .productGridItem p#productDescripPrice {
-	max-width: 50px;
+	max-width: 28%;
 	float:right;
+	text-align: right;
 	}
 .gu-interactive .productGridItem p#productName {
-	max-width:110px;
+	text-align: left;
 	float:left;
 	margin-right:0;
+
+	text-overflow: ellipsis; /* will make [...] at the end */
+    width: 72%; /* change to your preferences */
+    overflow:hidden; /* older browsers */
+	}
+
+	.gu-interactive #backToGridBtn{
+	
+	right:10px;
+	top:10px;
+}
+	.gu-interactive .productGridItem #productTitle{
+		padding: 15px 0;
+		height:auto;
 	}
 
 	.gu-interactive #productDetailHolder{
-		margin-top:20px;
-		width:50%;
-		border: 4px solid #f9f1e1;
-		box-sizing: border-box;
+		background: #fff;
+		width:48%;
+		height:100%;
+		position:absolute;
+		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+		overflow:hidden;
+	}
+
+	.gu-interactive #productDetailHolder img{
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+		margin: auto;
+		position:absolute;
+		max-width:480px;
 	}
 
 	.gu-interactive #detailDescrip{
-		width:45%;
-		margin-left:5%;
-		float:left;
-		margin-top:24px;
+		width:44%;
+
+		float:right;
+		margin-top:44px;
 		border-top:4px solid #609984;
 		padding-top:15px;
 	}
@@ -660,41 +767,64 @@ font-family: Arial !important;
 
 	.gu-interactive .singularProductHolder{
 		padding-top:5%;
+		position:fixed;
+	}
+
+	.gu-interactive .singularBackground{
+		width:100%;
+		margin:0;
+		padding:0;
+		height:100%;
+		position:absolute;
 	}
 
 	.gu-interactive .singularContent{
-		width:80%;
-		margin: 5%;
-		padding:0 5% 5%;
+
+		width:84%;
+		max-width:700px;
+		margin: 2% auto;
+		padding:0 35px 2% 0;
 		position:relative;
 		background: #f9f1e1;
 		border-radius:3px;
-		border:4px solid rgba(0,0,0,0.1);
+		border:4px solid rgba(255,255,255,0.5);
+		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 	}
 
 @media (min-width: 900px) {
 
 	.gu-interactive .productsGridHolder li {
-		width:23.5%;
-		margin-right:2%;
+		width:23%;
+		margin-right:1%;
+		margin-left:1%;
 	}
-	.gu-interactive .productsGridHolder li:nth-child(3n + 3) {
-		margin-right:2%;
+}
+
+@media (min-width: 940px) {
+	.gu-interactive .headerImageContainer{
+		height:300px;
+		background-image: url('../assets/images/header_full.png');
+		background-position:center;
+		background-repeat: no-repeat;
 	}
-	.gu-interactive .productsGridHolder li:nth-child(4n + 4) {
-		margin-right:0;
+
+	.gu-interactive .headerImageContainer img{
+		display:none;
 	}
+}
+
+@media (min-width: 940px) and (max-width: 941px) {
+	.gu-interactive .singularProductHolder{
+		width:940px;
+	}
+}
+
 
 @media (min-width: 1120px) {
 	.gu-interactive .productsGridHolder li {
-		width:18.4%;
-		margin-right:2%;
-	}
-	.gu-interactive .productsGridHolder li:nth-child(4n + 4) {
-		margin-right:2%;
-	}
-	.gu-interactive .productsGridHolder li:nth-child(5n + 5) {
-		margin-right:0;
+		width:18%;
+		margin-right:1%;
+		margin-left:1%;
 	}
 }
 
