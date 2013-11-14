@@ -14,7 +14,7 @@
 			
 			var cfg = {
 				context : 'interactive',
-				baseUrl : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide',
+				baseUrl : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide',
 				paths : {
 					// the left side is the module ID,
 					// the right side is the path to
@@ -56,7 +56,7 @@
 					el.classList.add('gu-interactive');
 					el.setAttribute('style', 'margin: 1em -10px;');
 				
-					var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide/';
+					var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/';
 					var iframeUrl = baseUrl + 'codeobject.html' + location.search;
 
 					var styleEl = document.createElement('link');
