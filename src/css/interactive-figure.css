@@ -1,0 +1,45 @@
+.interactive{
+	margin:1em -10px;
+}
+
+@media (min-width: 480px) {
+
+	.interactive{
+		margin:1em -20px;
+	}
+}
+
+@media (min-width: 740px) {
+
+	.interactive{
+		margin:1em 0;
+	}
+}
+
+@media (min-width: 900px) {
+
+	.interactive{
+		margin:1em -20px;
+	}
+}
+
+@media (min-width: 1155px) {
+
+	.interactive{
+		margin:1em 0;
+	}
+}
+
+@media (min-width: 1300px) {
+
+	.interactive{
+		margin:1em -20px;
+	}
+}
+
+@media (min-width: 1315px) {
+
+	.interactive{
+		margin:1em 0;
+	}
+}

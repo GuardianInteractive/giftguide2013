@@ -51,17 +51,29 @@
 				// curl, i.e. next-gen
 				cfg.preloads = ['jquery'];
 				require(cfg, []).then(function() {
+
+					
+					el.classList.add('gu-interactive');
+					el.setAttribute('style', 'margin: 1em -10px;');
 				
-					var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide/codeobject.html';
-					var fullUrl = baseUrl + location.search;
+					var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide/';
+					var iframeUrl = baseUrl + 'codeobject.html' + location.search;
+
+					var styleEl = document.createElement('link');
+					styleEl.setAttribute('rel', 'stylesheet');
+					styleEl.setAttribute('type', 'text/css');
+					styleEl.setAttribute('href', baseUrl + 'css/interactive-figure.css');
+					el.appendChild(styleEl);
+
 					
 					var iframeEl = document.createElement('iframe');
-					iframeEl.setAttribute('src', fullUrl);
+					iframeEl.setAttribute('src', iframeUrl);
 					iframeEl.setAttribute('scrolling', 'no');
 					iframeEl.setAttribute('seemless', 'seemless');
 					iframeEl.setAttribute('frameborder', '0');
 					iframeEl.setAttribute('style', 'height: 2000px; width: 100%; overflow-y: hidden; border: none;');
 					el.appendChild(iframeEl);
+
 					
 				});
 			}

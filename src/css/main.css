@@ -341,7 +341,7 @@ border-radius: 2px;
 }
 
 .gu-interactive .wishListPanelTop .shareListHolder {
-	margin-top:7px;
+	margin-top:5px;
 
 }
 .gu-interactive .shareListHolder h2 {
@@ -349,10 +349,11 @@ font-family: Arial !important;
 	font-weight: normal !important;
 	font-size: 12px;
 	margin:0 10px 3px 0 !important;
-	padding:0;
+	padding:0 !important;
 	border: none !important;
 	line-height:12px !important;
 }
+
 
 .gu-interactive .shareIcon {
 	float:left;
@@ -570,6 +571,10 @@ font-family: Arial !important;
 	color:#609984;
 }
 
+.gu-interactive.r2-interactive .singularProductHolder{
+	width:940px;
+}
+
 .gu-interactive .singularProductHolder {
 	width:100%;
 	height: 100%;
@@ -684,7 +689,7 @@ font-family: Arial !important;
 	.gu-interactive .filterHolder{
 		float:right;
 		margin-right:2%;
-		width:50%;
+		width:60%;
 	}
 	.gu-interactive .styled-select {
 		margin: 0 0 13px 4%;
@@ -810,12 +815,6 @@ font-family: Arial !important;
 
 	.gu-interactive .headerImageContainer img{
 		display:none;
-	}
-}
-
-@media (min-width: 940px) and (max-width: 941px) {
-	.gu-interactive .singularProductHolder{
-		width:940px;
 	}
 }
 
