@@ -14,7 +14,7 @@
 			
 			var cfg = {
 				context : 'interactive',
-				baseUrl : '',//'', //http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide
+				baseUrl : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/dec/christmas-gift-guide',
 				paths : {
 					// the left side is the module ID,
 					// the right side is the path to
