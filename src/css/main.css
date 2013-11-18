@@ -709,7 +709,7 @@ font-family: Arial !important;
 	}*/
 
 	.gu-interactive .productGridItem p#productDescripPrice {
-	max-width: 28%;
+	max-width: 32%;
 	float:right;
 	text-align: right;
 	}
@@ -719,7 +719,7 @@ font-family: Arial !important;
 	margin-right:0;
 
 	text-overflow: ellipsis; /* will make [...] at the end */
-    width: 72%; /* change to your preferences */
+    width: 68%; /* change to your preferences */
     overflow:hidden; /* older browsers */
 	}
 
@@ -773,6 +773,7 @@ font-family: Arial !important;
 	.gu-interactive .singularProductHolder{
 		padding-top:5%;
 		position:fixed;
+		z-index: 5;
 	}
 
 	.gu-interactive .singularBackground{
