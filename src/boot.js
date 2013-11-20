@@ -54,7 +54,7 @@
 
 					
 					el.classList.add('gu-interactive');
-					el.setAttribute('style', 'margin: 1em -10px;');
+					
 				
 					var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/';
 					var iframeUrl = baseUrl + 'codeobject.html' + location.search;
