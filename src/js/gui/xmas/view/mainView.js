@@ -6,30 +6,30 @@ gui.xmas.view = gui.xmas.view || {};
 {
     gui.xmas.view.MainView = function()
     {
-		
+
 	};
 	gui.xmas.view.MainView.prototype = {
 		init: function(){
-			
+
 			var smallOrNot = '';
 			if (width < 9400) {
 				smallOrNot = 'Small';
 			}
-			
+
 			var el = gui.xmas.el;
 
 			gui.xmas.view.MainView.holder = document.createElement('div');
 			var holderDiv = gui.xmas.view.MainView.holder;
 			holderDiv.className = 'mainHolder';
 			el.appendChild(holderDiv);
-			
+
 			var bg = document.createElement('div');
 			bg.className = 'mainHolderBg';
 			height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 			jQ(bg).css('height', height);
 			holderDiv.appendChild(bg);
 			//TweenLite.fromTo(bg, 2, {css:{autoAlpha:0}}, {css:{autoAlpha:1}});
-			
+
 			var leftSideHolder = document.createElement('div');
 			leftSideHolder.className = 'leftSideHolder' + smallOrNot;
 			holderDiv.appendChild(leftSideHolder);
@@ -38,27 +38,27 @@ gui.xmas.view = gui.xmas.view || {};
 			headerImageContainer.className = 'headerImageContainer';
 			leftSideHolder.appendChild(headerImageContainer);
 
-			
+
 			var leftSideHeaderImg = document.createElement("img");
 			leftSideHeaderImg.src = gui.xmas.model.masterRootPath + "assets/images/headerImage.png";
 			leftSideHeaderImg.className = 'leftSideHeaderImage';
 			headerImageContainer.appendChild(leftSideHeaderImg);
-			
+
 			gui.xmas.view.filterPanel.init();
-			
+
 			var rightSideHolder = document.createElement('div');
 			rightSideHolder.className = 'rightSideHolder' + smallOrNot;
 			holderDiv.appendChild(rightSideHolder);
-			
+
 			gui.xmas.view.wishListBox.init();
-			
+
 			var productsPanel = document.createElement('div');
 			productsPanel.className = 'productsPanel';
 			rightSideHolder.appendChild(productsPanel);
-			
+
 			gui.xmas.view.productsGridView.init();
 			gui.xmas.view.singularProductView.init();
-			
+
 			var clearDiv = document.createElement('div');
 			clearDiv.className = 'clearBoth';
 			holderDiv.appendChild(clearDiv);
@@ -71,7 +71,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var filteringMsg = document.createElement('div');
 			filteringMsg.id = 'filteringWait';
 			document.body.appendChild(filteringMsg);
-			
+
 			//resizing shenanigans
 			//gui.xmas.view.wishListBox.carouselHolder.style.width = (rightSideWidth - 40 - jQ(gui.xmas.view.wishListBox.carouselHolder).height()) + 'px';
 
@@ -87,7 +87,7 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 			//gui.xmas.view.productsGridView.scrollUpUpdate();
 			gui.xmas.view.mainView.budgeRightSideDown();
-			
+
 		},
 
 		budgeRightSideDown: function() {
@@ -156,7 +156,7 @@ gui.xmas.view = gui.xmas.view || {};
 				break;
 			}
 		}
-		
+
 	}
 
 }());

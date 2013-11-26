@@ -3,14 +3,7 @@ gui.xmas = gui.xmas || {};
 gui.xmas.view = gui.xmas.view || {};
 var width, height;
 
-
-
-define(['jquery', 'TweenMax', 'model', 'controller', 'observer', 'initLoadView', 'mainView', 'filterPanel', 'wishListBox', 'productsGridView', 'singularProductView'],
-function(jQ) {
-	'use strict';
-
-	// globals
-
+gui.xmas.Boot = (function() {
 
 function loadcss(url) {
    var head = document.getElementsByTagName('head')[0],
@@ -45,7 +38,7 @@ function handleWindowResize() {
 	// if (gui.xmas.view.wishListBox.carouselHolder) {
 	// 	gui.xmas.view.wishListBox.carouselHolder.style.width = (rightSideWidth - 40 - jQ(gui.xmas.view.wishListBox.carouselHolder).height()) + 'px';
 	// }
-	
+
 	// var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, percentWidth = (100 / numAcross);
 	// jQ('.productsGridHolder  li').css('width', percentWidth + '%');
 	// if (gui.xmas.model.rightSideState !== 1) {
@@ -53,7 +46,6 @@ function handleWindowResize() {
 	// }
 
 	gui.xmas.view.mainView.budgeRightSideDown();
-
 }
 
 function changeToDifferentView(small) {
@@ -72,17 +64,17 @@ function changeToDifferentView(small) {
 }
 
 function setup(el, context, isNextGen) {
-	
+	console.log('in setup');
 	gui.xmas.el = el;
-	
+
 	  gui.xmas.model = new gui.xmas.Model();
         gui.xmas.controller = new gui.xmas.Controller();
         gui.xmas.observer = new gui.xmas.Observer();
-        
+
         loadcss(gui.xmas.model.masterRootPath + "css/reset.css");
 		loadcss(gui.xmas.model.masterRootPath + "css/main.css");
 		loadcss(gui.xmas.model.masterRootPath + "assets/skins/carousel/skin.css");
-        
+
 
         if (!gui.xmas.model.displaySplash) {
         	gui.xmas.view.initView = new gui.xmas.view.InitLoadView();
@@ -91,12 +83,12 @@ function setup(el, context, isNextGen) {
 			gui.xmas.view.wishListBox = new gui.xmas.view.WishListBox();
 			gui.xmas.view.productsGridView = new gui.xmas.view.ProductsGridView();
 			gui.xmas.view.singularProductView = new gui.xmas.view.SingularProductView();
-			
+
 			gui.xmas.observer.make(loaderState);
 			gui.xmas.observer.make(urlVarsState);
 			gui.xmas.observer.make(displayState);
 			gui.xmas.observer.make(filterState);
-			
+
 			loaderState.addSubscriber(gui.xmas.view.initView.somethingsHappened);
 			loaderState.addSubscriber(gui.xmas.controller.loadJSONlistener);
 			loaderState.addSubscriber(gui.xmas.controller.thumbnailLoadListener);
@@ -106,19 +98,18 @@ function setup(el, context, isNextGen) {
 			displayState.addSubscriber(gui.xmas.view.singularProductView.somethingsHappened);
 			displayState.addSubscriber(gui.xmas.view.productsGridView.somethingsHappened);
 			filterState.addSubscriber(gui.xmas.view.productsGridView.filterListener);
-			
+
 			urlVarsState.getVars();
 			loaderState.startLoadingJSON();
-			
+
 			window.onresize = function(event) {
 				handleWindowResize();
 			};
 			handleWindowResize();
         }
-}
+    }
 
-	return {
-		setup : setup
-	};
 
-});
+	return setup;
+
+}());

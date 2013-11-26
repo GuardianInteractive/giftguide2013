@@ -1,4 +1,43 @@
 	define([], function() {'use strict';
+        var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/';
+
+        function addStyleElm(el) {
+            //var baseUrl = '/';
+            var styleEl = document.createElement('link');
+            styleEl.setAttribute('rel', 'stylesheet');
+            styleEl.setAttribute('type', 'text/css');
+            styleEl.setAttribute('href', baseUrl + 'css/interactive-figure.css');
+            el.appendChild(styleEl);
+
+//            var iframeUrl = baseUrl + 'index.html' + location.search;
+//            var iframeEl = document.createElement('iframe');
+//            iframeEl.setAttribute('src', iframeUrl);
+//            iframeEl.setAttribute('scrolling', 'no');
+//            iframeEl.setAttribute('seemless', 'seemless');
+//            iframeEl.setAttribute('frameborder', '0');
+//            iframeEl.setAttribute('style', 'height: 2000px; width: 100%; overflow-y: hidden; border: none;');
+//            el.appendChild(iframeEl);
+        }
+
+        function setupPage(el) {
+            el.classList.add('gu-interactive');
+            addStyleElm(el);
+
+            var XDMSocket = new easyXDM.Socket({
+                remote: baseUrl + "/index.html",
+                container: el,
+                props: {
+                    scrolling: 'no',
+                    seemless: 'seamless',
+                    class: 'interactive',
+                    style: {width: "100%"}
+                },
+                onMessage: function(message, origin){
+                    this.container.getElementsByTagName("iframe")[0].style.height = message + "px";
+                }
+            });
+        }
+
 
 	return {
 		/**
@@ -10,20 +49,10 @@
 		 *
 		 **/
 		boot : function(el, context, config, mediator) {
-			
-			
 			var cfg = {
 				context : 'interactive',
 				baseUrl : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide',
 				paths : {
-					// the left side is the module ID,
-					// the right side is the path to
-					// the jQuery file, relative to baseUrl.
-					// Also, the path should NOT include
-					// the '.js' file extension. This example
-					// is using jQuery 1.9.0 located at
-					// js/lib/jquery-1.9.0.js, relative to
-					// the HTML page.
 					//json2 : 'js/libs/json2',
 					jquery: 'js/libs/jquery-1.8.1',
 					jcarousel : 'js/libs/jquery.jcarousel.min',
@@ -38,43 +67,19 @@
 					wishListBox : 'js/gui/xmas/view/wishListBox',
 					productsGridView : 'js/gui/xmas/view/productsGridView',
 					singularProductView : 'js/gui/xmas/view/singularProductView'
-					
 				}
 			};
 
 			if ( typeof require() === 'function') {
 				var req2 = require.config(cfg);
-				req2(['boot'], function(App) {
-					App.setup(el, context, false);
+				req2([baseUrl + 'js/libs/easyXDM.js'], function() {
+                    setupPage(el);
 				});
 			} else {
 				// curl, i.e. next-gen
 				cfg.preloads = ['jquery'];
-				require(cfg, []).then(function() {
-
-					
-					el.classList.add('gu-interactive');
-					
-				
-					var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/';
-					var iframeUrl = baseUrl + 'codeobject.html' + location.search;
-
-					var styleEl = document.createElement('link');
-					styleEl.setAttribute('rel', 'stylesheet');
-					styleEl.setAttribute('type', 'text/css');
-					styleEl.setAttribute('href', baseUrl + 'css/interactive-figure.css');
-					el.appendChild(styleEl);
-
-					
-					var iframeEl = document.createElement('iframe');
-					iframeEl.setAttribute('src', iframeUrl);
-					iframeEl.setAttribute('scrolling', 'no');
-					iframeEl.setAttribute('seemless', 'seemless');
-					iframeEl.setAttribute('frameborder', '0');
-					iframeEl.setAttribute('style', 'height: 2000px; width: 100%; overflow-y: hidden; border: none;');
-					el.appendChild(iframeEl);
-
-					
+				require(cfg, ['js!' + baseUrl + 'js/libs/easyXDM.js']).then(function() {
+                    setupPage(el);
 				});
 			}
 		}
