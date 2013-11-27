@@ -465,10 +465,11 @@ font-family: Arial !important;
 
 
 .gu-interactive .productsGridHolder  #productThumb {
-	width:80%;
+	width:70%;
 	height:auto;
 	margin: 0 auto;
 	display:block;
+	padding:15px 0;
 }
 
 .gu-interactive .productGridItem {

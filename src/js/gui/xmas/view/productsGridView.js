@@ -75,10 +75,13 @@ gui.xmas.view = gui.xmas.view || {};
 				var from = giftPrice.indexOf('From');
 				if (from > -1) {
 					giftPrice =  '&pound;' + giftPrice.slice(from + 5) + "+";
-
 					//(giftPrice.slice(0,(from + 5)))
 				}else{
 					giftPrice = '&pound;' + giftsArr[a].cost;
+				}
+				var dot = giftPrice.indexOf('.');
+				if (dot > -1 && dot >= giftPrice.length - 2) {
+					giftPrice += '0';
 				}
 				descripPrice.innerHTML = giftPrice;
 				descripAndTitleContainer.appendChild(descripPrice);
