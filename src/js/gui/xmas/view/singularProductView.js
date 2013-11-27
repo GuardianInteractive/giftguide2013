@@ -102,7 +102,8 @@ gui.xmas.view = gui.xmas.view || {};
 
 			var productPrice = document.createElement('h1');
 			productPrice.style.cssFloat = 'left';
-			productPrice.style.fontSize = '16px';
+			productPrice.style.fontSize = '14px';
+			productPrice.style.fontFamily = 'Arial';
 			productPrice.style.marginTop = '4px';
 
 			productTitleHolder.appendChild(productPrice);
