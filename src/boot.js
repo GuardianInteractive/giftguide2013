@@ -21,7 +21,7 @@
         }
 
         function setupPage(el) {
-            el.classList.add('gu-interactive');
+            el.className = el.className + ' gu-interactive';
             addStyleElm(el);
 
             var XDMSocket = new easyXDM.Socket({
@@ -30,19 +30,24 @@
                 props: {
                     scrolling: 'no',
                     seemless: 'seamless',
-                    class: 'interactive',
-                    style: {width: "100%"}
+                    style: {width: "100%", 'min-height': '700px'}
                 },
                 onMessage: function(message, origin){
                     this.container.getElementsByTagName("iframe")[0].style.height = message + "px";
                 }
             });
 
-            window.addEventListener('scroll', function() {
-                var top = (document.documentElement.scrollTop - el.offsetTop) + 60;
+            function sendScrollData() {
+                var top = (document.body.scrollTop - el.offsetTop) + 60;
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
                 XDMSocket.postMessage(top);
-            }, false);
+            }
+
+            if (!window.addEventListener) {
+                window.attachEvent("onScroll", sendScrollData);
+            } else {
+                window.addEventListener("scroll", sendScrollData, false);
+            }
         }
 
 

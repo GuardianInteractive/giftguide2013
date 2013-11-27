@@ -72,7 +72,7 @@ function setup(el, context, isNextGen) {
         gui.xmas.observer = new gui.xmas.Observer();
 
         loadcss(gui.xmas.model.masterRootPath + "css/reset.css");
-		loadcss(gui.xmas.model.masterRootPath + "css/main.css");
+		//loadcss(gui.xmas.model.masterRootPath + "css/main.css");
 		loadcss(gui.xmas.model.masterRootPath + "assets/skins/carousel/skin.css");
 
 
