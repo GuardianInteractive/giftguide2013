@@ -338,6 +338,7 @@ border-radius: 2px;
 	margin-top:1px;
 	cursor: pointer;
 	color: #4A251C;
+	margin-bottom:10px;
 }
 
 .gu-interactive .wishListPanelTop .shareListHolder {
@@ -348,7 +349,7 @@ border-radius: 2px;
 font-family: Arial !important;
 	font-weight: normal !important;
 	font-size: 12px;
-	margin:0 10px 3px 0 !important;
+	margin:0 10px 8px 0 !important;
 	padding:0 !important;
 	border: none !important;
 	line-height:12px !important;
@@ -604,7 +605,7 @@ font-family: Arial !important;
 }
 
 .gu-interactive .singularProductHolder  h1 {
-	font-family: 'TextWebEgyptian-Regular';
+	font-family: 'TextWebEgyptian-Regular', Arial;
 	font-weight:normal;
 	font-size:22px;
 	color:#4a251c;
@@ -794,7 +795,7 @@ font-family: Arial !important;
 		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 	}
 
-@media (min-width: 640px) {
+@media (min-width: 641px) {
     .gu-interactive .singularContent {
         position: absolute;
     }
