@@ -1,5 +1,6 @@
 	define([], function() {'use strict';
-        var baseUrl = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/';
+        var isProd = /gucode\.gnl|gu\.com|theguardian\.com|guardian\.co\.uk|amazonaws\.com/.test(document.location.host);
+        var baseUrl = (isProd) ? 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/' : '/';
 
         function addStyleElm(el) {
             //var baseUrl = '/';
@@ -51,7 +52,7 @@
 		boot : function(el, context, config, mediator) {
 			var cfg = {
 				context : 'interactive',
-				baseUrl : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide',
+				baseUrl : baseUrl,
 				paths : {
 					//json2 : 'js/libs/json2',
 					jquery: 'js/libs/jquery-1.8.1',

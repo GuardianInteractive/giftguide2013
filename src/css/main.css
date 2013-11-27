@@ -24,13 +24,13 @@ body{
 	font-size:22px;
 	color:#4a251c;
 	border: none !important;
-    margin-right: auto; 
-	margin-left: auto; 
+    margin-right: auto;
+	margin-left: auto;
 	margin-top: 20px;
 	width: 200px;
-	
+
 	background: #fff url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/loading.gif") no-repeat left;
-	
+
 }
 
 .gu-interactive .loadingTitle {
@@ -49,8 +49,8 @@ body{
 
 .gu-interactive .mainHolder {
 	width:100%;
-	margin-right: auto; 
-	margin-left: auto; 
+	margin-right: auto;
+	margin-left: auto;
 	position:relative;
 }
 
@@ -142,7 +142,7 @@ body{
     appearance: none;
     font-family: Arial;
     font-weight: bold;
-} 
+}
 
 
 .gu-interactive .styled-select {
@@ -240,7 +240,7 @@ border-radius: 2px;
 }
 
 .gu-interactive .moreFiltersBox h1 {
-	display: table-cell; 
+	display: table-cell;
 	vertical-align: middle;
 	font-family: 'Arial';
 	font-weight:normal;
@@ -589,6 +589,7 @@ font-family: Arial !important;
 	width:90%;
 	padding: 15% 5% 10%;
 	background: #fff;
+    position: absolute;
 }
 
 .gu-interactive .singularContent p{
@@ -640,7 +641,7 @@ font-family: Arial !important;
 .gu-interactive .singularProductRightTop {
 	margin: 20px 0 20px 0;
 	background-color: #0000ff;
-	
+
 }
 
 .gu-interactive .loadingLargeImageMsg {
@@ -721,7 +722,7 @@ font-family: Arial !important;
 	}
 
 	.gu-interactive #backToGridBtn{
-	
+
 	right:10px;
 	top:10px;
 }
@@ -782,10 +783,8 @@ font-family: Arial !important;
 	}
 
 	.gu-interactive .singularContent{
-
 		width:84%;
 		max-width:700px;
-		margin: 2% auto;
 		padding:0 35px 2% 0;
 		position:relative;
 		background: #f9f1e1;
@@ -824,5 +823,6 @@ font-family: Arial !important;
 		margin-right:1%;
 		margin-left:1%;
 	}
-}
+}}
+
 
