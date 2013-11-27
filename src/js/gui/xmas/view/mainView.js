@@ -110,10 +110,20 @@ gui.xmas.view = gui.xmas.view || {};
 
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
-				jQ(target).css('display', 'block');
+                jQ(target).css('display', 'block');
+                target.find('.singularContent').css({
+                    top: window.parent.jQ("body").scrollTop() + 'px',
+                    left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2)) + 'px'
+                });
+
 			} else {
 				var target = jQ('.singularProductHolder');
-				jQ(target).css('display', 'block');
+                jQ(target).css('display', 'block');
+                target.find('.singularContent').css({
+                    top: window.parent.jQ("body").scrollTop() + 'px',
+                    left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2 )) + 'px'
+                });
+
 			}
 			if(window.width < 640){
 				jQ('.productsGridHolder').css("display", "none")
