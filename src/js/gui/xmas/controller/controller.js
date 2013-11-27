@@ -6,19 +6,19 @@ gui.xmas = gui.xmas || {};
     gui.xmas.Controller = function()
     {
 
-		//set init vars
-		if(gui.xmas.model.isMobile.any()) {
-			gui.xmas.model.screenVersion = 'mobile';
-			//if(top === self) {
-			//if(width === 940) {
-			if (parent.frames.length > 0) {
-				//I'm in an iframe on mobile ... serve me up the splash screen image and get me outta here!
-				document.getElementsByTagName('html')[0].innerHTML = '<a href="' + window.location + '" target="_blank"><img src="assets/images/mobileSplashScreen.jpg" width="940" height="834"></a>';
-				document.body.style.margin = "0px";
-				document.body.style.padding = "0px";
-				gui.xmas.model.displaySplash = true;
-			}
-		}
+		// //set init vars
+		// if(gui.xmas.model.isMobile.any()) {
+		// 	gui.xmas.model.screenVersion = 'mobile';
+		// 	//if(top === self) {
+		// 	//if(width === 940) {
+		// 	if (parent.frames.length > 0) {
+		// 		//I'm in an iframe on mobile ... serve me up the splash screen image and get me outta here!
+		// 		document.getElementsByTagName('html')[0].innerHTML = '<a href="' + window.location + '" target="_blank"><img src="assets/images/mobileSplashScreen.jpg" width="940" height="834"></a>';
+		// 		document.body.style.margin = "0px";
+		// 		document.body.style.padding = "0px";
+		// 		gui.xmas.model.displaySplash = true;
+		// 	}
+		// }
     };
 	gui.xmas.Controller.prototype = {
 
