@@ -2,6 +2,7 @@
         var isProd = /gucode\.gnl|gu\.com|theguardian\.com|guardian\.co\.uk|amazonaws\.com/.test(document.location.host);
         var baseUrl = (isProd) ? 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/' : 'http://localhost:9090/';
 
+
         function addStyleElm(el) {
             //var baseUrl = '/';
             var styleEl = document.createElement('link');
@@ -38,7 +39,7 @@
             addStyleElm(el);
 
             var XDMSocket = new easyXDM.Socket({
-                remote: baseUrl + "/index.html",
+                remote: baseUrl + "/index.html" + document.location.search,
                 container: el,
                 props: {
                     scrolling: 'no',
