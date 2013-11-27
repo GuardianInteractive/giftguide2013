@@ -46,13 +46,33 @@
                     style: {width: "100%", 'min-height': '700px'}
                 },
                 onMessage: function(message, origin){
-                    this.container.getElementsByTagName("iframe")[0].style.height = message + "px";
+                    if (message === 'undefined') {
+                        return;
+                    }
+
+                    var data = JSON.parse(message);
+                    if (data.height) {
+                        this.container.getElementsByTagName("iframe")[0].style.height = data.height + "px";
+                    }
+
+                    if (data.scrollTop && !data.target) {
+                        el.scrollIntoView();
+                    }
+
+                    if (data.scrollTop && data.target) {
+                        var scrollTop = parseInt(data.target + el.offsetTop, 10);
+                        setTimeout(function() {
+                            window.scroll(0, scrollTop);
+                        }, 10);
+                    }
+
                 }
             });
 
             function sendScrollData() {
                 var top = (getScrollTop() - el.offsetTop) + 60;
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
+                top += (el.getBoundingClientRect().bottom > 0) ? el.getBoundingClientRect().top : 0;
                 XDMSocket.postMessage(top);
             }
 

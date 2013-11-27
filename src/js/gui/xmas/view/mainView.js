@@ -127,8 +127,9 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 			if(window.width < 640){
 				jQ('.productsGridHolder').css("display", "none")
-				jQ(window).scrollTop(200);
-				console.log(jQ(window).scrollTop());
+//				jQ(window).scrollTop(200);
+//				console.log(jQ(window).scrollTop());
+                XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: false })));
 			}
 		},
 
@@ -145,10 +146,11 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 
 			if(window.width < 640){
-				console.log('doe mobiele dingen');
+				//console.log('doe mobiele dingen');
 				jQ('.productsGridHolder').css("display", "block");
-				console.log(currentProductInGrid.offset().top);
-				jQ(window).scrollTop(currentProductInGrid.offset().top);
+				//console.log(currentProductInGrid.offset().top);
+                XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: currentProductInGrid.offset().top })));
+				//jQ(window).scrollTop(currentProductInGrid.offset().top);
 			}
 		},
 
