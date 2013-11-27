@@ -107,10 +107,18 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		goToSingularView: function() {
+            var target = jQ('.singularProductHolder');
+            var pageHeight = document.body.clientHeight;
+
 
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
+                console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
+                if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
+                    scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
+                }
+
                 target.find('.singularContent').css({
                     top: scrollPos + 'px',
                     left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2)) + 'px'
@@ -119,11 +127,15 @@ gui.xmas.view = gui.xmas.view || {};
 			} else {
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
+                console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
+                if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
+                    scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
+                }
+
                 target.find('.singularContent').css({
                     top: scrollPos + 'px',
                     left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2 )) + 'px'
                 });
-
 			}
 			if(window.width < 640){
 				jQ('.productsGridHolder').css("display", "none")

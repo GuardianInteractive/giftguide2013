@@ -73,7 +73,7 @@
             function sendScrollData() {
                 var top = (getScrollTop() - el.offsetTop) + 60;
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
-                top += (el.getBoundingClientRect().bottom > 0) ? el.getBoundingClientRect().top : 0;
+                //top += (el.getBoundingClientRect().bottom > 0) ? el.getBoundingClientRect().top : 0;
                 XDMSocket.postMessage(top);
             }
 
@@ -82,6 +82,8 @@
             } else {
                 window.addEventListener("scroll", sendScrollData, false);
             }
+
+            sendScrollData();
         }
 
 
