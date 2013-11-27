@@ -138,7 +138,7 @@ body{
    padding:9px 10px;
     color: #fff;
     -webkit-appearance: none;
-    width:135%;
+    /*width:135%;*/
     appearance: none;
     font-family: Arial;
     font-weight: bold;
