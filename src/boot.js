@@ -1,6 +1,6 @@
 	define([], function() {'use strict';
         var isProd = /gucode\.gnl|gu\.com|theguardian\.com|guardian\.co\.uk|amazonaws\.com/.test(document.location.host);
-        var baseUrl = (isProd) ? 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/' : '/';
+        var baseUrl = (isProd) ? 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/' : 'http://localhost:9090/';
 
         function addStyleElm(el) {
             //var baseUrl = '/';
@@ -37,6 +37,12 @@
                     this.container.getElementsByTagName("iframe")[0].style.height = message + "px";
                 }
             });
+
+            window.addEventListener('scroll', function() {
+                var top = (document.documentElement.scrollTop - el.offsetTop) + 60;
+                top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
+                XDMSocket.postMessage(top);
+            }, false);
         }
 
 

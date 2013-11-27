@@ -55,6 +55,7 @@
 
     <script>
         var socket;
+        var scrollPos = 0;
         $(document).ready(function()
         {
             jQ = $;
@@ -64,7 +65,8 @@
             socket = new easyXDM.Socket({
                 onReady:  function(){
                     socket.postMessage(document.body.clientHeight)
-                }
+                },
+                onMessage: updateScrollData
             });
 
             var frameHeight = document.body.clientHeight;
@@ -77,6 +79,10 @@
             }
 
             requestAnimationFrame(checkFrameHeight);
+
+            function updateScrollData(msg, origin) {
+                scrollPos = msg;
+            }
         });
     </script>
 
@@ -84,6 +90,7 @@
     <title>Interactive Project Template</title>
 </head>
 <body>
+
 
 <div class='gu-interactive' id="container">
     <!-- content goes here -->

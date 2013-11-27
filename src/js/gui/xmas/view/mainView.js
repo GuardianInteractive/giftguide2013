@@ -112,7 +112,7 @@ gui.xmas.view = gui.xmas.view || {};
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
                 target.find('.singularContent').css({
-                    top: window.parent.jQ("body").scrollTop() + 'px',
+                    top: scrollPos + 'px',
                     left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2)) + 'px'
                 });
 
@@ -120,7 +120,7 @@ gui.xmas.view = gui.xmas.view || {};
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
                 target.find('.singularContent').css({
-                    top: window.parent.jQ("body").scrollTop() + 'px',
+                    top: scrollPos + 'px',
                     left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2 )) + 'px'
                 });
 
