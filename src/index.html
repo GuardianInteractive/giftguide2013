@@ -54,7 +54,7 @@
     <!-- JS_END -->
 
     <script>
-        var socket;
+        var XDSocket;
         var scrollPos = 0;
 
 
@@ -76,10 +76,10 @@
             gui.xmas.Boot(document.getElementById('container'));
 
 
-            socket = new easyXDM.Socket({
+            XDSocket = new easyXDM.Socket({
                 remote: '',
                 onReady:  function(){
-                    socket.postMessage(document.body.clientHeight)
+                    XDSocket.postMessage(JSON.stringify({ height: document.body.clientHeight }));
                 },
                 onMessage: updateScrollData
             });
@@ -88,7 +88,7 @@
             function checkFrameHeight() {
                 if (frameHeight !== document.body.clientHeight) {
                     frameHeight = document.body.clientHeight;
-                    socket.postMessage(frameHeight);
+                    XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ height: frameHeight })));
                 }
                 requestAnimFrame(checkFrameHeight);
             }

@@ -2,6 +2,7 @@
         var isProd = /gucode\.gnl|gu\.com|theguardian\.com|guardian\.co\.uk|amazonaws\.com/.test(document.location.host);
         var baseUrl = (isProd) ? 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/' : 'http://localhost:9090/';
 
+
         function addStyleElm(el) {
             //var baseUrl = '/';
             var styleEl = document.createElement('link');
@@ -38,7 +39,7 @@
             addStyleElm(el);
 
             var XDMSocket = new easyXDM.Socket({
-                remote: baseUrl + "/index.html",
+                remote: baseUrl + "/index.html" + document.location.search,
                 container: el,
                 props: {
                     scrolling: 'no',
@@ -46,13 +47,33 @@
                     style: {width: "100%", 'min-height': '700px'}
                 },
                 onMessage: function(message, origin){
-                    this.container.getElementsByTagName("iframe")[0].style.height = message + "px";
+                    if (message === 'undefined') {
+                        return;
+                    }
+
+                    var data = JSON.parse(message);
+                    if (data.height) {
+                        this.container.getElementsByTagName("iframe")[0].style.height = data.height + "px";
+                    }
+
+                    if (data.scrollTop && !data.target) {
+                        el.scrollIntoView();
+                    }
+
+                    if (data.scrollTop && data.target) {
+                        var scrollTop = parseInt(data.target + el.offsetTop, 10);
+                        setTimeout(function() {
+                            window.scroll(0, scrollTop);
+                        }, 10);
+                    }
+
                 }
             });
 
             function sendScrollData() {
                 var top = (getScrollTop() - el.offsetTop) + 60;
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
+                //top += (el.getBoundingClientRect().bottom > 0) ? el.getBoundingClientRect().top : 0;
                 XDMSocket.postMessage(top);
             }
 
@@ -61,6 +82,8 @@
             } else {
                 window.addEventListener("scroll", sendScrollData, false);
             }
+
+            sendScrollData();
         }
 
 
