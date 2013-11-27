@@ -342,7 +342,7 @@ border-radius: 2px;
 
 .gu-interactive .wishListPanelTop .shareListHolder {
 	margin-top:13px;
-
+	margin-bottom:10px;
 }
 .gu-interactive .shareListHolder h2 {
 font-family: Arial !important;
@@ -361,6 +361,7 @@ font-family: Arial !important;
 	width:55px;
 	height:20px;
 	cursor: pointer;
+	margin-top:-5px;
 }
 
 .gu-interactive .copyURLTextArea {
