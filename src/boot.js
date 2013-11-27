@@ -20,6 +20,19 @@
 //            el.appendChild(iframeEl);
         }
 
+        function getScrollTop(){
+            if(typeof pageYOffset!= 'undefined'){
+                //most browsers except IE before #9
+                return pageYOffset;
+            }
+            else{
+                var B= document.body; //IE 'quirks'
+                var D= document.documentElement; //IE with doctype
+                D= (D.clientHeight)? D: B;
+                return D.scrollTop;
+            }
+        }
+
         function setupPage(el) {
             el.className = el.className + ' gu-interactive';
             addStyleElm(el);
@@ -38,7 +51,7 @@
             });
 
             function sendScrollData() {
-                var top = (document.body.scrollTop - el.offsetTop) + 60;
+                var top = (getScrollTop() - el.offsetTop) + 60;
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
                 XDMSocket.postMessage(top);
             }
