@@ -39,7 +39,9 @@
             });
 
             window.addEventListener('scroll', function() {
-                XDMSocket.postMessage(document.documentElement.scrollTop);
+                var top = (document.documentElement.scrollTop - el.offsetTop) + 60;
+                top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
+                XDMSocket.postMessage(top);
             }, false);
         }
 
