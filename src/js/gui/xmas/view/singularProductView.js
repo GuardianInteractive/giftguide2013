@@ -6,7 +6,7 @@ gui.xmas.view = gui.xmas.view || {};
 {
     gui.xmas.view.SingularProductView = function()
     {
-		
+
 	};
 	gui.xmas.view.SingularProductView.prototype = {
 		init: function(){
@@ -16,10 +16,10 @@ gui.xmas.view = gui.xmas.view || {};
 			prevArrow.style.position = 'absolute';
 			prevArrow.style.top = '100px';
 			prevArrow.style.zIndex = '2';
-			mainImgHolder.appendChild(prevArrow);	
+			mainImgHolder.appendChild(prevArrow);
 			*/
 			var productsHolder = jQ('.productsPanel');
-			
+
 			var singularProductHolder = document.createElement('div');
 			singularProductHolder.className = 'singularProductHolder';
 			productsHolder.append(singularProductHolder);
@@ -31,23 +31,23 @@ gui.xmas.view = gui.xmas.view || {};
 			var singularContent = document.createElement('div');
 			singularContent.className = 'singularContent';
 			singularProductHolder.appendChild(singularContent);
-			
+
 			var topLeftDiv = document.createElement('div');
 			topLeftDiv.className = 'singularProductLeftTop';
 			singularContent.appendChild(topLeftDiv);
 
 			//click listener on the back to list div
-			
+
 
 			var backToGridIcon = document.createElement('img');
 			backToGridIcon.id = "backToGridBtn";
 			backToGridIcon.style.position = "absolute";
 			backToGridIcon.src = gui.xmas.model.masterRootPath + 'assets/images/closeSingularViewBtn.png';
 
-			
+
 			topLeftDiv.appendChild(backToGridIcon);
 
-			
+
 
 			jQ(backToGridIcon).click(function() {
 				jQ(gui.xmas.view.singularProductView.addToWishListIcon).off();
@@ -63,7 +63,7 @@ gui.xmas.view = gui.xmas.view || {};
 
 				//itemDiv.appendChild(addToWishListIcon);
 
-			
+
 
 
 
@@ -79,7 +79,7 @@ gui.xmas.view = gui.xmas.view || {};
 			loadingTitle.innerHTML = 'Loading...';
 			loadingTitle.style.textAlign = 'center';
 			loadingImageMsg.appendChild(loadingTitle);
-			
+
 			var mainImg = document.createElement('img');
 			mainImg.style.width = '100%';
 			mainImg.style.height = 'auto';
@@ -120,11 +120,11 @@ gui.xmas.view = gui.xmas.view || {};
 
 			var addToWishListIcon = document.createElement('div');
 				addToWishListIcon.id = 'addToWishList';
-				
+
 				addToWishListIcon.innerHTML = "+ <strong>Add</strong>";
 				productTitleHolder.appendChild(addToWishListIcon);
 				gui.xmas.view.singularProductView.addToWishListIcon = addToWishListIcon;
-			
+
 			var shareListHolder = document.createElement('div');
 			shareListHolder.className = 'shareListHolder';
 			productTitleHolder.appendChild(shareListHolder);
@@ -132,7 +132,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var clearShareList = document.createElement('div');
 			clearShareList.className = 'clearBoth';
 			productTitleHolder.appendChild(clearShareList);
-			
+
 			var shareListTitle = document.createElement('h2');
 			shareListTitle.innerHTML = 'Share my list';
 			shareListTitle.style.cssFloat = 'left';
@@ -142,7 +142,7 @@ gui.xmas.view = gui.xmas.view || {};
 			clearShareTitle.className = "clearBoth";
 			shareListHolder.appendChild(clearShareTitle);
 
-			
+
 			var fbIcon = document.createElement('img');
 			fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/fbIcon.png";
 			fbIcon.className = 'shareIcon';
@@ -151,7 +151,7 @@ gui.xmas.view = gui.xmas.view || {};
 				var urlStr = gui.xmas.model.getWishListIdString();
 				window.open('https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath, '_blank');
 			});
-			
+
 			var twitterIcon = document.createElement('img');
 			twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/tweetIcon.png";
 			twitterIcon.className = 'shareIcon';
@@ -159,7 +159,7 @@ gui.xmas.view = gui.xmas.view || {};
 			jQ(twitterIcon).click(function(event) {
 			//jQ(shareListHolder).click(function(event) {
 				//to get included somewhere
-				var shareOnTwitter = {		
+				var shareOnTwitter = {
 					twitterUrl: 'https://twitter.com/intent/tweet',
 					params: {
 						url: gui.xmas.model.shareRootPath,
@@ -179,7 +179,7 @@ gui.xmas.view = gui.xmas.view || {};
 				//to get called on click
 				shareOnTwitter.constructUrl();
 			});
-			
+
 			var pinIcon = document.createElement('img');
 			pinIcon.src = gui.xmas.model.masterRootPath + "assets/images/pinItIcon.png";
 			pinIcon.className = 'shareIcon';
@@ -210,8 +210,8 @@ gui.xmas.view = gui.xmas.view || {};
 				giftPrice += '0';
 			}
 			var imgSrc = gui.xmas.model.imageRootPath + giftObj.bigPicUrl;
-			
-			
+
+
 			gui.xmas.view.singularProductView.productPrice.innerHTML = giftPrice;
 			gui.xmas.view.singularProductView.productDescription.innerHTML = giftObj.description + '<br/><br/><a href=\'' + giftObj.buyUrl + '\' target=\'_blank\' class=\'linkToShop\'>' + "Go to shop »" + '</a>';
 			gui.xmas.view.singularProductView.mainImg.style.visibility = 'hidden';
@@ -223,23 +223,23 @@ gui.xmas.view = gui.xmas.view || {};
 				gui.xmas.view.singularProductView.loadingImageMsg.style.display = 'none';
 				gui.xmas.view.singularProductView.mainImg.style.display = 'block';
 				TweenLite.to(gui.xmas.view.singularProductView.mainImg, 2, {css:{autoAlpha:1}});
-				
+
 			}
-			
-    
+
+
 			gui.xmas.view.singularProductView.mainImg.onload = function() {
 				TweenLite.killTweensOf(gui.xmas.view.singularProductView.mainImg);
 				gui.xmas.view.singularProductView.loadingImageMsg.style.display = 'none';
 				gui.xmas.view.singularProductView.mainImg.style.display = 'block';
 				TweenLite.to(gui.xmas.view.singularProductView.mainImg, 2, {css:{autoAlpha:1}});
-				
+
 			};
 			gui.xmas.view.singularProductView.mainImg.onerror = function() {
 				gui.xmas.view.singularProductView.loadingImageMsg.style.display = 'none';
 				gui.xmas.view.singularProductView.mainImg.style.display = 'block';
-				gui.xmas.view.singularProductView.mainImg.src = gui.xmas.model.masterRootPath + 'assets/images/imageNotFoundBigPic.gif';				
+				gui.xmas.view.singularProductView.mainImg.src = gui.xmas.model.masterRootPath + 'assets/images/imageNotFoundBigPic.gif';
 				TweenLite.to(gui.xmas.view.singularProductView.mainImg, 2, {css:{autoAlpha:1}});
-				
+
 			}
 
 			if (!gui.xmas.model.wishListItemsLookup[giftObj.name]) {
@@ -248,10 +248,10 @@ gui.xmas.view = gui.xmas.view || {};
 			else {
 				gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '<strong>Added to wishlist</strong>';
 			}
-			
+
 			jQ(gui.xmas.view.singularProductView.addToWishListIcon).click(function(event) {
 				console.log(giftObj.name, gui.xmas.model.wishListItemsLookup[giftObj.name]);
-				if (!gui.xmas.model.wishListItemsLookup[giftObj.name]) {	
+				if (!gui.xmas.model.wishListItemsLookup[giftObj.name]) {
 					gui.xmas.model.addItemToWishList(giftObj.name);
 					gui.xmas.view.wishListBox.addItemToList(giftObj.name);
 					gui.xmas.view.productsGridView.giftAddedToWishList(giftObj.name);
@@ -264,11 +264,11 @@ gui.xmas.view = gui.xmas.view || {};
 					gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '+ <strong>Add to wishlist</strong>';
 				}
 			});
-			
+
 		},
 
-		
-		
+
+
 		setWishListText: function(giftName) {
 			if (gui.xmas.view.singularProductView.addToWishListIcon) {
 				if (giftName === gui.xmas.view.singularProductView.currentGiftName) {
@@ -277,7 +277,7 @@ gui.xmas.view = gui.xmas.view || {};
 					}
 					else {
 						gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '+ <strong>Add to wishlist</strong>';
-					}	
+					}
 				}
 			}
 		},
@@ -290,7 +290,7 @@ gui.xmas.view = gui.xmas.view || {};
 				break;
 			}
 		},
-		
+
 		buildPinterestURL: function() {
 			var jQcurrentImage   = jQ(gui.xmas.view.singularProductView.mainImg);
 	  var bookmarkletURL  = 'http://pinterest.com/pin/create/button/',
@@ -301,20 +301,20 @@ gui.xmas.view = gui.xmas.view || {};
 	      description     = jQcurrentImage.attr('alt') + "",
 	      descriptionenc  = encodeURIComponent(description),
 	      pinterestURL    = bookmarkletURL + '?media=' + mediaURLenc + '&url=' + shareURLenc + '&description=' + descriptionenc;
-	      
+
 	  return pinterestURL;
 		},
-		
+
 		handlePinterestClick: function() {
-			
-			  
-	
+
+
+
 	  var pinterestURL = gui.xmas.view.singularProductView.buildPinterestURL();
 	  window.open(pinterestURL,'_blank','width=200,height=350,toolbar=0,location=0,directories=0,status=0');
 	  return false;
 
 		}
-		
+
 	}
 
 }());
