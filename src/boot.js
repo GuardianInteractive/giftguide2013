@@ -2,6 +2,7 @@
         var isDev = /localhost|gnm\d+\.int\.gnl/.test(document.location.host);
         var baseUrl = (isDev) ? 'http://localhost:9090/' : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/';
 
+        var $ = $ || jQ;
 
         function addStyleElm(el) {
             //var baseUrl = '/';
@@ -71,7 +72,7 @@
             });
 
             function sendScrollData() {
-                var top = (getScrollTop() - el.offsetTop) + 60;
+                var top = (getScrollTop() - $(el).offset().top) + 60;
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
                 //top += (el.getBoundingClientRect().bottom > 0) ? el.getBoundingClientRect().top : 0;
                 XDMSocket.postMessage(top);
