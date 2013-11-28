@@ -10,7 +10,7 @@
 
 .jcarousel-skin-tango .jcarousel-container-horizontal {
     width: 100%;
-    padding: 2px 40px;
+    padding: 2px 0;
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
