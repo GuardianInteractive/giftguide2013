@@ -83,7 +83,6 @@
                     top -= $(el).offset().top;
                 }
 
-                console.log('top', top);
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
                 //top += (el.getBoundingClientRect().bottom > 0) ? el.getBoundingClientRect().top : 0;
                 XDMSocket.postMessage(top);
