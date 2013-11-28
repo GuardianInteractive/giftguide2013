@@ -37,7 +37,7 @@ var layer = 1;
 		this.screenVersion = 'iFrame';
 		this.masterRootPath = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/';
 		this.imageRootPath = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/assets/gift-images/';
-		this.shareRootPath = 'http://www.guardian.co.uk/p/3kmqf';
+		this.shareRootPath = 'http://gu.com/p/3kmqf';
 		this.isIe = (function(){
 			var undef,
 			v = 3,
