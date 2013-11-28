@@ -287,6 +287,7 @@ border-radius: 2px;
 	-moz-transition: max-height 0.5s;
 	transition: max-height 0.5s;
 	padding-left:3%;
+	width:97%;
 }
 
 .gu-interactive .wishListPanelTop  h1 {
@@ -679,6 +680,12 @@ font-family: Arial !important;
 .gu-interactive .clearBoth {
 	clear:both;
 }
+
+@media (max-width:320px) {
+	.gu-interactive .wishListPanelTop {
+		max-width:320px !important;
+	}
+
 
 @media (min-width: 641px) {
 	.gu-interactive .productsGridHolder{
