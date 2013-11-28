@@ -48,11 +48,13 @@ gui.xmas.view = gui.xmas.view || {};
 				itemDiv.style.padding = 0;
 				gridLi.appendChild(itemDiv);
 
+
 				var itemImg = new Image();
 				itemImg.id = 'productThumb';
 				itemImg.src = gui.xmas.model.masterRootPath + "assets/images/productWaiting.gif";
 				itemDiv.appendChild(itemImg);
 				gui.xmas.model.imgTagLookup[giftsArr[a].name] = {'img':itemImg, 'thumbPath':gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl, 'isLoaded':false};
+
 				//gui.xmas.model.registerProductImageForLoading({'img':itemImg, 'imgSrc':giftsArr[a].thumbnailPicUrl});
 
 				var descripHolder = document.createElement('div');
@@ -91,7 +93,7 @@ gui.xmas.view = gui.xmas.view || {};
 				descripAndTitleContainer.appendChild(clearDescrip);
 
 				var addToWishListIcon = document.createElement('div');
-				addToWishListIcon.id = 'addToWishList';
+				addToWishListIcon.id = 'addToWishList';	
 				addToWishListIcon.innerHTML = "+ <strong>Add</strong>";
 				addToWishListIcon.style.visibility = 'hidden';
 				itemDiv.appendChild(addToWishListIcon);
@@ -104,10 +106,11 @@ gui.xmas.view = gui.xmas.view || {};
 					var b, urlVarListLength = gui.xmas.model.urlVarsArr.length;
 					for (b = 0; b < urlVarListLength; b++) {
 						if (giftsArr[a].id == gui.xmas.model.urlVarsArr[b]) {
+							console.log(giftsArr[a]);
 							gridLi.style.display = 'inline-block';
 							gui.xmas.model.addItemToWishList(giftsArr[a].name);
 							gui.xmas.view.wishListBox.addItemToList(giftsArr[a].name);
-							jQ(gridLi).find('#addToWishList').attr("src",gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
+							// jQ(gridLi).find('#addToWishList').attr("src",gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
 
 							TweenLite.to(jQ(gridLi).find('#addToWishList'), 0, {css:{autoAlpha:1}});
 							break;
@@ -202,6 +205,7 @@ gui.xmas.view = gui.xmas.view || {};
                 }
 				///////////////////////////////////////////////////////
 			}
+
 			gui.xmas.view.productsGridView.scrollUpUpdate();
 
 		},
@@ -236,12 +240,15 @@ gui.xmas.view = gui.xmas.view || {};
 				}
 			}
 			*/
+			console.log("2");
 			var itemsLength = jQ('#productsList li').filter(function(index) {
 				if (jQ(this).css("display") === "none") {
+					console.log("0");
 					return 0;
 				}
 				else {
 					filteredLis[filteredLis.length] = jQ(this);
+					console.log("1");
 					return 1;
 				}
 			});
@@ -253,9 +260,12 @@ gui.xmas.view = gui.xmas.view || {};
 					//load all the images here based on the id strings
 					//giftData.thumbnailPicUrl
 					var imgObj = gui.xmas.model.imgTagLookup[liItem.attr('id')];
+
 					if (!imgObj.isLoaded) {
 						imgObj.img.src = imgObj.thumbPath;
 						imgObj.isLoaded = true;
+						// console.log(imgObj.img.src);
+						// console.log(jQ('#productsList li'))
 					}
 				}
 			}

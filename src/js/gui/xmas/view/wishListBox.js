@@ -179,10 +179,13 @@ gui.xmas.view = gui.xmas.view || {};
 			gui.xmas.view.wishListBox.carousel.scroll(listLength, true);
 
 			var newItem = gui.xmas.view.wishListBox.carousel.get(listLength);
+			var removeItemIcn = newItem.find('.removeFromListBtn');
+
 			newItem.attr('id', 'wishlistItem' + id);
-			newItem.css('cursor', 'pointer');
-			jQ(newItem).click(function(event) {
-				var productId = this.id.split('wishlistItem').join('');
+			removeItemIcn.css('cursor', 'pointer');
+			jQ(removeItemIcn).click(function(event) {
+				console.log(newItem);
+				var productId = newItem[0].id.split('wishlistItem').join('');
 				gui.xmas.model.removeItemFromWishList(productId);
 				gui.xmas.view.wishListBox.removeItemFromList(productId);
 				gui.xmas.view.productsGridView.giftRemovedFromWishList(productId);
