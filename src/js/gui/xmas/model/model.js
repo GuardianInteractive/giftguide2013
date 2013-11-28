@@ -8,7 +8,7 @@ var layer = 1;
 
 (function()
 {
-	
+
     gui.xmas.Model = function()
     {
 		//set init vars
@@ -37,7 +37,7 @@ var layer = 1;
 		this.screenVersion = 'iFrame';
 		this.masterRootPath = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/';
 		this.imageRootPath = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/gift-images/';
-		this.shareRootPath = 'http://www.guardian.co.uk/p/3c3nx';
+		this.shareRootPath = 'http://www.guardian.co.uk/p/3kmqf';
 		this.isIe = (function(){
 			var undef,
 			v = 3,
@@ -53,7 +53,7 @@ var layer = 1;
 		}());
     };
 	gui.xmas.Model.prototype = {
-	
+
         getURLVars: function(){
 			var urlParams = {};
 			var match,
@@ -77,7 +77,7 @@ var layer = 1;
 				return false;
 			}
 		},
-		
+
 		parseJSONData: function(data){
 			gui.xmas.model.jsonData = data;
 
@@ -107,11 +107,11 @@ var layer = 1;
 		getAllProducts: function() {
 			return gui.xmas.model.jsonData.gifts;
 		},
-		
+
 		getCategoryGroupsAndTitles: function() {
 			return gui.xmas.model.jsonData.filterContainers;
 		},
-		
+
 		urlVarslistener: function(event) {
 			switch(event)
 			{
@@ -119,25 +119,25 @@ var layer = 1;
 					gui.xmas.model.getURLVars();
 				break;
 			}
-		}, 
-		
+		},
+
 		registerProductImageForLoading: function(data) {
 			//data.img
 			data.imgSrc = gui.xmas.model.imageRootPath + data.imgSrc;
 			gui.xmas.model.thumbNailLoadArr = gui.xmas.model.thumbNailLoadArr || [];
 			gui.xmas.model.thumbNailLoadArr[gui.xmas.model.thumbNailLoadArr.length] = data;
-		}, 
-		
+		},
+
 		addItemToWishList: function(productId) {
 			gui.xmas.model.wishListItemsLookup[productId] = true;
 			gui.xmas.model.wishListItemsArr[gui.xmas.model.wishListItemsArr.length] = productId;
-			
+
 		},
 
 		getWishListLength: function() {
 			return gui.xmas.model.wishListItemsArr.length;
 		},
-		
+
 		removeItemFromWishList: function(productId) {
 			gui.xmas.model.wishListItemsLookup[productId] = false;
 			var a, arrLength = gui.xmas.model.wishListItemsArr.length;
@@ -148,7 +148,7 @@ var layer = 1;
 				}
 			}
 		},
-		
+
 		checkItemIsInWishList: function(productId) {
 			return gui.xmas.model.wishListItemsLookup[productId];
 		},
@@ -169,7 +169,7 @@ var layer = 1;
 				return '';
 			}
 		},
-		
+
 		addFilter: function(filterName) {
 			if (gui.xmas.model.initFilterAll) {
 				gui.xmas.model.activeFiltersArr.length = 0;
@@ -193,7 +193,7 @@ var layer = 1;
 			filterState.addFilter();
 			gui.xmas.model.initFilterAll = true;
 		},
-		
+
 		removeFilter: function(filterName) {
 			var a, arrLength = gui.xmas.model.activeFiltersArr.length;
 			for (a = 0; a < arrLength; a++) {
@@ -205,7 +205,7 @@ var layer = 1;
 			}
 			filterState.removeFilter();
 		},
-		
+
 		clearAllFilters: function() {
 			gui.xmas.model.filterLookup = {};
 			gui.xmas.model.activeFiltersArr.length = 0;
@@ -215,19 +215,19 @@ var layer = 1;
 		isFilterActive: function(filterName) {
 			return gui.xmas.model.filterLookup[filterName];
 		},
-		
+
 		removeSelectiveFilters: function(listIndex) {
-			
+
 			var categoriesAndFilters = gui.xmas.model.getCategoryGroupsAndTitles();
-    		
+
     		var b, filtersToRemove = categoriesAndFilters[listIndex].filters;
-    		
+
     		for (b = 0; b < filtersToRemove.length; b++) {
-    				
+
 				gui.xmas.model.removeFilter(filtersToRemove[b]);
 			}
-			
-		
+
+
 		},
 
 		getActiveProductsList: function() {
@@ -371,7 +371,7 @@ var displayState = {
 	backToListClicked:function () {
 		gui.xmas.model.rightSideState = 1;
 		var content = gui.xmas.stateStrings.BACK_TO_LIST_CLICKED;
-		this.publish(content);	
+		this.publish(content);
 	}
 };
 
