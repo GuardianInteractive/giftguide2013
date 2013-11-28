@@ -116,7 +116,12 @@ gui.xmas.view = gui.xmas.view || {};
 			shareListHolder.appendChild(fbIcon);
 			jQ(fbIcon).click(function(event) {
 				var urlStr = gui.xmas.model.getWishListIdString();
-				window.open('https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath, '_blank');
+                var fbURL = 'https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath;
+                if (urlStr) {
+                    fbURL += encodeURIComponent( urlStr );
+                }
+
+				window.open(fbURL, '_blank');
 			});
 
 			var twitterIcon = document.createElement('img');
