@@ -190,7 +190,8 @@ gui.xmas.view = gui.xmas.view || {};
 					rightSideWidth = jQ('.rightSideHolderSmall').width();
 				}
 				var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, liSize = rightSideWidth / numAcross, urlVarListLength = gui.xmas.model.urlVarsArr.length;
-				gui.xmas.view.productsGridView.maxNumOnPage = Math.floor((jQ('.filterPanelLeftSide').height() - jQ('#productsList').position().top) / liSize) * numAcross;
+				//gui.xmas.view.productsGridView.maxNumOnPage = Math.floor((jQ('.filterPanelLeftSide').height() - jQ('#productsList').position().top) / liSize) * numAcross;
+                gui.xmas.view.productsGridView.maxNumOnPage = 40;
 				var numOnPage = gui.xmas.view.productsGridView.maxNumOnPage;
 				if (urlVarListLength < numOnPage) {
 					numOnPage = urlVarListLength;
