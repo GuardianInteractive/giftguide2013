@@ -93,7 +93,7 @@ gui.xmas.view = gui.xmas.view || {};
 				descripAndTitleContainer.appendChild(clearDescrip);
 
 				var addToWishListIcon = document.createElement('div');
-				addToWishListIcon.id = 'addToWishList';	
+				addToWishListIcon.id = 'addToWishList';
 				addToWishListIcon.innerHTML = "+ <strong>Add</strong>";
 				addToWishListIcon.style.visibility = 'hidden';
 				itemDiv.appendChild(addToWishListIcon);
@@ -106,7 +106,6 @@ gui.xmas.view = gui.xmas.view || {};
 					var b, urlVarListLength = gui.xmas.model.urlVarsArr.length;
 					for (b = 0; b < urlVarListLength; b++) {
 						if (giftsArr[a].id == gui.xmas.model.urlVarsArr[b]) {
-							console.log(giftsArr[a]);
 							gridLi.style.display = 'inline-block';
 							gui.xmas.model.addItemToWishList(giftsArr[a].name);
 							gui.xmas.view.wishListBox.addItemToList(giftsArr[a].name);
@@ -240,15 +239,12 @@ gui.xmas.view = gui.xmas.view || {};
 				}
 			}
 			*/
-			console.log("2");
 			var itemsLength = jQ('#productsList li').filter(function(index) {
 				if (jQ(this).css("display") === "none") {
-					console.log("0");
 					return 0;
 				}
 				else {
 					filteredLis[filteredLis.length] = jQ(this);
-					console.log("1");
 					return 1;
 				}
 			});
@@ -403,7 +399,6 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 			gui.xmas.view.productsGridView.scrollUpUpdate();
 			var topOflist = jQ('.productsPanel').offset().top;
-			console.log(topOflist);
 			jQ(window).scrollTop(topOflist);
 		},
 
