@@ -684,6 +684,7 @@ font-family: Arial !important;
 @media (max-width:320px) {
 	.gu-interactive .wishListPanelTop {
 		max-width:320px !important;
+		padding-left: 0 !important;
 	}
 
 }
