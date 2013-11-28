@@ -9,10 +9,9 @@
 	}
 }
 
-@media (min-width: 740px) {
-
+@media (min-width: 595px) {
 	.interactive{
-		margin:1em -20px !important;
+		margin:1em 0 !important;
 	}
 }
 
