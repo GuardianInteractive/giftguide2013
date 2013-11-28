@@ -3,6 +3,8 @@
         var baseUrl = (isDev) ? 'http://localhost:9090/' : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/';
 
 
+
+
         function addStyleElm(el) {
             //var baseUrl = '/';
             var styleEl = document.createElement('link');
@@ -71,7 +73,17 @@
             });
 
             function sendScrollData() {
-                var top = (getScrollTop() - el.offsetTop) + 60;
+                //var headerHeight = (jQ) ? jQ(el).offset().top : $(el).offset().top;
+                var top = getScrollTop() + 60;
+                if (typeof jQ !== 'undefined') {
+                    top -= jQ(el).offset().top;
+                }
+
+                if (typeof $ !== 'undefined' && typeof $().offset === 'function') {
+                    top -= $(el).offset().top;
+                }
+
+                console.log('top', top);
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
                 //top += (el.getBoundingClientRect().bottom > 0) ? el.getBoundingClientRect().top : 0;
                 XDMSocket.postMessage(top);
