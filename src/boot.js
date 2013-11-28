@@ -1,6 +1,6 @@
 	define([], function() {'use strict';
-        var isProd = /gucode\.gnl|gu\.com|theguardian\.com|guardian\.co\.uk|amazonaws\.com/.test(document.location.host);
-        var baseUrl = (isProd) ? 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/' : 'http://localhost:9090/';
+        var isDev = /localhost|gnm\d+\.int\.gnl/.test(document.location.host);
+        var baseUrl = (isDev) ? 'http://localhost:9090/' : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/';
 
 
         function addStyleElm(el) {
