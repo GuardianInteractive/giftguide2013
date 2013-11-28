@@ -116,7 +116,7 @@ gui.xmas.view = gui.xmas.view || {};
                 jQ(target).css('display', 'block');
                 console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
                 if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
-                    scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
+                    //scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
                 }
 
                 target.find('.singularContent').css({
@@ -129,7 +129,7 @@ gui.xmas.view = gui.xmas.view || {};
                 jQ(target).css('display', 'block');
                 console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
                 if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
-                    scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
+                    //scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
                 }
 
                 target.find('.singularContent').css({
