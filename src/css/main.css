@@ -765,7 +765,7 @@ font-family: Arial !important;
 
 	.gu-interactive #detailDescrip{
 		width:44%;
-
+		min-height:240px;
 		float:right;
 		margin-top:44px;
 		border-top:4px solid #609984;

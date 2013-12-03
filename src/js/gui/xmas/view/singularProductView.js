@@ -81,7 +81,7 @@ gui.xmas.view = gui.xmas.view || {};
 			loadingImageMsg.appendChild(loadingTitle);
 
 			var mainImg = document.createElement('img');
-			mainImg.style.width = '100%';
+			mainImg.style.width = '80%';
 			mainImg.style.height = 'auto';
 			productDetailHolder.appendChild(mainImg);
 			gui.xmas.view.singularProductView.mainImg = mainImg;
