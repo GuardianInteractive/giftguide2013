@@ -62,6 +62,10 @@
                         el.scrollIntoView();
                     }
 
+                    if (data.gotolink) {
+                        window.location = data.gotolink;
+                    }
+
                     if (data.scrollTop && data.target) {
                         var scrollTop = parseInt(data.target + el.offsetTop, 10);
                         setTimeout(function() {

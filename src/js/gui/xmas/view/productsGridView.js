@@ -2,6 +2,17 @@ var gui = gui || {};
 gui.xmas = gui.xmas || {};
 gui.xmas.view = gui.xmas.view || {};
 
+
+function gotoLink(event) {
+	event.preventDefault();
+
+	XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({
+		gotolink: 'http://www.theguardian.com/tv-and-radio/ng-interactive/2013/dec/christmas-tv-guide-2013'
+	})));
+
+	return false;
+}
+
 (function()
 {
     gui.xmas.view.ProductsGridView = function()
@@ -172,7 +183,8 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 
 			if (gui.xmas.model.urlVarsExist) {
-				title.innerHTML = 'Showing <span id="filteredGiftsNum">' + gui.xmas.model.urlVarsArr.length + '</span> wishlist gift ideas';
+				var selectionText = (gui.xmas.model.urlVarsArr.length === 1) ? 'selection' : 'selections';
+				title.innerHTML = 'Showing <span id="filteredGiftsNum">' + gui.xmas.model.urlVarsArr.length + '</span> ' + selectionText + '. <a href="http://www.theguardian.com/tv-and-radio/ng-interactive/2013/dec/christmas-tv-guide-2013" onclick="gotoLink(event)" style="text-decoration:underline">Go make your own list!</a>';
 			}
 
 			loaderState.startLoadingThumbs();
