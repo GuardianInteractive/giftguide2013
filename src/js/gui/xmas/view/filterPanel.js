@@ -4,6 +4,52 @@ gui.xmas.view = gui.xmas.view || {};
 
 var filterLookup = {};
 
+//setInterval(function(){alert("Hello")},3000);
+
+
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+
+
+
+var $headerEl = $('.leftSideHolderSmall');
+var yPosition =0;
+var xPosition =0;
+
+function render(){
+	if($headerEl.length === 0) {
+		$headerEl = $('.leftSideHolderSmall');
+		return;
+	}
+
+	if(xPosition == 102){
+		xPosition = 0;
+	}
+	if(yPosition == 118){
+		yPosition = 0;
+	}
+	yPosition += 0.5;
+	xPosition += 0.5;
+	$headerEl.css('background-position', xPosition + 'px ' + yPosition + 'px');
+}
+
+function animloop(){
+  requestAnimFrame(animloop);
+  render();
+};
+
+animloop();
+
+
+
+
 (function()
 {
     gui.xmas.view.FilterPanel = function()
@@ -40,7 +86,7 @@ var filterLookup = {};
 			var showWishlist = document.createElement('div');
 				categoryHolder.appendChild(showWishlist);
 				showWishlist.className = 'show-wishlist wishlist-hide';
-				jQ(showWishlist).html("My wishlist<span id='wishlist-button-counter'>0</span>");
+				jQ(showWishlist).html("My TV guide<span id='wishlist-button-counter'>0</span>");
 				
 				jQ(showWishlist).click(function() {
 					
@@ -277,6 +323,8 @@ var filterLookup = {};
 			var clearDiv = document.createElement('div');
 			clearDiv.className = 'clearBoth';
 			leftsideFilterPanel.appendChild(clearDiv);
+
+
 			
 		}
 		

@@ -16,6 +16,7 @@ body{
 .gu-interactive {
 	overflow: hidden;
 	-webkit-font-smoothing: antialiased;
+	background:#F9F4EA;
 }
 
 .gu-interactive .assetsLoading {
@@ -79,15 +80,16 @@ body{
 	margin-bottom:1%;
 	float:left;
 	position:relative;
-	background: #ffc202;
-	-webkit-box-shadow: 0px 2px 0px rgba(211, 153, 51, 1);
-	-moz-box-shadow:    0px 2px 0px rgba(211, 153, 51, 1);
-	box-shadow:         0px 2px 0px rgba(211, 153, 51, 1);
+	height:auto;
+	background: url(../assets/images/snowTile.gif);
+	-webkit-box-shadow: 0px 2px 0px #2C576C;
+	-moz-box-shadow:    0px 2px 0px #2C576C;
+	box-shadow:         0px 2px 0px #2C576C;
 }
 
 .headerImageContainer{
 	background-image: none;
-	height:auto;
+	height:235px;
 }
 
 .headerImageContainer img{
@@ -95,17 +97,18 @@ body{
 }
 
 .gu-interactive .leftSideHeaderImage {
-	width:100%;
-	height:auto;
-	max-width: 940px;
-	margin: 0 auto;
-	display:block;
+	text-align:center;
+	color:#fff;
+	font-size:40px;
+	padding-top:80px;
+	font-family:'TextWebEgyptian-Regular';
+	text-shadow: 0 1px 1px rgba(0,0,0,0.5);
 }
 
 .gu-interactive .filterPanelLeftSide {
 	margin-left:1%;
 	width:98%;
-	background: #ffc202;
+
 	min-height:20px;
 	margin-top:20px;
 }
@@ -138,7 +141,7 @@ body{
    padding:9px 10px;
     color: #fff;
     -webkit-appearance: none;
-    width:135%;
+    width:142%;
     appearance: none;
     font-family: Arial;
     font-weight: bold;
@@ -157,7 +160,7 @@ body{
     -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
 border-radius: 2px;
-   background: url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/filter-arrow.png") no-repeat 96% #62594f;
+   background: url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/filter-arrow.png") no-repeat 96% #81BBD8;
    text-align: left;
 }
 
@@ -168,11 +171,11 @@ border-radius: 2px;
 	font-size: 12px;
    border: none;
    height: 23px;
-    color: #fff;
+    color: #2A5469;
     -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
 border-radius: 2px;
-	background: #a64557;
+	background: #fff;
 	cursor: pointer;
 	margin: 0 2% 10px;
 	vertical-align: middle;
@@ -311,13 +314,16 @@ border-radius: 2px;
 	margin:10px 3% 20px 0;
 }
 .gu-interactive .removeFromListBtn{
-	background: #a64557;
-	color: #fff;
+	background: #fff;
+	color: #000;
 	font-weight: bold;
 	font-family: Arial;
-	padding:1px 5px 2px;
+	padding:4px 4px 6px 5px;
 	position: absolute;
 	right: 5px;
+	top:5px;
+	line-height:5px;
+	font-size:10px;
 }
 
 .gu-interactive .copyURLHolder {
@@ -434,7 +440,7 @@ font-family: Arial !important;
 }
 
 .gu-interactive .productsGridHolder span {
-	color:#609984;
+	color:#2C576C;
 	margin: 0 3px 0 3px;
 }
 
@@ -446,7 +452,7 @@ font-family: Arial !important;
 
 .gu-interactive .productsGridHolder a:hover {
 	text-decoration:none;
-	color:#609984;
+	color:#2C576C;
 	margin: 0 3px 0 3px;
 }
 .gu-interactive .productsGridHolder ul  {
@@ -454,43 +460,39 @@ font-family: Arial !important;
 	width:100%;
 	padding:0;
 	text-align: center;
-
+	
 }
 
 .gu-interactive .productsGridHolder li {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	border:6px solid rgb(241, 224, 179);
 	display: inline-block;
 	width: 48%;
+	margin:0 1% 10px;
 	cursor:pointer;
 	overflow: hidden;
-	margin-bottom:10px;
-	margin-left:1%;
-	margin-right:1%;
 }
 
 
 .gu-interactive .productsGridHolder  #productThumb {
-	width:70%;
+	width:100%;
 	height:auto;
 	margin: 0 auto;
 	display:block;
-	padding:15px 0;
+	margin-bottom:-62px;
 }
 
 .gu-interactive .productGridItem {
 	width:100%;
 	height:113%;
-	background-color:#fff;
+	background-color:#2C576C;
 	overflow:hidden;
 }
 .gu-interactive .productsGridHolder  #productTitle {
-	margin-left: 10px;
-	margin-right: 10px;
-	height:28px;
-	border-top: 1px solid rgb(243, 225, 194);
-	padding-top:10px;
-	padding-bottom:10px;
+	height:auto;
+	padding:10px 2% 8px;
+	width:96%;
+	background: rgba(44, 87, 108, 0.9);
+	display:inline-block;
 }
 
 .gu-interactive #detailDescrip .linkToShop {
@@ -514,7 +516,7 @@ font-family: Arial !important;
 
 .gu-interactive #addToWishList {
 	font-family: 'Arial';
-	background: #a64557;
+	background: #2A5469;
 	padding: 8px 10px 7px;
 	font-size:12px;
 	color: #fff;
@@ -530,12 +532,15 @@ font-family: Arial !important;
 	font-family: 'TextWebEgyptian-Regular', Arial;
 	font-weight:normal;
 	font-size:14px;
-	color:#609984;
+	color:#fff;
 	text-align:left;
 	-webkit-font-smoothing: antialiased;
 }
 .gu-interactive .productGridItem p#productDescripPrice {
-	display: inline
+	display: inline;
+	font-size:11px;
+	font-family:Arial;
+	margin-top:2px;
 	}
 .gu-interactive .productGridItem p#productName {
 	margin-right:5px;
@@ -544,6 +549,7 @@ font-family: Arial !important;
     text-align:center;
     white-space: nowrap; /* paragraph to one line */
     overflow:hidden; /* older browsers */
+    font-size:14px;
 	}
 
 .gu-interactive .paginationHolderTop {
@@ -571,18 +577,18 @@ font-family: Arial !important;
 
 
 .gu-interactive #filteredGiftsNum {
-	color:#609984;
+	color:#2C576C;
 }
 
 .gu-interactive #wishListNum {
-	color:#609984;
+	color:#2C576C;
 }
 
 
 .gu-interactive .singularProductHolder {
 	width:100%;
 	height: 100%;
-	background-color:rgba(160, 95, 25, 0.37);
+	background-color:rgba(249, 245, 234, 0.37);
 	top:0;
 	position:relative;
 	display:none;
@@ -594,7 +600,7 @@ font-family: Arial !important;
 
 .gu-interactive .singularContent{
 	width:90%;
-	padding: 15% 5% 10%;
+	padding: 70px 5% 10%;
 	background: #fff;
 }
 
@@ -613,6 +619,7 @@ font-family: Arial !important;
 	font-weight:normal;
 	font-size:22px;
 	color:#4a251c;
+	line-height:1.5em;
 }
 
 .gu-interactive .singularProductHolder p {
@@ -625,7 +632,7 @@ font-family: Arial !important;
 
 .gu-interactive .singularProductHolder a {
 	text-decoration: none;
-	color:#609984;
+	color:#2C576C;
 }
 
 .gu-interactive .singularProductHolder a:hover {
@@ -687,8 +694,24 @@ font-family: Arial !important;
 		padding-left: 0 !important;
 	}
 
+	.jcarousel-list, .jcarousel-list-horizontal,.jcarousel-container, .jcarousel-container-horizontal, .gu-interactive .wishListPanelTop{
+		max-width:320px !important;
+
+	}
+
+	.gu-interactive{
+		max-width:320px !important;
+	}
+
 }
 @media (min-width: 641px) {
+	.gu-interactive .leftSideHeaderImage {
+
+	padding-top:120px;
+
+}
+
+
 	.gu-interactive .productsGridHolder{
 		margin-top:0;
 
@@ -708,7 +731,7 @@ font-family: Arial !important;
 		float:right;
 	}
 	.gu-interactive .productsGridHolder li {
-		width:31%;
+		width:48%;
 		margin-right:1%;
 		margin-left:1%;
 	}
@@ -720,17 +743,16 @@ font-family: Arial !important;
 	}*/
 
 	.gu-interactive .productGridItem p#productDescripPrice {
-	max-width: 32%;
-	float:right;
+	
 	text-align: right;
 	}
 .gu-interactive .productGridItem p#productName {
-	text-align: left;
-	float:left;
+	text-align: center;
+	font-size:16px;
 	margin-right:0;
 
-	text-overflow: ellipsis; /* will make [...] at the end */
-    width: 68%; /* change to your preferences */
+	text-overflow: ellipsis;  will make [...] at the end 
+    width: 90%; /* change to your preferences */
     overflow:hidden; /* older browsers */
 	}
 
@@ -740,15 +762,14 @@ font-family: Arial !important;
 	top:10px;
 }
 	.gu-interactive .productGridItem #productTitle{
-		padding: 15px 0;
+		padding: 15px 2%;
 		height:auto;
 	}
 
 	.gu-interactive #productDetailHolder{
 		background: #fff;
 		width:48%;
-		height:100%;
-		position:absolute;
+		float:left;
 		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 		overflow:hidden;
 	}
@@ -759,16 +780,15 @@ font-family: Arial !important;
 		bottom:0;
 		left:0;
 		margin: auto;
-		position:absolute;
 		max-width:480px;
 	}
 
 	.gu-interactive #detailDescrip{
-		width:44%;
+		width:47%;
 		min-height:240px;
 		float:right;
 		margin-top:44px;
-		border-top:4px solid #609984;
+		border-top:4px solid #2C576C;
 		padding-top:15px;
 	}
 
@@ -797,8 +817,8 @@ font-family: Arial !important;
 
 	.gu-interactive .singularContent{
 		width:84%;
-		max-width:700px;
-		padding:0 35px 2% 0;
+		max-width:800px;
+		padding:0 35px 0 0;
 		position:relative;
 		background: #f9f1e1;
 		border-radius:3px;
@@ -815,30 +835,17 @@ font-family: Arial !important;
 @media (min-width: 900px) {
 
 	.gu-interactive .productsGridHolder li {
-		width:23%;
+		width:31%;
 		margin-right:1%;
 		margin-left:1%;
 	}
 }
 
-@media (min-width: 940px) {
-
-	.gu-interactive .headerImageContainer{
-		height:300px;
-		background-image: url('../assets/images/header_full.png');
-		background-position:center;
-		background-repeat: no-repeat;
-	}
-
-	.gu-interactive .headerImageContainer img{
-		display:none;
-	}
-}
 
 
 @media (min-width: 1120px) {
 	.gu-interactive .productsGridHolder li {
-		width:18%;
+		width:23%;
 		margin-right:1%;
 		margin-left:1%;
 	}

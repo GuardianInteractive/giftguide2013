@@ -1,6 +1,6 @@
 	define([], function() {'use strict';
         var isDev = /localhost|gnm\d+\.int\.gnl/.test(document.location.host);
-        var baseUrl = (isDev) ? 'http://localhost:9090/' : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/';
+        var baseUrl = (isDev) ? 'http://localhost:9090/' : 'http://interactive.guim.co.uk/next-gen/tv-and-radio/ng-interactive/2013/dec/christmas-tv-guide-2013/';
 
 
 

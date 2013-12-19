@@ -20,7 +20,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var rightSideHolder = jQ('.leftSideHolder' + smallOrNot);
 
 			var wishListBox = document.createElement('div');
-			wishListBox.className = 'wishListPanelTop';
+			wishListBox.className = 'wishListPanelTop'; 
 			rightSideHolder.append(wishListBox);
 
 			var titleHolder = document.createElement('div');
@@ -29,7 +29,7 @@ gui.xmas.view = gui.xmas.view || {};
 			wishListBox.appendChild(titleHolder);
 
 			var title = document.createElement('h1');
-			title.innerHTML = 'My wishlist: <span id="wishListNum">0</span> items';
+			title.innerHTML = 'My TV guide: <span id="wishListNum">0</span> movies';
 			title.style.width = '100%';
 			gui.xmas.view.wishListBox.containsText = title;
 			titleHolder.appendChild(title);
@@ -136,15 +136,15 @@ gui.xmas.view = gui.xmas.view || {};
 					params: {
 						url: gui.xmas.model.shareRootPath,
 						related: 'guardian',
-						text: 'Check out this Christmas gift guide I found on @guardian'
+						text: 'Make your own personalised Christmas TV viewing list @guardian ' + gui.xmas.model.shareRootPath
 					},
 					constructUrl: function(params) {
-					window.open(this.twitterUrl + '?' + [ 'url=' + encodeURIComponent( this.params.url ), 'text=' + this.params.text, 'related=' + this.params.related ].join( '&' ));
+					window.open(this.twitterUrl + '?' + [ 'text=' + this.params.text, 'related=' + this.params.related ].join( '&' ));
 					}
 				}
 				var urlStr = gui.xmas.model.getWishListIdString();
 				if (urlStr.length > 0) {
-					shareOnTwitter.params.text = 'Check out this Christmas wish list I made on @guardian'
+					shareOnTwitter.params.text = "Here's my list of Christmas TV. "+ shareOnTwitter.params.url + urlStr + " What's on yours? " ;
 					shareOnTwitter.params.url += urlStr;
 				}
 
@@ -163,10 +163,11 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		constructCarouselImage: function(item) {
-			return '<div style=\'border-left: 1px solid #dfdfdf; position: relative\'>' + '<img src="' + item.url + '" width="65" height="65" alt="' + item.url + '" style=\'position: absolute\' />' + '<div class=\'removeFromListBtn\'>-</div>' + '</div>';
+			return '<div style=\'border-left: 1px solid #dfdfdf; position: relative\'>' + '<img src="' + item.url + '" width="65" height="97" alt="' + item.url + '" style=\'position: absolute\' />' + '<div class=\'removeFromListBtn\'>x</div>' + '</div>';
 		},
 
 		addItemToList: function(id) {
+
 			var listLength = gui.xmas.model.getWishListLength();
 			var s = (listLength == 1) ? '' : 's';
 			gui.xmas.view.wishListBox.containsText.innerHTML = 'My wishlist: <span id="wishListNum">' + listLength + '</span> item' + s;
@@ -174,12 +175,12 @@ gui.xmas.view = gui.xmas.view || {};
 			jQ("#wishlist-button-counter").html(listLength);
 
 
-			gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[id].thumbnailPicUrl
+			gui.xmas.model.giftLookup[id].bigPicUrl
 
 
 			gui.xmas.view.wishListBox.wishListIndexLookup[id] = listLength;
 
-			gui.xmas.view.wishListBox.carousel.add(listLength, gui.xmas.view.wishListBox.constructCarouselImage({url: gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[id].thumbnailPicUrl, title: gui.xmas.model.giftLookup[id].name}));
+			gui.xmas.view.wishListBox.carousel.add(listLength, gui.xmas.view.wishListBox.constructCarouselImage({url: gui.xmas.model.giftLookup[id].bigPicUrl, title: gui.xmas.model.giftLookup[id].name}));
 			gui.xmas.view.wishListBox.carousel.size(listLength);
 			gui.xmas.view.wishListBox.carousel.scroll(listLength, true);
 
@@ -189,7 +190,7 @@ gui.xmas.view = gui.xmas.view || {};
 			newItem.attr('id', 'wishlistItem' + id);
 			removeItemIcn.css('cursor', 'pointer');
 			jQ(removeItemIcn).click(function(event) {
-				console.log(newItem);
+				
 				var productId = newItem[0].id.split('wishlistItem').join('');
 				gui.xmas.model.removeItemFromWishList(productId);
 				gui.xmas.view.wishListBox.removeItemFromList(productId);
@@ -210,7 +211,7 @@ gui.xmas.view = gui.xmas.view || {};
 			gui.xmas.view.wishListBox.carousel.reset();
 			var a;
 			for (a = 0; a < listLength; a++) {
-				gui.xmas.view.wishListBox.carousel.add(a + 1, gui.xmas.view.wishListBox.constructCarouselImage({url: gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].thumbnailPicUrl, title: gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].name}));
+				gui.xmas.view.wishListBox.carousel.add(a + 1, gui.xmas.view.wishListBox.constructCarouselImage({url: gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].bigPicUrl, title: gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].name}));
 				gui.xmas.view.wishListBox.carousel.size(a + 1);
 				//
 				var newItem = gui.xmas.view.wishListBox.carousel.get(a + 1);

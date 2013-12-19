@@ -81,8 +81,7 @@ gui.xmas.view = gui.xmas.view || {};
 			loadingImageMsg.appendChild(loadingTitle);
 
 			var mainImg = document.createElement('img');
-			mainImg.style.width = '80%';
-			mainImg.style.height = 'auto';
+			mainImg.style.width = '100%';
 			productDetailHolder.appendChild(mainImg);
 			gui.xmas.view.singularProductView.mainImg = mainImg;
 
@@ -100,11 +99,16 @@ gui.xmas.view = gui.xmas.view || {};
 			productTitleHolder.appendChild(productTitle);
 			gui.xmas.view.singularProductView.productTitle = productTitle;
 
+			var clearProductTitle = document.createElement('div');
+			clearProductTitle.className = 'clearBoth';
+			productTitleHolder.appendChild(clearProductTitle);
+
 			var productPrice = document.createElement('h1');
 			productPrice.style.cssFloat = 'left';
 			productPrice.style.fontSize = '14px';
 			productPrice.style.fontFamily = 'Arial';
-			productPrice.style.marginTop = '4px';
+			productPrice.style.fontWeight = 'bold';
+			productPrice.style.marginBottom = '4px';
 
 			productTitleHolder.appendChild(productPrice);
 			gui.xmas.view.singularProductView.productPrice = productPrice;
@@ -121,7 +125,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var addToWishListIcon = document.createElement('div');
 				addToWishListIcon.id = 'addToWishList';
 
-				addToWishListIcon.innerHTML = "+ <strong>Add</strong>";
+				addToWishListIcon.innerHTML = "+ <strong>Add to TV Guide</strong>";
 				productTitleHolder.appendChild(addToWishListIcon);
 				gui.xmas.view.singularProductView.addToWishListIcon = addToWishListIcon;
 
@@ -134,7 +138,7 @@ gui.xmas.view = gui.xmas.view || {};
 			productTitleHolder.appendChild(clearShareList);
 
 			var shareListTitle = document.createElement('h2');
-			shareListTitle.innerHTML = 'Share my list';
+			shareListTitle.innerHTML = 'Pin this show';
 			shareListTitle.style.cssFloat = 'left';
 			shareListHolder.appendChild(shareListTitle);
 
@@ -143,42 +147,42 @@ gui.xmas.view = gui.xmas.view || {};
 			shareListHolder.appendChild(clearShareTitle);
 
 
-			var fbIcon = document.createElement('img');
-			fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/fbIcon.png";
-			fbIcon.className = 'shareIcon';
-			shareListHolder.appendChild(fbIcon);
-			jQ(fbIcon).click(function(event) {
-				var urlStr = gui.xmas.model.getWishListIdString();
-				window.open('https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath, '_blank');
-			});
+			// var fbIcon = document.createElement('img');
+			// fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/fbIcon.png";
+			// fbIcon.className = 'shareIcon';
+			// shareListHolder.appendChild(fbIcon);
+			// jQ(fbIcon).click(function(event) {
+			// 	var urlStr = gui.xmas.model.getWishListIdString();
+			// 	window.open('https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath, '_blank');
+			// });
 
-			var twitterIcon = document.createElement('img');
-			twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/tweetIcon.png";
-			twitterIcon.className = 'shareIcon';
-			shareListHolder.appendChild(twitterIcon);
-			jQ(twitterIcon).click(function(event) {
-			//jQ(shareListHolder).click(function(event) {
-				//to get included somewhere
-				var shareOnTwitter = {
-					twitterUrl: 'https://twitter.com/intent/tweet',
-					params: {
-						url: gui.xmas.model.shareRootPath,
-						related: 'guardian',
-						text: 'Check out this Christmas gift guide I found on @guardian'
-					},
-					constructUrl: function(params) {
-					window.open(this.twitterUrl + '?' + [ 'url=' + encodeURIComponent( this.params.url ), 'text=' + this.params.text, 'related=' + this.params.related ].join( '&' ));
-					}
-				}
-				var urlStr = gui.xmas.model.getWishListIdString();
-				if (urlStr.length > 0) {
-					shareOnTwitter.params.text = 'Check out this Christmas wish list I made on @guardian'
-					shareOnTwitter.params.url += urlStr;
-				}
+			// var twitterIcon = document.createElement('img');
+			// twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/tweetIcon.png";
+			// twitterIcon.className = 'shareIcon';
+			// shareListHolder.appendChild(twitterIcon);
+			// jQ(twitterIcon).click(function(event) {
+			// //jQ(shareListHolder).click(function(event) {
+			// 	//to get included somewhere
+			// 	var shareOnTwitter = {
+			// 		twitterUrl: 'https://twitter.com/intent/tweet',
+			// 		params: {
+			// 			url: gui.xmas.model.shareRootPath,
+			// 			related: 'guardian',
+			// 			text: 'Check out this Christmas TV guide I found on @guardian'
+			// 		},
+			// 		constructUrl: function(params) {
+			// 		window.open(this.twitterUrl + '?' + [ 'url=' + encodeURIComponent( this.params.url ), 'text=' + this.params.text, 'related=' + this.params.related ].join( '&' ));
+			// 		}
+			// 	}
+			// 	var urlStr = gui.xmas.model.getWishListIdString();
+			// 	if (urlStr.length > 0) {
+			// 		shareOnTwitter.params.text = 'Check out this Christmas wish list I made on @guardian'
+			// 		shareOnTwitter.params.url += urlStr;
+			// 	}
 
-				//to get called on click
-				shareOnTwitter.constructUrl();
-			});
+			// 	//to get called on click
+			// 	shareOnTwitter.constructUrl();
+			// });
 
 			var pinIcon = document.createElement('img');
 			pinIcon.src = gui.xmas.model.masterRootPath + "assets/images/pinItIcon.png";
@@ -194,30 +198,43 @@ gui.xmas.view = gui.xmas.view || {};
 
 		updateProductInfo: function(giftObj) {
 
+
+			
 			gui.xmas.view.singularProductView.currentGiftName = giftObj.name;
 
 			gui.xmas.view.singularProductView.productTitle.innerHTML = giftObj.name;
-			var giftPrice = giftObj.cost;
-			var from = giftPrice.indexOf('From');
-			if (from > -1) {
-				giftPrice = (giftPrice.slice(0,(from + 5))) + '&pound;' + giftPrice.slice(from + 5);
+			var giftPrice = giftObj.dateOfBroadcast;
+			
+			// var imgSrc = gui.xmas.model.imageRootPath + giftObj.bigPicUrl;
+			var imgSrc = giftObj.bigPicUrl;
+
+			var broadcastTimeRaw = giftObj.time.split(',');
+			var broadcastTimeMinutes;
+			if(broadcastTimeRaw[1] == "0"){
+				broadcastTimeMinutes = "00";
+			}else if(broadcastTimeRaw[1] == "5"){
+				broadcastTimeMinutes = "50";
+			}else{
+				broadcastTimeMinutes = broadcastTimeRaw[1];
 			}
-			else {
-				giftPrice = '&pound;' + giftPrice;
-			}
-			var dot = giftPrice.indexOf('.');
-			if (dot > -1 && dot >= giftPrice.length - 2) {
-				giftPrice += '0';
-			}
-			var imgSrc = gui.xmas.model.imageRootPath + giftObj.bigPicUrl;
+			var broadcastTime = " - " + broadcastTimeRaw[0]+ ":" + broadcastTimeMinutes;
 
 
-			gui.xmas.view.singularProductView.productPrice.innerHTML = giftPrice;
-			gui.xmas.view.singularProductView.productDescription.innerHTML = giftObj.description + '<br/><br/><a href=\'' + giftObj.buyUrl + '\' target=\'_blank\' class=\'linkToShop\'>' + "Go to shop »" + '</a>';
+
+
+			gui.xmas.view.singularProductView.productPrice.innerHTML = giftPrice + broadcastTime + " on " + giftObj.channel;
+			var onDemandCopy;
+			if(giftObj.onDemandLink != ""){
+				onDemandCopy = '<br/><br/><a href=\'' + giftObj.onDemandLink + '\' target=\'_blank\' class=\'linkToShop\'>' + "Go to On Demand page »" + '</a>'
+			}else{
+				onDemandCopy = '';
+			}
+			gui.xmas.view.singularProductView.productDescription.innerHTML = giftObj.description + onDemandCopy;
+			
 			gui.xmas.view.singularProductView.mainImg.style.visibility = 'hidden';
 			gui.xmas.view.singularProductView.mainImg.style.display = 'none';
 			gui.xmas.view.singularProductView.loadingImageMsg.style.display = 'block';
-			gui.xmas.view.singularProductView.mainImg.src = gui.xmas.model.imageRootPath + giftObj.bigPicUrl;
+			gui.xmas.view.singularProductView.mainImg.src = giftObj.bigPicUrl;
 			gui.xmas.view.singularProductView.mainImg.alt = giftObj.name + " - " + giftObj.description;
 			if (gui.xmas.view.singularProductView.mainImg.complete || gui.xmas.view.singularProductView.mainImg.readyState == "complete" || gui.xmas.view.singularProductView.mainImg.readyState == 4) {
 				gui.xmas.view.singularProductView.loadingImageMsg.style.display = 'none';
@@ -243,25 +260,25 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 
 			if (!gui.xmas.model.wishListItemsLookup[giftObj.name]) {
-				gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '+ <strong>Add to wishlist</strong>';
+				gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '+ <strong>Add to TV guide</strong>';
 			}
 			else {
-				gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '<strong>Added to wishlist</strong>';
+				gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '<strong>Added to TV guide</strong>';
 			}
 
 			jQ(gui.xmas.view.singularProductView.addToWishListIcon).click(function(event) {
-				console.log(giftObj.name, gui.xmas.model.wishListItemsLookup[giftObj.name]);
+				
 				if (!gui.xmas.model.wishListItemsLookup[giftObj.name]) {
 					gui.xmas.model.addItemToWishList(giftObj.name);
 					gui.xmas.view.wishListBox.addItemToList(giftObj.name);
 					gui.xmas.view.productsGridView.giftAddedToWishList(giftObj.name);
-					gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '<strong>Added to wishlist</strong>';
+					gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '<strong>Added to TV guide</strong>';
 				}
 				else {
 					gui.xmas.model.removeItemFromWishList(giftObj.name);
 					gui.xmas.view.wishListBox.removeItemFromList(giftObj.name);
 					gui.xmas.view.productsGridView.giftRemovedFromWishList(giftObj.name);
-					gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '+ <strong>Add to wishlist</strong>';
+					gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '+ <strong>Add to TV guide</strong>';
 				}
 			});
 
@@ -273,10 +290,10 @@ gui.xmas.view = gui.xmas.view || {};
 			if (gui.xmas.view.singularProductView.addToWishListIcon) {
 				if (giftName === gui.xmas.view.singularProductView.currentGiftName) {
 					if (!giftName) {
-						gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '<strong>Added to wishlist</strong>';
+						gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '<strong>Added to TV guide</strong>';
 					}
 					else {
-						gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '+ <strong>Add to wishlist</strong>';
+						gui.xmas.view.singularProductView.addToWishListIcon.innerHTML = '+ <strong>Add to TV guide</strong>';
 					}
 				}
 			}

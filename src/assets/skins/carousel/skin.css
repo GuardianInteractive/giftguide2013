@@ -26,7 +26,7 @@
 
 .jcarousel-skin-tango .jcarousel-clip-horizontal {
     width:  100%;
-    height: 65px;
+    height: 98px;
 }
 
 .jcarousel-skin-tango .jcarousel-clip-vertical {
@@ -36,7 +36,11 @@
 
 .jcarousel-skin-tango .jcarousel-item {
     width: 65px;
-    height: 65px;
+    height: 98px;
+}
+
+.jcarousel-skin-tango .jcarousel-item:nth-child(1){
+    margin-left:50px;
 }
 
 .jcarousel-skin-tango .jcarousel-item-horizontal {

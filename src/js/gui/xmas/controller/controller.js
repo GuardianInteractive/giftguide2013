@@ -32,7 +32,7 @@ gui.xmas = gui.xmas || {};
 			{
 				case gui.xmas.stateStrings.START_LOADING_JSON:
 					
-					gui.xmas.view.initView.changeLoadingText(" Loading gifts");
+					gui.xmas.view.initView.changeLoadingText(" Loading movies");
 					
 					jQ.ajax({
 						dataType: 'jsonp',

@@ -39,8 +39,8 @@ gui.xmas.view = gui.xmas.view || {};
 			leftSideHolder.appendChild(headerImageContainer);
 
 
-			var leftSideHeaderImg = document.createElement("img");
-			leftSideHeaderImg.src = gui.xmas.model.masterRootPath + "assets/images/headerImage.png";
+			var leftSideHeaderImg = document.createElement("h2");
+			leftSideHeaderImg.innerHTML = "The Guardian Christmas TV Guide 2013"
 			leftSideHeaderImg.className = 'leftSideHeaderImage';
 			headerImageContainer.appendChild(leftSideHeaderImg);
 
@@ -114,7 +114,7 @@ gui.xmas.view = gui.xmas.view || {};
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
-                console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
+                // console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
                 if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
                     //scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
                 }
@@ -127,7 +127,7 @@ gui.xmas.view = gui.xmas.view || {};
 			} else {
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
-                console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
+                // console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
                 if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
                     //scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
                 }

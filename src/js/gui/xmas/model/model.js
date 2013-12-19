@@ -35,9 +35,11 @@ var layer = 1;
 		this.pricefilterLookup = {};
 		this.displaySplash = false;
 		this.screenVersion = 'iFrame';
-		this.masterRootPath = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/';
-		this.imageRootPath = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/assets/gift-images/';
-		this.shareRootPath = 'http://gu.com/p/3kmqf';
+		this.masterRootPath = 'http://interactive.guim.co.uk/next-gen/tv-and-radio/ng-interactive/2013/dec/christmas-tv-guide-2013/';
+		// this.masterRootPath = 'http://10.124.72.108/~dlouter/code/giftguide2013/src/';
+		// this.imageRootPath = 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/assets/gift-images/';
+		this.imageRootPath = '';
+		this.shareRootPath = 'http://gu.com/p/3ybxe';
 		this.isIe = (function(){
 			var undef,
 			v = 3,
@@ -81,7 +83,7 @@ var layer = 1;
 		parseJSONData: function(data){
 			gui.xmas.model.jsonData = data;
 
-			var a, giftsLength = gui.xmas.model.jsonData.gifts.length;
+			var a, giftsLength = gui.xmas.model.jsonData.movies.length;
 			for (a = 0; a < gui.xmas.model.jsonData.filterContainers.length; a++) {
 				var filterContainerFilters = gui.xmas.model.jsonData.filterContainers[a].filters, filterLength = filterContainerFilters.length, b;
 				for (b = 0; b < filterLength; b++) {
@@ -92,7 +94,7 @@ var layer = 1;
 				}
 			}
 			for (a = 0; a < giftsLength; a++) {
-				var gift = gui.xmas.model.jsonData.gifts[a], giftFilterLength = gift.filters.length, c;
+				var gift = gui.xmas.model.jsonData.movies[a], giftFilterLength = gift.filters.length, c;
 				for (c = 0; c < giftFilterLength; c++) {
 					var filterTitle = gui.xmas.model.jsonData.filterLookUp[gift.filters[c]];
 					gui.xmas.model.filterProductLookup[filterTitle] = gui.xmas.model.filterProductLookup[filterTitle] || [];
@@ -105,7 +107,7 @@ var layer = 1;
 		},
 
 		getAllProducts: function() {
-			return gui.xmas.model.jsonData.gifts;
+			return gui.xmas.model.jsonData.movies;
 		},
 
 		getCategoryGroupsAndTitles: function() {
@@ -123,7 +125,8 @@ var layer = 1;
 
 		registerProductImageForLoading: function(data) {
 			//data.img
-			data.imgSrc = gui.xmas.model.imageRootPath + data.imgSrc;
+			// data.imgSrc = gui.xmas.model.imageRootPath + data.imgSrc;
+			data.imgSrc = data.imgSrc;
 			gui.xmas.model.thumbNailLoadArr = gui.xmas.model.thumbNailLoadArr || [];
 			gui.xmas.model.thumbNailLoadArr[gui.xmas.model.thumbNailLoadArr.length] = data;
 		},
@@ -157,10 +160,12 @@ var layer = 1;
 			if (gui.xmas.model.wishListItemsArr.length > 0) {
 				var returnedStr = '?gifts=', wishListLength = gui.xmas.model.wishListItemsArr.length, a;
 				for (a = 0; a < wishListLength; a++) {
-					var idNum = gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].id || 42;
-					returnedStr += idNum;
-					if (a < wishListLength - 1) {
-						returnedStr += ',';
+					var idNum = gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].id;
+					if (idNum >= 0) {
+						returnedStr += idNum;
+						if (a < wishListLength - 1) {
+							returnedStr += ',';
+						}
 					}
 				}
 				return returnedStr;

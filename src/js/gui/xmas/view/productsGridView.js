@@ -20,7 +20,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var giftsArr = gui.xmas.model.getAllProducts(), giftsLength = giftsArr.length;
 
 			var title = document.createElement('h1');
-			title.innerHTML = 'Showing <span id="filteredGiftsNum">' + giftsLength + '</span> gift ideas';
+			title.innerHTML = 'Showing <span id="filteredGiftsNum">' + giftsLength + '</span> Christmas TV shows';
 			productsGridHolder.appendChild(title);
 
 
@@ -36,6 +36,7 @@ gui.xmas.view = gui.xmas.view || {};
 
 			var a;
 			for (a = 0; a < giftsLength; a++) {
+
 				var gridLi = document.createElement('li');
 				//gridLi.className = "visible";
 				gridLi.id = giftsArr[a].name;
@@ -53,8 +54,8 @@ gui.xmas.view = gui.xmas.view || {};
 				itemImg.id = 'productThumb';
 				itemImg.src = gui.xmas.model.masterRootPath + "assets/images/productWaiting.gif";
 				itemDiv.appendChild(itemImg);
-				gui.xmas.model.imgTagLookup[giftsArr[a].name] = {'img':itemImg, 'thumbPath':gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl, 'isLoaded':false};
-
+				// gui.xmas.model.imgTagLookup[giftsArr[a].name] = {'img':itemImg, 'thumbPath':gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl, 'isLoaded':false};
+				gui.xmas.model.imgTagLookup[giftsArr[a].name] = {'img':itemImg, 'thumbPath': giftsArr[a].bigPicUrl, 'isLoaded':false};
 				//gui.xmas.model.registerProductImageForLoading({'img':itemImg, 'imgSrc':giftsArr[a].thumbnailPicUrl});
 
 				var descripHolder = document.createElement('div');
@@ -73,20 +74,28 @@ gui.xmas.view = gui.xmas.view || {};
 
 				var descripPrice = document.createElement('p');
 				descripPrice.id = 'productDescripPrice';
-				var giftPrice = giftsArr[a].cost;
-				var from = giftPrice.indexOf('From');
-				if (from > -1) {
-					giftPrice =  '&pound;' + giftPrice.slice(from + 5) + "+";
-					//(giftPrice.slice(0,(from + 5)))
-				}else{
-					giftPrice = '&pound;' + giftsArr[a].cost;
-				}
-				var dot = giftPrice.indexOf('.');
-				if (dot > -1 && dot >= giftPrice.length - 2) {
-					giftPrice += '0';
-				}
+				var giftPrice = giftsArr[a].dateOfBroadcast;
 				descripPrice.innerHTML = giftPrice;
 				descripAndTitleContainer.appendChild(descripPrice);
+			
+				var broadcastTimeRaw = giftsArr[a].time.split(',');
+				var broadcastTimeMinutes;
+				if(broadcastTimeRaw[1] == "0"){
+					broadcastTimeMinutes = "00";
+				}else if(broadcastTimeRaw[1] == "5"){
+					broadcastTimeMinutes = "50";
+				}else{
+					broadcastTimeMinutes = broadcastTimeRaw[1];
+				}
+				var broadcastTime = "- " + broadcastTimeRaw[0]+ ":" + broadcastTimeMinutes;
+
+				var descripTime = document.createElement('span');
+				// descripTime.id = 'productDescripTime';
+				descripTime.innerHTML = broadcastTime;
+				descripTime.style.color= "#fff";
+				descripPrice.appendChild(descripTime);
+
+				
 
 				var clearDescrip = document.createElement('div');
 				clearDescrip.className = 'clearBoth';
@@ -94,7 +103,7 @@ gui.xmas.view = gui.xmas.view || {};
 
 				var addToWishListIcon = document.createElement('div');
 				addToWishListIcon.id = 'addToWishList';
-				addToWishListIcon.innerHTML = "+ <strong>Add</strong>";
+				addToWishListIcon.innerHTML = "+ <strong>Add to TV guide</strong>";
 				addToWishListIcon.style.visibility = 'hidden';
 				itemDiv.appendChild(addToWishListIcon);
 
@@ -138,12 +147,12 @@ gui.xmas.view = gui.xmas.view || {};
 					if (!gui.xmas.model.wishListItemsLookup[productId]) {
 						gui.xmas.model.addItemToWishList(productId);
 						gui.xmas.view.wishListBox.addItemToList(productId);
-						jQ(this).html("<strong>Added</strong>")
+						jQ(this).html("<strong>Added to TV guide</strong>")
 					}
 					else {
 						gui.xmas.model.removeItemFromWishList(productId);
 						gui.xmas.view.wishListBox.removeItemFromList(productId);
-						jQ(this).html("+ <strong>Add</strong>")
+						jQ(this).html("+ <strong>Add to TV guide</strong>")
 					}
 				});
 
@@ -260,8 +269,7 @@ gui.xmas.view = gui.xmas.view || {};
 					if (!imgObj.isLoaded) {
 						imgObj.img.src = imgObj.thumbPath;
 						imgObj.isLoaded = true;
-						// console.log(imgObj.img.src);
-						// console.log(jQ('#productsList li'))
+
 					}
 				}
 			}
@@ -406,7 +414,7 @@ gui.xmas.view = gui.xmas.view || {};
 			var a, ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li');
 			for (a = 0; a < items.length; a++) {
 				if (items[a].id == giftName) {
-					jQ(items[a]).find('#addToWishList').html("<strong>Added</strong>");
+					jQ(items[a]).find('#addToWishList').html("<strong>Added to TV guide</strong>");
 					TweenLite.to(jQ(items[a]).find('#addToWishList'), .5, {css:{autoAlpha:1}});
 					break;
 				}
