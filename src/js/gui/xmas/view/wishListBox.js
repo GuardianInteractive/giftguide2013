@@ -163,7 +163,7 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		constructCarouselImage: function(item) {
-			return '<div style=\'border-left: 1px solid #dfdfdf; position: relative\'>' + '<img src="' + item.url + '" width="65" height="65" alt="' + item.url + '" style=\'position: absolute\' />' + '<div class=\'removeFromListBtn\'>-</div>' + '</div>';
+			return '<div style=\'border-left: 1px solid #dfdfdf; position: relative\'>' + '<img src="' + item.url + '" width="65" height="65" alt="' + item.url + '" style=\'position: absolute\' />' + '<div class=\'removeFromListBtn\'><span>+</span></div>' + '</div>';
 		},
 
 		addItemToList: function(id) {

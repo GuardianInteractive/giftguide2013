@@ -1,14 +1,4 @@
-@font-face {
-  font-family: 'TextWebEgyptian-Regular';
-  src: url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.eot');
-  src: url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.eot?#iefix') format('embedded-opentype'),
-  url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.woff') format('woff'),
-  url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.ttf') format('truetype'),
-  url('https://s3.amazonaws.com/gdn-pub/fonts/ascii/Guardian Text Egyp Web-Reg.svg#Guardian Egyptian Web') format('svg');
-  font-weight: 400;
-  font-style: normal;
-  font-stretch: normal;
-}
+
 body{
 	margin:0;
 }
@@ -19,7 +9,7 @@ body{
 }
 
 .gu-interactive .assetsLoading {
-	font-family: 'TextWebEgyptian-Regular';
+	font-family: 'Guardian Egyptian Web';
 	font-weight:normal;
 	font-size:22px;
 	color:#4a251c;
@@ -40,7 +30,7 @@ body{
 }
 
 .gu-interactive .loadingTitle  h2 {
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	font-size:12px;
 	color:#666;
@@ -111,7 +101,7 @@ body{
 }
 
 .gu-interactive .filterPanelLeftSide  h1 {
-	font-family: 'TextWebEgyptian-Regular';
+	font-family: 'Guardian Text Egyptian Web';
 	font-weight:normal;
 	font-size:20px;
 	color:#62594f;
@@ -121,7 +111,7 @@ body{
 }
 
 .gu-interactive .filterPanelLeftSide  h2 {
-	font-family: 'TextWebEgyptian-Regular';
+	font-family: 'Guardian Text Egyptian Web';
 	font-weight:normal;
 	font-size:18px;
 	color:#fff;
@@ -135,13 +125,14 @@ body{
    font-size: 12px;
    border: none;
    /*margin:9px 5px 3px 10px;*/
-   padding:9px 10px;
+   padding:11px 10px 11px 14px;
     color: #fff;
     -webkit-appearance: none;
     width:135%;
     appearance: none;
-    font-family: Arial;
+    font-family: 'Guardian Text Sans Web';
     font-weight: bold;
+    -webkit-font-smoothing:antialiased;
 }
 
 
@@ -156,14 +147,14 @@ body{
    height: 34px;
     -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
-border-radius: 2px;
-   background: url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/filter-arrow.png") no-repeat 96% #62594f;
+border-radius: 99999px;
+   background: url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/filter-arrow.png") no-repeat 94% 9px #62594f;
    text-align: left;
 }
 
 .gu-interactive .show-wishlist {
-    padding: 11px 10px 0px;
-   font-family: Arial;
+    padding: 11px 14px 0px;
+   font-family: 'Guardian Text Sans Web';
    font-weight: bold;
 	font-size: 12px;
    border: none;
@@ -171,7 +162,7 @@ border-radius: 2px;
     color: #fff;
     -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
-border-radius: 2px;
+border-radius: 9999px;
 	background: #a64557;
 	cursor: pointer;
 	margin: 0 2% 10px;
@@ -186,7 +177,7 @@ border-radius: 2px;
 }
 
 .gu-interactive .filterPanelLeftSide  p  {
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	font-size:12px;
 	line-height:140%;
@@ -224,7 +215,7 @@ border-radius: 2px;
 .gu-interactive .filterPanalFilterBox h1 {
 	vertical-align: middle;
 	text-align: left;
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	color:#fff;
 	font-size:12px;
@@ -242,7 +233,7 @@ border-radius: 2px;
 .gu-interactive .moreFiltersBox h1 {
 	display: table-cell;
 	vertical-align: middle;
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	color:#4a251c;
 	font-size:12px;
@@ -291,7 +282,7 @@ border-radius: 2px;
 }
 
 .gu-interactive .wishListPanelTop  h1 {
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-size:16px;
 	color:#4a251c;
 	font-weight:bold;
@@ -299,7 +290,7 @@ border-radius: 2px;
 }
 
 .gu-interactive .wishListPanelTop  h2 {
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	font-size:12px;
 	color:#4a251c;
@@ -314,10 +305,18 @@ border-radius: 2px;
 	background: #a64557;
 	color: #fff;
 	font-weight: bold;
-	font-family: Arial;
-	padding:1px 5px 2px;
+	font-family: 'Guardian Text Sans Web';
 	position: absolute;
 	right: 5px;
+}
+
+.gu-interactive .removeFromListBtn span{
+	transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
+	display:block;
+	height:15px;
+	width:15px;
+	text-align:center;
 }
 
 .gu-interactive .copyURLHolder {
@@ -347,7 +346,7 @@ border-radius: 2px;
 	margin-bottom:10px;
 }
 .gu-interactive .shareListHolder h2 {
-font-family: Arial !important;
+font-family: 'Guardian Text Sans Web' !important;
 	font-weight: normal !important;
 	font-size: 12px;
 	margin:0 10px 8px 0 !important;
@@ -376,7 +375,7 @@ font-family: Arial !important;
 	height: 18px;
 	border: 1px solid #dfdfdf;
 	padding: 2px;
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	font-size:12px;
 	color:#4a251c;
@@ -390,7 +389,7 @@ font-family: Arial !important;
 	width: 200px;
 	border: 1px solid #dfdfdf;
 	padding: 2px;
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	font-size:12px;
 	color:#4a251c;
@@ -418,7 +417,7 @@ font-family: Arial !important;
 }
 
 .gu-interactive .productsGridHolder h1 {
-	font-family: 'TextWebEgyptian-Regular';
+	font-family: 'Guardian Text Egyptian Web';
 	font-weight:normal;
 	font-size:22px;
 	color:#4b251a;
@@ -427,7 +426,7 @@ font-family: Arial !important;
 }
 
 .gu-interactive .productsGridHolder p {
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	font-size:12px;
 	color:#4a251c;
@@ -459,7 +458,7 @@ font-family: Arial !important;
 
 .gu-interactive .productsGridHolder li {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	border:6px solid rgb(241, 224, 179);
+	border:1px solid rgb(241, 224, 179);
 	display: inline-block;
 	width: 48%;
 	cursor:pointer;
@@ -513,7 +512,7 @@ font-family: Arial !important;
 
 
 .gu-interactive #addToWishList {
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	background: #a64557;
 	padding: 8px 10px 7px;
 	font-size:12px;
@@ -527,7 +526,7 @@ font-family: Arial !important;
 }
 
 .gu-interactive .productGridItem p {
-	font-family: 'TextWebEgyptian-Regular', Arial;
+	font-family: 'Guardian Text Egyptian Web', Arial;
 	font-weight:normal;
 	font-size:14px;
 	color:#609984;
@@ -609,14 +608,14 @@ font-family: Arial !important;
 }
 
 .gu-interactive .singularProductHolder  h1 {
-	font-family: 'TextWebEgyptian-Regular', Arial;
+	font-family: 'Guardian Text Egyptian Web', Guardian Text Sans Web;
 	font-weight:normal;
 	font-size:22px;
 	color:#4a251c;
 }
 
 .gu-interactive .singularProductHolder p {
-	font-family: 'Arial' !important;
+	font-family: 'Guardian Text Sans Web' !important;
 	font-weight: normal !important;
 	line-height:21px;
 	color:#4a251c;
@@ -671,7 +670,7 @@ font-family: Arial !important;
 }
 
 .gu-interactive #arialBody {
-	font-family: 'Arial';
+	font-family: 'Guardian Text Sans Web';
 	font-weight:normal;
 	font-size:12px;
 	color:#666;
@@ -843,5 +842,42 @@ font-family: Arial !important;
 		margin-left:1%;
 	}
 }}
+.jcarousel-skin-tango .jcarousel-prev-horizontal.jcarousel-prev-disabled{
+	background: rgba(0,0,0,0.2) url(../assets/images/left_arrow_65_square.png) no-repeat 7px 7px !important;
+}
+.jcarousel-skin-tango .jcarousel-prev-horizontal.jcarousel-prev-disabled:hover{
+	background: rgba(0,0,0,0.2) url(../assets/images/left_arrow_65_square.png) no-repeat 7px 7px !important;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal.jcarousel-next-disabled{
+	background: rgba(0,0,0,0.2) url(../assets/images/right_arrow_65_square.png) no-repeat 7px 7px !important;
+}
+.jcarousel-skin-tango .jcarousel-next-horizontal.jcarousel-next-disabled:hover{
+	background: rgba(0,0,0,0.2) url(../assets/images/right_arrow_65_square.png) no-repeat 7px 7px !important;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal{
+	border-radius:99999px;
+	width:42px !important;
+	height:42px !important;
+	box-sizing:border-box;
+	background: rgba(0,0,0,0.8) url(../assets/images/left_arrow_65_square.png) no-repeat 7px 7px !important;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal{
+	border-radius:99999px;
+	width:42px !important;
+	height:42px !important;
+	box-sizing:border-box;
+	background: rgba(0,0,0,0.8) url(../assets/images/right_arrow_65_square.png) no-repeat 7px 7px !important;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:hover{
+	background: #ffbb00 url(../assets/images/left_arrow_65_squaredark.png) no-repeat 7px 7px !important;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:hover{
+	background: #ffbb00 url(../assets/images/right_arrow_65_squaredark.png) no-repeat 7px 7px !important;
+}
 
 
