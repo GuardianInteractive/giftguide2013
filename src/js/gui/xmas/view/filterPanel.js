@@ -62,33 +62,6 @@ var filterLookup = {};
 			var filterHolder = document.createElement('div');
 				filterHolder.className = 'filterHolder';
 				categoryHolder.appendChild(filterHolder);
-				
-				
-				
-			/*
-				
-			jQ(window).scroll(function(e) {
-        var newScroll = jQ(document).scrollTop();
-        
-        checkForFixed(newScroll);
-        //console.log(newScroll);
-    });
-    
-    function checkForFixed(scrollTop) {
-		
-		var offset = jQ(".filterPanelCategoryHolder").offset();
-		
-		if (scrollTop > offset.top) {
-			
-			jQ(".filterPanelCategoryHolder").css("position", "fixed");
-		}
-		else
-		{
-			jQ(".filterPanelCategoryHolder").css("position", "static");
-		}
-		
-	}
-	*/
 
 				
 			var a;
@@ -96,68 +69,7 @@ var filterLookup = {};
 				
 			
 				
-				//var categoryTitle = document.createElement('h2');
-				//categoryTitle.innerHTML = categoriesAndFilters[a].title;
-				//categoryHolder.appendChild(categoryTitle);
 				
-				//var categoryClear = document.createElement('div');
-				//categoryClear.className = 'clearBoth';
-				//leftsideFilterPanel.appendChild(categoryClear);
-				/*
-				var filterList = document.createElement('ul');
-				leftsideFilterPanel.appendChild(filterList);
-				
-				var b, filtersLength = categoriesAndFilters[a].filters.length;
-				for (b = 0; b < filtersLength; b++) {
-					
-					var gridLi = document.createElement('li');
-					filterList.appendChild(gridLi);
-					
-					var filterBox = document.createElement('div');
-					filterBox.className = 'filterPanalFilterBox';
-					filterBox.id = categoriesAndFilters[a].filters[b];
-					gridLi.appendChild(filterBox);
-					gui.xmas.view.filterPanel.filterDivsArr[gui.xmas.view.filterPanel.filterDivsArr.length] = filterBox;
-					
-					if (gui.xmas.model.screenVersion === 'iFrame') {
-						jQ(filterBox).mouseover(function() {
-							if (!gui.xmas.model.isFilterActive(this.id)) {
-								TweenLite.killTweensOf(jQ(this));
-								jQ(this).css('backgroundColor', '#7d4430');
-								TweenLite.to(jQ(this), 1, {css:{backgroundColor:"#fb9107"}, ease:Power2.easeOut});
-							}
-						});
-
-						jQ(filterBox).mouseout(function() {
-							if (!gui.xmas.model.isFilterActive(this.id)) {
-								TweenLite.killTweensOf(jQ(this));
-								TweenLite.to(jQ(this), 1, {css:{backgroundColor:"#e7d7c0"}, ease:Power2.easeOut});
-							}
-						});
-					}
-					
-					jQ(filterBox).click(function() {
-						var filterWaiting = jQ('#filteringWait');
-						filterWaiting.css('display', 'block');
-						if (!gui.xmas.model.isFilterActive(this.id)) {
-							gui.xmas.model.addFilter(this.id);
-
-							jQ(this).css('backgroundColor', '#fb9107');
-						}
-						else {
-							jQ(this).css('backgroundColor', '#e7d7c0');
-							gui.xmas.model.removeFilter(this.id);
-						}
-						gui.xmas.view.productsGridView.scrollUpUpdate();
-						filterWaiting.css('display', 'none');
-					});
-					
-					var title = document.createElement('h1');
-					title.innerHTML = categoriesAndFilters[a].filters[b];
-					filterBox.appendChild(title);
-					
-				}
-				*/
 				
 				var filterListContainer = document.createElement('div');
 				filterHolder.appendChild(filterListContainer);

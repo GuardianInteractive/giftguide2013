@@ -109,7 +109,7 @@ gui.xmas.view = gui.xmas.view || {};
 		goToSingularView: function() {
             var target = jQ('.singularProductHolder');
             var pageHeight = document.body.clientHeight;
-
+            console.log(target);
 
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
