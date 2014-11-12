@@ -544,7 +544,9 @@ font-family: 'Guardian Text Sans Web' !important;
     white-space: nowrap; /* paragraph to one line */
     overflow:hidden; /* older browsers */
 	}
-
+.gu-interactive .descripAndTitleContainer{
+	overflow:hidden;
+}
 .gu-interactive .paginationHolderTop {
 	margin: 20px auto 40px auto;
 	text-align: center;
