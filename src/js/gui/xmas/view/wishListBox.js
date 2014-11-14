@@ -10,151 +10,144 @@ gui.xmas.view = gui.xmas.view || {};
 	};
 	gui.xmas.view.WishListBox.prototype = {
 		init: function(){
+			var rightSideHolder = jQ('.leftSideHolder');
 
-			var smallOrNot = '';
-			if (width < 9400) {
-				smallOrNot = 'Small';
-			}
+			// var wishListBox = document.createElement('div');
+			// wishListBox.className = 'wishListPanelTop';
+			// rightSideHolder.append(wishListBox);
 
-			//var rightSideHolder = jQ('.rightSideHolder' + smallOrNot);
-			var rightSideHolder = jQ('.leftSideHolder' + smallOrNot);
+			// var titleHolder = document.createElement('div');
+			// titleHolder.style.cssFloat = 'left';
+			// titleHolder.style.margin = '10px 0 0 0';
+			// wishListBox.appendChild(titleHolder);
 
-			var wishListBox = document.createElement('div');
-			wishListBox.className = 'wishListPanelTop';
-			rightSideHolder.append(wishListBox);
+			// var title = document.createElement('h1');
+			// title.innerHTML = 'My wishlist: <span id="wishListNum">0</span> items';
+			// title.style.width = '100%';
+			// gui.xmas.view.wishListBox.containsText = title;
+			// titleHolder.appendChild(title);
 
-			var titleHolder = document.createElement('div');
-			titleHolder.style.cssFloat = 'left';
-			titleHolder.style.margin = '10px 0 0 0';
-			wishListBox.appendChild(titleHolder);
+			// var titleWidth = jQ(titleHolder).width();
+			// gui.xmas.model.wishListInitWidth = rightSideHolder.width();
+			// gui.xmas.model.carouselInitWidth = (gui.xmas.model.wishListInitWidth - (titleWidth + 120))
 
-			var title = document.createElement('h1');
-			title.innerHTML = 'My wishlist: <span id="wishListNum">0</span> items';
-			title.style.width = '100%';
-			gui.xmas.view.wishListBox.containsText = title;
-			titleHolder.appendChild(title);
+			// var clearTitle = document.createElement('div');
+			// clearTitle.className = 'clearBoth';
+			// wishListBox.appendChild(clearTitle);
 
-			var titleWidth = jQ(titleHolder).width();
-			gui.xmas.model.wishListInitWidth = rightSideHolder.width();
-			gui.xmas.model.carouselInitWidth = (gui.xmas.model.wishListInitWidth - (titleWidth + 120))
+			// gui.xmas.view.wishListBox.carouselHolder = document.createElement('div');
+			// var carouselHolder = gui.xmas.view.wishListBox.carouselHolder;
+			// carouselHolder.className = 'carouselHolder';
+			// wishListBox.appendChild(carouselHolder);
 
-			var clearTitle = document.createElement('div');
-			clearTitle.className = 'clearBoth';
-			wishListBox.appendChild(clearTitle);
+			// var testDiv = document.createElement('ul');
+			// testDiv.className = 'jcarousel-skin-tango';
+			// testDiv.id = 'wishlistCarousel';
+			// carouselHolder.appendChild(testDiv);
 
-			gui.xmas.view.wishListBox.carouselHolder = document.createElement('div');
-			var carouselHolder = gui.xmas.view.wishListBox.carouselHolder;
-			carouselHolder.className = 'carouselHolder';
-			wishListBox.appendChild(carouselHolder);
+			// jQ(testDiv).jcarousel({
+			// 	size: 1,
+			// 	itemLoadCallback: {onBeforeAnimation: gui.xmas.view.wishListBox.handleCarouselItemLoadComplete},
+			// 	itemFallbackDimension: width
+			// });
 
-			var testDiv = document.createElement('ul');
-			testDiv.className = 'jcarousel-skin-tango';
-			testDiv.id = 'wishlistCarousel';
-			carouselHolder.appendChild(testDiv);
-
-			jQ(testDiv).jcarousel({
-				size: 1,
-				itemLoadCallback: {onBeforeAnimation: gui.xmas.view.wishListBox.handleCarouselItemLoadComplete},
-				itemFallbackDimension: width
-			});
-
-			var clearDiv = document.createElement('div');
-			clearDiv.className = 'clearBoth';
-			wishListBox.appendChild(clearDiv);
+			// var clearDiv = document.createElement('div');
+			// clearDiv.className = 'clearBoth';
+			// wishListBox.appendChild(clearDiv);
 
 
-			var copyURLHolder = document.createElement('div');
-			copyURLHolder.className = 'copyURLHolder';
-			wishListBox.appendChild(copyURLHolder);
+			// var copyURLHolder = document.createElement('div');
+			// copyURLHolder.className = 'copyURLHolder';
+			// wishListBox.appendChild(copyURLHolder);
 
-			var copyURLTitle = document.createElement('h2');
-			copyURLTitle.innerHTML = 'Copy URL';
-			copyURLTitle.style.cssFloat = 'left';
-			copyURLTitle.style.marginTop = '6px';
-			copyURLTitle.style.marginBottom = '12px';
-			copyURLHolder.appendChild(copyURLTitle);
+			// var copyURLTitle = document.createElement('h2');
+			// copyURLTitle.innerHTML = 'Copy URL';
+			// copyURLTitle.style.cssFloat = 'left';
+			// copyURLTitle.style.marginTop = '6px';
+			// copyURLTitle.style.marginBottom = '12px';
+			// copyURLHolder.appendChild(copyURLTitle);
 
-			var copyURLArea = document.createElement('input');
-			copyURLArea.className = 'copyURLP';
-			copyURLArea.id = 'copyURLP';
-			copyURLHolder.appendChild(copyURLArea);
-			gui.xmas.view.wishListBox.copyURLArea = copyURLArea;
+			// var copyURLArea = document.createElement('input');
+			// copyURLArea.className = 'copyURLP';
+			// copyURLArea.id = 'copyURLP';
+			// copyURLHolder.appendChild(copyURLArea);
+			// gui.xmas.view.wishListBox.copyURLArea = copyURLArea;
 
-			jQ(copyURLArea).click(function(event) {
-				this.select();
-				// var para = document.getElementById('copyURLP'), range;
-				// if (window.getSelection && document.createRange) {
-				// 	range = document.createRange();
-				// 	var sel = window.getSelection();
-				// 	range.selectNodeContents(para);
-				// 	sel.removeAllRanges();
-				// 	sel.addRange(range);
-				// } else if (document.body && document.body.createTextRange) {
-				// 	range = document.body.createTextRange();
-				// 	range.moveToElementText(para);
-				// 	range.select();
-				// }
-			});
+			// jQ(copyURLArea).click(function(event) {
+			// 	this.select();
+			// 	// var para = document.getElementById('copyURLP'), range;
+			// 	// if (window.getSelection && document.createRange) {
+			// 	// 	range = document.createRange();
+			// 	// 	var sel = window.getSelection();
+			// 	// 	range.selectNodeContents(para);
+			// 	// 	sel.removeAllRanges();
+			// 	// 	sel.addRange(range);
+			// 	// } else if (document.body && document.body.createTextRange) {
+			// 	// 	range = document.body.createTextRange();
+			// 	// 	range.moveToElementText(para);
+			// 	// 	range.select();
+			// 	// }
+			// });
 
-			var clearCopyURLDiv = document.createElement('div');
-			clearCopyURLDiv.className = 'clearBoth';
-			copyURLHolder.appendChild(clearCopyURLDiv);
+			// var clearCopyURLDiv = document.createElement('div');
+			// clearCopyURLDiv.className = 'clearBoth';
+			// copyURLHolder.appendChild(clearCopyURLDiv);
 
-			var shareListHolder = document.createElement('div');
-			shareListHolder.className = 'shareListHolder';
-			wishListBox.appendChild(shareListHolder);
+			// var shareListHolder = document.createElement('div');
+			// shareListHolder.className = 'shareListHolder';
+			// wishListBox.appendChild(shareListHolder);
 
-			var shareListTitle = document.createElement('h2');
-			shareListTitle.innerHTML = 'Share my list';
-			shareListTitle.style.cssFloat = 'left';
-			shareListTitle.style.marginTop = '6px';
-			shareListHolder.appendChild(shareListTitle);
+			// var shareListTitle = document.createElement('h2');
+			// shareListTitle.innerHTML = 'Share my list';
+			// shareListTitle.style.cssFloat = 'left';
+			// shareListTitle.style.marginTop = '6px';
+			// shareListHolder.appendChild(shareListTitle);
 
-			var fbIcon = document.createElement('img');
-			fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/fbIcon.png";
-			fbIcon.className = 'shareIcon';
-			shareListHolder.appendChild(fbIcon);
-			jQ(fbIcon).click(function(event) {
-				var urlStr = gui.xmas.model.getWishListIdString();
-                var fbURL = 'https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath;
-                if (urlStr) {
-                    fbURL += encodeURIComponent( urlStr );
-                }
+			// var fbIcon = document.createElement('img');
+			// fbIcon.src = gui.xmas.model.masterRootPath + "assets/images/fbIcon.png";
+			// fbIcon.className = 'shareIcon';
+			// shareListHolder.appendChild(fbIcon);
+			// jQ(fbIcon).click(function(event) {
+			// 	var urlStr = gui.xmas.model.getWishListIdString();
+   //              var fbURL = 'https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath;
+   //              if (urlStr) {
+   //                  fbURL += encodeURIComponent( urlStr );
+   //              }
 
-				window.open(fbURL, '_blank');
-			});
+			// 	window.open(fbURL, '_blank');
+			// });
 
-			var twitterIcon = document.createElement('img');
-			twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/tweetIcon.png";
-			twitterIcon.className = 'shareIcon';
-			shareListHolder.appendChild(twitterIcon);
-			jQ(twitterIcon).click(function(event) {
-			//jQ(shareListHolder).click(function(event) {
-				//to get included somewhere
-				var shareOnTwitter = {
-					twitterUrl: 'https://twitter.com/intent/tweet',
-					params: {
-						url: gui.xmas.model.shareRootPath,
-						related: 'guardian',
-						text: 'Check out this Christmas gift guide I found on @guardian'
-					},
-					constructUrl: function(params) {
-					window.open(this.twitterUrl + '?' + [ 'url=' + encodeURIComponent( this.params.url ), 'text=' + this.params.text, 'related=' + this.params.related ].join( '&' ));
-					}
-				}
-				var urlStr = gui.xmas.model.getWishListIdString();
-				if (urlStr.length > 0) {
-					shareOnTwitter.params.text = 'Check out this Christmas wish list I made on @guardian'
-					shareOnTwitter.params.url += urlStr;
-				}
+			// var twitterIcon = document.createElement('img');
+			// twitterIcon.src = gui.xmas.model.masterRootPath + "assets/images/tweetIcon.png";
+			// twitterIcon.className = 'shareIcon';
+			// shareListHolder.appendChild(twitterIcon);
+			// jQ(twitterIcon).click(function(event) {
+			// //jQ(shareListHolder).click(function(event) {
+			// 	//to get included somewhere
+			// 	var shareOnTwitter = {
+			// 		twitterUrl: 'https://twitter.com/intent/tweet',
+			// 		params: {
+			// 			url: gui.xmas.model.shareRootPath,
+			// 			related: 'guardian',
+			// 			text: 'Check out this Christmas gift guide I found on @guardian'
+			// 		},
+			// 		constructUrl: function(params) {
+			// 		window.open(this.twitterUrl + '?' + [ 'url=' + encodeURIComponent( this.params.url ), 'text=' + this.params.text, 'related=' + this.params.related ].join( '&' ));
+			// 		}
+			// 	}
+			// 	var urlStr = gui.xmas.model.getWishListIdString();
+			// 	if (urlStr.length > 0) {
+			// 		shareOnTwitter.params.text = 'Check out this Christmas wish list I made on @guardian'
+			// 		shareOnTwitter.params.url += urlStr;
+			// 	}
 
-				//to get called on click
-				shareOnTwitter.constructUrl();
-			});
+			// 	//to get called on click
+			// 	shareOnTwitter.constructUrl();
+			// });
 
-			var clearBottomHalfDiv = document.createElement('div');
-			clearBottomHalfDiv.className = 'clearBoth';
-			wishListBox.appendChild(clearBottomHalfDiv);
+			// var clearBottomHalfDiv = document.createElement('div');
+			// clearBottomHalfDiv.className = 'clearBoth';
+			// wishListBox.appendChild(clearBottomHalfDiv);
 
 		},
 
@@ -167,64 +160,96 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		addItemToList: function(id) {
-			var listLength = gui.xmas.model.getWishListLength();
-			var s = (listLength == 1) ? '' : 's';
-			gui.xmas.view.wishListBox.containsText.innerHTML = 'My wishlist: <span id="wishListNum">' + listLength + '</span> item' + s;
+			var wishlistArray = gui.xmas.model.wishListItemsArr;
+			var $wishlist = document.querySelector('#wishlistItems ul');
+			$wishlist.innerHTML = "";
+			var containerWidth = wishlistArray.length * 80;
+			for(var i=0;i<wishlistArray.length;i++){
+				var currentGift = gui.xmas.model.giftLookup[wishlistArray[i]];
 
-			jQ("#wishlist-button-counter").html(listLength);
+				var wishlistItem = document.createElement('li');
+				var itemImage = document.createElement('img');
+				itemImage.src = gui.xmas.model.imageRootPath + currentGift.thumbnailPicUrl;
+				itemImage.alt = currentGift.name;
+				
+				var removeBtn = document.createElement('div');
+				removeBtn.className = "removeFromListBtn";
+
+				wishlistItem.appendChild(itemImage);
+				wishlistItem.appendChild(removeBtn);
+				$wishlist.appendChild(wishlistItem);
+				$wishlist.style.width = containerWidth + 'px';
+			}
+			if(containerWidth > $('#wishlistItems').width()){
+				$('.wishlistNavigate').addClass('active');
+			}
+
+			$('.wishlistNavigate').on('click',function(e){
+				console.log(e);
+				if(e.currentTarget.id === 'wishlistNavNext'){
+					$wishlist.style.marginLeft  = $wishlist.style.marginLeft - 20 + 'px';
+				}else if(e.currentTarget.id === 'wishlistNavNext'){
+
+				}
+			})
+			// var s = (listLength == 1) ? '' : 's';
+			// // gui.xmas.view.wishListBox.containsText.innerHTML = 'My wishlist: <span id="wishListNum">' + listLength + '</span> item' + s;
+
+			// jQ("#wishlist-button-counter").html(listLength);
 
 
-			gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[id].thumbnailPicUrl
+			// gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[id].thumbnailPicUrl
 
 
-			gui.xmas.view.wishListBox.wishListIndexLookup[id] = listLength;
+			// gui.xmas.view.wishListBox.wishListIndexLookup[id] = listLength;
 
-			gui.xmas.view.wishListBox.carousel.add(listLength, gui.xmas.view.wishListBox.constructCarouselImage({url: gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[id].thumbnailPicUrl, title: gui.xmas.model.giftLookup[id].name}));
-			gui.xmas.view.wishListBox.carousel.size(listLength);
-			gui.xmas.view.wishListBox.carousel.scroll(listLength, true);
+			// gui.xmas.view.wishListBox.carousel.add(listLength, gui.xmas.view.wishListBox.constructCarouselImage({url: gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[id].thumbnailPicUrl, title: gui.xmas.model.giftLookup[id].name}));
+			// gui.xmas.view.wishListBox.carousel.size(listLength);
+			// gui.xmas.view.wishListBox.carousel.scroll(listLength, true);
 
-			var newItem = gui.xmas.view.wishListBox.carousel.get(listLength);
-			var removeItemIcn = newItem.find('.removeFromListBtn');
+			// var newItem = gui.xmas.view.wishListBox.carousel.get(listLength);
+			// var removeItemIcn = newItem.find('.removeFromListBtn');
 
-			newItem.attr('id', 'wishlistItem' + id);
-			removeItemIcn.css('cursor', 'pointer');
-			jQ(removeItemIcn).click(function(event) {
-				console.log(newItem);
-				var productId = newItem[0].id.split('wishlistItem').join('');
-				gui.xmas.model.removeItemFromWishList(productId);
-				gui.xmas.view.wishListBox.removeItemFromList(productId);
-				gui.xmas.view.productsGridView.giftRemovedFromWishList(productId);
-				gui.xmas.view.singularProductView.setWishListText(productId);
-			});
+			// newItem.attr('id', 'wishlistItem' + id);
+			// removeItemIcn.css('cursor', 'pointer');
+			// jQ(removeItemIcn).click(function(event) {
+			// 	console.log(newItem);
+			// 	var productId = newItem[0].id.split('wishlistItem').join('');
+			// 	gui.xmas.model.removeItemFromWishList(productId);
+			// 	gui.xmas.view.wishListBox.removeItemFromList(productId);
+			// 	gui.xmas.view.productsGridView.giftRemovedFromWishList(productId);
+			// 	gui.xmas.view.singularProductView.setWishListText(productId);
+			// });
 
-			gui.xmas.view.wishListBox.constructURLString();
+			// gui.xmas.view.wishListBox.constructURLString();
 		},
 
 		removeItemFromList: function(id) {
-			var listLength = gui.xmas.model.getWishListLength();
-			var s = (listLength == 1) ? '' : 's';
-			gui.xmas.view.wishListBox.containsText.innerHTML = 'My wishlist: <span id="wishListNum">' + listLength + '</span> item' + s;
+			var wishlistArray = gui.xmas.model.wishListItemsArr;
+			// var listLength = gui.xmas.model.getWishListLength();
+			// var s = (listLength == 1) ? '' : 's';
+			// // gui.xmas.view.wishListBox.containsText.innerHTML = 'My wishlist: <span id="wishListNum">' + listLength + '</span> item' + s;
 
-			jQ("#wishlist-button-counter").html(listLength);
+			// jQ("#wishlist-button-counter").html(listLength);
 
-			gui.xmas.view.wishListBox.carousel.reset();
-			var a;
-			for (a = 0; a < listLength; a++) {
-				gui.xmas.view.wishListBox.carousel.add(a + 1, gui.xmas.view.wishListBox.constructCarouselImage({url: gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].thumbnailPicUrl, title: gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].name}));
-				gui.xmas.view.wishListBox.carousel.size(a + 1);
-				//
-				var newItem = gui.xmas.view.wishListBox.carousel.get(a + 1);
-				newItem.attr('id', 'wishlistItem' + gui.xmas.model.wishListItemsArr[a]);
-				newItem.css('cursor', 'pointer');
-				jQ(newItem).click(function(event) {
-					var productId = this.id.split('wishlistItem').join('');
-					gui.xmas.model.removeItemFromWishList(productId);
-					gui.xmas.view.wishListBox.removeItemFromList(productId);
-					gui.xmas.view.productsGridView.giftRemovedFromWishList(productId);
-				});
-			}
+			// gui.xmas.view.wishListBox.carousel.reset();
+			// var a;
+			// for (a = 0; a < listLength; a++) {
+			// 	gui.xmas.view.wishListBox.carousel.add(a + 1, gui.xmas.view.wishListBox.constructCarouselImage({url: gui.xmas.model.imageRootPath + gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].thumbnailPicUrl, title: gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].name}));
+			// 	gui.xmas.view.wishListBox.carousel.size(a + 1);
+			// 	//
+			// 	var newItem = gui.xmas.view.wishListBox.carousel.get(a + 1);
+			// 	newItem.attr('id', 'wishlistItem' + gui.xmas.model.wishListItemsArr[a]);
+			// 	newItem.css('cursor', 'pointer');
+			// 	jQ(newItem).click(function(event) {
+			// 		var productId = this.id.split('wishlistItem').join('');
+			// 		gui.xmas.model.removeItemFromWishList(productId);
+			// 		gui.xmas.view.wishListBox.removeItemFromList(productId);
+			// 		gui.xmas.view.productsGridView.giftRemovedFromWishList(productId);
+			// 	});
+			// }
 
-			gui.xmas.view.wishListBox.constructURLString();
+			// gui.xmas.view.wishListBox.constructURLString();
 		},
 
 		constructURLString: function() {

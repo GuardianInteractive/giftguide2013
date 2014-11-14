@@ -10,44 +10,24 @@ gui.xmas.view = gui.xmas.view || {};
 	};
 	gui.xmas.view.MainView.prototype = {
 		init: function(){
-
-			var smallOrNot = '';
-			if (width < 9400) {
-				smallOrNot = 'Small';
-			}
-
 			var el = gui.xmas.el;
+			var headerTemplate = jQ('#headerTemplate').html();
 
 			gui.xmas.view.MainView.holder = document.createElement('div');
 			var holderDiv = gui.xmas.view.MainView.holder;
 			holderDiv.className = 'mainHolder';
 			el.appendChild(holderDiv);
 
-			var bg = document.createElement('div');
-			bg.className = 'mainHolderBg';
-			height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-			jQ(bg).css('height', height);
-			holderDiv.appendChild(bg);
-			//TweenLite.fromTo(bg, 2, {css:{autoAlpha:0}}, {css:{autoAlpha:1}});
-
 			var leftSideHolder = document.createElement('div');
-			leftSideHolder.className = 'leftSideHolder' + smallOrNot;
+			leftSideHolder.className = 'leftSideHolderSmall';
 			holderDiv.appendChild(leftSideHolder);
 
-			var headerImageContainer = document.createElement('div');
-			headerImageContainer.className = 'headerImageContainer';
-			leftSideHolder.appendChild(headerImageContainer);
+			leftSideHolder.innerHTML = headerTemplate;
 
-
-			var leftSideHeaderImg = document.createElement("img");
-			leftSideHeaderImg.src = gui.xmas.model.masterRootPath + "assets/images/headerImage.png";
-			leftSideHeaderImg.className = 'leftSideHeaderImage';
-			headerImageContainer.appendChild(leftSideHeaderImg);
-
-			gui.xmas.view.filterPanel.init();
+			// gui.xmas.view.filterPanel.init();
 
 			var rightSideHolder = document.createElement('div');
-			rightSideHolder.className = 'rightSideHolder' + smallOrNot;
+			rightSideHolder.className = 'rightSideHolderSmall';
 			holderDiv.appendChild(rightSideHolder);
 
 			gui.xmas.view.wishListBox.init();
@@ -59,52 +39,13 @@ gui.xmas.view = gui.xmas.view || {};
 			gui.xmas.view.productsGridView.init();
 			gui.xmas.view.singularProductView.init();
 
-			var clearDiv = document.createElement('div');
-			clearDiv.className = 'clearBoth';
-			holderDiv.appendChild(clearDiv);
-
-			var rightSideWidth = jQ('.rightSideHolder').width();
-			if (width < 9400) {
-				rightSideWidth = jQ('.rightSideHolderSmall').width();
-			}
-
-			var filteringMsg = document.createElement('div');
-			filteringMsg.id = 'filteringWait';
-			document.body.appendChild(filteringMsg);
-
-			//resizing shenanigans
-			//gui.xmas.view.wishListBox.carouselHolder.style.width = (rightSideWidth - 40 - jQ(gui.xmas.view.wishListBox.carouselHolder).height()) + 'px';
-
-			if (width >= 9400) {
-				var rightSideMarginTop = jQ('.filterPanelLeftSide').offset().top - (jQ('.wishListPanelTop').height() + (width * 0.01));
-				if (rightSideMarginTop < 30) {
-					rightSideMarginTop = 30;
-				}
-				jQ('.rightSideHolder').css('margin-top', rightSideMarginTop + 'px');
-			}
-			else {
-				jQ('.rightSideHolder').css('margin-top', '0px');
-			}
-			//gui.xmas.view.productsGridView.scrollUpUpdate();
-			gui.xmas.view.mainView.budgeRightSideDown();
+			// var filteringMsg = document.createElement('div');
+			// filteringMsg.id = 'filteringWait';
+			// document.body.appendChild(filteringMsg);
 
 		},
 
-		budgeRightSideDown: function() {
-			//position the right hand side so that it lines up with the product grid
-			if (width >= 9400) {
-				if (jQ('.filterPanelLeftSide').offset()) {
-					var rightSideMarginTop = jQ('.filterPanelLeftSide').offset().top - (jQ('.wishListPanelTop').height() + (width * 0.01));
-					if (rightSideMarginTop < 30) {
-						rightSideMarginTop = 30;
-					}
-					jQ('.rightSideHolder').css('margin-top', rightSideMarginTop + 'px');
-				}
-			}
-			else {
-				jQ('.rightSideHolder').css('margin-top', '0px');
-			}
-		},
+		
 
 		goToSingularView: function() {
             var target = jQ('.singularProductHolder');

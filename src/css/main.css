@@ -1,15 +1,19 @@
 
 body{
 	margin:0;
+	background:#eee;
 }
 
 .gu-interactive {
 	overflow: hidden;
 	-webkit-font-smoothing: antialiased;
+	max-width:1300px;
+	margin:0 auto;
+	background:#fff;
+	font-family: 'Guardian Egyptian Web';
 }
 
 .gu-interactive .assetsLoading {
-	font-family: 'Guardian Egyptian Web';
 	font-weight:normal;
 	font-size:22px;
 	color:#4a251c;
@@ -52,18 +56,113 @@ body{
 	left:0px;
 	display: none;
 }
+.gu-interactive header{
 
-.gu-interactive .leftSideHolder {
-	width:27%;
-	margin-left:0%;
-	margin-bottom:1%;
-	margin-top:50px;
-	float:left;
-	position:relative;
-	background: #fff;
 }
 
-.gu-interactive .leftSideHolderSmall {
+.gu-interactive #visualHeader{
+	height:352px;
+	width:100%;
+	background-image:url(../assets/images/header-bg.jpg);
+	background-repeat: no-repeat;
+	background-size:cover;
+	position: relative;
+}
+
+.gu-interactive #christmasLights{
+	width:100%;
+	height:100%;
+	background:url(../assets/images/christmas_lights.png);
+	position: absolute;
+	z-index:1;
+}
+
+.gu-interactive #headerTitleContainer{
+	z-index:2;
+	position: relative;
+	color:#fff;
+	font-family:Guardian Egyptian Web;
+	padding-top:120px;
+	padding-left:40px;
+}
+.gu-interactive #headerTitleContainer h1{
+	font-weight:100;
+	text-shadow:0 2px 4px rgba(0,0,0,0.5);
+	margin-top:2px;
+	line-height: 1em;
+	font-size:60px;
+}
+.gu-interactive #wishlist{
+	position: absolute;
+	bottom:0;
+	height:90px;
+	width:100%;
+	z-index:2;
+}
+
+.gu-interactive #wishlist #wishlistTitle{
+	color:#fff;
+	width:175px;
+	position: absolute;
+	left:0;
+	padding-left:40px;
+	font-weight:bold;
+}
+
+.gu-interactive #wishlist #wishlistItems{
+	margin-left:175px;
+	background:rgba(0,0,0,0.6);
+	height:100%;
+	position: relative;
+	overflow:hidden;
+}
+
+.gu-interactive #wishlist #wishlistItems ul{
+	list-style: none;
+	padding:10px 0 0 10px;
+	position: absolute;
+	-webkit-transition: all 1s linear;
+	  -moz-transition: all 1s linear;
+	  -o-transition: all 1s linear;
+	  -ms-transition: all 1s linear;
+	  transition: all 1s linear;
+}
+
+.gu-interactive #wishlist #wishlistItems ul li{
+	display: inline-block;
+	margin-right:10px;
+	width:70px;
+	height:70px;
+}
+
+.gu-interactive #wishlist #wishlistItems ul li img{
+	width:100%;
+	height:100%;
+
+}
+
+.gu-interactive #wishlist .wishlistNavigate{
+	height:40px;
+	width:40px;
+	border-radius: 9000px;
+	background:#ffbb00;
+	position: absolute;
+	top:25px;
+	z-index:5;
+	/*opacity:0.1;*/
+}
+.gu-interactive #wishlist .wishlistNavigate.active{
+	opacity: 1;
+}
+
+.gu-interactive #wishlist #wishlistNavBack{
+	left:20px;
+}
+
+.gu-interactive #wishlist #wishlistNavNext{
+	right:20px;
+}
+/*.gu-interactive .leftSideHolderSmall {
 	width:100%;
 	margin-left:0%;
 	margin-bottom:1%;
@@ -124,7 +223,6 @@ body{
    background: transparent;
    font-size: 12px;
    border: none;
-   /*margin:9px 5px 3px 10px;*/
    padding:11px 10px 11px 14px;
     color: #fff;
     -webkit-appearance: none;
@@ -133,10 +231,10 @@ body{
     font-family: 'Guardian Text Sans Web';
     font-weight: bold;
     -webkit-font-smoothing:antialiased;
-}
+}*/
 
 
-.gu-interactive .styled-select {
+/*.gu-interactive .styled-select {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 	margin: 0 2% 13px;
 	display: inline;
@@ -253,7 +351,7 @@ border-radius: 9999px;
 	margin: 6% 0 3% 0;
 	float:left;
 	display: none;
-}
+}*/
 
 .gu-interactive .rightSideHolder {
 	width:69%;

@@ -150,26 +150,21 @@ gui.xmas.view = gui.xmas.view || {};
 
 		buildPinterestURL: function() {
 			var jQcurrentImage   = jQ(gui.xmas.view.singularProductView.mainImg);
-	  var bookmarkletURL  = 'http://pinterest.com/pin/create/button/',
-	      mediaURL        = "" + jQcurrentImage.attr('src'),
-	      mediaURLenc     = encodeURIComponent(mediaURL),
-	      shareURL        = window.location,
-	      shareURLenc     = encodeURIComponent(shareURL),
-	      description     = jQcurrentImage.attr('alt') + "",
-	      descriptionenc  = encodeURIComponent(description),
-	      pinterestURL    = bookmarkletURL + '?media=' + mediaURLenc + '&url=' + shareURLenc + '&description=' + descriptionenc;
-
-	  return pinterestURL;
+	  		var bookmarkletURL  = 'http://pinterest.com/pin/create/button/',
+		      mediaURL        = "" + jQcurrentImage.attr('src'),
+		      mediaURLenc     = encodeURIComponent(mediaURL),
+		      shareURL        = window.location,
+		      shareURLenc     = encodeURIComponent(shareURL),
+		      description     = jQcurrentImage.attr('alt') + "",
+		      descriptionenc  = encodeURIComponent(description),
+		      pinterestURL    = bookmarkletURL + '?media=' + mediaURLenc + '&url=' + shareURLenc + '&description=' + descriptionenc;
+	  		return pinterestURL;
 		},
 
 		handlePinterestClick: function() {
-
-
-
-	  var pinterestURL = gui.xmas.view.singularProductView.buildPinterestURL();
-	  window.open(pinterestURL,'_blank','width=200,height=350,toolbar=0,location=0,directories=0,status=0');
-	  return false;
-
+			var pinterestURL = gui.xmas.view.singularProductView.buildPinterestURL();
+	  		window.open(pinterestURL,'_blank','width=200,height=350,toolbar=0,location=0,directories=0,status=0');
+	  		return false;
 		}
 
 	}
