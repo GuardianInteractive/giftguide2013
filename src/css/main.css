@@ -61,7 +61,7 @@ body{
 }
 
 .gu-interactive #visualHeader{
-	height:352px;
+	height:270px;
 	width:100%;
 	background-image:url(../assets/images/header-bg.jpg);
 	background-repeat: no-repeat;
@@ -73,6 +73,8 @@ body{
 	width:100%;
 	height:100%;
 	background:url(../assets/images/christmas_lights.png);
+	background-repeat: no-repeat;
+	background-size:150%;
 	position: absolute;
 	z-index:1;
 }
@@ -82,37 +84,57 @@ body{
 	position: relative;
 	color:#fff;
 	font-family:Guardian Egyptian Web;
-	padding-top:120px;
-	padding-left:40px;
+	padding-top:30px;
+	padding-left:20px;
+}
+.gu-interactive #headerTitleContainer img{
+	width:140px;
 }
 .gu-interactive #headerTitleContainer h1{
 	font-weight:100;
 	text-shadow:0 2px 4px rgba(0,0,0,0.5);
 	margin-top:2px;
 	line-height: 1em;
-	font-size:60px;
+	font-size:30px;
 }
 .gu-interactive #wishlist{
 	position: absolute;
 	bottom:0;
-	height:90px;
+	/*height:90px;*/
 	width:100%;
 	z-index:2;
 }
 
 .gu-interactive #wishlist #wishlistTitle{
 	color:#fff;
-	width:175px;
-	position: absolute;
+	position: relative;
 	left:0;
-	padding-left:40px;
+	padding-left:20px;
 	font-weight:bold;
+	padding-top:5px;
+	box-sizing:border-box;
+	margin-bottom:10px;
+}
+.gu-interactive #wishlist #wishlistTitle p{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right:10px;
+	}
+.gu-interactive #wishlist #wishlistShareBox{
+	vertical-align: middle;
+	display:inline-block;
+}
+.gu-interactive #wishlist .wishlistShareButton{
+	width:32px;
+	height:32px;
+	background:#fff;
+	display: inline-block;
+	border-radius: 16px;
 }
 
 .gu-interactive #wishlist #wishlistItems{
-	margin-left:175px;
 	background:rgba(0,0,0,0.6);
-	height:100%;
+	height:90px	;
 	position: relative;
 	overflow:hidden;
 }
@@ -121,11 +143,12 @@ body{
 	list-style: none;
 	padding:10px 0 0 10px;
 	position: absolute;
-	-webkit-transition: all 1s linear;
-	  -moz-transition: all 1s linear;
-	  -o-transition: all 1s linear;
-	  -ms-transition: all 1s linear;
-	  transition: all 1s linear;
+	-webkit-transition: margin 0.5s linear;
+	  -moz-transition: margin 0.5s linear;
+	  -o-transition: margin 0.5s linear;
+	  -ms-transition: margin 0.5s linear;
+	  transition: margin 0.5s linear;
+	  margin-left:0;
 }
 
 .gu-interactive #wishlist #wishlistItems ul li{
@@ -133,12 +156,31 @@ body{
 	margin-right:10px;
 	width:70px;
 	height:70px;
+	position: relative;
 }
 
 .gu-interactive #wishlist #wishlistItems ul li img{
 	width:100%;
 	height:100%;
 
+}
+
+.gu-interactive #wishlist #wishlistItems ul li .removeFromListBtn{
+	background: rgba(0,0,0,0.8) url(../assets/images/crossIconWhite.svg);
+	background-repeat: no-repeat;
+	background-position: 9px;
+	position: absolute;
+	right: 0;
+	top:0;
+	height:30px;
+	width:30px;
+	cursor:pointer;
+}
+
+.gu-interactive #wishlist #wishlistItems ul li .removeFromListBtn:hover{
+	background: #ffbb00 url(../assets/images/crossIconWhite.svg);
+	background-repeat: no-repeat;
+	background-position: 9px;
 }
 
 .gu-interactive #wishlist .wishlistNavigate{
@@ -149,10 +191,15 @@ body{
 	position: absolute;
 	top:25px;
 	z-index:5;
-	/*opacity:0.1;*/
+	opacity:0.1;
 }
 .gu-interactive #wishlist .wishlistNavigate.active{
-	opacity: 1;
+	opacity:1;
+	cursor: pointer;
+}
+
+.gu-interactive #wishlist .wishlistNavigate.active:hover{
+	background:#333;
 }
 
 .gu-interactive #wishlist #wishlistNavBack{
@@ -399,23 +446,8 @@ border-radius: 9999px;
 	width:94%;
 	margin:10px 3% 20px 0;
 }
-.gu-interactive .removeFromListBtn{
-	background: #a64557;
-	color: #fff;
-	font-weight: bold;
-	font-family: 'Guardian Text Sans Web';
-	position: absolute;
-	right: 5px;
-}
 
-.gu-interactive .removeFromListBtn span{
-	transform:rotate(45deg);
-	-webkit-transform:rotate(45deg);
-	display:block;
-	height:15px;
-	width:15px;
-	text-align:center;
-}
+
 
 .gu-interactive .copyURLHolder {
 	float:left;
@@ -779,15 +811,42 @@ font-family: 'Guardian Text Sans Web' !important;
 .gu-interactive .clearBoth {
 	clear:both;
 }
+@media (min-width: 480px) {
+	.gu-interactive #headerTitleContainer h1{
+		font-size:48px;
+	}
+}
 
-@media (max-width:320px) {
-	.gu-interactive .wishListPanelTop {
-		max-width:320px !important;
-		padding-left: 0 !important;
+@media (min-width: 641px) {
+	.gu-interactive #christmasLights{
+		background-size:cover;
 	}
 
-}
-@media (min-width: 641px) {
+	.gu-interactive #headerTitleContainer{
+		padding-top:80px;
+		padding-left:40px;
+	}
+	.gu-interactive #wishlist #wishlistTitle{
+		position: absolute;
+		padding-left:40px;
+		width:175px;
+	}
+	.gu-interactive #wishlist #wishlistItems{
+		margin-left:175px;
+	}
+
+	.gu-interactive #wishlist #wishlistShareBox{
+		margin-top:10px;
+	}
+	.gu-interactive #visualHeader{
+		height:352px;
+	}
+	.gu-interactive #headerTitleContainer img{
+		width:179px;
+	}
+	.gu-interactive #headerTitleContainer h1{
+		font-size:60px;
+	}
 	.gu-interactive .productsGridHolder{
 		margin-top:0;
 
