@@ -12,184 +12,73 @@ var filterLookup = {};
 	};
 	gui.xmas.view.FilterPanel.prototype = {
 		init: function(){			
-			
-			var smallOrNot = '';
-			if (width < 9400) {
-				smallOrNot = 'Small';
-			}
-			var leftSideHolder = jQ('.leftSideHolder' + smallOrNot);
-			
-			var leftsideFilterPanel = document.createElement('div');
-			leftsideFilterPanel.className = 'filterPanelLeftSide';
-			leftSideHolder.append(leftsideFilterPanel);
-
-			
-			
-			var seperator = document.createElement('div');
-			seperator.className = 'filterPanelSeperator';
-			leftsideFilterPanel.appendChild(seperator);
-			
 			var categoriesAndFilters = gui.xmas.model.getCategoryGroupsAndTitles();
-			
-				var categoryHolder = document.createElement('div');
-				categoryHolder.className = 'filterPanelCategoryHolder';
-				leftsideFilterPanel.appendChild(categoryHolder);
-				
-				categoryHolder.style.cssFloat = 'left';
-				
-			var showWishlist = document.createElement('div');
-				categoryHolder.appendChild(showWishlist);
-				showWishlist.className = 'show-wishlist wishlist-hide';
-				jQ(showWishlist).html("My wishlist<span id='wishlist-button-counter'>0</span>");
-				
-				jQ(showWishlist).click(function() {
-					
-					if (jQ('.wishListPanelTop').height() < 1) {
-						
-						jQ('.wishListPanelTop').css("max-height", "300px");
-						
-						//jQ(".wishListPanelTop").slideUp();
-					}
-					else
-					{
-						jQ('.wishListPanelTop').css("max-height", "0px");
-					}
-					
-					//jQ(".wishListPanelTop").slideUp();
-					
-				});
-
-			var filterHolder = document.createElement('div');
-				filterHolder.className = 'filterHolder';
-				categoryHolder.appendChild(filterHolder);
-
-				
 			var a;
+
+			gui.xmas.view.filterPanel.activeFilters = {
+				whatkindofgift: undefined,
+				whoisthegiftfor: undefined,
+				whatpricerange: undefined
+			};
+
 			for (a = 0; a < categoriesAndFilters.length; a++) {
-				
-			
-				
-				
-				
-				var filterListContainer = document.createElement('div');
-				filterHolder.appendChild(filterListContainer);
-				filterListContainer.className = 'styled-select';
-				
-				var filterList = document.createElement('select');
-				filterListContainer.appendChild(filterList);
-				filterList.id = "filterList_" + a;
-				
+				var $currentFilter = $('#filterList_' + a);
 				var b, filtersLength = categoriesAndFilters[a].filters.length;
 				for (b = 0; b < filtersLength; b++) {
-					
-					//var gridLi = document.createElement('li');
-					//filterList.appendChild(gridLi);
-					
 					var filterBox = document.createElement('option');
-					filterBox.className = 'filterPanalFilterBox';
 					filterBox.id = categoriesAndFilters[a].filters[b];
 					filterBox.value = categoriesAndFilters[a].filters[b];
-					filterList.appendChild(filterBox);
-					gui.xmas.view.filterPanel.filterDivsArr[gui.xmas.view.filterPanel.filterDivsArr.length] = filterBox;
-					
-					if (gui.xmas.model.screenVersion === 'iFrame') {
-						jQ(filterBox).mouseover(function() {
-							if (!gui.xmas.model.isFilterActive(this.value)) {
-								//TweenLite.killTweensOf(jQ(this));
-								//jQ(this).css('backgroundColor', '#7d4430');
-								//TweenLite.to(jQ(this), 1, {css:{backgroundColor:"#fb9107"}, ease:Power2.easeOut});
-							}
-						});
-
-						jQ(filterBox).mouseout(function() {
-							if (!gui.xmas.model.isFilterActive(this.value)) {
-								//TweenLite.killTweensOf(jQ(this));
-								//TweenLite.to(jQ(this), 1, {css:{backgroundColor:"#e7d7c0"}, ease:Power2.easeOut});
-							}
-						});
-					}
-					
-					
-					
-					var title = document.createElement('h1');
-					title.innerHTML = categoriesAndFilters[a].filters[b];
-					filterBox.appendChild(title);
-					
+					filterBox.innerHTML = categoriesAndFilters[a].filters[b]
+					$currentFilter.append(filterBox);
 				}
 				
-				
-
-				jQ(filterList).change(function() {
-						
-						var value = jQ(this).val();
-						
-						
-						//gui.xmas.model.removeSelectiveFilters(this.id);
-						
-						var listArr = jQ(this).attr("id").split("_");
-						var listIndex = Number(listArr[1]);
-						var filterWaiting = jQ('#filteringWait');
-						filterWaiting.css('display', 'block');
-						
-						gui.xmas.model.removeSelectiveFilters(listIndex);
-						
-						
-						if (value.substring(0, 3) != "Any") {
-							
-							
-						
-						if (!gui.xmas.model.isFilterActive(value)) {
-							
-							gui.xmas.model.addFilter(value);
-							//jQ(this).css('backgroundColor', '#fb9107');
-						}
-						
-						} else {
-							
-							//for (var i = 1; i < categoriesAndFilters[listIndex].filters.length; i++) {
-								
-								//if (!gui.xmas.model.isFilterActive(categoriesAndFilters[listIndex].filters[i])) {
-							//gui.xmas.model.addFilter(categoriesAndFilters[listIndex].filters[i]);
-							//jQ(this).css('backgroundColor', '#fb9107');
-								//}
-								
-							//}
-							
-							
-						}
-						
-						//console.log(gui.xmas.model.activeFiltersArr);
-						//else {
-							//jQ(this).css('backgroundColor', '#e7d7c0');
-							//gui.xmas.model.removeFilter(this.id);
-						//}
-						gui.xmas.view.productsGridView.scrollUpUpdate();
-						filterWaiting.css('display', 'none');
-					});
-				
-				
-				
-				
-				
-				
+				jQ($currentFilter).change(function() {
+					var value = jQ(this).val();
+					var currentSelect = jQ(this).attr('data-filter');
+					var listArr = jQ(this).attr("id").split("_");
+					var listIndex = Number(listArr[1]);
+					// gui.xmas.model.removeSelectiveFilters(listIndex);
+					
+					// if (value.substring(0, 3) != "Any") {
+					// 	if (!gui.xmas.model.isFilterActive(value)) {
+					// 		gui.xmas.model.addFilter(value);
+					// 	}
+					// }
+					if (value.substring(0, 3) != "Any") {
+						gui.xmas.view.filterPanel.activeFilters[currentSelect] = value;
+					}else{
+						gui.xmas.view.filterPanel.activeFilters[currentSelect] = undefined;
+					}
+					console.log(gui.xmas.view.filterPanel.filterGifts());
+					gui.xmas.model.addFilter();
+					// } else {
+					// 	for (var i = 1; i < categoriesAndFilters[listIndex].filters.length; i++) {
+					// 		if (!gui.xmas.model.isFilterActive(categoriesAndFilters[listIndex].filters[i])) {
+					// 			gui.xmas.model.addFilter(categoriesAndFilters[listIndex].filters[i]);
+					// 			jQ(this).css('backgroundColor', '#fb9107');
+					// 		}
+					// 	}
+					// }
+					// gui.xmas.view.productsGridView.scrollUpUpdate();
+				});	
 			}
-			var clearFilters = document.createElement('div');
-				filterHolder.appendChild(clearFilters);
-				clearFilters.className = 'clearBoth';
-			/*
-			var moreFilters = document.createElement('div');
-			moreFilters.className = 'moreFiltersBox';
-			leftsideFilterPanel.appendChild(moreFilters);
-			
-			var moreFiltersTitle = document.createElement('h1');
-			moreFiltersTitle.innerHTML = 'More filters';
-			moreFilters.appendChild(moreFiltersTitle);
-			*/
-			
-			var clearDiv = document.createElement('div');
-			clearDiv.className = 'clearBoth';
-			leftsideFilterPanel.appendChild(clearDiv);
-			
+		},
+		filterGifts:function(){
+			var activeFilters = gui.xmas.view.filterPanel.activeFilters;
+			var filterObject = {};
+			var gifts = gui.xmas.model.jsonData.gifts;
+			var filteredGifts = [];
+			var firstLoop = true;
+			for(var key in activeFilters){
+				if(activeFilters[key]){
+					filteredGifts = _.filter(gifts,function(gift){
+						return gift.filters[key].indexOf(activeFilters[key]) > -1
+					})
+					gifts = filteredGifts;	
+
+				}
+			}
+			return gifts;
 		}
 		
 	}

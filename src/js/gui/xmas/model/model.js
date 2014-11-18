@@ -53,7 +53,6 @@ var layer = 1;
 		}());
     };
 	gui.xmas.Model.prototype = {
-
         getURLVars: function(){
 			var urlParams = {};
 			var match,
@@ -82,6 +81,7 @@ var layer = 1;
 			gui.xmas.model.jsonData = data;
 
 			var a, giftsLength = gui.xmas.model.jsonData.gifts.length;
+
 			for (a = 0; a < gui.xmas.model.jsonData.filterContainers.length; a++) {
 				var filterContainerFilters = gui.xmas.model.jsonData.filterContainers[a].filters, filterLength = filterContainerFilters.length, b;
 				for (b = 0; b < filterLength; b++) {
@@ -157,7 +157,8 @@ var layer = 1;
 			if (gui.xmas.model.wishListItemsArr.length > 0) {
 				var returnedStr = '?gifts=', wishListLength = gui.xmas.model.wishListItemsArr.length, a;
 				for (a = 0; a < wishListLength; a++) {
-					var idNum = gui.xmas.model.giftLookup[gui.xmas.model.wishListItemsArr[a]].id || 42;
+					var productName = gui.xmas.model.wishListItemsArr[a];
+					var idNum = _.where(gui.xmas.model.jsonData.gifts, {name: productName})[0].id;
 					returnedStr += idNum;
 					if (a < wishListLength - 1) {
 						returnedStr += ',';
@@ -171,32 +172,34 @@ var layer = 1;
 		},
 
 		addFilter: function(filterName) {
-			if (gui.xmas.model.initFilterAll) {
-				gui.xmas.model.activeFiltersArr.length = 0;
-				gui.xmas.model.initFilterAll = false;
-			}
-			gui.xmas.model.filterLookup[filterName] = true;
-			gui.xmas.model.activeFiltersArr[gui.xmas.model.activeFiltersArr.length] = filterName;
+			// if (gui.xmas.model.initFilterAll) {
+			// 	gui.xmas.model.activeFiltersArr.length = 0;
+			// 	gui.xmas.model.initFilterAll = false;
+			// }
+			// gui.xmas.model.filterLookup[filterName] = true;
+			// gui.xmas.model.activeFiltersArr[gui.xmas.model.activeFiltersArr.length] = filterName;
 			filterState.addFilter();
 		},
 
-		addAllFilters: function() {
-			var a;
-			gui.xmas.model.filterLookup = {};
-			for (a = 0; a < gui.xmas.model.jsonData.filterContainers.length; a++) {
-				var filterContainerFilters = gui.xmas.model.jsonData.filterContainers[a].filters, filterLength = filterContainerFilters.length, b;
-				for (b = 0; b < filterLength; b++) {
-					gui.xmas.model.activeFiltersArr[gui.xmas.model.activeFiltersArr.length] = filterContainerFilters[b];
-					gui.xmas.model.filterLookup[filterContainerFilters[b]] = false;
-				}
-			}
-			filterState.addFilter();
-			gui.xmas.model.initFilterAll = true;
-		},
+		// addAllFilters: function() {
+		// 	var a;
+		// 	gui.xmas.model.filterLookup = {};
+		// 	for (a = 0; a < gui.xmas.model.jsonData.filterContainers.length; a++) {
+		// 		var filterContainerFilters = gui.xmas.model.jsonData.filterContainers[a].filters, filterLength = filterContainerFilters.length, b;
+		// 		for (b = 0; b < filterLength; b++) {
+		// 			gui.xmas.model.activeFiltersArr[gui.xmas.model.activeFiltersArr.length] = filterContainerFilters[b];
+		// 			gui.xmas.model.filterLookup[filterContainerFilters[b]] = false;
+		// 		}
+		// 	}
+		// 	filterState.addFilter();
+		// 	gui.xmas.model.initFilterAll = true;
+		// },
 
 		removeFilter: function(filterName) {
 			var a, arrLength = gui.xmas.model.activeFiltersArr.length;
+			console.log(arrLength);
 			for (a = 0; a < arrLength; a++) {
+				console.log(gui.xmas.model.activeFiltersArr[a])
 				if (gui.xmas.model.activeFiltersArr[a] == filterName) {
 					gui.xmas.model.activeFiltersArr.splice(a, 1);
 					gui.xmas.model.filterLookup[filterName] = false;
@@ -217,67 +220,75 @@ var layer = 1;
 		},
 
 		removeSelectiveFilters: function(listIndex) {
-
 			var categoriesAndFilters = gui.xmas.model.getCategoryGroupsAndTitles();
-
     		var b, filtersToRemove = categoriesAndFilters[listIndex].filters;
 
     		for (b = 0; b < filtersToRemove.length; b++) {
-
 				gui.xmas.model.removeFilter(filtersToRemove[b]);
 			}
-
-
 		},
 
-		getActiveProductsList: function() {
-			var a, arrLength = gui.xmas.model.activeFiltersArr.length, returnedArr = [], productExistsObj = {};
-			for (a = 0; a < arrLength; a++) {
-				var b, subArrLength = gui.xmas.model.filterProductLookup[gui.xmas.model.activeFiltersArr[a]].length;
-				for (b = 0; b < subArrLength; b++) {
-					if (!productExistsObj[gui.xmas.model.filterProductLookup[gui.xmas.model.activeFiltersArr[a]][b].name]) {
-						returnedArr[returnedArr.length] = gui.xmas.model.filterProductLookup[gui.xmas.model.activeFiltersArr[a]][b];
-					}
-					productExistsObj[gui.xmas.model.filterProductLookup[gui.xmas.model.activeFiltersArr[a]][b].name] = true;
-				}
-			}
-			return returnedArr;
-		},
+		// getActiveProductsList: function() {
+		// 	var a, arrLength = gui.xmas.model.activeFiltersArr.length, returnedArr = [], productExistsObj = {};
+		// 	for (a = 0; a < arrLength; a++) {
+		// 		var b, subArrLength = gui.xmas.model.filterProductLookup[gui.xmas.model.activeFiltersArr[a]].length;
+		// 		for (b = 0; b < subArrLength; b++) {
+		// 			if (!productExistsObj[gui.xmas.model.filterProductLookup[gui.xmas.model.activeFiltersArr[a]][b].name]) {
+		// 				returnedArr[returnedArr.length] = gui.xmas.model.filterProductLookup[gui.xmas.model.activeFiltersArr[a]][b];
+		// 			}
+		// 			productExistsObj[gui.xmas.model.filterProductLookup[gui.xmas.model.activeFiltersArr[a]][b].name] = true;
+		// 		}
+		// 	}
+		// 	return returnedArr;
+		// },
 
 		checkGiftIsInActiveFilters: function(productName) {
-			var a, arrLength = gui.xmas.model.activeFiltersArr.length, isProductInfilters = true;
-			//check if the filter is a price filter, if so perform an OR filter on that instead of an AND
-			//make a price filter check lookup!
-			var priceFilters = [];
+			var filteredGifts = gui.xmas.view.filterPanel.filterGifts();
+			// console.log(filteredGifts)
+			// console.log(_.findWhere(filteredGifts,{"name":"hoi"}))
+			var matchedGift = _.where(filteredGifts,{name: productName});
+			if(matchedGift.length > 0){
+				return true
+			}else{
+				return false
+			}
 
-			for (a = 0; a < arrLength; a++) {
-				if (gui.xmas.model.pricefilterLookup[gui.xmas.model.activeFiltersArr[a]]) {
-					priceFilters[priceFilters.length] = gui.xmas.model.activeFiltersArr[a];
-					continue;
-				}
-				if (!gui.xmas.model.productNameFilterLookup[productName][gui.xmas.model.activeFiltersArr[a]]) {
-					isProductInfilters = false;
-					break;
-				}
-			}
-			if (priceFilters.length > 0 && isProductInfilters) {
-				var pricePass = false;
-				arrLength = priceFilters.length;
-				for (a = 0; a < arrLength; a++) {
-					if (gui.xmas.model.productNameFilterLookup[productName][priceFilters[a]]) {
-						pricePass = true;
-						break;
-					}
-				}
-				if (!pricePass) {
-					isProductInfilters = false;
-				}
-			}
-			return isProductInfilters;
+			// var a, arrLength = gui.xmas.model.activeFiltersArr.length, isProductInfilters = true;
+			// //check if the filter is a price filter, if so perform an OR filter on that instead of an AND
+			// //make a price filter check lookup!
+			// var priceFilters = [];
+
+			// for (a = 0; a < arrLength; a++) {
+			// 	if (gui.xmas.model.pricefilterLookup[gui.xmas.model.activeFiltersArr[a]]) {
+			// 		priceFilters[priceFilters.length] = gui.xmas.model.activeFiltersArr[a];
+			// 		continue;
+			// 	}
+			// 	if (!gui.xmas.model.productNameFilterLookup[productName][gui.xmas.model.activeFiltersArr[a]]) {
+			// 		isProductInfilters = false;
+			// 		break;
+			// 	}
+			// }
+			// if (priceFilters.length > 0 && isProductInfilters) {
+			// 	var pricePass = false;
+			// 	arrLength = priceFilters.length;
+			// 	for (a = 0; a < arrLength; a++) {
+			// 		if (gui.xmas.model.productNameFilterLookup[productName][priceFilters[a]]) {
+			// 			pricePass = true;
+			// 			break;
+			// 		}
+			// 	}
+			// 	if (!pricePass) {
+			// 		isProductInfilters = false;
+			// 	}
+			// }
+			// return isProductInfilters;
 		},
 
 		registerProductClicked: function(productName) {
-			gui.xmas.model.currentGift = gui.xmas.model.giftLookup[productName];
+			console.log(productName);
+			// gui.xmas.model.jsonData
+			gui.xmas.model.currentGift = _.where(gui.xmas.model.jsonData.gifts,{name:productName})[0];
+			console.log(gui.xmas.model.currentGift);
 		},
 
 		getCurrentGift: function() {

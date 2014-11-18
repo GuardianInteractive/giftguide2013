@@ -20,9 +20,7 @@ gui.xmas.view = gui.xmas.view || {};
 
 			var giftsArr = gui.xmas.model.getAllProducts(), giftsLength = giftsArr.length;
 
-			var title = document.createElement('h1');
-			title.innerHTML = 'Showing <span id="filteredGiftsNum">' + giftsLength + '</span> gift ideas';
-			productsGridHolder.appendChild(title);
+			$('#giftCount').html('Showing <span id="filteredGiftsNum">' + giftsLength + '</span> gift ideas');
 
 
 
@@ -37,19 +35,24 @@ gui.xmas.view = gui.xmas.view || {};
 
 			for (var a = 0; a < giftsLength; a++) {
 				var giftPrice = giftsArr[a].cost;
-				if (giftPrice.indexOf('From') > -1) {
-					giftPrice =  '&pound;' + giftPrice.slice(from + 5) + "+";
-				}else{
-					giftPrice = '&pound;' + giftsArr[a].cost;
+				if(typeof giftPrice !== "number"){
+					from = giftPrice.indexOf('From');
+					if (from > -1) {
+						giftPrice =  '&pound;' + giftPrice.slice(from + 5) + "+";
+					}else{
+						giftPrice = '&pound;' + giftsArr[a].cost;
+					}
+					var dot = giftPrice.indexOf('.');
+					if (dot > -1 && dot >= giftPrice.length - 2) {
+						giftPrice += '0';
+					}
 				}
-				var dot = giftPrice.indexOf('.');
-				if (dot > -1 && dot >= giftPrice.length - 2) {
-					giftPrice += '0';
-				}
+				
 
 				var productObject = {
 					productId: giftsArr[a].name,
-					productImage: gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl,
+					// productImage: gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl,
+					productImage: 'assets/images/imageNotFoundThumbnail.gif',
 					productTitle: giftsArr[a].name,
 					productPrice: giftPrice
 				}
@@ -97,7 +100,7 @@ gui.xmas.view = gui.xmas.view || {};
 			});
 			jQ('.productGridItem img').click(function(){
 				var productId = jQ(this).parent().find('p#productName').html();
-				console.log('clicked link');
+				console.log(productId);
 				gui.xmas.model.registerProductClicked(productId);
 				displayState.productClicked();
 			});
@@ -118,8 +121,7 @@ gui.xmas.view = gui.xmas.view || {};
 			
 			if (!gui.xmas.model.urlVarsExist) {
 				gui.xmas.model.clearAllFilters();
-			}
-			else {
+			}else {
                 gui.xmas.view.productsGridView.maxNumOnPage = 40;
 				var numOnPage = gui.xmas.view.productsGridView.maxNumOnPage;
 				if (urlVarListLength < numOnPage) {
@@ -127,7 +129,7 @@ gui.xmas.view = gui.xmas.view || {};
 				}
 			}
 
-			gui.xmas.view.productsGridView.scrollUpUpdate();
+			// gui.xmas.view.productsGridView.scrollUpUpdate();
 
 		},
 
@@ -137,9 +139,6 @@ gui.xmas.view = gui.xmas.view || {};
 			scrollPos = gui.xmas.view.productsGridView.getScroll()[1], 
 			windowHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 			var rightSideWidth = jQ('.rightSideHolder').width();
-			if (width < 9400) {
-				rightSideWidth = jQ('.rightSideHolderSmall').width();
-			}
 			var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, 
 			gridHeight = rightSideWidth / numAcross, 
 			howManyRowsDown = (scrollPos - ulTopPos) / gridHeight, 
@@ -191,7 +190,6 @@ gui.xmas.view = gui.xmas.view || {};
 				items[a].className = '';
 				if (!gui.xmas.model.checkGiftIsInActiveFilters(items[a].id)) {
 					items[a].style.display = 'none';
-
 				}
 				else {
 					numAddedToPage ++;

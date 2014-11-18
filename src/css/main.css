@@ -22,9 +22,7 @@ body{
 	margin-left: auto;
 	margin-top: 20px;
 	width: 200px;
-
 	background: #fff url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/loading.gif") no-repeat left;
-
 }
 
 .gu-interactive .loadingTitle {
@@ -104,7 +102,12 @@ body{
 	width:100%;
 	z-index:2;
 }
-
+.gu-interactive #emptyWishlist{
+	color:rgba(255,255,255,0.4);
+	text-align: center;
+	margin-top:36px;
+	font-family:"Guardian Text Sans Web";
+}
 .gu-interactive #wishlist #wishlistTitle{
 	color:#fff;
 	position: relative;
@@ -209,64 +212,24 @@ body{
 .gu-interactive #wishlist #wishlistNavNext{
 	right:20px;
 }
-/*.gu-interactive .leftSideHolderSmall {
-	width:100%;
-	margin-left:0%;
-	margin-bottom:1%;
-	float:left;
-	position:relative;
-	background: #ffc202;
-	-webkit-box-shadow: 0px 2px 0px rgba(211, 153, 51, 1);
-	-moz-box-shadow:    0px 2px 0px rgba(211, 153, 51, 1);
-	box-shadow:         0px 2px 0px rgba(211, 153, 51, 1);
-}
 
-.headerImageContainer{
-	background-image: none;
-	height:auto;
-}
-
-.headerImageContainer img{
-	display:block;
-}
-
-.gu-interactive .leftSideHeaderImage {
-	width:100%;
-	height:auto;
-	max-width: 940px;
-	margin: 0 auto;
-	display:block;
-}
-
-.gu-interactive .filterPanelLeftSide {
-	margin-left:1%;
-	width:98%;
-	background: #ffc202;
-	min-height:20px;
+.gu-interactive	#filters{
 	margin-top:20px;
+	margin-right:20px;
+	overflow: hidden;
+}	
+
+.gu-interactive #giftCount{
+	float:right;
+	margin-right:10px;
+	-webkit-font-smoothing:antialiased;
+	color:#333;
+	margin-top:9px;
+	font-family:"Guardian Text Sans Web", Arial;
+	font-size:14px;
 }
 
-.gu-interactive .filterPanelLeftSide  h1 {
-	font-family: 'Guardian Text Egyptian Web';
-	font-weight:normal;
-	font-size:20px;
-	color:#62594f;
-	margin:3%;
-	width: 94%;
-	text-align: center;
-}
-
-.gu-interactive .filterPanelLeftSide  h2 {
-	font-family: 'Guardian Text Egyptian Web';
-	font-weight:normal;
-	font-size:18px;
-	color:#fff;
-	margin:3%;
-	display: inline;
-	float: left;
-}
-
-.gu-interactive .filterPanelLeftSide .styled-select select {
+.gu-interactive .styled-select select {
    background: transparent;
    font-size: 12px;
    border: none;
@@ -278,12 +241,12 @@ body{
     font-family: 'Guardian Text Sans Web';
     font-weight: bold;
     -webkit-font-smoothing:antialiased;
-}*/
+}
 
 
-/*.gu-interactive .styled-select {
+.gu-interactive .styled-select {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	margin: 0 2% 13px;
+	margin: 0 10px 0 0;
 	display: inline;
 	float: right;
   overflow: hidden;
@@ -296,109 +259,6 @@ border-radius: 99999px;
    background: url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/filter-arrow.png") no-repeat 94% 9px #62594f;
    text-align: left;
 }
-
-.gu-interactive .show-wishlist {
-    padding: 11px 14px 0px;
-   font-family: 'Guardian Text Sans Web';
-   font-weight: bold;
-	font-size: 12px;
-   border: none;
-   height: 23px;
-    color: #fff;
-    -webkit-border-radius: 2px;
--moz-border-radius: 2px;
-border-radius: 9999px;
-	background: #a64557;
-	cursor: pointer;
-	margin: 0 2% 10px;
-	vertical-align: middle;
-}
-
-.gu-interactive .show-wishlist #wishlist-button-counter {
-	display: inline;
-	float: right;
-	font-weight: normal;
-	margin-left:10px;
-}
-
-.gu-interactive .filterPanelLeftSide  p  {
-	font-family: 'Guardian Text Sans Web';
-	font-weight:normal;
-	font-size:12px;
-	line-height:140%;
-	border: none !important;
-	color:#fff;
-	width:94%;
-	margin: 3% 0 0 3%;
-	float:left;
-}
-
-.gu-interactive .filterPanelCategoryHolder {
-	width:100%;
-	float:left;
-	top:0px;
-	left: 0px;
-	position: relative;
-}
-
-.gu-interactive .filterPanelCategoryHolder  h2 {
-	margin-left:3%;
-	line-height: 130%;
-	border: none !important;
-	float:left;
-	display: inline;
-}
-
-.gu-interactive .filterPanalFilterBox {
-	background-color:#62594f;
-	color: #fff;
-	cursor:pointer;
-	padding: 0px;
-	margin: 0px;
-}
-
-.gu-interactive .filterPanalFilterBox h1 {
-	vertical-align: middle;
-	text-align: left;
-	font-family: 'Guardian Text Sans Web';
-	font-weight:normal;
-	color:#fff;
-	font-size:12px;
-	padding-left:10px;
-}
-
-.gu-interactive .moreFiltersBox {
-	width:100%;
-	height:26px;
-	background-color:#e7d7c0;
-	display: table;
-	float:left;
-}
-
-.gu-interactive .moreFiltersBox h1 {
-	display: table-cell;
-	vertical-align: middle;
-	font-family: 'Guardian Text Sans Web';
-	font-weight:normal;
-	color:#4a251c;
-	font-size:12px;
-	padding-left:10px;
-}
-
-.gu-interactive .refreshIcon {
-	float:right;
-	margin:3% 3% 0 0;
-	cursor: pointer;
-}
-
-.gu-interactive .filterPanelSeperator {
-	width:100%;
-	height:2px;
-	background-color:#7d4430;
-	margin: 6% 0 3% 0;
-	float:left;
-	display: none;
-}*/
 
 .gu-interactive .rightSideHolder {
 	width:69%;
@@ -535,9 +395,8 @@ font-family: 'Guardian Text Sans Web' !important;
 }
 
 .gu-interactive .productsGridHolder {
-	width:96%;
-	margin-left:2%;
-	margin-right: 2%;
+	margin-left:10px;
+	margin-right: 10px;
 	margin-top:20px;
 	position:relative;
 	transition: left 0.5s;
@@ -588,14 +447,14 @@ font-family: 'Guardian Text Sans Web' !important;
 
 .gu-interactive .productsGridHolder li {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	border:1px solid rgb(241, 224, 179);
+	padding:0 10px;
 	display: inline-block;
-	width: 48%;
+	width: 50%;
 	cursor:pointer;
 	overflow: hidden;
 	margin-bottom:10px;
-	margin-left:1%;
-	margin-right:1%;
+	margin-left:0;
+	margin-right:0;
 }
 
 
@@ -612,12 +471,13 @@ font-family: 'Guardian Text Sans Web' !important;
 	height:113%;
 	background-color:#fff;
 	overflow:hidden;
+	border:1px solid #DFDFDF;
 }
 .gu-interactive .productsGridHolder  #productTitle {
 	margin-left: 10px;
 	margin-right: 10px;
 	height:28px;
-	border-top: 1px solid rgb(243, 225, 194);
+	border-top: 1px solid #F37021;
 	padding-top:10px;
 	padding-bottom:10px;
 }
@@ -659,7 +519,7 @@ font-family: 'Guardian Text Sans Web' !important;
 	font-family: 'Guardian Text Egyptian Web', Arial;
 	font-weight:normal;
 	font-size:14px;
-	color:#609984;
+	color:#F37021;
 	text-align:left;
 	-webkit-font-smoothing: antialiased;
 }
@@ -737,6 +597,7 @@ font-family: 'Guardian Text Sans Web' !important;
 .gu-interactive #detailDescrip{
 	float:left;
 	margin-top:40px;
+	overflow: hidden;
 }
 
 .gu-interactive .singularProductHolder  h1 {
@@ -861,14 +722,14 @@ font-family: 'Guardian Text Sans Web' !important;
 		width:60%;
 	}
 	.gu-interactive .styled-select {
-		margin: 0 0 13px 4%;
+		margin: 0 0 13px 10px;
 		width:auto;
 		float:right;
 	}
 	.gu-interactive .productsGridHolder li {
-		width:31%;
-		margin-right:1%;
-		margin-left:1%;
+		width:33%;
+		margin-left:0;
+		margin-right:0;
 	}
 	/*.gu-interactive .productsGridHolder .second {
 		margin-right:2%;
@@ -957,6 +818,7 @@ font-family: 'Guardian Text Sans Web' !important;
 		width:84%;
 		max-width:700px;
 		padding:0 35px 2% 0;
+		overflow:hidden;
 		position:relative;
 		background: #f9f1e1;
 		border-radius:3px;
@@ -973,9 +835,9 @@ font-family: 'Guardian Text Sans Web' !important;
 @media (min-width: 900px) {
 
 	.gu-interactive .productsGridHolder li {
-		width:23%;
-		margin-right:1%;
-		margin-left:1%;
+		width:25%;
+		margin-right:0;
+		margin-left:0;
 	}
 }
 
@@ -996,9 +858,9 @@ font-family: 'Guardian Text Sans Web' !important;
 
 @media (min-width: 1120px) {
 	.gu-interactive .productsGridHolder li {
-		width:18%;
-		margin-right:1%;
-		margin-left:1%;
+		width:20%;
+		margin-right:0;
+		margin-left:0;
 	}
 }}
 .jcarousel-skin-tango .jcarousel-prev-horizontal.jcarousel-prev-disabled{

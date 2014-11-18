@@ -23,17 +23,10 @@ gui.xmas.view = gui.xmas.view || {};
 				gui.xmas.view.productsGridView.giftRemovedFromWishList(productId);
 				gui.xmas.view.singularProductView.setWishListText(productId);
 				gui.xmas.view.wishListBox.removeItemFromList(productId);
-				
 			});
+			console.log('hoi');
+			gui.xmas.view.wishListBox.updateShareButtons();
 			
-		},
-
-		handleCarouselItemLoadComplete: function(carousel, state) {
-			gui.xmas.view.wishListBox.carousel = carousel;
-		},
-
-		constructCarouselImage: function(item) {
-			return '<div style=\'border-left: 1px solid #dfdfdf; position: relative\'>' + '<img src="' + item.url + '" width="65" height="65" alt="' + item.url + '" style=\'position: absolute\' />' + '<div class=\'removeFromListBtn\'><span>+</span></div>' + '</div>';
 		},
 
 		addNavigationButtons:function(){
@@ -68,13 +61,21 @@ gui.xmas.view = gui.xmas.view || {};
 			var $wishlist = document.querySelector('#wishlistItems ul');
 			var containerWidth = wishlistArray.length * 80;
 			$wishlist.innerHTML = "";
-			
+
+			if(wishlistArray.length === 0){
+				$('#emptyWishlist').css('display','block')
+			}else{
+				$('#emptyWishlist').css('display','none')
+			}
 			for(var i=0;i<wishlistArray.length;i++){
-				var currentGift = gui.xmas.model.giftLookup[wishlistArray[i]];
+				console.log(wishlistArray);
+				var currentGift = _.where(gui.xmas.model.jsonData.gifts,{name:wishlistArray[i]})[0];
+				console.log(currentGift);
 
 				var wishlistItem = document.createElement('li');
 				var itemImage = document.createElement('img');
-				itemImage.src = gui.xmas.model.imageRootPath + currentGift.thumbnailPicUrl;
+				// itemImage.src = gui.xmas.model.imageRootPath + currentGift.thumbnailPicUrl;
+				itemImage.src = "assets/images/imageNotFoundThumbnail.gif";
 				itemImage.alt = currentGift.name;
 				
 				var removeBtn = document.createElement('div');
@@ -93,6 +94,19 @@ gui.xmas.view = gui.xmas.view || {};
 				$('#wishlistNavNext').addClass('active');
 			}else{
 				$('#wishlistNavNext').removeClass('active');
+			}
+			this.updateShareButtons();
+		},
+		updateShareButtons:function(){
+			console.log(gui.xmas.model.wishListItemsArr)
+			if(gui.xmas.model.wishListItemsArr.length === 0){
+				$('.shareTwitter').attr('href','https://twitter.com/home?status=Check out this Christmas gift guide I found on @guardian ' + gui.xmas.model.shareRootPath);
+				$('.shareFb').attr('href','https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath);
+				$('.shareUrl').attr('href',gui.xmas.model.shareRootPath);
+			}else{
+				$('.shareTwitter').attr('href','https://twitter.com/home?status=Check out my Guardian Christmas Gift Guide wishlist ' + gui.xmas.view.wishListBox.constructURLString());
+				$('.shareFb').attr('href','https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.view.wishListBox.constructURLString());
+				$('.shareUrl').attr('href',gui.xmas.view.wishListBox.constructURLString());
 			}
 		},
 
@@ -126,8 +140,8 @@ gui.xmas.view = gui.xmas.view || {};
 			else {
 				urlStr = gui.xmas.model.shareRootPath + urlStr;
 			}
-			//gui.xmas.view.wishListBox.copyURLArea.value = urlStr;
-			gui.xmas.view.wishListBox.copyURLArea.value = urlStr;
+			// gui.xmas.view.wishListBox.copyURLArea.value = urlStr;
+			return urlStr;
 		}
 
 	}

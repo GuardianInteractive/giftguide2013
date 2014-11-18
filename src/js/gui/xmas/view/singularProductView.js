@@ -28,18 +28,24 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		updateProductInfo: function(giftObj) {
+			if(window.width < 640){
+				$('.productsGridHolder').css('display','none');
+			}
 			var giftPrice = giftObj.cost;
-			var from = giftPrice.indexOf('From');
-			if (from > -1) {
-				giftPrice = (giftPrice.slice(0,(from + 5))) + '&pound;' + giftPrice.slice(from + 5);
+			if(typeof giftPrice === "string"){
+				var from = giftPrice.indexOf('From');
+				if (from > -1) {
+					giftPrice = (giftPrice.slice(0,(from + 5))) + '&pound;' + giftPrice.slice(from + 5);
+				}
+				else {
+					giftPrice = '&pound;' + giftPrice;
+				}
+				var dot = giftPrice.indexOf('.');
+				if (dot > -1 && dot >= giftPrice.length - 2) {
+					giftPrice += '0';
+				}
 			}
-			else {
-				giftPrice = '&pound;' + giftPrice;
-			}
-			var dot = giftPrice.indexOf('.');
-			if (dot > -1 && dot >= giftPrice.length - 2) {
-				giftPrice += '0';
-			}
+			
 
 			var wishlistText;
 			if (!gui.xmas.model.wishListItemsLookup[giftObj.name]) {
@@ -52,7 +58,8 @@ gui.xmas.view = gui.xmas.view || {};
 
 			var singularProductTemplate = jQ('#singularProductTemplate').html();
 			var singularProductObject = {
-				productImage : gui.xmas.model.imageRootPath + giftObj.bigPicUrl,
+				// productImage : gui.xmas.model.imageRootPath + giftObj.bigPicUrl,
+				productImage: "assets/images/imageNotFoundBigPic.gif",
 				productTitle : giftObj.name,
 				giftPrice: giftPrice,
 				productDescription: giftObj.description,
@@ -81,7 +88,6 @@ gui.xmas.view = gui.xmas.view || {};
 			});
 
 			jQ('#backToGridBtn').click(function() {
-				console.log('hey');
 				jQ(gui.xmas.view.singularProductView.addToWishListIcon).off();
 				displayState.backToListClicked();
 			});

@@ -24,7 +24,7 @@ gui.xmas.view = gui.xmas.view || {};
 
 			leftSideHolder.innerHTML = headerTemplate;
 
-			// gui.xmas.view.filterPanel.init();
+			gui.xmas.view.filterPanel.init();
 
 			var rightSideHolder = document.createElement('div');
 			rightSideHolder.className = 'rightSideHolderSmall';
@@ -50,12 +50,10 @@ gui.xmas.view = gui.xmas.view || {};
 		goToSingularView: function() {
             var target = jQ('.singularProductHolder');
             var pageHeight = document.body.clientHeight;
-            console.log(target);
 
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
-                console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
                 if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
                     //scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
                 }
@@ -68,7 +66,6 @@ gui.xmas.view = gui.xmas.view || {};
 			} else {
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
-                console.log(target.find('.singularContent').height(), scrollPos, pageHeight);
                 if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
                     //scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
                 }
@@ -79,10 +76,8 @@ gui.xmas.view = gui.xmas.view || {};
                 });
 			}
 			if(window.width < 640){
-				jQ('.productsGridHolder').css("display", "none")
-//				jQ(window).scrollTop(200);
-//				console.log(jQ(window).scrollTop());
-                XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: false })));
+				// jQ('.productsGridHolder').css("display", "none")
+    //             XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: false })));
 			}
 		},
 
@@ -99,10 +94,9 @@ gui.xmas.view = gui.xmas.view || {};
 			}
 
 			if(window.width < 640){
-				//console.log('doe mobiele dingen');
 				jQ('.productsGridHolder').css("display", "block");
 				//console.log(currentProductInGrid.offset().top);
-                XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: currentProductInGrid.offset().top })));
+                // XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: currentProductInGrid.offset().top })));
 				//jQ(window).scrollTop(currentProductInGrid.offset().top);
 			}
 		},

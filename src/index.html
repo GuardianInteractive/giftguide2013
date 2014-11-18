@@ -145,13 +145,12 @@
         <div class="loadingLargeImageMsg" style="display: none;">
             <h1 style="text-align: center;">Loading...</h1>
         </div>
-        <img src="<%=productImage%>" alt="<%=productTitle%> - <%=productDescription%>" style="width: 80%; height: auto; visibility: visible; display: block; opacity: 1;">
+        <img src="<%=productImage%>" alt="<%=productTitle%> - <%=productDescription%>" style="margin:0 auto; width: 80%; height: auto; visibility: visible; display: block; opacity: 1;">
     </div>
     <div id="detailDescrip">
         <h1 style="float: left; margin-right: 10px;"><%= productTitle %></h1>
         <h1 style="float: left; font-size: 14px; font-family: Arial; margin-top: 4px;"><%=giftPrice%></h1>
-        <div class="clearBoth"></div>
-        <p style="margin-bottom: 25px;">
+        <p style="margin-bottom: 25px; clear:both;">
             <%=productDescription%><br><br>
             <a href="<%=productUrl%>" target="_blank" class="linkToShop">Go to shop »</a>
         </p>
@@ -163,9 +162,7 @@
             <img src="http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/assets/images/tweetIcon.png" class="shareIcon" id="shareIconTwitter">
             <img src="http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/assets/images/pinItIcon.png" class="shareIcon" style="width: 40px;" id="shareIconPinterest">
         </div>
-        <div class="clearBoth"></div>
     </div>
-    <div class="clearBoth"></div>
 </div>
 </script>
 
@@ -183,12 +180,13 @@
                 <div id="wishlistTitle">
                     <p>My wishlist</p>
                     <div id="wishlistShareBox">
-                        <div class="wishlistShareButton"></div>
-                        <div class="wishlistShareButton"></div>
-                        <div class="wishlistShareButton"></div>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=" class="wishlistShareButton shareFb"></a>
+                        <a href="https://twitter.com/home?status=Check out this Christmas gift guide I found on @guardian " class="wishlistShareButton shareTwitter"></a>
+                        <a href="" class="wishlistShareButton shareUrl"></a>
                     </div>
                 </div>
                 <div id="wishlistItems">
+                    <p id="emptyWishlist">Your wishlist is empty.</p>
                     <ul style="margin-left:0;"></ul>
                     <div class="wishlistNavigate" id="wishlistNavBack"></div>
                     <div class="wishlistNavigate" id="wishlistNavNext"></div>
@@ -196,56 +194,23 @@
             </div>
         </div>
         <nav id="filters">
+
             <div class="styled-select">
-                <select id="filterList_0">
-                    <option class="filterPanalFilterBox" id="Any character type" value="Any character type">
-                        <h1>Any character type</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="Traditionalist" value="Traditionalist">
-                        <h1>Traditionalist</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="Ethical" value="Ethical">
-                        <h1>Ethical</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="Outdoorsy type" value="Outdoorsy type">
-                        <h1>Outdoorsy type</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="Design lover" value="Design lover">
-                        <h1>Design lover</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="Culture vulture" value="Culture vulture">
-                        <h1>Culture vulture</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="Foodie" value="Foodie">
-                        <h1>Foodie</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="Child" value="Child">
-                        <h1>Child</h1>
-                    </option>
+                <select id="filterList_0" data-filter="whoisthegiftfor">
+                    <option class="clearFilter" selected>Any type of person</option>
                 </select>
             </div>
             <div class="styled-select">
-                <select id="filterList_1">
-                    <option class="filterPanalFilterBox" id="Any price range" value="Any price range">
-                        <h1>Any price range</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="£50-100" value="£50-100">
-                        <h1>£50-100</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="+ £100" value="+ £100">
-                        <h1>+ £100</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="£10-25" value="£10-25">
-                        <h1>£10-25</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="£25-50" value="£25-50">
-                        <h1>£25-50</h1>
-                    </option>
-                    <option class="filterPanalFilterBox" id="Under £10" value="Under £10">
-                        <h1>Under £10</h1>
-                    </option>
+                <select id="filterList_1" data-filter="whatpricerange">
+                    <option class="clearFilter" selected>Any price range</option>
                 </select>
             </div>
+            <div class="styled-select">
+                <select id="filterList_2" data-filter="whatkindofgift">
+                <option class="clearFilter" selected>Any type of gift</option>
+                </select>
+            </div>
+            <p id="giftCount"></p>
         </nav>
     </header>
 </script>
