@@ -58,8 +58,8 @@ gui.xmas.view = gui.xmas.view || {};
 
 			var singularProductTemplate = jQ('#singularProductTemplate').html();
 			var singularProductObject = {
-				// productImage : gui.xmas.model.imageRootPath + giftObj.bigPicUrl,
-				productImage: "assets/images/imageNotFoundBigPic.gif",
+				productImage : gui.xmas.model.imageRootPath + giftObj.bigPicUrl,
+				// productImage: "assets/images/imageNotFoundBigPic.gif",
 				productTitle : giftObj.name,
 				giftPrice: giftPrice,
 				productDescription: giftObj.description,

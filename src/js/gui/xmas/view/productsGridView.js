@@ -51,8 +51,8 @@ gui.xmas.view = gui.xmas.view || {};
 
 				var productObject = {
 					productId: giftsArr[a].name,
-					// productImage: gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl,
-					productImage: 'assets/images/imageNotFoundThumbnail.gif',
+					productImage: gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl,
+					// productImage: 'assets/images/imageNotFoundThumbnail.gif',
 					productTitle: giftsArr[a].name,
 					productPrice: giftPrice
 				}
