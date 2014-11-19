@@ -21,7 +21,8 @@ gui.xmas.view = gui.xmas.view || {};
 				productTitle : "",
 				productDescription: "",
 				productUrl: "",
-				inWishlist: "Add to wishlist"
+				inWishlist: "Add to wishlist",
+                singularOffsetTop: scrollPos
 			}
 			var singularProductContent = _.template(singularProductTemplate,singularProductObject);
 			singularProductHolder.innerHTML = singularProductContent;
@@ -65,6 +66,7 @@ gui.xmas.view = gui.xmas.view || {};
 				productDescription: giftObj.description,
 				productUrl: giftObj.buyUrl,
 				inWishlist: wishlistText,
+                singularOffsetTop: scrollPos
 			}
 			var singularProductContent = _.template(singularProductTemplate,singularProductObject);
 
