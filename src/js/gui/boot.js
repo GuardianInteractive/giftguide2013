@@ -44,8 +44,9 @@ function handleWindowResize() {
 	// if (gui.xmas.model.rightSideState !== 1) {
 	// 	gui.xmas.view.singularProductView.setRightSideHeight();
 	// }
-
-	gui.xmas.view.mainView.budgeRightSideDown();
+    if (gui.xmas.view.mainView.budgeRightSideDown) {
+    	gui.xmas.view.mainView.budgeRightSideDown();
+    }
 }
 
 function changeToDifferentView(small) {

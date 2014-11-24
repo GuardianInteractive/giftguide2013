@@ -55,7 +55,7 @@ gui.xmas.view = gui.xmas.view || {};
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
                 if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
-                    //scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
+                    scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
                 }
 
                 target.find('.singularContent').css({
@@ -67,17 +67,19 @@ gui.xmas.view = gui.xmas.view || {};
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
                 if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
-                    //scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
+                    scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
                 }
 
-                target.find('.singularContent').css({
-                    top: scrollPos + 'px',
-                    left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2 )) + 'px'
-                });
+                // target.find('.singularContent').css({
+                //     top: scrollPos + 'px',
+                //     border: '2px dashed red',
+                //     left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2 )) + 'px'
+                // });
+                // console.log(target.find('.singularContent').css('top'));
 			}
 			if(window.width < 640){
 				// jQ('.productsGridHolder').css("display", "none")
-    //             XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: false })));
+                 XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: false })));
 			}
 		},
 
@@ -95,9 +97,9 @@ gui.xmas.view = gui.xmas.view || {};
 
 			if(window.width < 640){
 				jQ('.productsGridHolder').css("display", "block");
-				//console.log(currentProductInGrid.offset().top);
-                // XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: currentProductInGrid.offset().top })));
-				//jQ(window).scrollTop(currentProductInGrid.offset().top);
+				console.log(currentProductInGrid.offset().top);
+                 XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: currentProductInGrid.offset().top })));
+				jQ(window).scrollTop(currentProductInGrid.offset().top);
 			}
 		},
 
