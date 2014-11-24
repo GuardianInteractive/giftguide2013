@@ -8,6 +8,7 @@ gui.xmas = gui.xmas || {};
     };
 	gui.xmas.Controller.prototype = {
 		editData: function(data){
+			poep = data;
 			var giftData = {};
 			var filteredData = data.sheets["Form responses 1"];
 			giftData.filterContainers = gui.xmas.controller.createFilters(filteredData);
