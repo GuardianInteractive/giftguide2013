@@ -23,7 +23,7 @@ gui.xmas.view = gui.xmas.view || {};
 			holderDiv.appendChild(leftSideHolder);
 
 			leftSideHolder.innerHTML = headerTemplate;
-
+			gui.xmas.view.mainView.animateChristmasLights();
 			gui.xmas.view.filterPanel.init();
 
 			var rightSideHolder = document.createElement('div');
@@ -44,39 +44,54 @@ gui.xmas.view = gui.xmas.view || {};
 			// document.body.appendChild(filteringMsg);
 
 		},
-
+		animateChristmasLights:function(){
+			function switchLights(i){
+				setTimeout(function(){
+					$('#christmasLights').css('background-image','url(assets/images/blink_'+i+'.png)');
+					if(i<4){
+						i++;
+						switchLights(i);
+					}else if(i===4){
+						i=1;
+						switchLights(i);
+					}
+				},800)
+			
+			}	
+			switchLights(1);
+		},
 		
 
 		goToSingularView: function() {
             var target = jQ('.singularProductHolder');
             var pageHeight = document.body.clientHeight;
 
-			if (gui.xmas.model.isIe) {
+			// if (gui.xmas.model.isIe) {
+			// 	var target = jQ('.singularProductHolder');
+   //              jQ(target).css('display', 'block');
+   //              if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
+   //                  scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
+   //              }
+
+   //              target.find('.singularContent').css({
+   //                  top: scrollPos + 'px',
+   //                  left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2)) + 'px'
+   //              });
+
+			// } else {
 				var target = jQ('.singularProductHolder');
                 jQ(target).css('display', 'block');
-                if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
-                    scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
-                }
+                // if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
+                //     scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
+                // }
 
-                target.find('.singularContent').css({
-                    top: scrollPos + 'px',
-                    left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2)) + 'px'
-                });
-
-			} else {
-				var target = jQ('.singularProductHolder');
-                jQ(target).css('display', 'block');
-                if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
-                    scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
-                }
-
-                // target.find('.singularContent').css({
-                //     top: scrollPos + 'px',
-                //     border: '2px dashed red',
-                //     left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2 )) + 'px'
-                // });
-                // console.log(target.find('.singularContent').css('top'));
-			}
+   //              // target.find('.singularContent').css({
+   //              //     top: scrollPos + 'px',
+   //              //     border: '2px dashed red',
+   //              //     left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2 )) + 'px'
+   //              // });
+   //              // console.log(target.find('.singularContent').css('top'));
+			// }
 			if(window.width < 640){
 				// jQ('.productsGridHolder').css("display", "none")
                  XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: false })));
@@ -84,7 +99,7 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		goBackToListView:function() {
-			var currentProductID = jQ('.singularProductHolder .singularContent').find('h1')[1].innerHTML;
+			var currentProductID = jQ('.singularProductHolder .singularContent h2')[0].innerHTML;
 			var currentProductInGrid = jQ(".productsGridHolder").find("[id='" + currentProductID + "']");
 			if (gui.xmas.model.isIe) {
 				var target = jQ('.singularProductHolder');

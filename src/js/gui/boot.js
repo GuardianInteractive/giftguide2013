@@ -35,15 +35,6 @@ function handleWindowResize() {
 			changeToDifferentView(false);
 		}
 	}
-	// if (gui.xmas.view.wishListBox.carouselHolder) {
-	// 	gui.xmas.view.wishListBox.carouselHolder.style.width = (rightSideWidth - 40 - jQ(gui.xmas.view.wishListBox.carouselHolder).height()) + 'px';
-	// }
-
-	// var numAcross = (rightSideWidth / (159 / gui.xmas.model.ppi)) | 0, percentWidth = (100 / numAcross);
-	// jQ('.productsGridHolder  li').css('width', percentWidth + '%');
-	// if (gui.xmas.model.rightSideState !== 1) {
-	// 	gui.xmas.view.singularProductView.setRightSideHeight();
-	// }
     if (gui.xmas.view.mainView.budgeRightSideDown) {
     	gui.xmas.view.mainView.budgeRightSideDown();
     }

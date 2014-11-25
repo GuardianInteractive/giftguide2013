@@ -8,7 +8,6 @@ gui.xmas = gui.xmas || {};
     };
 	gui.xmas.Controller.prototype = {
 		editData: function(data){
-			poep = data;
 			var giftData = {};
 			var filteredData = data.sheets["Form responses 1"];
 			giftData.filterContainers = gui.xmas.controller.createFilters(filteredData);
@@ -30,8 +29,10 @@ gui.xmas = gui.xmas || {};
 						
 				}
 			})
-			console.log(giftData);
 			loaderState.finishedLoadingJSON();
+			giftData.gifts = _.sortBy(giftData.gifts,function(i){
+				return i.description;
+			})
 			gui.xmas.model.parseJSONData(giftData);
 
 		},
@@ -39,7 +40,6 @@ gui.xmas = gui.xmas || {};
 		createFilters:function(data){
 			var filterObject = [];
 			var filterQuestions = ["whoisthegiftfor","whatpricerangedoesthegiftfallinto","whatkindofgiftisit"];
-
 			for(var i=0;i<filterQuestions.length;i++){
 				var filterOptions = _.map(data,function(d){
 					return d[filterQuestions[i]].split(', ')
@@ -73,7 +73,12 @@ gui.xmas = gui.xmas || {};
 						dataType: 'json',
 						url: 'http://interactive.guim.co.uk/spreadsheetdata/1fbUH49dHj5mA45TWa71SSP-plEe_Z6hZzfLAV-wl-v4.json',
 						success: gui.xmas.controller.editData
-					})
+					});
+					// jQ.ajax({
+					// 	dataType: 'json',
+					// 	url: 'data/newgifts.json',
+					// 	success: gui.xmas.controller.editData
+					// })
 					
 				break;
 				case gui.xmas.stateStrings.LOADER_REMOVED:

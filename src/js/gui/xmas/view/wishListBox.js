@@ -23,8 +23,8 @@ gui.xmas.view = gui.xmas.view || {};
 				gui.xmas.view.productsGridView.giftRemovedFromWishList(productId);
 				gui.xmas.view.singularProductView.setWishListText(productId);
 				gui.xmas.view.wishListBox.removeItemFromList(productId);
+				gui.xmas.view.productsGridView.updateProductContainers(productId);
 			});
-			console.log('hoi');
 			gui.xmas.view.wishListBox.updateShareButtons();
 			
 		},
@@ -68,14 +68,12 @@ gui.xmas.view = gui.xmas.view || {};
 				$('#emptyWishlist').css('display','none')
 			}
 			for(var i=0;i<wishlistArray.length;i++){
-				console.log(wishlistArray);
 				var currentGift = _.where(gui.xmas.model.jsonData.gifts,{name:wishlistArray[i]})[0];
-				console.log(currentGift);
 
 				var wishlistItem = document.createElement('li');
 				var itemImage = document.createElement('img');
-				// itemImage.src = gui.xmas.model.imageRootPath + currentGift.thumbnailPicUrl;
-				itemImage.src = "assets/images/imageNotFoundThumbnail.gif";
+				itemImage.src = gui.xmas.model.imageRootPath + currentGift.thumbnailPicUrl;
+				// itemImage.src = "assets/images/imageNotFoundThumbnail.gif";
 				itemImage.alt = currentGift.name;
 				
 				var removeBtn = document.createElement('div');
@@ -98,7 +96,6 @@ gui.xmas.view = gui.xmas.view || {};
 			this.updateShareButtons();
 		},
 		updateShareButtons:function(){
-			console.log(gui.xmas.model.wishListItemsArr)
 			if(gui.xmas.model.wishListItemsArr.length === 0){
 				$('.shareTwitter').attr('href','https://twitter.com/home?status=Check out this Christmas gift guide I found on @guardian ' + gui.xmas.model.shareRootPath);
 				$('.shareFb').attr('href','https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath);
@@ -115,7 +112,6 @@ gui.xmas.view = gui.xmas.view || {};
 		},
 
 		removeItemFromList: function() {
-			console.log(gui.xmas.model.wishListItemsArr);
 			this.updateWishlist();
 		},
 
@@ -124,7 +120,6 @@ gui.xmas.view = gui.xmas.view || {};
 			var wrapperWidth = $('#wishlistItems').width();
 			var wishlistWidth = $wishlist.width();
 			var wishlistOffset = parseInt($wishlist.css('margin-left'));
-			console.log(wishlistWidth,wishlistOffset,wrapperWidth);
 			if(wishlistWidth + wishlistOffset < wrapperWidth){
 				$('#wishlistNavNext').removeClass('active');
 			}else{

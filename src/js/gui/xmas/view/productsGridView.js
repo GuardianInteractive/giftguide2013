@@ -35,24 +35,32 @@ gui.xmas.view = gui.xmas.view || {};
 
 			for (var a = 0; a < giftsLength; a++) {
 				var giftPrice = giftsArr[a].cost;
+				// console.log(giftPrice);
 				if(typeof giftPrice !== "number"){
+
 					from = giftPrice.indexOf('From');
 					if (from > -1) {
 						giftPrice =  '&pound;' + giftPrice.slice(from + 5) + "+";
+					}
+				}else{
+					if(giftPrice%1!==0){
+						var decimalLength = giftPrice.toString().split('.')[1].length;
+						if(decimalLength === 1){
+							var newGiftPrice = giftPrice.toString() + "0";
+							giftPrice = "&pound;" + newGiftPrice;
+						}else{
+							giftPrice = "&pound;" + giftPrice;
+						}
 					}else{
-						giftPrice = '&pound;' + giftsArr[a].cost;
+						giftPrice = "&pound;" + giftPrice;
 					}
-					var dot = giftPrice.indexOf('.');
-					if (dot > -1 && dot >= giftPrice.length - 2) {
-						giftPrice += '0';
-					}
+					
 				}
 				
 
 				var productObject = {
 					productId: giftsArr[a].name,
 					productImage: gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl,
-					// productImage: 'assets/images/imageNotFoundThumbnail.gif',
 					productTitle: giftsArr[a].name,
 					productPrice: giftPrice
 				}
@@ -75,7 +83,7 @@ gui.xmas.view = gui.xmas.view || {};
 							gui.xmas.view.wishListBox.addItemToList(giftsArr[a].name);
 							// jQ(gridLi).find('#addToWishList').attr("src",gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
 
-							TweenLite.to(jQ(gridLi).find('#addToWishList'), 0, {css:{autoAlpha:1}});
+							// TweenLite.to(jQ(gridLi).find('#addToWishList'), 0, {css:{autoAlpha:1}});
 							break;
 						}
 					}
@@ -84,29 +92,27 @@ gui.xmas.view = gui.xmas.view || {};
 
 			}		
 
-			jQ('#addToWishList').click(function(){
-				var productId = jQ(this).parent().find('p#productName').html();
-
+			jQ('.addToWishList').click(function(){
+				var productId = jQ(this).parent().find('p.productName').html();
 				if (!gui.xmas.model.wishListItemsLookup[productId]) {
 					gui.xmas.model.addItemToWishList(productId);
+					gui.xmas.view.productsGridView.updateProductContainers(productId);
 					gui.xmas.view.wishListBox.addItemToList(productId);
-					jQ(this).html("<strong>Added</strong>")
 				}
 				else {
 					gui.xmas.model.removeItemFromWishList(productId);
 					gui.xmas.view.wishListBox.removeItemFromList(productId);
-					jQ(this).html("+ <strong>Add</strong>")
+					gui.xmas.view.productsGridView.updateProductContainers(productId);
 				}
 			});
-			jQ('.productGridItem img').click(function(){
-				var productId = jQ(this).parent().find('p#productName').html();
-				console.log(productId);
+			jQ('.productGridItem .productThumbHolder').click(function(){
+				var productId = jQ(this).closest('li').find('p.productName').html();
 				gui.xmas.model.registerProductClicked(productId);
 				displayState.productClicked();
 			});
 
-			jQ('.productGridItem p').click(function(){
-				var productId = jQ(this).find('p#productName').html();
+			jQ('.productGridItem .descripAndTitleContainer').click(function(){
+				var productId = jQ(this).closest('li').find('p.productName').html();
 				gui.xmas.model.registerProductClicked(productId);
 				displayState.productClicked();
 			});
@@ -131,6 +137,16 @@ gui.xmas.view = gui.xmas.view || {};
 
 			// gui.xmas.view.productsGridView.scrollUpUpdate();
 
+		},
+
+		updateProductContainers:function(productId){
+			var iteminGrid = $('#productsList div[data-productId="'+productId+'"]');
+			if(gui.xmas.model.wishListItemsLookup[productId]){
+				iteminGrid.addClass('itemInWishlist');
+			}else{
+				iteminGrid.removeClass('itemInWishlist');
+			}
+			
 		},
 
 		scrollUpUpdate: function() {
@@ -182,7 +198,10 @@ gui.xmas.view = gui.xmas.view || {};
 		filterList: function() {
 			gui.xmas.view.productsGridView.maxNumOnPage = 40;
 			gui.xmas.view.productsGridView.filteredGiftsTotal = 0;
-			var span = document.getElementById('filteredGiftsNum'), ul = document.getElementById('productsList'), items = ul.getElementsByTagName('li'), itemsLength = items.length, a;
+			var span = document.getElementById('filteredGiftsNum'), 
+			ul = document.getElementById('productsList'), 
+			items = ul.getElementsByTagName('li'), 
+			itemsLength = items.length, a;
 			gui.xmas.view.productsGridView.paginationArr = [];
 			var numAddedToPage = 0;
 			var currentCounter = 0;
@@ -207,6 +226,14 @@ gui.xmas.view = gui.xmas.view || {};
 
 					gui.xmas.view.productsGridView.filteredGiftsTotal ++;
 				}
+			}
+			if(numAddedToPage === 0){
+				if($('.noGifts').length===0){
+					var noGifts = $('<p class="noGifts">No gifts found</p>');
+					$('.productsGridHolder').prepend(noGifts);
+				}
+			}else{
+				$('.noGifts').remove();
 			}
 			if (gui.xmas.view.productsGridView.filteredGiftsTotal > gui.xmas.view.productsGridView.maxNumOnPage) {
 				gui.xmas.view.productsGridView.paginationHolderTop.style.display = 'block';

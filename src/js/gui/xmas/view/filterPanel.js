@@ -37,13 +37,7 @@ var filterLookup = {};
 					var currentSelect = jQ(this).attr('data-filter');
 					var listArr = jQ(this).attr("id").split("_");
 					var listIndex = Number(listArr[1]);
-					// gui.xmas.model.removeSelectiveFilters(listIndex);
-					
-					// if (value.substring(0, 3) != "Any") {
-					// 	if (!gui.xmas.model.isFilterActive(value)) {
-					// 		gui.xmas.model.addFilter(value);
-					// 	}
-					// }
+
 					if (value.substring(0, 3) != "Any") {
 						gui.xmas.view.filterPanel.activeFilters[currentSelect] = value;
 					}else{
@@ -51,15 +45,6 @@ var filterLookup = {};
 					}
 					console.log(gui.xmas.view.filterPanel.filterGifts());
 					gui.xmas.model.addFilter();
-					// } else {
-					// 	for (var i = 1; i < categoriesAndFilters[listIndex].filters.length; i++) {
-					// 		if (!gui.xmas.model.isFilterActive(categoriesAndFilters[listIndex].filters[i])) {
-					// 			gui.xmas.model.addFilter(categoriesAndFilters[listIndex].filters[i]);
-					// 			jQ(this).css('backgroundColor', '#fb9107');
-					// 		}
-					// 	}
-					// }
-					// gui.xmas.view.productsGridView.scrollUpUpdate();
 				});	
 			}
 		},
@@ -74,8 +59,7 @@ var filterLookup = {};
 					filteredGifts = _.filter(gifts,function(gift){
 						return gift.filters[key].indexOf(activeFilters[key]) > -1
 					})
-					gifts = filteredGifts;	
-
+					gifts = filteredGifts;
 				}
 			}
 			return gifts;

@@ -80,7 +80,6 @@ var layer = 1;
 
 		parseJSONData: function(data){
 			gui.xmas.model.jsonData = data;
-
 			var a, giftsLength = gui.xmas.model.jsonData.gifts.length;
 
 			for (a = 0; a < gui.xmas.model.jsonData.filterContainers.length; a++) {
@@ -286,10 +285,8 @@ var layer = 1;
 		},
 
 		registerProductClicked: function(productName) {
-			console.log(productName);
 			// gui.xmas.model.jsonData
 			gui.xmas.model.currentGift = _.where(gui.xmas.model.jsonData.gifts,{name:productName})[0];
-			console.log(gui.xmas.model.currentGift);
 		},
 
 		getCurrentGift: function() {
