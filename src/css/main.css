@@ -243,7 +243,7 @@ body{
 	text-align:center;
 	border-top:1px solid #dcdcdc;
 	padding-top:10px;
-	margin-right:10px;
+	margin-right:0;
 	-webkit-font-smoothing:antialiased;
 	color:#333;
 	margin-top:9px;
@@ -427,8 +427,6 @@ font-family: 'Guardian Text Sans Web' !important;
 }
 
 .gu-interactive .productsGridHolder {
-	/*margin-left:10px;
-	margin-right: 10px;*/
 	margin-top:20px;
 	position:relative;
 	transition: left 0.5s;
@@ -454,7 +452,8 @@ font-family: 'Guardian Text Sans Web' !important;
 }
 
 .gu-interactive .productsGridHolder span {
-	color:#609984;
+	color:#c05303;
+	border-bottom: 1px solid;
 	margin: 0 3px 0 3px;
 }
 
@@ -606,11 +605,11 @@ font-family: 'Guardian Text Sans Web' !important;
 
 
 .gu-interactive #filteredGiftsNum {
-	color:#609984;
+	color:#c05303 ;
 }
 
 .gu-interactive #wishListNum {
-	color:#609984;
+	color:#c05303;
 }
 
 
@@ -839,6 +838,7 @@ font-family: 'Guardian Text Sans Web' !important;
 		border:none;
 		padding:0;
 		float:right;
+		margin-right:10px;
 	}
 	.gu-interactive #productDetailHolder .productImageContainer{
 		padding-bottom:160%;

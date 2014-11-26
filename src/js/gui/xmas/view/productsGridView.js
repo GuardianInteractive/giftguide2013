@@ -34,6 +34,9 @@ gui.xmas.view = gui.xmas.view || {};
 			gui.xmas.view.productsGridView.paginationHolderTop = paginationHolderTop;
 
 			for (var a = 0; a < giftsLength; a++) {
+				// DEBUG PRODUCT IMAGES
+				// $('#giftCount').append('<img src="' + gui.xmas.model.imageRootPath + giftsArr[a].thumbnailPicUrl + '"/>')
+				// $('#giftCount').append('<img src="' + gui.xmas.model.imageRootPath + giftsArr[a].bigPicUrl + '"/>')
 				var giftPrice = giftsArr[a].cost;
 				// console.log(giftPrice);
 				if(typeof giftPrice !== "number"){

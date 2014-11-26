@@ -104,6 +104,11 @@ gui.xmas.view = gui.xmas.view || {};
 				gui.xmas.view.productsGridView.updateProductContainers(giftObj.name);
 			});
 
+			jQ('#detailDescrip .linkToShop').on('click',function(event) {
+				var targetUrl = $(event.currentTarget).attr('data-target');
+				window.open(targetUrl,"Christmas gift")
+			});
+
 			jQ('#backToGridBtn').click(function() {
 				jQ(gui.xmas.view.singularProductView.addToWishListIcon).off();
 				displayState.backToListClicked();
