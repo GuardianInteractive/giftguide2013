@@ -1,6 +1,6 @@
 	define([], function() {'use strict';
         var isDev = /localhost|gnm\d+\.int\.gnl/.test(document.location.host);
-        var baseUrl = (isDev) ? 'http://10.232.58.46:8080/' : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/';
+        var baseUrl = (isDev) ? 'http://localhost:8081/' : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2014/nov/christmas-gift-guide-2014/';
 
 
 
@@ -49,7 +49,7 @@
                     style: {width: "100%", 'min-height': '700px'}
                 },
                 onMessage: function(message, origin){
-                    if (message === 'undefined') {
+                    if (!message) {
                         return;
                     }
 
@@ -108,6 +108,16 @@
 		 *
 		 **/
 		boot : function(el, context, config, mediator) {
+            // Tidy-up
+            el.innerHTML = '';
+            var removeEl = document.querySelector('.content__head');
+            if (removeEl) { removeEl.remove(); }
+
+            removeEl = document.querySelector('.content__meta-container');
+            if (removeEl) { removeEl.remove(); }
+
+
+
 			var cfg = {
 				context : 'interactive',
 				baseUrl : baseUrl,
@@ -136,8 +146,9 @@
 				});
 			} else {
 				// curl, i.e. next-gen
-				cfg.preloads = ['jquery'];
+				//cfg.preloads = ['jquery'];
 				require(cfg, ['js!' + baseUrl + 'js/libs/easyXDM.js']).then(function() {
+                    console.log('in here');
                     setupPage(el);
 				});
 			}
