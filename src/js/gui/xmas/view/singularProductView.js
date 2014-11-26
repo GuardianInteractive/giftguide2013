@@ -89,7 +89,7 @@ gui.xmas.view = gui.xmas.view || {};
 					gui.xmas.view.wishListBox.addItemToList(giftObj.name);
 					gui.xmas.view.productsGridView.giftAddedToWishList(giftObj.name);
 					wishlistStatus = "removeFromList";
-					$(this).html('Remove to wishlist');
+					$(this).html('Remove from wishlist');
 					$(this).removeClass('addToList');
 					$(this).addClass(wishlistStatus);
 				}else {

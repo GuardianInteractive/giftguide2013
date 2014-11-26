@@ -70,7 +70,7 @@ body{
 .gu-interactive #visualHeader{
 	height:270px;
 	width:100%;
-	background-image:url(../assets/images/header-bg.jpg);
+	background:#333;
 	background-repeat: no-repeat;
 	background-size:cover;
 	position: relative;
@@ -84,6 +84,17 @@ body{
 	background-size:150%;
 	position: absolute;
 	z-index:1;
+}
+#christmasLights img{
+	position: absolute;
+	top:0;
+	left:-90%;
+	height:100%;
+	/*transition:0.5s opacity;*/
+}
+#christmasLights .lightsOff{
+	opacity:0;
+
 }
 
 .gu-interactive #headerTitleContainer{
@@ -155,11 +166,11 @@ body{
 	padding:10px 0 0 10px;
 	position: absolute;
 	-webkit-transition: margin 0.5s linear;
-	  -moz-transition: margin 0.5s linear;
-	  -o-transition: margin 0.5s linear;
-	  -ms-transition: margin 0.5s linear;
-	  transition: margin 0.5s linear;
-	  margin-left:0;
+	-moz-transition: margin 0.5s linear;
+	-o-transition: margin 0.5s linear;
+	-ms-transition: margin 0.5s linear;
+	transition: margin 0.5s linear;
+	margin-left:0;
 }
 
 .gu-interactive #wishlist #wishlistItems ul li{
@@ -177,9 +188,7 @@ body{
 }
 
 .gu-interactive #wishlist #wishlistItems ul li .removeFromListBtn{
-	background: rgba(192, 83, 3,0.9) url(../assets/images/crossIconWhite.svg);
-	background-repeat: no-repeat;
-	background-position: center;
+	background: rgba(192, 83, 3,0.9) url(../assets/images/crossIconWhite.svg) no-repeat center;
 	position: absolute;
 	border-radius:999px;
 	right: 2px;
@@ -190,18 +199,15 @@ body{
 }
 
 .gu-interactive #wishlist #wishlistItems ul li .removeFromListBtn:hover{
-	background: #ffbb00 url(../assets/images/crossIconWhite.svg);
-	background-repeat: no-repeat;
-	background-position: 9px;
+	background: rgba(230, 113, 27,0.9) url(../assets/images/crossIconWhite.svg) no-repeat center;
 }
 
 .gu-interactive #wishlist .wishlistNavigate{
-	height:40px;
+	height:100%;
 	width:40px;
-	border-radius: 9000px;
-	background:#ffbb00;
+	background:rgba(0,0,0,0.8);
 	position: absolute;
-	top:25px;
+	top:0;
 	z-index:5;
 	opacity:0;
 }
@@ -210,26 +216,33 @@ body{
 	cursor: pointer;
 }
 
-.gu-interactive #wishlist .wishlistNavigate.active:hover{
-	background:#333;
+.gu-interactive #wishlist .wishlistNavigate#wishlistNavBack.active:hover{
+	background:rgba(192, 83, 3,0.9) url(../assets/images/arrowLeft.svg) no-repeat center;
+}
+.gu-interactive #wishlist .wishlistNavigate#wishlistNavNext.active:hover{
+	background:rgba(192, 83, 3,0.9) url(../assets/images/arrowRight.svg) no-repeat center;
 }
 
 .gu-interactive #wishlist #wishlistNavBack{
-	left:20px;
+	left:0;
+	background:rgba(0,0,0,0.8) url(../assets/images/arrowLeft.svg) no-repeat center;
 }
 
 .gu-interactive #wishlist #wishlistNavNext{
-	right:20px;
+	right:0;
+	background:rgba(0,0,0,0.8) url(../assets/images/arrowRight.svg) no-repeat center;
 }
 
 .gu-interactive	#filters{
-	margin-top:20px;
-	margin-right:20px;
+	margin:10px 10px 0;
 	overflow: hidden;
+	font-size:0;
 }	
 
 .gu-interactive #giftCount{
-	float:right;
+	text-align:center;
+	border-top:1px solid #dcdcdc;
+	padding-top:10px;
 	margin-right:10px;
 	-webkit-font-smoothing:antialiased;
 	color:#333;
@@ -255,18 +268,27 @@ body{
 
 .gu-interactive .styled-select {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	margin: 0 10px 0 0;
-	display: inline;
-	float: right;
-  overflow: hidden;
+	margin: 0 2% 4px 0;
+	display: inline-block;
+  	overflow: hidden;
   	padding-right:20px;
-  	width:46%;
-   height: 34px;
+  	width:49%;
+   	height: 34px;
     -webkit-border-radius: 2px;
--moz-border-radius: 2px;
-border-radius: 99999px;
-   background: url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/filter-arrow.png") no-repeat 94% 9px #7d7569;
-   text-align: left;
+	-moz-border-radius: 2px;
+	border-radius: 99999px;
+   	background: url("http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide/assets/images/filter-arrow.png") no-repeat 94% 9px #7d7569;
+   	text-align: left;
+}
+
+.gu-interactive .styled-select select option{
+	color:#333;
+	background:#fff;
+	font-family: 'Guardian Text Sans Web';
+}
+
+.gu-interactive .styled-select:nth-of-type(2){
+	margin: 0 0 4px 0;
 }
 
 .gu-interactive .rightSideHolder {
@@ -290,6 +312,7 @@ border-radius: 99999px;
 	overflow: hidden;
 	-webkit-transition: max-height 0.5s;
 	-moz-transition: max-height 0.5s;
+	-ms-transition: max-height 0.5s;
 	transition: max-height 0.5s;
 	padding-left:3%;
 	width:97%;
@@ -404,8 +427,8 @@ font-family: 'Guardian Text Sans Web' !important;
 }
 
 .gu-interactive .productsGridHolder {
-	margin-left:10px;
-	margin-right: 10px;
+	/*margin-left:10px;
+	margin-right: 10px;*/
 	margin-top:20px;
 	position:relative;
 	transition: left 0.5s;
@@ -448,15 +471,14 @@ font-family: 'Guardian Text Sans Web' !important;
 }
 .gu-interactive .productsGridHolder ul  {
     margin:0;
-	width:100%;
 	padding:0;
 	text-align: center;
-
+	margin:0 5px;
 }
 
 .gu-interactive .productsGridHolder li {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	padding:0 10px;
+	padding:0 5px;
 	display: inline-block;
 	width: 50%;
 	overflow: hidden;
@@ -522,6 +544,10 @@ font-family: 'Guardian Text Sans Web' !important;
 	-ms-transform: rotate(45deg);
 	-o-transform: rotate(45deg);
 	transform: rotate(45deg);
+	-webkit-transition:0.5s transform;
+	-moz-transition:0.5s transform;
+	-ms-transition:0.5s transform;
+	-o-transition:0.5s transform;
 	transition:0.5s transform;
 	height:32px;
 	width:32px;
@@ -667,6 +693,10 @@ font-family: 'Guardian Text Sans Web' !important;
 	background:#e6711b;
 }
 .singularProductHolder #addToWishList:before{
+	-webkit-transition:0.5s transform;
+	-moz-transition:0.5s transform;
+	-ms-transition:0.5s transform;
+	-o-transition:0.5s transform;
 	transition:0.5s transform;
 	content:'';
 	position: absolute;
@@ -683,6 +713,9 @@ font-family: 'Guardian Text Sans Web' !important;
 
 .singularProductHolder #addToWishList.addToList:before{
 	transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
+	-ms-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
 }
 
 .singularProductHolder button.linkToShop{
@@ -726,10 +759,10 @@ font-family: 'Guardian Text Sans Web' !important;
 	cursor: pointer;
 	position: absolute;
 	border-radius:999px;
-	background:#C05303 url(../assets/images/crossIconWhite.svg) no-repeat center;
+	background:#7d7569 url(../assets/images/crossIconWhite.svg) no-repeat center;
 }
 .gu-interactive #backToGridBtn:hover{
-	background:#e6711b url(../assets/images/crossIconWhite.svg) no-repeat center;
+	background:#8e867a url(../assets/images/crossIconWhite.svg) no-repeat center;
 }
 
 .gu-interactive .singularProductRightTop {
@@ -747,7 +780,7 @@ font-family: 'Guardian Text Sans Web' !important;
 .gu-interactive #filteringWait {
 	background: transparent ;
 	background: rgba(0,0,0,0.4) ;
-	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#50000000', EndColorStr='#50000000');
+	/*filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#50000000', EndColorStr='#50000000');*/
 	width: 100%;
 	height: 100%;
 	position: fixed;
@@ -768,7 +801,48 @@ font-family: 'Guardian Text Sans Web' !important;
 	clear:both;
 }
 
+.gu-interactive #productDetailHolder{
+	background: #fff;
+	width:100%;
+	height:auto;
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	overflow:hidden;
+	background-size:80% !important;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+.gu-interactive #productDetailHolder .productImageContainer{
+	width:100%;
+	height:0;
+	padding-bottom:100%;
+}
+.gu-interactive #detailDescrip{
+	float:none;
+}
+.gu-interactive .singularContent{
+	width:auto;
+	padding:0 10px 40px;
+}
+@media (min-width: 520px) {
+	#christmasLights img{
+		left:0;
+	}
+}
 @media (min-width: 641px) {
+	.gu-interactive #productDetailHolder{
+		background: #fff;
+		width:45%;
+		float:left;
+	}
+	.gu-interactive #giftCount{
+		text-align: left;
+		border:none;
+		padding:0;
+		float:right;
+	}
+	.gu-interactive #productDetailHolder .productImageContainer{
+		padding-bottom:160%;
+	}
 	.gu-interactive #christmasLights{
 		background-size:cover;
 	}
@@ -816,6 +890,9 @@ font-family: 'Guardian Text Sans Web' !important;
 		width:auto;
 		float:right;
 	}
+	.gu-interactive .styled-select:nth-of-type(2){
+		margin: 0 0 13px 10px;
+	}
 	.gu-interactive .productsGridHolder li {
 		width:33%;
 		margin-left:0;
@@ -852,37 +929,16 @@ font-family: 'Guardian Text Sans Web' !important;
 		border-top:1px solid #dcdcdc;
 	}
 
-	.gu-interactive #productDetailHolder{
-		background: #fff;
-		width:45%;
-		height:auto;
-		float:left;
-		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-		overflow:hidden;
-		background-size:80% !important;
-		background-repeat:no-repeat;
-		background-position:center;
-	}
-	.gu-interactive #productDetailHolder .productImageContainer{
-		width:100%;
-		height:0;
-		padding-bottom:160%;
-	}
+	
 
-	.gu-interactive #productDetailHolder img{
-		top:0;
-		right:0;
-		bottom:0;
-		left:0;
-		margin: auto;
-		position:absolute;
-		max-width:480px;
-	}
 
 	.gu-interactive #detailDescrip{
 		width:48%;
 		position: absolute;
 		transform:translateY(-51%);
+		-ms-transform:translateY(-51%);
+		-webkit-transform:translateY(-51%);
+		-moz-transform:translateY(-51%);
 		top:50%;
 		right:3%;
 	}

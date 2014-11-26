@@ -47,7 +47,9 @@ gui.xmas.view = gui.xmas.view || {};
 		animateChristmasLights:function(){
 			function switchLights(i){
 				setTimeout(function(){
-					$('#christmasLights').css('background-image','url(assets/images/blink_'+i+'.png)');
+					var previous = i === 1 ? 4 : i-1;
+					$('#christmasLights img.blink_' + previous).addClass('lightsOff');
+					$('#christmasLights img.blink_' + i).removeClass('lightsOff');
 					if(i<4){
 						i++;
 						switchLights(i);
@@ -56,9 +58,8 @@ gui.xmas.view = gui.xmas.view || {};
 						switchLights(i);
 					}
 				},800)
-			
 			}	
-			switchLights(1);
+			switchLights(2);
 		},
 		
 

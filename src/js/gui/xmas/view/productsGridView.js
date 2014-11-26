@@ -81,6 +81,7 @@ gui.xmas.view = gui.xmas.view || {};
 							gridLi.style.display = 'inline-block';
 							gui.xmas.model.addItemToWishList(giftsArr[a].name);
 							gui.xmas.view.wishListBox.addItemToList(giftsArr[a].name);
+							gui.xmas.view.productsGridView.updateProductContainers(giftsArr[a].name);
 							// jQ(gridLi).find('#addToWishList').attr("src",gui.xmas.model.masterRootPath + "assets/images/wishMinus.gif");
 
 							// TweenLite.to(jQ(gridLi).find('#addToWishList'), 0, {css:{autoAlpha:1}});
@@ -120,7 +121,8 @@ gui.xmas.view = gui.xmas.view || {};
 
 
 			if (gui.xmas.model.urlVarsExist) {
-				title.innerHTML = 'Showing <span id="filteredGiftsNum">' + gui.xmas.model.urlVarsArr.length + '</span> wishlist gift ideas';
+				var idea = gui.xmas.model.urlVarsArr.length === 1 ? 'idea' : 'ideas';
+				$('#giftCount').html('Showing wishlist with <span id="filteredGiftsNum">' + gui.xmas.model.urlVarsArr.length + '</span> ' + idea);
 			}
 
 			var productsHolder = jQ('.productsPanel');
