@@ -149,13 +149,6 @@
         </p>
         <button id="addToWishList" class="<%= wishlistStatus %>"><%= inWishlist %></button>
         <button data-target="<%=productUrl%>" target="_blank" class="linkToShop">Go to shop</button>
-        <!--<div class="shareListHolder">
-            <h2 style="float: left;">Share my list</h2>
-            <div class="clearBoth"></div>
-            <img src="http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/assets/images/fbIcon.png" class="shareIcon" id="shareIconFb">
-            <img src="http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/assets/images/tweetIcon.png" class="shareIcon" id="shareIconTwitter">
-            <img src="http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2013/christmas-gift-guide-2013-presents-ideas-interactive/assets/images/pinItIcon.png" class="shareIcon" style="width: 40px;" id="shareIconPinterest">
-        </div>-->
     </div>
 </div>
 </script>
@@ -179,9 +172,9 @@
                 <div id="wishlistTitle">
                     <p>My wishlist</p>
                     <div id="wishlistShareBox">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=" class="wishlistShareButton shareFb"></a>
-                        <a href="https://twitter.com/home?status=Check out this Christmas gift guide I found on @guardian " class="wishlistShareButton shareTwitter"></a>
-                        <a href="" class="wishlistShareButton shareUrl"></a>
+                        <button data-source="fb" class="wishlistShareButton shareFb"></button>
+                        <button data-source="twitter" class="wishlistShareButton shareTwitter"></button>
+                        <button data-source="email" class="wishlistShareButton shareUrl" ></button>
                     </div>
                 </div>
                 <div id="wishlistItems">

@@ -15,11 +15,20 @@ body{
 .wishlistShareButton.shareFb{
 	background: #3067a3 url(../assets/images/facebookIcon.svg);
 }
+.wishlistShareButton.shareFb:hover{
+	background-color: #154A83;
+}
 .wishlistShareButton.shareTwitter{
 	background: #03b3ee url(../assets/images/twitterIcon.svg);
 }
+.wishlistShareButton.shareTwitter:hover{
+	background-color: #0592C2;
+}
 .wishlistShareButton.shareUrl{
-	background: #333;
+	background: #767676 url(../assets/images/emailIcon.svg);
+}
+.wishlistShareButton.shareUrl:hover{
+	background-color: #333;
 }
 
 .gu-interactive .assetsLoading {
@@ -152,6 +161,9 @@ body{
 	height:32px;
 	display: inline-block;
 	border-radius: 16px;
+	border:none;
+	outline:none;
+	cursor:pointer;
 }
 
 .gu-interactive #wishlist #wishlistItems{

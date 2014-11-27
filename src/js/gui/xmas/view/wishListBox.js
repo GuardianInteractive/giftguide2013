@@ -96,15 +96,43 @@ gui.xmas.view = gui.xmas.view || {};
 			this.updateShareButtons();
 		},
 		updateShareButtons:function(){
-			if(gui.xmas.model.wishListItemsArr.length === 0){
-				$('.shareTwitter').attr('href','https://twitter.com/home?status=Check out this Christmas gift guide I found on @guardian ' + gui.xmas.model.shareRootPath);
-				$('.shareFb').attr('href','https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath);
-				$('.shareUrl').attr('href',gui.xmas.model.shareRootPath);
-			}else{
-				$('.shareTwitter').attr('href','https://twitter.com/home?status=Check out my Guardian Christmas Gift Guide wishlist ' + gui.xmas.view.wishListBox.constructURLString());
-				$('.shareFb').attr('href','https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.view.wishListBox.constructURLString());
-				$('.shareUrl').attr('href',gui.xmas.view.wishListBox.constructURLString());
-			}
+			$('button.wishlistShareButton').on('click',function(e){
+				var shareUrl;
+				var shareMessage;
+				var interactiveUrl = gui.xmas.view.wishListBox.constructURLString();
+				var targetSource = $(e.currentTarget).attr('data-source');
+				
+				var twitterUrl = "https://twitter.com/home?status=";
+				var fbUrl = "https://www.facebook.com/sharer/sharer.php?u=";
+				var emailUrl = "mailto:?body=";
+				
+
+				if(gui.xmas.model.wishListItemsArr.length === 0){
+					shareMessage = "Check out the Christmas Gift Guide 2014 by @guardian ";
+				}else{
+					shareMessage = "I just made a wishlist in the @guardian Christmas gift guide 2014, check it out ";
+				}
+
+				if(targetSource === "fb"){
+					shareUrl = fbUrl + encodeURIComponent(interactiveUrl);
+				}else if(targetSource === "twitter"){
+					shareUrl = twitterUrl + encodeURIComponent(shareMessage) + encodeURIComponent(interactiveUrl);
+				}else if(targetSource === "email"){
+					shareUrl = emailUrl + encodeURIComponent(shareMessage) + encodeURIComponent(interactiveUrl);
+				}
+
+				window.open(shareUrl, targetSource + "share","width=640,height=320");
+				
+			})
+			// if(gui.xmas.model.wishListItemsArr.length === 0){
+			// 	$('.shareTwitter').attr('href','https://twitter.com/home?status=Check out this Christmas gift guide I found on @guardian ' + gui.xmas.model.shareRootPath);
+			// 	$('.shareFb').attr('href','https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.model.shareRootPath);
+			// 	$('.shareUrl').attr('href',gui.xmas.model.shareRootPath);
+			// }else{
+			// 	$('.shareTwitter').attr('href','https://twitter.com/home?status=Check out my Guardian Christmas Gift Guide wishlist ' + gui.xmas.view.wishListBox.constructURLString());
+			// 	$('.shareFb').attr('href','https://www.facebook.com/sharer/sharer.php?u=' + gui.xmas.view.wishListBox.constructURLString());
+			// 	$('.shareUrl').attr('href',gui.xmas.view.wishListBox.constructURLString());
+			// }
 		},
 
 		addItemToList: function() {
@@ -130,7 +158,7 @@ gui.xmas.view = gui.xmas.view || {};
 		constructURLString: function() {
 			var urlStr = gui.xmas.model.getWishListIdString();
 			if (urlStr.length === 0) {
-				urlStr = '';
+				urlStr = gui.xmas.model.shareRootPath;
 			}
 			else {
 				urlStr = gui.xmas.model.shareRootPath + urlStr;
