@@ -31,9 +31,7 @@ gui.xmas = gui.xmas || {};
 				}
 			})
 			loaderState.finishedLoadingJSON();
-			giftData.gifts = _.sortBy(giftData.gifts,function(i){
-				return i.description;
-			})
+			giftData.gifts = _.shuffle(giftData.gifts);
 			gui.xmas.model.parseJSONData(giftData);
 
 		},

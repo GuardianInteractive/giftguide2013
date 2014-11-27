@@ -100,7 +100,7 @@ body{
 #christmasLights img{
 	position: absolute;
 	top:0;
-	left:-90%;
+	right:0;
 	height:100%;
 	/*transition:0.5s opacity;*/
 }
@@ -1040,7 +1040,7 @@ font-family: 'Guardian Text Sans Web' !important;
 
 @media (min-width: 1020px) {
 	.gu-interactive .productsGridHolder li {
-		width:20%;
+		width:16.5%;
 		margin-right:0;
 		margin-left:0;
 	}
