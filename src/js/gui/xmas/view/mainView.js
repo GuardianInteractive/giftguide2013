@@ -39,10 +39,6 @@ gui.xmas.view = gui.xmas.view || {};
 			gui.xmas.view.productsGridView.init();
 			gui.xmas.view.singularProductView.init();
 
-			// var filteringMsg = document.createElement('div');
-			// filteringMsg.id = 'filteringWait';
-			// document.body.appendChild(filteringMsg);
-
 		},
 		animateChristmasLights:function(){
 			function switchLights(i){
@@ -64,35 +60,10 @@ gui.xmas.view = gui.xmas.view || {};
 		
 
 		goToSingularView: function() {
+			console.log('hey');
             var target = jQ('.singularProductHolder');
             var pageHeight = document.body.clientHeight;
-
-			// if (gui.xmas.model.isIe) {
-			// 	var target = jQ('.singularProductHolder');
-   //              jQ(target).css('display', 'block');
-   //              if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
-   //                  scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
-   //              }
-
-   //              target.find('.singularContent').css({
-   //                  top: scrollPos + 'px',
-   //                  left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2)) + 'px'
-   //              });
-
-			// } else {
-				var target = jQ('.singularProductHolder');
-                jQ(target).css('display', 'block');
-                // if (target.find('.singularContent').height() + parseInt(scrollPos, 10) > pageHeight) {
-                //     scrollPos = parseInt(scrollPos, 10) - target.find('.singularContent').height();
-                // }
-
-   //              // target.find('.singularContent').css({
-   //              //     top: scrollPos + 'px',
-   //              //     border: '2px dashed red',
-   //              //     left: ((jQ('.mainHolder').width() / 2) - (target.find('.singularContent').width() /2 )) + 'px'
-   //              // });
-   //              // console.log(target.find('.singularContent').css('top'));
-			// }
+            jQ(target).css('display', 'block');
 			if(window.width < 640){
 				// jQ('.productsGridHolder').css("display", "none")
                  XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: false })));
