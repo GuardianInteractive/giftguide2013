@@ -147,8 +147,10 @@
         <p>
             <%=productDescription%>
         </p>
-        <button id="addToWishList" class="<%= wishlistStatus %>"><%= inWishlist %></button>
-        <button data-target="<%=productUrl%>" target="_blank" class="linkToShop">Go to shop</button>
+        <div class="singularShareButtons">
+            <button id="addToWishList" class="<%= wishlistStatus %>"><%= inWishlist %></button>
+            <button data-target="<%=productUrl%>" target="_blank" class="linkToShop">Go to shop</button>
+        </div>
     </div>
 </div>
 </script>
@@ -166,7 +168,7 @@
             </div>
             <div id="headerTitleContainer">
                 <img src="assets/images/guardianLogo.png" />
-                <h1>Christmas Gift Guide</h1>
+                <h1>Christmas gift guide</h1>
             </div>
             <div id="wishlist">
                 <div id="wishlistTitle">

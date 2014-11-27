@@ -48,6 +48,9 @@ body{
 	margin-bottom:5px;
 	border: none !important;
 }
+.gu-interactive .singularShareButtons{
+	font-size:0;
+}
 
 .gu-interactive .loadingTitle  h2 {
 	font-family: 'Guardian Text Sans Web';
@@ -699,6 +702,7 @@ font-family: 'Guardian Text Sans Web' !important;
 }
 .singularProductHolder #addToWishList{
 	padding:0 15px 0 30px;
+	margin-right:5px;
 }
 .singularProductHolder #addToWishList:hover{
 	background:#e6711b;
