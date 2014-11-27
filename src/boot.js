@@ -2,7 +2,7 @@
         var isDev = /localhost|gnm\d+\.int\.gnl/.test(document.location.host);
         var baseUrl = (isDev) ? 'http://localhost:8080/' : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2014/nov/christmas-gift-guide-2014/';
 
-        var baseUrl = 'http://localhost:8080/';
+        // var baseUrl = 'http://localhost:8080/';
 
 
         function addStyleElm(el) {
