@@ -2,9 +2,6 @@
         var isDev = /localhost|gnm\d+\.int\.gnl/.test(document.location.host);
         var baseUrl = (isDev) ? 'http://localhost:8080/' : 'http://interactive.guim.co.uk/next-gen/lifeandstyle/ng-interactive/2014/nov/christmas-gift-guide-2014/';
 
-        var baseUrl = 'http://localhost:8080/';
-
-
         function addStyleElm(el) {
             //var baseUrl = '/';
             var styleEl = document.createElement('link');
@@ -12,15 +9,6 @@
             styleEl.setAttribute('type', 'text/css');
             styleEl.setAttribute('href', baseUrl + 'css/interactive-figure.css');
             el.appendChild(styleEl);
-
-//            var iframeUrl = baseUrl + 'index.html' + location.search;
-//            var iframeEl = document.createElement('iframe');
-//            iframeEl.setAttribute('src', iframeUrl);
-//            iframeEl.setAttribute('scrolling', 'no');
-//            iframeEl.setAttribute('seemless', 'seemless');
-//            iframeEl.setAttribute('frameborder', '0');
-//            iframeEl.setAttribute('style', 'height: 2000px; width: 100%; overflow-y: hidden; border: none;');
-//            el.appendChild(iframeEl);
         }
 
         function getScrollTop(){
@@ -97,6 +85,22 @@
             sendScrollData();
         }
 
+        function addManualIframe() {
+            var iframeUrl = baseUrl + 'index.html' + location.search;
+            var iframeEl = document.createElement('iframe');
+            iframeEl.setAttribute('src', iframeUrl);
+            iframeEl.setAttribute('scrolling', 'no');
+            iframeEl.setAttribute('seemless', 'seemless');
+            iframeEl.setAttribute('frameborder', '0');
+            iframeEl.setAttribute('style', 'height: 4200px; width: 100%; overflow: hidden; border: none;');
+            el.appendChild(iframeEl);
+        }
+
+        function runInApp(el) {
+            el.className = el.className + ' gu-interactive';
+            addStyleElm(el);
+            addManualIframe();
+        }
 
 	return {
 		/**
@@ -141,6 +145,13 @@
 
 			if ( typeof require() === 'function') {
 				var req2 = require.config(cfg);
+
+                // HACK! Only do this for app
+                if (require.version === '2.1.14') {
+                    runInApp(el);
+                    return;
+                }
+
 				req2([baseUrl + 'js/libs/easyXDM.js'], function() {
                     setupPage(el);
 				});
