@@ -9,6 +9,7 @@
             styleEl.setAttribute('type', 'text/css');
             styleEl.setAttribute('href', baseUrl + 'css/interactive-figure.css');
             el.appendChild(styleEl);
+
         }
 
         function getScrollTop(){

@@ -116,7 +116,7 @@ gui.xmas.view = gui.xmas.view || {};
 				if(targetSource === "fb"){
 					shareUrl = fbUrl + encodeURIComponent(interactiveUrl);
 				}else if(targetSource === "twitter"){
-					shareUrl = twitterUrl + encodeURIComponent(shareMessage) + encodeURIComponent(interactiveUrl);
+					shareUrl = twitterUrl + encodeURIComponent(shareMessage) + encodeURIComponent(interactiveUrl) + "%20%23christmasgifts";
 				}else if(targetSource === "email"){
 					shareUrl = emailUrl + encodeURIComponent(shareMessage) + encodeURIComponent(interactiveUrl);
 				}
