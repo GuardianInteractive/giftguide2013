@@ -38,7 +38,7 @@
                     style: {width: "100%", 'min-height': '700px'}
                 },
                 onMessage: function(message, origin){
-                    if (!message) {
+                    if (!message || message === "undefined") {
                         return;
                     }
 
@@ -86,12 +86,11 @@
             sendScrollData();
         }
 
-        function addManualIframe() {
+        function addManualIframe(el) {
             var iframeUrl = baseUrl + 'index.html' + location.search;
             var iframeEl = document.createElement('iframe');
             iframeEl.setAttribute('src', iframeUrl);
             iframeEl.setAttribute('scrolling', 'no');
-            iframeEl.setAttribute('seemless', 'seemless');
             iframeEl.setAttribute('frameborder', '0');
             iframeEl.setAttribute('style', 'height: 4200px; width: 100%; overflow: hidden; border: none;');
             el.appendChild(iframeEl);
@@ -100,7 +99,7 @@
         function runInApp(el) {
             el.className = el.className + ' gu-interactive';
             addStyleElm(el);
-            addManualIframe();
+            addManualIframe(el);
         }
 
 	return {
