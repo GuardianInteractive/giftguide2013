@@ -832,6 +832,9 @@ font-family: 'Guardian Text Sans Web' !important;
 	float:none;
 }
 .gu-interactive .singularContent{
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
 	width:auto;
 	padding:0 10px 40px;
 }
