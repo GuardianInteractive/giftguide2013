@@ -116,10 +116,10 @@
             // Tidy-up
             el.innerHTML = '';
             var removeEl = document.querySelector('.content__head');
-            if (removeEl) { removeEl.remove(); }
+            if (removeEl) { removeEl.parentNode.removeChild(removeEl); }
 
             removeEl = document.querySelector('.content__meta-container');
-            if (removeEl) { removeEl.remove(); }
+            if (removeEl) { removeEl.parentNode.removeChild(removeEl); }
 
 
 
