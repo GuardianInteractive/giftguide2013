@@ -60,7 +60,6 @@ gui.xmas.view = gui.xmas.view || {};
 		
 
 		goToSingularView: function() {
-			console.log('hey');
             var target = jQ('.singularProductHolder');
             var pageHeight = document.body.clientHeight;
             jQ(target).css('display', 'block');
@@ -84,7 +83,6 @@ gui.xmas.view = gui.xmas.view || {};
 
 			if(window.width < 640){
 				jQ('.productsGridHolder').css("display", "block");
-				console.log(currentProductInGrid.offset().top);
                  XDSocket.postMessage(XDSocket.postMessage(JSON.stringify({ scrollTop: true, target: currentProductInGrid.offset().top })));
 				jQ(window).scrollTop(currentProductInGrid.offset().top);
 			}
