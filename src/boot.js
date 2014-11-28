@@ -66,10 +66,8 @@
                 var top = getScrollTop() + 60;
                 if (typeof jQ !== 'undefined') {
                     top -= jQ(el).offset().top;
-                }
-
-                if (typeof $ !== 'undefined' && typeof $().offset === 'function') {
-                    top -= $(el).offset().top;
+                } else {
+                    top -= el.getBoundingClientRect().top + window.pageYOffset;
                 }
 
                 top += (el.getBoundingClientRect().top > 0) ? el.getBoundingClientRect().top : 0;
